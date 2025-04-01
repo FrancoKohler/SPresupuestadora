@@ -1,5 +1,9 @@
 const modeloImg = {
-  Agora: [{ img: "assets/MODELOS/AGORA/AgoraReferencia.jpg" }],
+  Bianca: [
+    {
+      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIANCA.svg",
+    },
+  ],
 };
 
 document.addEventListener("DOMContentLoaded", function () {

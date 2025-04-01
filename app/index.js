@@ -25,7 +25,7 @@ function obtenerPiezasSeleccionadas() {
 
 /*--------------------PRECIOS DE LAS PEIZAS SEGUN MODELO------------*/
 function obtenerPrecioPorMaterial(idPieza, tela) {
-  const colecciones = [piezasAgora];
+  const colecciones = [piezasBianca];
   let precioMaterial;
 
   for (const coleccion of colecciones) {
@@ -123,7 +123,6 @@ function obtenerPrecioCojin(id, tela) {
 function generarResumen() {
   const modelo = document.getElementById("modelo").value;
   const piezasSeleccionadas = obtenerPiezasSeleccionadas();
-  const patasSeleccionados = obtenerPatasSeleccionados();
   const cojinesSeleccionados = obtenerCojinesSeleccionados();
   const tela = document.getElementById("tela").value;
   const telaIngreso = document.getElementById("telaNombre").value;
@@ -141,15 +140,7 @@ function generarResumen() {
     return total + precioCojin;
   }, 0);
 
-  const precioTotal =
-    precioPiezas +
-    precioCojines +
-    motorTotal +
-    precioRespaldos +
-    motorTotal +
-    bateriaTotal +
-    precioPosapies;
-
+  const precioTotal = precioPiezas + precioCojines;
   const suplementosTotal = precioCojines;
   const codigoDescuento = document.getElementById("descuento").value;
   const descuento = obtenerDescuento(codigoDescuento);

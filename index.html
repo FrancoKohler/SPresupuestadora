@@ -8,9 +8,12 @@
     <!--LINK CSS-->
     <link rel="stylesheet" href="./css/style.css" />
     <!--LINK JS-->
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
      <!-----DATA PIEZAS Y PRECIOS------>
-   
-    <script defer src="./app/data/MODELOS/piezas.js"></script>
+    <script defer src="./app/data/piezasBianca.js"></script>
     <script defer src="./app/data/cojines.js"></script>
 
         <!-----SCRIPTS------>
@@ -35,8 +38,8 @@
   <body>
     <header><img src="./assets/SINGULAR_BLANCO.svg" alt="SINGULAR_VECTOR"></header>
     <div class="titulo-solicitud">
-        <h1>Solicita tu presupuesto online al instante</h1>
-        <p>Rellenar los datos y genera tu presupuesto en tiempo real</p>
+        <h1 class="inter-titulos">Solicita tu presupuesto online al instante</h1>
+        <p class="inter-subtitulos">Rellenar los datos y genera tu presupuesto en tiempo real</p>
     </div>
     <!---OVERLAY CONTENT-->
     <div id="modal" class="modal">
@@ -47,9 +50,9 @@
         <div class="form">   
                 <!--NOMBRE INPUT-->
                 <div class="form-inputs">
-                    <a class="input-title"> Nombre de tienda*</a>
+                    <a class="input-title inter-subtitulos"> Nombre de tienda*</a>
                     <input
-                  class="top-input"
+                  class="top-input inter-soporte"
                   type="text"
                   id="nombreEmpresa"
                   name="name"
@@ -57,19 +60,19 @@
                     />
                 </div>
                 <div class="form-inputs">
-                    <a class="input-title"> CIF/NIF (Opcional)</a>
+                    <a class="input-title inter-subtitulos"> CIF/NIF (Opcional)</a>
                     <input
-                  class="top-input"
+                  class="top-input inter-soporte"
                   type="text"
                   id="cifEmpresa"
                   name="cif"
                   required
                     />
                 </div>
-                <div class="form-inputs">
-                    <a class="input-title"> Teléfono</a>
+                <div class="form-inputs ">
+                    <a class="input-title inter-subtitulos"> Teléfono</a>
                     <input
-                  class="top-input"
+                  class="top-input inter-soporte"
                   type="text"
                   id="telefonoEmpresa"
                   name="telefonoEmpresa"
@@ -77,9 +80,9 @@
                     />
                 </div>
                 <div class="form-inputs">
-                    <a class="input-title"> Email Tienda</a>
+                    <a class="input-title inter-subtitulos"> Email Tienda</a>
                     <input
-                    class="top-input"
+                    class="top-input inter-soporte"
                     type="email"
                     id="emailEmpresa"
                     name="email"
@@ -94,7 +97,7 @@
         <div class="form">   
                 <!--NOMBRE INPUT-->
                 <div class="form-inputs">
-                    <a class="input-title"> Nombre y apellido / Nombre de empresa*</a>
+                    <a class="input-title inter-subtitulos"> Nombre y apellido / Nombre de empresa*</a>
                     <input
                   class="top-input"
                   type="text"
@@ -106,7 +109,7 @@
                 
                 <!--NIF/CIF INPUT-->
                 <div class="form-inputs">
-                    <a class="input-title"> CIF/NIF (Opcional)</a>
+                    <a class="input-title inter-subtitulos"> CIF/NIF (Opcional)</a>
                     <input
                   class="top-input"
                   type="text"
@@ -117,7 +120,7 @@
                 </div>
                 <!--EMAIL/TELEFONO INPUT-->
                 <div class="form-inputs">
-                    <a class="input-title"> Email*</a>
+                    <a class="input-title inter-subtitulos"> Email*</a>
                     <input
                     class="top-input"
                     type="email"
@@ -127,7 +130,7 @@
                     />
                 </div>
                 <div class="form-inputs">
-                    <a class="input-title"> Telefono(Opcional)</a>
+                    <a class="input-title inter-subtitulos"> Telefono(Opcional)</a>
                     <input
                     class="top-input"
                     type="tel"
@@ -138,7 +141,7 @@
                 </div>
                  <!--PAIS SELECTOR-->
                 <div class="form-inputs">
-                <label for="pais" class="input-title">Pais*</label>
+                <label for="pais" class="input-title inter-subtitulos">Pais*</label>
                 <select name="pais" id="pais" class="dropdown">
                 <option value="España">España</option>
                 <option value="Francia">Francia</option>
@@ -148,7 +151,7 @@
                 </div>
                 <!--CIUDAD SELECTOR-->
                 <div class="form-inputs">
-                <label for="ciudad" class="input-title">Ciudad*</label>
+                <label for="ciudad" class="input-title inter-subtitulos">Ciudad*</label>
                 <select name="ciudad" id="ciudad" class="dropdown">
                 <option value="Valencia">Valencia</option>
                 <option value="Barcelona">Barcelona</option>
@@ -158,7 +161,7 @@
                 </div>
                 <!--CODIGO POSTAL SELECTOR-->
                 <div class="form-inputs">
-                        <a class="input-title"> Código Postal*</a>
+                        <a class="input-title inter-subtitulos"> Código Postal*</a>
                         <input
                         class="top-input"
                         type="codigo"
@@ -169,7 +172,7 @@
                 </div>
                 <!--CALLE-->
                 <div class="form-inputs">
-                        <a class="input-title"> Calle*</a>
+                        <a class="input-title inter-subtitulos"> Calle*</a>
                         <input
                         class="top-input"
                         type="calle"
@@ -180,7 +183,7 @@
                 </div>
                 <!--PISO/PUERTA SELECTOR-->
                 <div class="form-inputs">
-                        <a class="input-title"> Puerta/Piso*</a>
+                        <a class="input-title inter-subtitulos"> Puerta/Piso*</a>
                         <input
                         class="top-input"
                         type="puerta"
@@ -202,8 +205,8 @@
     </section>
     <section class="modelo-seccion" id="seccionModelo">
         <div class="form-inputs">
-            <a class="seccion-titulo"> Modelo</a>
-                <label for="modelo" class="input-title">Selecciona el modelo para la configuración</label>
+            <a class="seccion-titulo inter-mid-titulos"> Modelo</a>
+                <label for="modelo" class="input-title inter-subtitulos">Selecciona el modelo para la configuración</label>
                 
                 <select name="modelo" id="modelo" class="dropdown">
                     <optgroup label="SOFÁS">
@@ -214,12 +217,12 @@
                 </select>
                 </div>
                 <div class="form-inputs div-referencia">
-                    <a class="input-title"> Imagen de referencia</a>
+                    <a class="input-title inter-subtitulos"> Imagen de referencia</a>
                     
                     <div class="img-referencia" id="imgReferencia">
                         <!---IMG REFERENCIA EN JS--->
                     </div>
-                    <p class="textoReferencia"> *Imagen de referencia de otra configuración</p>
+                    <p class="textoReferencia inter-soporte"> *Imagen de referencia de otra configuración</p>
 
                 </div>
         </div>
@@ -228,8 +231,8 @@
     <!--TELA SELECTOR-->
      <section class="tela-seccion" id="seccionTela">
         <div class="form-inputs">
-            <a class="seccion-titulo"> Serie</a>
-            <label for="modelo" class="input-title">Selecciona el tejido o piel para la configuración</label>
+            <a class="seccion-titulo inter-mid-titulos"> Serie</a>
+            <label for="modelo" class="input-title inter-subtitulos">Selecciona el tejido o piel para la configuración</label>
             
            <select  name="tela" id="tela" class="dropdown">
             <!-- <option value="">Seleccione una tela</option> -->
@@ -238,9 +241,9 @@
         </div>
          <div class="custom-select">
         <div class="teladiv">
-            <div class="tela-div-h">
-                <a class="seccion-titulo">Tela</a>
-                <label for="modelo" class="input-title">Ingresa la tela para tu configuración*</label>  
+            <div class="tela-div-h"> 
+                <a class="seccion-titulo inter-mid-titulos">Tela</a>
+                <label for="modelo" class="input-title inter-subtitulos">Ingresa la tela para tu configuración*</label>  
                 <input id="telaNombre" type="text" class="dropdown" placeholder="Escribe el nombre de la tela">
             </div>
             
@@ -249,8 +252,8 @@
     <section class="pieza-seccion" id="seccionPiezas" >
         <div class="form-inputs">
             
-                <a class="seccion-titulo"> Piezas</a>
-                <label for="pieza" class="input-title">Selecciona las piezas para la configuración*</label>
+                <a class="seccion-titulo inter-mid-titulos"> Piezas</a>
+                <label for="pieza" class="input-title inter-subtitulos">Selecciona las piezas para la configuración*</label>
                 <select name="pieza" id="pieza1" class="dropdown">
                 <!--LLENO CON JS-->
                 </select>
@@ -277,11 +280,11 @@
                 <!--LLENO CON JS-->
                 </select>
                 <!-------BTN AGREGAR------->
-                <button id="showPiezas" class="btn-agregar">Agregar más</button>
+                <button id="showPiezas" class="btn-agregar inter-subtitulos" style="text-transform: uppercase;">Agregar más</button>
               
                 <!-------------CONFIGURACION SECCION-------------->
                 <section class="configuracion-seccion">
-                    <a class="seccion-titulo configuracion-titulo"> Configuración</a>
+                    <a class="seccion-titulo configuracion-titulo inter-mid-titulos"> Configuración</a>
                     <div class="pre-config" id="imagenPiezas">
                     <!--LLENO EN JS-->
                     <canvas width=500 height=500>
@@ -292,8 +295,8 @@
                 
                 <!---------------SUPLEMENTO COJINES----------->
   
-                <a class="a-cojines"> Suplemento Cojines</a>
-                <label for="cojin" class="input-title">Selecciona los cojines</label>
+                <a class="a-cojines inter-mid-titulos"> Suplemento Cojines</a>
+                <label for="cojin" class="input-title inter-subtitulos">Selecciona los cojines</label>
                 <select name="cojin" id="cojin1" class="dropdown">
                 <!--LLENO CON JS-->
                 </select>
@@ -307,7 +310,7 @@
                 <!--LLENO CON JS-->
                 </select>
                 <!-------BTN AGREGAR------->
-                <button id="showCojin" class="btn-agregar">Agregar más</button>
+                <button id="showCojin" class="btn-agregar inter-subtitulos" style="text-transform: uppercase;">Agregar más</button>
                 </div>
             </div>
             
@@ -316,16 +319,16 @@
                 
     <!-------------RESUMEN SECCION-------------->
     <section class="section-resumen" id="seccionResumen">
-                <a class="seccion-titulo">Resumen</a>
+                <a class="seccion-titulo inter-mid-titulos">Resumen</a>
                 <ul class="ul-config" id="resumen">
                     <!--LI LLENO WITH JS-->
               </ul>
             <div class="div-descuento">
-            <a>Código de descuento</a>
+            <a class="inter-mid-titulos">Código de descuento</a>
             <input class="descuento-input" type="text" id="descuento" placeholder="Descuento">
             </div>
     </section>
     <!--BTN NAV-->
-    <button class="btn-pdf" id="openModalBtn">CONTINUAR</button>
+    <button class="btn-pdf inter-subtitulos" style="text-transform: uppercase;" id="openModalBtn">CONTINUAR</button>
   </body>
 </html>

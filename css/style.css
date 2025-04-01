@@ -1,16 +1,29 @@
-@font-face {
-  font-family: "Domaine";
-  src: url("../fonts/DomaineDisplay-Medium.otf") format("opentype"),
-    url("../fonts/DomaineDisplay-Regular.otf") format("opentype"),
-    url("../fonts/DomaineDisplay-RegularItalic.otf") format("opentype");
+.inter-titulos {
+  text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
 }
-@font-face {
-  font-family: "Minion";
-  src: url("../fonts/Montserrat-Regular.otf") format("opentype");
-  src: url("../fonts/Montserrat-Medium.otf") format("opentype");
-  src: url("../fonts/Montserrat-Light.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+.inter-mid-titulos {
+  text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+.inter-subtitulos {
+  font-family: "Inter", sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.inter-soporte {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+.inter-chica {
+  font-family: "Inter", sans-serif;
+  font-size: 7px;
+  font-weight: 400;
 }
 html {
   scroll-behavior: smooth;
@@ -28,8 +41,6 @@ body {
 header {
   background-color: #000000;
   width: 100%;
-  font-family: "Domaine";
-  font-size: 2.5rem;
   border-bottom: #a5a5a5 1px solid;
   display: flex;
   align-items: center;
@@ -50,24 +61,15 @@ header img {
 }
 h1 {
   color: #343434;
-  font-family: "Domaine";
-  font-weight: 500;
 }
 h2 {
-  font-family: "Domaine";
-  font-weight: 500;
-  font-size: 1.5rem;
   color: #000000;
 }
 p {
   color: #808080;
-  font-family: "Domaine";
-  font-weight: 300;
 }
 .seccion-titulo {
   color: #343434;
-  font-size: 2rem;
-  font-family: "Domaine";
 }
 .configuracion-titulo {
   padding-bottom: 2rem;
@@ -76,11 +78,7 @@ p {
 .div-referencia {
   padding-top: 1rem;
 }
-.textoReferencia {
-  font-family: "Minion";
-  font-size: 12px;
-  font-weight: 300;
-}
+
 .referencia-img {
   margin-top: 1rem;
   border-radius: 1rem;
@@ -104,15 +102,11 @@ p {
   cursor: pointer;
 }
 .input-title {
-  font-family: "Montserrat";
-  font-weight: 400;
-  font-size: 1rem;
   color: #343434;
   padding-top: 1rem;
 }
 input {
   display: flex;
-  font-family: "Montserrat";
 }
 .dropdown {
   padding-top: 1rem;
@@ -120,12 +114,8 @@ input {
   cursor: pointer;
 }
 
-option {
-  font-family: "Montserrat";
-  cursor: pointer;
-}
+option,
 select {
-  font-family: "Montserrat";
   cursor: pointer;
 }
 
@@ -157,8 +147,6 @@ select {
 .a-cojines {
   padding-top: 1.5rem;
   color: #343434;
-  font-size: 2rem;
-  font-family: "Domaine";
 }
 
 .suplementoPatas {
@@ -167,7 +155,6 @@ select {
   align-items: center;
   margin-top: 2rem;
   gap: 1rem;
-  font-family: "Montserrat";
 }
 .input-cojines {
   margin-bottom: 1rem;
@@ -187,7 +174,6 @@ select {
   display: block;
   flex-direction: column;
   margin-top: 2rem;
-  font-family: "Montserrat";
 }
 .dropdown-agora {
   padding-top: 1rem;
@@ -240,8 +226,6 @@ select {
 }
 /* Estilos para el título del resumen */
 .resumen-a {
-  font-family: "Domaine";
-  font-size: 1.5rem;
   color: #343434;
 }
 .precioResumen {
@@ -257,7 +241,6 @@ select {
   padding: 2rem;
   border: 1px solid #343434;
   border-radius: 1.5rem;
-  font-family: "Montserrat";
   color: #808080;
   list-style: none;
   display: block;
@@ -270,7 +253,6 @@ select {
 }
 
 .div-descuento {
-  font-family: "Domaine";
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -285,36 +267,33 @@ select {
   cursor: pointer;
 }
 /*BOTON*/
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background-color: #000000;
+  color: white;
+  border-radius: 1.5rem;
+  border: 1px solid black;
+  padding: 1rem 1.5rem;
+}
+button:hover {
+  cursor: pointer;
+  color: #000000;
+  background-color: white;
+}
 .btn-agregar {
-  width: fit-content;
   display: flex;
   margin: auto;
   margin-top: 1.5rem;
-  font-family: "Montserrat";
-  color: aliceblue;
-  background-color: #d1c2a5;
-  border: none;
-  cursor: pointer;
-  padding: 1rem 1rem 1rem 1rem;
-  border-radius: 1.5rem;
   transition: 1s;
 }
 .btn-pdf {
-  font-family: "Montserrat";
-  color: aliceblue;
-  background-color: #d1c2a5;
-  border: none;
   cursor: pointer;
   padding: 1rem 1rem 1rem 1rem;
-  border-radius: 1.5rem;
   margin: 2rem 5rem 2rem;
   transition: 1s;
-}
-
-.btn-pdf:hover,
-.btn-agregar:hover {
-  transition: 1s;
-  background-color: #ebe0ce;
 }
 
 /*RESUMEN LI*/
@@ -342,10 +321,6 @@ li {
 }
 .telas-image {
   width: 50px;
-}
-.span-telas {
-  font-family: "Montserrat";
-  font-size: smaller;
 }
 .custom-select {
   position: relative;
@@ -471,22 +446,19 @@ li {
 .suggestions-list li:hover {
   background-color: #f0f0f0;
 }
-/*---------------SWEET ALERT BOTON PDF---------*/
-.my-popup {
-  background-color: white;
-}
-.my-title {
-  background-color: white;
-}
+
+.my-title,
+.my-popup,
 .my-text {
   background-color: white;
 }
+
 .my-confirm-button {
   width: 100%;
   display: flex;
   margin: auto;
   margin-top: 1.5rem;
-  font-family: "Montserrat";
+  font-family: "Inter";
   color: aliceblue;
   background-color: #d1c2a5;
   border: none;
