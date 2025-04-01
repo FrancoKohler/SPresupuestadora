@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5e615db2b03dc943e61acfa7/1594816802492-7H0LNNB09741O23X5IMY/favicon.ico?format=100w">
+    <title>SINGULAR | Presupuesto</title>
+    <!--LINK CSS-->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!--LINK JS-->
+     <!-----DATA PIEZAS Y PRECIOS------>
+   
+    <script defer src="./app/data/MODELOS/piezas.js"></script>
+    <script defer src="./app/data/cojines.js"></script>
+
+        <!-----SCRIPTS------>
+    <script defer src="./app/index.js"></script>
+    <script defer src="./app/showmore.js"></script>
+    <script defer src="./app/pdfgenerator.js"></script>
+    <script defer src="./app/data/imgmodelos.js"></script>
+    <script defer src="./app/switchs/switchs.js"></script>
+    <script defer src="./app/switchs/switchprecios.js"></script>
+    <script defer src="./app/piezasconfiguracion.js"></script>
+
+   
+  <!--SCRIPTS PARA HTMLCANVAS Y JSKIT-->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-html2canvas@latest/dist/jspdf-html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib"></script>
+    <!--SCRIPT PARA SWEETALERT-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <body>
+    <header><img src="./assets/SINGULAR_BLANCO.svg" alt="SINGULAR_VECTOR"></header>
+    <div class="titulo-solicitud">
+        <h1>Solicita tu presupuesto online al instante</h1>
+        <p>Rellenar los datos y genera tu presupuesto en tiempo real</p>
+    </div>
+    <!---OVERLAY CONTENT-->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <span id="closeModalBtn" class="close">&times;</span>
+    <section class="contacto-seccion">
+        <h2 class="seccion-titulo">Datos de Tienda</h2>
+        <div class="form">   
+                <!--NOMBRE INPUT-->
+                <div class="form-inputs">
+                    <a class="input-title"> Nombre de tienda*</a>
+                    <input
+                  class="top-input"
+                  type="text"
+                  id="nombreEmpresa"
+                  name="name"
+                  required
+                    />
+                </div>
+                <div class="form-inputs">
+                    <a class="input-title"> CIF/NIF (Opcional)</a>
+                    <input
+                  class="top-input"
+                  type="text"
+                  id="cifEmpresa"
+                  name="cif"
+                  required
+                    />
+                </div>
+                <div class="form-inputs">
+                    <a class="input-title"> Teléfono</a>
+                    <input
+                  class="top-input"
+                  type="text"
+                  id="telefonoEmpresa"
+                  name="telefonoEmpresa"
+                  required
+                    />
+                </div>
+                <div class="form-inputs">
+                    <a class="input-title"> Email Tienda</a>
+                    <input
+                    class="top-input"
+                    type="email"
+                    id="emailEmpresa"
+                    name="email"
+                    required
+                    />
+                </div>
+            </div>
+        </section>
+    
+    <div class="contacto-seccion">
+        <h2 class="seccion-titulo">Datos del cliente</h2>
+        <div class="form">   
+                <!--NOMBRE INPUT-->
+                <div class="form-inputs">
+                    <a class="input-title"> Nombre y apellido / Nombre de empresa*</a>
+                    <input
+                  class="top-input"
+                  type="text"
+                  id="nombreCliente"
+                  name="name"
+                  required
+                    />
+                </div>
+                
+                <!--NIF/CIF INPUT-->
+                <div class="form-inputs">
+                    <a class="input-title"> CIF/NIF (Opcional)</a>
+                    <input
+                  class="top-input"
+                  type="text"
+                  id="cifCliente"
+                  name="name"
+                  required
+                    />
+                </div>
+                <!--EMAIL/TELEFONO INPUT-->
+                <div class="form-inputs">
+                    <a class="input-title"> Email*</a>
+                    <input
+                    class="top-input"
+                    type="email"
+                    id="emailCliente"
+                    name="email"
+                    required
+                    />
+                </div>
+                <div class="form-inputs">
+                    <a class="input-title"> Telefono(Opcional)</a>
+                    <input
+                    class="top-input"
+                    type="tel"
+                    id="telefonoCliente"
+                    name="phone"
+                    required
+                    />
+                </div>
+                 <!--PAIS SELECTOR-->
+                <div class="form-inputs">
+                <label for="pais" class="input-title">Pais*</label>
+                <select name="pais" id="pais" class="dropdown">
+                <option value="España">España</option>
+                <option value="Francia">Francia</option>
+                <option value="Italia">Italia</option>
+                <option value="Alemania">Alemania</option>
+                </select>
+                </div>
+                <!--CIUDAD SELECTOR-->
+                <div class="form-inputs">
+                <label for="ciudad" class="input-title">Ciudad*</label>
+                <select name="ciudad" id="ciudad" class="dropdown">
+                <option value="Valencia">Valencia</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Lisboa">Lisboa</option>
+                </select>
+                </div>
+                <!--CODIGO POSTAL SELECTOR-->
+                <div class="form-inputs">
+                        <a class="input-title"> Código Postal*</a>
+                        <input
+                        class="top-input"
+                        type="codigo"
+                        id="codigoPostal"
+                        name="codigoPostal"
+                        required
+                        />
+                </div>
+                <!--CALLE-->
+                <div class="form-inputs">
+                        <a class="input-title"> Calle*</a>
+                        <input
+                        class="top-input"
+                        type="calle"
+                        id="calle"
+                        name="calle"
+                        required
+                        />
+                </div>
+                <!--PISO/PUERTA SELECTOR-->
+                <div class="form-inputs">
+                        <a class="input-title"> Puerta/Piso*</a>
+                        <input
+                        class="top-input"
+                        type="puerta"
+                        id="puertaPiso"
+                        name="puerta"
+                        required
+                        />
+                </div>
+                <button class="btn-pdf" id="generateBtn">GENERAR PRESUPUESTO</button>
+    <!-- <p id="orderCode"></p> -->
+              </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+    <!--MODELO SELECTOR-->
+    
+    </section>
+    <section class="modelo-seccion" id="seccionModelo">
+        <div class="form-inputs">
+            <a class="seccion-titulo"> Modelo</a>
+                <label for="modelo" class="input-title">Selecciona el modelo para la configuración</label>
+                
+                <select name="modelo" id="modelo" class="dropdown">
+                    <optgroup label="SOFÁS">
+                        <option value="Bianca">BIANCA</option>
+                    </optgroup>
+                   
+                
+                </select>
+                </div>
+                <div class="form-inputs div-referencia">
+                    <a class="input-title"> Imagen de referencia</a>
+                    
+                    <div class="img-referencia" id="imgReferencia">
+                        <!---IMG REFERENCIA EN JS--->
+                    </div>
+                    <p class="textoReferencia"> *Imagen de referencia de otra configuración</p>
+
+                </div>
+        </div>
+    </section>
+    
+    <!--TELA SELECTOR-->
+     <section class="tela-seccion" id="seccionTela">
+        <div class="form-inputs">
+            <a class="seccion-titulo"> Serie</a>
+            <label for="modelo" class="input-title">Selecciona el tejido o piel para la configuración</label>
+            
+           <select  name="tela" id="tela" class="dropdown">
+            <!-- <option value="">Seleccione una tela</option> -->
+               
+            </select>
+        </div>
+         <div class="custom-select">
+        <div class="teladiv">
+            <div class="tela-div-h">
+                <a class="seccion-titulo">Tela</a>
+                <label for="modelo" class="input-title">Ingresa la tela para tu configuración*</label>  
+                <input id="telaNombre" type="text" class="dropdown" placeholder="Escribe el nombre de la tela">
+            </div>
+            
+    </section>
+    <!--PIEZA SELECTOR-->
+    <section class="pieza-seccion" id="seccionPiezas" >
+        <div class="form-inputs">
+            
+                <a class="seccion-titulo"> Piezas</a>
+                <label for="pieza" class="input-title">Selecciona las piezas para la configuración*</label>
+                <select name="pieza" id="pieza1" class="dropdown">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="pieza" id="pieza2" class="dropdown">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="pieza" id="pieza3" class="dropdown">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="pieza" id="pieza4" class="dropdown">
+                <!--LLENO CON JS-->
+                </select>
+                <!-- Los selects ocultos inicialmente -->
+                <select name="pieza" id="pieza5" class="dropdown hidden">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="pieza" id="pieza6" class="dropdown hidden">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="pieza" id="pieza7" class="dropdown hidden">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="pieza" id="pieza8" class="dropdown hidden">
+                <!--LLENO CON JS-->
+                </select>
+                <!-------BTN AGREGAR------->
+                <button id="showPiezas" class="btn-agregar">Agregar más</button>
+              
+                <!-------------CONFIGURACION SECCION-------------->
+                <section class="configuracion-seccion">
+                    <a class="seccion-titulo configuracion-titulo"> Configuración</a>
+                    <div class="pre-config" id="imagenPiezas">
+                    <!--LLENO EN JS-->
+                    <canvas width=500 height=500>
+                    </div>
+            </section>
+                
+                
+                
+                <!---------------SUPLEMENTO COJINES----------->
+  
+                <a class="a-cojines"> Suplemento Cojines</a>
+                <label for="cojin" class="input-title">Selecciona los cojines</label>
+                <select name="cojin" id="cojin1" class="dropdown">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="cojin" id="cojin2" class="dropdown">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="cojin" id="cojin3" class="dropdown">
+                <!--LLENO CON JS-->
+                </select>
+                <select name="cojin" id="cojin4" class="dropdown">
+                <!--LLENO CON JS-->
+                </select>
+                <!-------BTN AGREGAR------->
+                <button id="showCojin" class="btn-agregar">Agregar más</button>
+                </div>
+            </div>
+            
+            
+    </section>
+                
+    <!-------------RESUMEN SECCION-------------->
+    <section class="section-resumen" id="seccionResumen">
+                <a class="seccion-titulo">Resumen</a>
+                <ul class="ul-config" id="resumen">
+                    <!--LI LLENO WITH JS-->
+              </ul>
+            <div class="div-descuento">
+            <a>Código de descuento</a>
+            <input class="descuento-input" type="text" id="descuento" placeholder="Descuento">
+            </div>
+    </section>
+    <!--BTN NAV-->
+    <button class="btn-pdf" id="openModalBtn">CONTINUAR</button>
+  </body>
+</html>
