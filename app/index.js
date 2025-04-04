@@ -125,7 +125,9 @@ function generarResumen() {
   const piezasSeleccionadas = obtenerPiezasSeleccionadas();
   const cojinesSeleccionados = obtenerCojinesSeleccionados();
   const tela = document.getElementById("tela").value;
-  const modeloSeleccionado = document.getElementById("modelo").value;
+  const selectTelaContainer = document.getElementById(
+    "selectTelaContainer"
+  ).value;
   const piezasFiltradas = piezasSeleccionadas.filter(
     (pieza) => pieza.id !== "None"
   );
@@ -196,6 +198,7 @@ function generarResumen() {
         : ""
     }
     <li class="inter-resumen">Serie seleccionada: ${tela}</li>
+    <li class="inter-resumen">Tela seleccionada: ${selectTelaContainer}</li>
     <li class="precioResumen inter-resumen">Precio Total: <span id="precioTotal"> &nbsp ${precioTotal.toFixed(
       2
     )}€</span></li>
