@@ -10,10 +10,15 @@
   font-size: 18px;
   font-weight: 700;
 }
+.inter-resumen {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
 .inter-subtitulos {
   font-family: "Inter", sans-serif;
   font-size: 12.5px;
-  font-weight: 700;
+  font-weight: 500;
 }
 .inter-soporte {
   font-family: "Inter", sans-serif;
@@ -85,7 +90,13 @@ p {
   width: 40%;
   height: auto;
 }
-
+.img-tela {
+  padding-top: 1rem;
+  width: 25%;
+}
+.img-tela img {
+  width: 10%;
+}
 /*FORM DATOS*/
 
 .form-inputs {
@@ -229,7 +240,8 @@ select {
   color: #343434;
 }
 .precioResumen {
-  font-weight: 600;
+  color: #000000;
+  font-weight: 900;
 }
 /* Estilos para la lista de resumen */
 .ul-config li {
@@ -332,55 +344,16 @@ li {
   border: #a5a5a5 1px solid;
   cursor: pointer;
 }
-.search-input {
-  border: none;
-  width: 100%;
-}
-.lupa {
-  height: 20px;
-}
-.tela-span:hover {
-  font-weight: 600;
-}
-.select-box {
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  padding-left: 1px;
-  border: 1px solid #a5a5a5;
-}
-.category-select,
-.select-box {
+
+.category-select {
   margin: 10px 0;
 }
-.dropdown-content {
-  border: 1px solid #ccc;
-  max-height: 250px;
-  overflow-y: auto;
-  display: none;
-}
-.dropdown-content div {
-  padding: 8px;
-  cursor: pointer;
-}
-
-.dropdown-content div:hover {
-  background-color: #f1f1f1;
-}
-.dropdown-item {
+.selectTelaContainer {
   display: flex;
-  align-items: center;
+  width: 100%;
+  padding-top: 1rem;
+  border: #a5a5a5 1px solid;
 }
-.dropdown-content.show {
-  display: block;
-}
-.dropdown-icon {
-  transform: rotate(90deg);
-  font-size: small;
-}
-
 /*---------------------LUPA--------------*/
 .overlay {
   display: none;
@@ -401,7 +374,9 @@ li {
   text-align: center;
   position: relative;
 }
-
+.overlay-img {
+  width: 10%;
+}
 .close-btn {
   position: absolute;
   top: 10px;

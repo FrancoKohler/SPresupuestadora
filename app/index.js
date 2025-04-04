@@ -125,7 +125,6 @@ function generarResumen() {
   const piezasSeleccionadas = obtenerPiezasSeleccionadas();
   const cojinesSeleccionados = obtenerCojinesSeleccionados();
   const tela = document.getElementById("tela").value;
-  const telaIngreso = document.getElementById("telaNombre").value;
   const modeloSeleccionado = document.getElementById("modelo").value;
   const piezasFiltradas = piezasSeleccionadas.filter(
     (pieza) => pieza.id !== "None"
@@ -159,15 +158,15 @@ function generarResumen() {
 
   const resumenElement = document.getElementById("resumen");
   resumenElement.innerHTML = `
-    <li>Modelo: ${modelo}</li> 
+    <li class="inter-resumen">Modelo: ${modelo}</li> 
     
     ${
       piezasFiltradas.length > 0
-        ? `<li >Piezas seleccionadas:</li><ul>` +
+        ? `<li class="inter-resumen"  >Piezas seleccionadas:</li><ul>` +
           piezasFiltradas
             .map(
               (pieza) =>
-                `<li class="itemsResumen">${
+                `<li class="itemsResumen inter-resumen">${
                   pieza.nombre
                 } &nbsp <span id="preciosMaterial"> ${obtenerPrecioPorMaterial(
                   pieza.id,
@@ -181,11 +180,11 @@ function generarResumen() {
   
     ${
       cojinesSeleccionados.length > 0
-        ? `<li>Cojines seleccionados:</li><ul>` +
+        ? `<li class="inter-resumen">Cojines seleccionados:</li><ul>` +
           cojinesSeleccionados
             .map(
               (cojin) =>
-                `<li class="itemsResumen">${
+                `<li class="itemsResumen inter-soporte">${
                   cojin.nombre
                 } &nbsp <span id="preciosMaterialCojin"> ${obtenerPrecioCojin(
                   cojin.id,
@@ -196,9 +195,8 @@ function generarResumen() {
           "</ul>"
         : ""
     }
-    <li>Serie seleccionada: ${tela}</li>
-    <li>Tela seleccionada: <span id="telaSeleccion"> ${telaIngreso} </span></li> 
-    <li class="precioResumen">Precio Total: <span id="precioTotal"> &nbsp ${precioTotal.toFixed(
+    <li class="inter-resumen">Serie seleccionada: ${tela}</li>
+    <li class="precioResumen inter-resumen">Precio Total: <span id="precioTotal"> &nbsp ${precioTotal.toFixed(
       2
     )}€</span></li>
      ${

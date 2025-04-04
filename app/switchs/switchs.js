@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cargar las piezas del modelo seleccionado inicialmente (si hay un valor por defecto)
     actualizarPiezasSegunModelo();
 
-    // Actualizar el dropdown de tela según el modelo
+    //Con respecto a la SERIE
     const telaDropdown = document.getElementById("tela");
     telaDropdown.innerHTML = ""; // Limpiar las opciones existentes
 

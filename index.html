@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5e615db2b03dc943e61acfa7/1594816802492-7H0LNNB09741O23X5IMY/favicon.ico?format=100w">
     <title>SINGULAR | Presupuesto</title>
+    <link rel="icon" type="image/png" href="./assets/S-WEB.svg" />
     <!--LINK CSS-->
     <link rel="stylesheet" href="./css/style.css" />
     <!--LINK JS-->
@@ -21,6 +22,7 @@
     <script defer src="./app/showmore.js"></script>
     <script defer src="./app/pdfgenerator.js"></script>
     <script defer src="./app/data/imgmodelos.js"></script>
+    <script defer src="./app/data/imgtelas.js"></script>
     <script defer src="./app/switchs/switchs.js"></script>
     <script defer src="./app/switchs/switchprecios.js"></script>
     <script defer src="./app/piezasconfiguracion.js"></script>
@@ -238,14 +240,35 @@
             <!-- <option value="">Seleccione una tela</option> -->
                
             </select>
+           
         </div>
-         <div class="custom-select">
         <div class="teladiv">
             <div class="tela-div-h"> 
                 <a class="seccion-titulo inter-mid-titulos">Tela</a>
                 <label for="modelo" class="input-title inter-subtitulos">Ingresa la tela para tu configuración*</label>  
-                <input id="telaNombre" type="text" class="dropdown" placeholder="Escribe el nombre de la tela">
+                <div class="category-select">
+                    <select class="dropdown-select" id="categorySelect">
+                        <option value="">Selecciona una categoría</option>
+                        <option value="Burberry">BURBERRY</option>
+                        <option value="Capri">CAPRI</option>
+                        <option value="Club">CLUB</option>
+                    </select>
+                </div>
+                
+                <select id="selectTelaContainer" class="selectTelaContainer">
+                    <!-- Aquí se agregarán las opciones de tela dinámicamente -->
+                </select>
+                <div id="telaReferencia" class="img-referencia-tela">
+                    <!---IMG REFERENCIA EN JS--->
+                    
+                </div>
+                <p class="textoReferencia inter-soporte"> *Tela de referencia</p>
+
             </div>
+        </div>
+        
+        </div>
+        
             
     </section>
     <!--PIEZA SELECTOR-->
