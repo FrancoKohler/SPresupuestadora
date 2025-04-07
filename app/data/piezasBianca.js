@@ -315,7 +315,7 @@ const piezasBianca = [
   },
   {
     id: "BIAC80I",
-    title: "BIAC80I Chaise longue 80 der. (104 cm)",
+    title: "BIAC80I Chaise longue 80 izq. (104 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC80I.svg",
     price: preciosBianca.comunBIAC80D,

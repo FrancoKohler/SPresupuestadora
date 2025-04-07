@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (selectedTela) {
       const newImg = document.createElement("img");
       newImg.src = selectedTela.img;
-      newImg.alt = selectedOption;
+      newImg.alt = selectedTela.name;
       newImg.classList.add("img-tela");
       divReferencia.appendChild(newImg);
     }
@@ -181,11 +181,12 @@ document.addEventListener("DOMContentLoaded", function () {
         selectTelaContainer.appendChild(option);
       });
 
-      // Después de cargar las opciones de tela, selecciona la primera tela por defecto
       selectTelaContainer.value = telas[selectedCategory][0].nombre;
       actualizarImgSegunTela(); // Actualizar la imagen con la primera tela
     }
   });
+  //cambios de telas segun seleccion
+  selectTelaContainer.addEventListener("change", actualizarImgSegunTela);
 
   //BURBERRY POR DFTCO
   categorySelect.value = "Burberry";
