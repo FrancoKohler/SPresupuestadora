@@ -108,7 +108,6 @@ const preciosVera = {
     { material: "SERIE 5", precio: 515 },
   ],
 };
-
 /*-------------------PIEZAS VERA--------------------*/
 const piezasVera = [
   // Módulos sin brazo
@@ -122,7 +121,7 @@ const piezasVera = [
     id: "VERM110S",
     title: "VERM110S Mód. 110 sin brazo (110 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM110S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM110S.png",
     price: preciosVera.sinBrazo110,
     medida: 110,
     categoria: "MODULOS",
@@ -131,7 +130,7 @@ const piezasVera = [
     id: "VERM100S",
     title: "VERM100S Mód. 100 sin brazo (100 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM100S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM100S.png",
     price: preciosVera.sinBrazo100,
     medida: 100,
     categoria: "MODULOS",
@@ -140,7 +139,7 @@ const piezasVera = [
     id: "VERM90S",
     title: "VERM90S Mód. 90 sin brazo (90 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM90S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM90S.png",
     price: preciosVera.sinBrazo90,
     medida: 90,
     categoria: "MODULOS",
@@ -149,7 +148,7 @@ const piezasVera = [
     id: "VERM80S",
     title: "VERM80S Mód. 80 sin brazo (80 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM80S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM80S.png",
     price: preciosVera.sinBrazo80,
     medida: 80,
     categoria: "MODULOS",
@@ -160,7 +159,7 @@ const piezasVera = [
     id: "VERT110D",
     title: "VERT110D Terminal 110 der. (160 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT110D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT110D.png",
     price: preciosVera.terminal110,
     medida: 160,
     categoria: "TERMINALES",
@@ -169,7 +168,7 @@ const piezasVera = [
     id: "VERT110I",
     title: "VERT110I Terminal 110 izq. (160 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT110I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT110I.png",
     price: preciosVera.terminal110,
     medida: 160,
     categoria: "TERMINALES",
@@ -178,7 +177,7 @@ const piezasVera = [
     id: "VERT100D",
     title: "VERT100D Terminal 100 der. (150 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT100D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT100D.png",
     price: preciosVera.terminal100,
     medida: 150,
     categoria: "TERMINALES",
@@ -187,7 +186,7 @@ const piezasVera = [
     id: "VERT100I",
     title: "VERT100I Terminal 100 izq. (150 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT100I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT100I.png",
     price: preciosVera.terminal100,
     medida: 150,
     categoria: "TERMINALES",
@@ -196,7 +195,7 @@ const piezasVera = [
     id: "VERT90D",
     title: "VERT90D Terminal 90 der. (140 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT90D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT90D.png",
     price: preciosVera.terminal90,
     medida: 140,
     categoria: "TERMINALES",
@@ -205,7 +204,7 @@ const piezasVera = [
     id: "VERT90I",
     title: "VERT90I Terminal 90 izq. (140 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT90I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT90I.png",
     price: preciosVera.terminal90,
     medida: 140,
     categoria: "TERMINALES",
@@ -214,7 +213,7 @@ const piezasVera = [
     id: "VERT80D",
     title: "VERT80D Terminal 80 der. (130 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT80D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT80D.png",
     price: preciosVera.terminal80,
     medida: 130,
     categoria: "TERMINALES",
@@ -223,7 +222,7 @@ const piezasVera = [
     id: "VERT80I",
     title: "VERT80I Terminal 80 izq. (130 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT80I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT80I.png",
     price: preciosVera.terminal80,
     medida: 130,
     categoria: "TERMINALES",
@@ -234,7 +233,7 @@ const piezasVera = [
     id: "VERC110D",
     title: "VERC110D Chaise Longue 110 der. (140 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC110D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC110D.png",
     price: preciosVera.chaise110,
     medida: 140,
     categoria: "CHAISE",
@@ -243,7 +242,7 @@ const piezasVera = [
     id: "VERC110I",
     title: "VERC110I Chaise Longue 110 izq. (140 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC110I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC110I.png",
     price: preciosVera.chaise110,
     medida: 140,
     categoria: "CHAISE",
@@ -252,7 +251,7 @@ const piezasVera = [
     id: "VERC100D",
     title: "VERC100D Chaise Longue 100 der. (130 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC100D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC100D.png",
     price: preciosVera.chaise100,
     medida: 130,
     categoria: "CHAISE",
@@ -261,7 +260,7 @@ const piezasVera = [
     id: "VERC100I",
     title: "VERC100I Chaise Longue 100 izq. (130 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC100I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC100I.png",
     price: preciosVera.chaise100,
     medida: 130,
     categoria: "CHAISE",
@@ -270,7 +269,7 @@ const piezasVera = [
     id: "VERC90D",
     title: "VERC90D Chaise Longue 90 der. (120 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC90D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC90D.png",
     price: preciosVera.chaise90,
     medida: 120,
     categoria: "CHAISE",
@@ -279,7 +278,7 @@ const piezasVera = [
     id: "VERC90I",
     title: "VERC90I Chaise Longue 90 izq. (120 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC90I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC90I.png",
     price: preciosVera.chaise90,
     medida: 120,
     categoria: "CHAISE",
@@ -288,7 +287,7 @@ const piezasVera = [
     id: "VERC80D",
     title: "VERC80D Chaise Longue 80 der. (110 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC80D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC80D.png",
     price: preciosVera.chaise80,
     medida: 110,
     categoria: "CHAISE",
@@ -297,7 +296,7 @@ const piezasVera = [
     id: "VERC80I",
     title: "VERC80I Chaise Longue 80 izq. (110 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC80I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC80I.png",
     price: preciosVera.chaise80,
     medida: 110,
     categoria: "CHAISE",
@@ -308,7 +307,7 @@ const piezasVera = [
     id: "VERR108S",
     title: "VERR108S Rincón cerrado (110 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERR108S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERR108S.png",
     price: preciosVera.rincon,
     medida: 110,
     categoria: "RINCON",
@@ -317,7 +316,7 @@ const piezasVera = [
     id: "VERP60S",
     title: "VERP60S Pouf (60 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERP60S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERP60S.png",
     price: preciosVera.pouf,
     medida: 60,
     categoria: "POUF",
