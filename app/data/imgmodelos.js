@@ -4,6 +4,11 @@ const modeloImg = {
       img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIANCA.svg",
     },
   ],
+  Vera: [
+    {
+      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERA.svg",
+    },
+  ],
 };
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -8,7 +8,7 @@ function mostrarImagenes() {
   let rotateAfterYutra = false; // Bandera para saber si rotamos después de YUTRA
   let specialPiece = { x: 0, y: 0, width: 0, height: 0 }; // Posición y tamaño de YUTRA calculado dinámicamente
 
-  const specialPieces = ["BIAR108S"];
+  const specialPieces = ["BIAR108S", "VERR108S"];
 
   const promises = [];
 

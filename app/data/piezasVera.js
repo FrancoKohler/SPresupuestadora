@@ -1,0 +1,325 @@
+const preciosVera = {
+  comunVERM110D: [
+    { material: "SERIE 2", precio: 1034 },
+    { material: "SERIE 3", precio: 1104 },
+    { material: "SERIE 4", precio: 1174 },
+    { material: "SERIE 5", precio: 1262 },
+  ],
+  comunVERM100D: [
+    { material: "SERIE 2", precio: 1002 },
+    { material: "SERIE 3", precio: 1068 },
+    { material: "SERIE 4", precio: 1134 },
+    { material: "SERIE 5", precio: 1217 },
+  ],
+  comunVERM90D: [
+    { material: "SERIE 2", precio: 981 },
+    { material: "SERIE 3", precio: 1043 },
+    { material: "SERIE 4", precio: 1104 },
+    { material: "SERIE 5", precio: 1181 },
+  ],
+  comunVERM80D: [
+    { material: "SERIE 2", precio: 932 },
+    { material: "SERIE 3", precio: 990 },
+    { material: "SERIE 4", precio: 1049 },
+    { material: "SERIE 5", precio: 1122 },
+  ],
+  sinBrazo110: [
+    { material: "SERIE 2", precio: 807 },
+    { material: "SERIE 3", precio: 867 },
+    { material: "SERIE 4", precio: 926 },
+    { material: "SERIE 5", precio: 1001 },
+  ],
+  sinBrazo100: [
+    { material: "SERIE 2", precio: 776 },
+    { material: "SERIE 3", precio: 831 },
+    { material: "SERIE 4", precio: 886 },
+    { material: "SERIE 5", precio: 955 },
+  ],
+  sinBrazo90: [
+    { material: "SERIE 2", precio: 748 },
+    { material: "SERIE 3", precio: 799 },
+    { material: "SERIE 4", precio: 850 },
+    { material: "SERIE 5", precio: 913 },
+  ],
+  sinBrazo80: [
+    { material: "SERIE 2", precio: 711 },
+    { material: "SERIE 3", precio: 759 },
+    { material: "SERIE 4", precio: 807 },
+    { material: "SERIE 5", precio: 867 },
+  ],
+  terminal110: [
+    { material: "SERIE 2", precio: 1096 },
+    { material: "SERIE 3", precio: 1181 },
+    { material: "SERIE 4", precio: 1265 },
+    { material: "SERIE 5", precio: 1370 },
+  ],
+  terminal100: [
+    { material: "SERIE 2", precio: 1063 },
+    { material: "SERIE 3", precio: 1144 },
+    { material: "SERIE 4", precio: 1225 },
+    { material: "SERIE 5", precio: 1327 },
+  ],
+  terminal90: [
+    { material: "SERIE 2", precio: 1045 },
+    { material: "SERIE 3", precio: 1123 },
+    { material: "SERIE 4", precio: 1202 },
+    { material: "SERIE 5", precio: 1301 },
+  ],
+  terminal80: [
+    { material: "SERIE 2", precio: 992 },
+    { material: "SERIE 3", precio: 1067 },
+    { material: "SERIE 4", precio: 1142 },
+    { material: "SERIE 5", precio: 1236 },
+  ],
+  chaise110: [
+    { material: "SERIE 2", precio: 1207 },
+    { material: "SERIE 3", precio: 1291 },
+    { material: "SERIE 4", precio: 1376 },
+    { material: "SERIE 5", precio: 1481 },
+  ],
+  chaise100: [
+    { material: "SERIE 2", precio: 1172 },
+    { material: "SERIE 3", precio: 1253 },
+    { material: "SERIE 4", precio: 1334 },
+    { material: "SERIE 5", precio: 1435 },
+  ],
+  chaise90: [
+    { material: "SERIE 2", precio: 1151 },
+    { material: "SERIE 3", precio: 1230 },
+    { material: "SERIE 4", precio: 1308 },
+    { material: "SERIE 5", precio: 1407 },
+  ],
+  chaise80: [
+    { material: "SERIE 2", precio: 1093 },
+    { material: "SERIE 3", precio: 1168 },
+    { material: "SERIE 4", precio: 1243 },
+    { material: "SERIE 5", precio: 1337 },
+  ],
+  rincon: [
+    { material: "SERIE 2", precio: 1073 },
+    { material: "SERIE 3", precio: 1160 },
+    { material: "SERIE 4", precio: 1246 },
+    { material: "SERIE 5", precio: 1354 },
+  ],
+  pouf: [
+    { material: "SERIE 2", precio: 427 },
+    { material: "SERIE 3", precio: 454 },
+    { material: "SERIE 4", precio: 481 },
+    { material: "SERIE 5", precio: 515 },
+  ],
+};
+
+/*-------------------PIEZAS VERA--------------------*/
+const piezasVera = [
+  // Módulos sin brazo
+  {
+    id: "None",
+    title: "Sin pieza seleccionada",
+    imageUrl: "..",
+    categoria: "VERA",
+  },
+  {
+    id: "VERM110S",
+    title: "VERM110S Mód. 110 sin brazo (110 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM110S.svg",
+    price: preciosVera.sinBrazo110,
+    medida: 110,
+    categoria: "MODULOS",
+  },
+  {
+    id: "VERM100S",
+    title: "VERM100S Mód. 100 sin brazo (100 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM100S.svg",
+    price: preciosVera.sinBrazo100,
+    medida: 100,
+    categoria: "MODULOS",
+  },
+  {
+    id: "VERM90S",
+    title: "VERM90S Mód. 90 sin brazo (90 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM90S.svg",
+    price: preciosVera.sinBrazo90,
+    medida: 90,
+    categoria: "MODULOS",
+  },
+  {
+    id: "VERM80S",
+    title: "VERM80S Mód. 80 sin brazo (80 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM80S.svg",
+    price: preciosVera.sinBrazo80,
+    medida: 80,
+    categoria: "MODULOS",
+  },
+
+  // Terminales
+  {
+    id: "VERT110D",
+    title: "VERT110D Terminal 110 der. (160 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT110D.svg",
+    price: preciosVera.terminal110,
+    medida: 160,
+    categoria: "TERMINALES",
+  },
+  {
+    id: "VERT110I",
+    title: "VERT110I Terminal 110 izq. (160 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT110I.svg",
+    price: preciosVera.terminal110,
+    medida: 160,
+    categoria: "TERMINALES",
+  },
+  {
+    id: "VERT100D",
+    title: "VERT100D Terminal 100 der. (150 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT100D.svg",
+    price: preciosVera.terminal100,
+    medida: 150,
+    categoria: "TERMINALES",
+  },
+  {
+    id: "VERT100I",
+    title: "VERT100I Terminal 100 izq. (150 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT100I.svg",
+    price: preciosVera.terminal100,
+    medida: 150,
+    categoria: "TERMINALES",
+  },
+  {
+    id: "VERT90D",
+    title: "VERT90D Terminal 90 der. (140 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT90D.svg",
+    price: preciosVera.terminal90,
+    medida: 140,
+    categoria: "TERMINALES",
+  },
+  {
+    id: "VERT90I",
+    title: "VERT90I Terminal 90 izq. (140 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT90I.svg",
+    price: preciosVera.terminal90,
+    medida: 140,
+    categoria: "TERMINALES",
+  },
+  {
+    id: "VERT80D",
+    title: "VERT80D Terminal 80 der. (130 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT80D.svg",
+    price: preciosVera.terminal80,
+    medida: 130,
+    categoria: "TERMINALES",
+  },
+  {
+    id: "VERT80I",
+    title: "VERT80I Terminal 80 izq. (130 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERT80I.svg",
+    price: preciosVera.terminal80,
+    medida: 130,
+    categoria: "TERMINALES",
+  },
+
+  // Chaise Longues
+  {
+    id: "VERC110D",
+    title: "VERC110D Chaise Longue 110 der. (140 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC110D.svg",
+    price: preciosVera.chaise110,
+    medida: 140,
+    categoria: "CHAISE",
+  },
+  {
+    id: "VERC110I",
+    title: "VERC110I Chaise Longue 110 izq. (140 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC110I.svg",
+    price: preciosVera.chaise110,
+    medida: 140,
+    categoria: "CHAISE",
+  },
+  {
+    id: "VERC100D",
+    title: "VERC100D Chaise Longue 100 der. (130 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC100D.svg",
+    price: preciosVera.chaise100,
+    medida: 130,
+    categoria: "CHAISE",
+  },
+  {
+    id: "VERC100I",
+    title: "VERC100I Chaise Longue 100 izq. (130 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC100I.svg",
+    price: preciosVera.chaise100,
+    medida: 130,
+    categoria: "CHAISE",
+  },
+  {
+    id: "VERC90D",
+    title: "VERC90D Chaise Longue 90 der. (120 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC90D.svg",
+    price: preciosVera.chaise90,
+    medida: 120,
+    categoria: "CHAISE",
+  },
+  {
+    id: "VERC90I",
+    title: "VERC90I Chaise Longue 90 izq. (120 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC90I.svg",
+    price: preciosVera.chaise90,
+    medida: 120,
+    categoria: "CHAISE",
+  },
+  {
+    id: "VERC80D",
+    title: "VERC80D Chaise Longue 80 der. (110 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC80D.svg",
+    price: preciosVera.chaise80,
+    medida: 110,
+    categoria: "CHAISE",
+  },
+  {
+    id: "VERC80I",
+    title: "VERC80I Chaise Longue 80 izq. (110 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERC80I.svg",
+    price: preciosVera.chaise80,
+    medida: 110,
+    categoria: "CHAISE",
+  },
+
+  // Rincón y Pouf
+  {
+    id: "VERR108S",
+    title: "VERR108S Rincón cerrado (110 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERR108S.svg",
+    price: preciosVera.rincon,
+    medida: 110,
+    categoria: "RINCON",
+  },
+  {
+    id: "VERP60S",
+    title: "VERP60S Pouf (60 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERP60S.svg",
+    price: preciosVera.pouf,
+    medida: 60,
+    categoria: "POUF",
+  },
+];

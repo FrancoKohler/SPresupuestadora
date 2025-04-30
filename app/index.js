@@ -25,7 +25,7 @@ function obtenerPiezasSeleccionadas() {
 
 /*--------------------PRECIOS DE LAS PEIZAS SEGUN MODELO------------*/
 function obtenerPrecioPorMaterial(idPieza, tela) {
-  const colecciones = [piezasBianca];
+  const colecciones = [piezasBianca, piezasVera];
   let precioMaterial;
 
   for (const coleccion of colecciones) {

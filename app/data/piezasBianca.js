@@ -1,4 +1,4 @@
-/*---------------PRECIOS ALPHA----------------------*/
+/*---------------PRECIOS BIANCA----------------------*/
 const preciosBianca = {
   comunBIAM110D: [
     { material: "SERIE 2", precio: 945 },

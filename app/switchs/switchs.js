@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modeloSeleccionado = modeloSelect.value;
     let piezasAMostrar;
     let materialesBianca = new Set();
+    let materialesVera = new Set();
 
     switch (modeloSeleccionado) {
       case "Bianca":
@@ -24,14 +25,27 @@ document.addEventListener("DOMContentLoaded", function () {
             });
           }
         });
+        break; // <-- ESTE BREAK FALTABA
+
+      case "Vera":
+        piezasAMostrar = piezasVera;
+        piezasVera.forEach((pieza) => {
+          if (pieza.price) {
+            pieza.price.forEach((precio) => {
+              materialesVera.add(precio.material);
+            });
+          }
+        });
         break;
 
       default:
         piezasAMostrar = [];
     }
+
     /*-------PIEZAS DROPDOWNS Y CATEGORIAS---------*/
     const coleccionPiezas = {
       Bianca: piezasBianca,
+      Vera: piezasVera,
     };
 
     // Función para actualizar los dropdowns de piezas
@@ -78,6 +92,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (modeloSeleccionado === "Bianca") {
       // Agregar materiales del modelo Agora
       materialesBianca.forEach((material) => {
+        const option = document.createElement("option");
+        option.value = material;
+        option.textContent = material;
+        telaDropdown.appendChild(option);
+      });
+    }
+    if (modeloSeleccionado === "Vera") {
+      // Agregar materiales del modelo Agora
+      materialesVera.forEach((material) => {
         const option = document.createElement("option");
         option.value = material;
         option.textContent = material;
