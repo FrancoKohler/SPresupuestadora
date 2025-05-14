@@ -216,9 +216,9 @@ select {
   flex: 2;
 }
 .img-config {
-  width: 100px;
+  height: 100px;
+  width: auto;
   transform-origin: center;
-  height: auto;
 }
 
 /*RESUMEN*/

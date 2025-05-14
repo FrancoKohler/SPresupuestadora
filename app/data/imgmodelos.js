@@ -1,12 +1,12 @@
 const modeloImg = {
   Bianca: [
     {
-      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIANCA.svg",
+      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/IMAGEN_BIANCA.png",
     },
   ],
   Vera: [
     {
-      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERA.svg",
+      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/IMAGEN_VERA.png",
     },
   ],
 };
