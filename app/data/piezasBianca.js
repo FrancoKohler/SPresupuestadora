@@ -134,8 +134,7 @@ const preciosBianca = {
   ],
 };
 
-/*-------------------PIEZAS BIANCA--------------------*/
-const piezasBianca = [
+/*-------------------PIEZAS BIANCA--------------------*/ const piezasBianca = [
   {
     id: "None",
     title: "Sin pieza seleccionada",
@@ -146,7 +145,7 @@ const piezasBianca = [
     id: "BIAM110D",
     title: "BIAM110D Mód. 110 con brazo der. (134 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110D.png",
     price: preciosBianca.comunBIAM110D,
     medida: 134,
     categoria: "MODULOS",
@@ -155,7 +154,7 @@ const piezasBianca = [
     id: "BIAM110I",
     title: "BIAM110I Mód. 110 con brazo izq. (134 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110I.png",
     price: preciosBianca.comunBIAM110D,
     medida: 134,
     categoria: "MODULOS",
@@ -164,7 +163,7 @@ const piezasBianca = [
     id: "BIAM100D",
     title: "BIAM100D Mód. 100 con brazo der. (124 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100D.png",
     price: preciosBianca.comunBIAM100D,
     medida: 124,
     categoria: "MODULOS",
@@ -173,7 +172,7 @@ const piezasBianca = [
     id: "BIAM100I",
     title: "BIAM100I Mód. 100 con brazo izq. (124 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100I.png",
     price: preciosBianca.comunBIAM100D,
     medida: 124,
     categoria: "MODULOS",
@@ -182,7 +181,7 @@ const piezasBianca = [
     id: "BIAM90D",
     title: "BIAM90D Mód. 90 con brazo der. (114 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90D.png",
     price: preciosBianca.comunBIAM90D,
     medida: 114,
     categoria: "MODULOS",
@@ -191,7 +190,7 @@ const piezasBianca = [
     id: "BIAM90I",
     title: "BIAM90I Mód. 90 con brazo izq. (114 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90I.png",
     price: preciosBianca.comunBIAM90D,
     medida: 114,
     categoria: "MODULOS",
@@ -200,7 +199,7 @@ const piezasBianca = [
     id: "BIAM80D",
     title: "BIAM80D Mód. 80 con brazo der. (104 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80D.png",
     price: preciosBianca.comunBIAM80D,
     medida: 104,
     categoria: "MODULOS",
@@ -209,7 +208,7 @@ const piezasBianca = [
     id: "BIAM80I",
     title: "BIAM80I Mód. 80 con brazo izq. (104 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80I.png",
     price: preciosBianca.comunBIAM80D,
     medida: 104,
     categoria: "MODULOS",
@@ -218,7 +217,7 @@ const piezasBianca = [
     id: "BIAM110S",
     title: "BIAM110S Mód. 110 sin brazo (110 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110S.png",
     price: preciosBianca.comunBIAM110S,
     medida: 110,
     categoria: "MODULOS",
@@ -227,7 +226,7 @@ const piezasBianca = [
     id: "BIAM100S",
     title: "BIAM100S Mód. 100 sin brazo (100 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100S.png",
     price: preciosBianca.comunBIAM100S,
     medida: 100,
     categoria: "MODULOS",
@@ -236,7 +235,7 @@ const piezasBianca = [
     id: "BIAM90S",
     title: "BIAM90S Mód. 90 sin brazo (90 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90S.png",
     price: preciosBianca.comunBIAM90S,
     medida: 90,
     categoria: "MODULOS",
@@ -245,7 +244,7 @@ const piezasBianca = [
     id: "BIAM80S",
     title: "BIAM80S Mód. 80 sin brazo (80 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80S.png",
     price: preciosBianca.comunBIAM80S,
     medida: 80,
     categoria: "MODULOS",
@@ -254,7 +253,7 @@ const piezasBianca = [
     id: "BIAC110D",
     title: "BIAC110D Chaise longue 110 der. (134 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC110D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC110D.png",
     price: preciosBianca.comunBIAC110D,
     medida: 134,
     categoria: "CHAISE LONGUE",
@@ -263,7 +262,7 @@ const piezasBianca = [
     id: "BIAC110I",
     title: "BIAC110I Chaise longue 110 izq. (134 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC110I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC110I.png",
     price: preciosBianca.comunBIAC110D,
     medida: 134,
     categoria: "CHAISE LONGUE",
@@ -272,7 +271,7 @@ const piezasBianca = [
     id: "BIAC100D",
     title: "BIAC100D Chaise longue 100 der. (124 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC100D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC100D.png",
     price: preciosBianca.comunBIAC100D,
     medida: 124,
     categoria: "CHAISE LONGUE",
@@ -281,7 +280,7 @@ const piezasBianca = [
     id: "BIAC100I",
     title: "BIAC100I Chaise longue 100 izq. (124 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC100I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC100I.png",
     price: preciosBianca.comunBIAC100D,
     medida: 124,
     categoria: "CHAISE LONGUE",
@@ -290,7 +289,7 @@ const piezasBianca = [
     id: "BIAC90D",
     title: "BIAC90D Chaise longue 90 der. (114 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC90D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC90D.png",
     price: preciosBianca.comunBIAC90D,
     medida: 114,
     categoria: "CHAISE LONGUE",
@@ -299,7 +298,7 @@ const piezasBianca = [
     id: "BIAC90I",
     title: "BIAC90I Chaise longue 90 izq. (114 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC90I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC90I.png",
     price: preciosBianca.comunBIAC90D,
     medida: 114,
     categoria: "CHAISE LONGUE",
@@ -308,7 +307,7 @@ const piezasBianca = [
     id: "BIAC80D",
     title: "BIAC80D Chaise longue 80 der. (104 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC80D.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC80D.png",
     price: preciosBianca.comunBIAC80D,
     medida: 104,
     categoria: "CHAISE LONGUE",
@@ -317,7 +316,7 @@ const piezasBianca = [
     id: "BIAC80I",
     title: "BIAC80I Chaise longue 80 izq. (104 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC80I.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAC80I.png",
     price: preciosBianca.comunBIAC80D,
     medida: 104,
     categoria: "CHAISE LONGUE",
@@ -326,7 +325,7 @@ const piezasBianca = [
     id: "BIAR108S",
     title: "BIAR108S Rincón cerrado (108 cm) *incluye 3 cojínes 45x45",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAR108S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAR108S.png",
     price: preciosBianca.comunBIAR108S,
     medida: 108,
     categoria: "RINCÓN",
@@ -335,7 +334,7 @@ const piezasBianca = [
     id: "BIAP60S",
     title: "BIAP60S Pouff (60 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAP60S.svg",
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAP60S.png",
     price: preciosBianca.comunBIAP60S,
     medida: 60,
     categoria: "RINCÓN",

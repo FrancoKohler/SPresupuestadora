@@ -108,9 +108,8 @@ const preciosVera = {
     { material: "SERIE 5", precio: 515 },
   ],
 };
-/*-------------------PIEZAS VERA--------------------*/
+
 const piezasVera = [
-  // Módulos sin brazo
   {
     id: "None",
     title: "Sin pieza seleccionada",
@@ -153,8 +152,6 @@ const piezasVera = [
     medida: 80,
     categoria: "MODULOS",
   },
-
-  // Terminales
   {
     id: "VERT110D",
     title: "VERT110D Terminal 110 der. (160 cm)",
@@ -227,8 +224,6 @@ const piezasVera = [
     medida: 130,
     categoria: "TERMINALES",
   },
-
-  // Chaise Longues
   {
     id: "VERC110D",
     title: "VERC110D Chaise Longue 110 der. (140 cm)",
@@ -301,8 +296,6 @@ const piezasVera = [
     medida: 110,
     categoria: "CHAISE",
   },
-
-  // Rincón y Pouf
   {
     id: "VERR108S",
     title: "VERR108S Rincón cerrado (110 cm)",

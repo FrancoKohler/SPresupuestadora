@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         piezasAMostrar = piezasVera;
         piezasVera.forEach((pieza) => {
           if (pieza.price) {
-            pieza.price.forEach((precio) => {
+            precio.price.forEach((precio) => {
               materialesVera.add(precio.material);
             });
           }
@@ -107,7 +107,32 @@ document.addEventListener("DOMContentLoaded", function () {
         telaDropdown.appendChild(option);
       });
     }
+    const categorySelect = document.getElementById("categorySelect");
 
+    // Define qué categorías se muestran según la SERIE seleccionada
+    const categoriasPorSerie = {
+      "SERIE 2": ["Capri"],
+      "SERIE 3": ["Burberry"],
+      "SERIE 4": ["Club"],
+    };
+
+    // Escuchar cambios en #tela para actualizar #categorySelect
+    telaDropdown.addEventListener("change", function () {
+      const serieSeleccionada = telaDropdown.value;
+
+      // Limpiar opciones actuales de categorySelect
+      categorySelect.innerHTML =
+        '<option value="">Selecciona una categoría</option>';
+
+      if (categoriasPorSerie[serieSeleccionada]) {
+        categoriasPorSerie[serieSeleccionada].forEach((cat) => {
+          const option = document.createElement("option");
+          option.value = cat;
+          option.textContent = cat.toUpperCase();
+          categorySelect.appendChild(option);
+        });
+      }
+    });
     // Actualizar las imágenes y el resumen después de cambiar el modelo
     mostrarImagenes();
     generarResumen();
