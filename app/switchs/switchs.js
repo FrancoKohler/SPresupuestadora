@@ -177,11 +177,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "SERIE 3": ["Burberry", "Barbados", "Mystic", "Lino"],
       "SERIE 4": ["Club"],
     };
-
-    // Escuchar cambios en #tela para actualizar #categorySelect
+    const teladiv = document.getElementById("telaDiv");
     telaDropdown.addEventListener("change", function () {
       const serieSeleccionada = telaDropdown.value;
-
+      if (serieSeleccionada === "SERIE 5") {
+        teladiv.style.display = "none";
+      } else {
+        teladiv.style.display = "block";
+      }
       // Limpiar opciones actuales de categorySelect
       categorySelect.innerHTML =
         '<option value="">Selecciona una categoría</option>';

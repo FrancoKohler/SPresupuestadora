@@ -1,17 +1,3 @@
-/*-------------------SHOW MORE COJINES----------*/
-let nextCojinIndex = 3;
-for (let i = 3; i <= 4; i++) {
-  document.getElementById("cojin" + i).style.display = "none";
-}
-
-// Agregar el evento de clic al botón showCojin
-document.getElementById("showCojin").addEventListener("click", function () {
-  if (nextCojinIndex <= 4) {
-    document.getElementById("cojin" + nextCojinIndex).style.display = "flex";
-    nextCojinIndex++;
-  }
-});
-
 /*-------------------SHOW MORE PIEZAS----------*/
 
 let nextIndexPiezas = 5;

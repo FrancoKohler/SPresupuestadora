@@ -1,4 +1,4 @@
-/---------------PRECIOS AURA----------------------/;
+/*---------------PRECIOS AURA----------------------*/
 const preciosAura = {
   comunAURM110D: [
     { material: "SERIE 2", precio: 985 },

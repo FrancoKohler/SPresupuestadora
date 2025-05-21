@@ -215,11 +215,6 @@ select {
 .div-configuracion-img {
   flex: 2;
 }
-.img-config {
-  height: 100px;
-  width: auto;
-  transform-origin: center;
-}
 
 /*RESUMEN*/
 .section-resumen {
@@ -314,14 +309,19 @@ li {
 }
 #imagenPiezas {
   position: relative;
-  width: fit-content;
+  width: 100%;
+  height: fit-content;
   padding-top: 1.5rem;
   padding-right: 30rem;
   display: block;
   justify-content: center;
-  align-self: center;
+  align-items: center;
 }
-
+.img-config {
+  width: auto;
+  transform-origin: center;
+  height: auto;
+}
 /*DROPDOWN*/
 .teladiv {
   width: 100%;
