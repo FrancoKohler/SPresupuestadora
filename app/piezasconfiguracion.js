@@ -1,22 +1,27 @@
 function llenarSelects() {
+  const todasPiezas = [
+    ...piezasAura.filter((p) => p.id !== "None"),
+    ...piezasBianca.filter((p) => p.id !== "None"),
+    ...piezasLuna.filter((p) => p.id !== "None"),
+    ...piezasNora.filter((p) => p.id !== "None"),
+    ...piezasVera.filter((p) => p.id !== "None"),
+  ];
+
   for (let i = 1; i <= 8; i++) {
     const select = document.getElementById(`pieza${i}`);
     if (!select) continue;
 
-    // Limpiar opciones previas
-    select.innerHTML = "";
+    select.innerHTML =
+      '<option value="None" data-medida="0">Sin pieza seleccionada</option>';
 
-    piezasVera.forEach((pieza) => {
-      const option = document.createElement("option");
-      option.value = pieza.id;
-      option.textContent = pieza.title;
+    todasPiezas.forEach((pieza) => {
+      const option = new Option(`${pieza.title} (${pieza.medida}cm)`, pieza.id);
       option.dataset.imageUrl = pieza.imageUrl;
-      option.dataset.medida = pieza.medida;
-      select.appendChild(option);
+      option.dataset.medida = pieza.medida.toString();
+      option.dataset.width = pieza.width.toString();
+      option.dataset.height = pieza.height.toString();
+      select.add(option);
     });
-
-    // Por defecto seleccionar la primera opción ("None")
-    select.selectedIndex = 0;
   }
 }
 
@@ -24,38 +29,45 @@ function mostrarImagenes() {
   const imagenesDiv = document.getElementById("imagenPiezas");
   imagenesDiv.innerHTML = ""; // Limpiar imágenes anteriores
   imagenesDiv.style.position = "relative";
-  const cotasDiv = document.getElementById("numerosCotas");
+  imagenesDiv.style.transform = "none";
+  imagenesDiv.style.transformOrigin = "top left";
 
   let currentX = 0;
   let currentY = 0;
   let rotateAfterYutra = false;
   let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
-  const specialPieces = ["BIAR108S", "VERR108S"];
-
+  const specialPieces = ["BIAR108S", "VERR108S", "AURR108S"];
   const promises = [];
   let sumaMedidas = 0;
 
   for (let i = 1; i <= 8; i++) {
     const piezaSelect = document.getElementById(`pieza${i}`);
+    if (!piezaSelect || piezaSelect.selectedIndex <= 0) continue;
     if (piezaSelect && piezaSelect.selectedIndex !== -1) {
       const selectedOption = piezaSelect.options[piezaSelect.selectedIndex];
-
       const imageUrl = selectedOption.dataset.imageUrl;
       const piezaId = selectedOption.value;
       const medida = selectedOption ? selectedOption.medida : 0;
-
-      console.log(`Pieza ${i}:`, piezaId, "- Medida:", medida);
+      const width = parseInt(selectedOption.dataset.width) || 100;
+      const height = parseInt(selectedOption.dataset.height) || 100;
 
       if (!isNaN(medida)) sumaMedidas += medida;
 
       if (imageUrl && piezaId !== "None") {
         const imgElement = document.createElement("img");
+        imgElement.style.width = `${width}px`;
+        imgElement.style.height = `${height}px`;
+
         imgElement.src = imageUrl;
         imgElement.alt = selectedOption.textContent;
+
         imgElement.style.position = "absolute";
         imgElement.classList.add("img-config");
-        imagenesDiv.appendChild(imgElement);
 
+        imagenesDiv.appendChild(imgElement);
+        imgElement.style.maxWidth = "none";
+        imgElement.style.boxSizing = "border-box";
+        imgElement.style.border = "1px solid red";
         const imageLoadPromise = new Promise((resolve) => {
           imgElement.onload = () => {
             setTimeout(() => {
@@ -75,7 +87,7 @@ function mostrarImagenes() {
                 currentY = specialPiece.y + imgRect.height;
                 rotateAfterYutra = true;
               } else if (rotateAfterYutra) {
-                imgElement.style.transform = "rotate(90deg)";
+                imgElement.style.transform = " rotate(90deg)";
                 imgElement.style.left = `${specialPiece.x}px`;
                 imgElement.style.top = `${
                   specialPiece.y + specialPiece.width
@@ -95,22 +107,6 @@ function mostrarImagenes() {
         promises.push(imageLoadPromise);
       }
     }
-  }
-
-  Promise.all(promises).then(() => {
-    console.log("Todas las imágenes están cargadas y posicionadas.");
-    if (cotasDiv) cotasDiv.textContent = `Total medidas: ${sumaMedidas} cm`;
-  });
-}
-
-// Ejecutamos la carga inicial y la función para mostrar imágenes
-llenarSelects();
-
-// Por ejemplo, llamar mostrarImagenes() cuando cambie un select:
-for (let i = 1; i <= 8; i++) {
-  const select = document.getElementById(`pieza${i}`);
-  if (select) {
-    select.addEventListener("change", mostrarImagenes);
   }
 }
 

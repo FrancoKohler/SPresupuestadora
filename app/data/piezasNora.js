@@ -134,14 +134,13 @@ const preciosNora = {
   ],
 };
 
-/-------------------PIEZAS NORA--------------------/;
-const piezasNora = [
+/*-------------------PIEZAS NORA--------------------*/ const piezasNora = [
   {
     id: "None",
     title: "Sin pieza seleccionada",
     imageUrl: "..",
     categoria: "NORA",
-    medida: "0",
+    medida: 0,
   },
   {
     id: "NORM110D",

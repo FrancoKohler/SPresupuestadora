@@ -110,21 +110,21 @@ const preciosAura = {
   ],
 };
 
-/-------------------PIEZAS AURA--------------------/;
+/*-------------------PIEZAS AURA--------------------*/
 const piezasAura = [
   {
     id: "None",
     title: "Sin pieza seleccionada",
     imageUrl: "..",
     categoria: "AURA",
-    medida: "0",
+    medida: 0,
   },
   {
     id: "AURM110D",
     title: "AURM110D Mód. 110 con brazo der. (136 cm)",
     imageUrl: "assets/MODELOS/AURA/AURM110D.png",
     price: preciosAura.comunAURM110D,
-    medida: 136,
+    medida: "136",
     categoria: "MODULOS",
     medidap: 110,
   },

@@ -123,8 +123,10 @@ const piezasVera = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM110S.png",
     price: preciosVera.sinBrazo110,
     medida: 110,
+    width: 100,
     categoria: "MODULOS",
     medidap: 112,
+    height: 135,
   },
   {
     id: "VERM100S",
@@ -135,6 +137,8 @@ const piezasVera = [
     medida: 100,
     categoria: "MODULOS",
     medidap: 112,
+    width: 100,
+    height: 135,
   },
   {
     id: "VERM90S",
@@ -145,6 +149,8 @@ const piezasVera = [
     medida: 90,
     categoria: "MODULOS",
     medidap: 112,
+    width: 100,
+    height: 135,
   },
   {
     id: "VERM80S",
@@ -155,6 +161,8 @@ const piezasVera = [
     medida: 80,
     categoria: "MODULOS",
     medidap: 112,
+    width: 100,
+    height: 135,
   },
   {
     id: "VERT110D",
@@ -165,6 +173,8 @@ const piezasVera = [
     medida: 160,
     categoria: "TERMINALES",
     medidap: 112,
+    width: 150,
+    height: 135,
   },
   {
     id: "VERT110I",
@@ -175,6 +185,8 @@ const piezasVera = [
     medida: 160,
     categoria: "TERMINALES",
     medidap: 112,
+    width: 150,
+    height: 135,
   },
   {
     id: "VERT100D",
@@ -185,6 +197,8 @@ const piezasVera = [
     medida: 150,
     categoria: "TERMINALES",
     medidap: 112,
+    width: 150,
+    height: 135,
   },
   {
     id: "VERT100I",
@@ -195,6 +209,8 @@ const piezasVera = [
     medida: 150,
     categoria: "TERMINALES",
     medidap: 112,
+    width: 150,
+    height: 135,
   },
   {
     id: "VERT90D",
@@ -205,6 +221,8 @@ const piezasVera = [
     medida: 140,
     categoria: "TERMINALES",
     medidap: 112,
+    width: 150,
+    height: 135,
   },
   {
     id: "VERT90I",
@@ -215,6 +233,8 @@ const piezasVera = [
     medida: 140,
     categoria: "TERMINALES",
     medidap: 112,
+    width: 150,
+    height: 135,
   },
   {
     id: "VERT80D",
@@ -225,6 +245,8 @@ const piezasVera = [
     medida: 130,
     categoria: "TERMINALES",
     medidap: 112,
+    width: 150,
+    height: 135,
   },
   {
     id: "VERT80I",
@@ -235,6 +257,8 @@ const piezasVera = [
     medida: 130,
     categoria: "TERMINALES",
     medidap: 112,
+    width: 150,
+    height: 135,
   },
   {
     id: "VERC110D",
@@ -245,6 +269,8 @@ const piezasVera = [
     medida: 140,
     categoria: "CHAISE",
     medidap: 165,
+    width: 100,
+    height: 200,
   },
   {
     id: "VERC110I",
@@ -255,6 +281,8 @@ const piezasVera = [
     medida: 140,
     categoria: "CHAISE",
     medidap: 165,
+    width: 100,
+    height: 200,
   },
   {
     id: "VERC100D",
@@ -265,6 +293,8 @@ const piezasVera = [
     medida: 130,
     categoria: "CHAISE",
     medidap: 165,
+    width: 100,
+    height: 200,
   },
   {
     id: "VERC100I",
@@ -275,6 +305,8 @@ const piezasVera = [
     medida: 130,
     categoria: "CHAISE",
     medidap: 165,
+    width: 100,
+    height: 200,
   },
   {
     id: "VERC90D",
@@ -285,6 +317,8 @@ const piezasVera = [
     medida: 120,
     categoria: "CHAISE",
     medidap: 165,
+    width: 100,
+    height: 200,
   },
   {
     id: "VERC90I",
@@ -295,6 +329,8 @@ const piezasVera = [
     medida: 120,
     categoria: "CHAISE",
     medidap: 165,
+    width: 100,
+    height: 200,
   },
   {
     id: "VERC80D",
@@ -305,6 +341,8 @@ const piezasVera = [
     medida: 110,
     categoria: "CHAISE",
     medidap: 165,
+    width: 100,
+    height: 200,
   },
   {
     id: "VERC80I",
@@ -315,6 +353,8 @@ const piezasVera = [
     medida: 110,
     categoria: "CHAISE",
     medidap: 165,
+    width: 100,
+    height: 200,
   },
   {
     id: "VERR108S",
@@ -325,6 +365,8 @@ const piezasVera = [
     medida: 110,
     categoria: "RINCON",
     medidap: 112,
+    width: 100,
+    height: 135,
   },
   {
     id: "VERP60S",
@@ -335,5 +377,7 @@ const piezasVera = [
     medida: 60,
     categoria: "POUF",
     medidap: 112,
+    width: 100,
+    height: 135,
   },
 ];

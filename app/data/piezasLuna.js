@@ -68,7 +68,7 @@ const piezasLuna = [
     title: "Sin pieza seleccionada",
     imageUrl: "..",
     categoria: "LUNA",
-    medida: "0",
+    medida: 0,
   },
   {
     id: "PROM100D",
