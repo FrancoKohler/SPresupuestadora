@@ -12,10 +12,23 @@ document.addEventListener("DOMContentLoaded", function () {
   function actualizarPiezasSegunModelo() {
     const modeloSeleccionado = modeloSelect.value;
     let piezasAMostrar;
+    let materialesAura = new Set();
     let materialesBianca = new Set();
+    let materialesNora = new Set();
+    let materialesLuna = new Set();
     let materialesVera = new Set();
 
     switch (modeloSeleccionado) {
+      case "Aura":
+        piezasAMostrar = piezasAura;
+        piezasAura.forEach((pieza) => {
+          if (pieza.price) {
+            pieza.price.forEach((precio) => {
+              materialesAura.add(precio.material);
+            });
+          }
+        });
+        break;
       case "Bianca":
         piezasAMostrar = piezasBianca;
         piezasBianca.forEach((pieza) => {
@@ -25,8 +38,27 @@ document.addEventListener("DOMContentLoaded", function () {
             });
           }
         });
-        break; // <-- ESTE BREAK FALTABA
-
+        break;
+      case "Nora":
+        piezasAMostrar = piezasNora;
+        piezasNora.forEach((pieza) => {
+          if (pieza.price) {
+            pieza.price.forEach((precio) => {
+              materialesNora.add(precio.material);
+            });
+          }
+        });
+        break;
+      case "Luna":
+        piezasAMostrar = piezasLuna;
+        piezasLuna.forEach((pieza) => {
+          if (pieza.price) {
+            pieza.price.forEach((precio) => {
+              materialesLuna.add(precio.material);
+            });
+          }
+        });
+        break;
       case "Vera":
         piezasAMostrar = piezasVera;
         piezasVera.forEach((pieza) => {
@@ -44,7 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /*-------PIEZAS DROPDOWNS Y CATEGORIAS---------*/
     const coleccionPiezas = {
+      Aura: piezasAura,
       Bianca: piezasBianca,
+      Luna: piezasLuna,
+      Nora: piezasNora,
       Vera: piezasVera,
     };
 
@@ -107,12 +142,39 @@ document.addEventListener("DOMContentLoaded", function () {
         telaDropdown.appendChild(option);
       });
     }
+    if (modeloSeleccionado === "Aura") {
+      // Agregar materiales del modelo Agora
+      materialesAura.forEach((material) => {
+        const option = document.createElement("option");
+        option.value = material;
+        option.textContent = material;
+        telaDropdown.appendChild(option);
+      });
+    }
+    if (modeloSeleccionado === "Vera") {
+      // Agregar materiales del modelo Agora
+      materialesVera.forEach((material) => {
+        const option = document.createElement("option");
+        option.value = material;
+        option.textContent = material;
+        telaDropdown.appendChild(option);
+      });
+    }
+    if (modeloSeleccionado === "Vera") {
+      // Agregar materiales del modelo Agora
+      materialesVera.forEach((material) => {
+        const option = document.createElement("option");
+        option.value = material;
+        option.textContent = material;
+        telaDropdown.appendChild(option);
+      });
+    }
     const categorySelect = document.getElementById("categorySelect");
 
     // Define qué categorías se muestran según la SERIE seleccionada
     const categoriasPorSerie = {
       "SERIE 2": ["Capri"],
-      "SERIE 3": ["Burberry"],
+      "SERIE 3": ["Burberry", "Barbados", "Mystic", "Lino"],
       "SERIE 4": ["Club"],
     };
 
@@ -137,22 +199,4 @@ document.addEventListener("DOMContentLoaded", function () {
     mostrarImagenes();
     generarResumen();
   }
-
-  /*--------------COJINES-------------*/
-
-  const dropdownCjs = ["cojin1", "cojin2", "cojin3", "cojin4"];
-
-  function populateDropdownsCojines(options) {
-    dropdownCjs.forEach((selectId) => {
-      const select = document.getElementById(selectId);
-      options.forEach((option) => {
-        const optionElement = document.createElement("option");
-        optionElement.value = option.id;
-        optionElement.textContent = option.title.toUpperCase();
-        select.appendChild(optionElement);
-      });
-    });
-  }
-
-  populateDropdownsCojines(cojines);
 });

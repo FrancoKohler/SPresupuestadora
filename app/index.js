@@ -25,7 +25,13 @@ function obtenerPiezasSeleccionadas() {
 
 /*--------------------PRECIOS DE LAS PEIZAS SEGUN MODELO------------*/
 function obtenerPrecioPorMaterial(idPieza, tela) {
-  const colecciones = [piezasBianca, piezasVera];
+  const colecciones = [
+    piezasBianca,
+    piezasVera,
+    piezasLuna,
+    piezasNora,
+    piezasAura,
+  ];
   let precioMaterial;
 
   for (const coleccion of colecciones) {
@@ -38,37 +44,6 @@ function obtenerPrecioPorMaterial(idPieza, tela) {
     }
   }
 
-  const cojinesCollection = [
-    cojinesSup.supGAMCUA60,
-    cojinesSup.supGAMCUA45,
-    cojinesSup.supGAMCUAR,
-  ];
-  for (const cojines of cojinesCollection) {
-    precioMaterial = cojines.find((p) => p.material === tela);
-    if (precioMaterial) {
-      return parseFloat(precioMaterial.precio) || 0;
-    }
-  }
-  const suplementosCollection = [
-    cojinesSup.supGAMCUA60,
-    cojinesSup.supGAMCUA45,
-    cojinesSup.supGAMCUAR,
-    supAgora.supAGOPT,
-    supAgora.supAGOCUA60,
-    supAgora.supAGORA90,
-    supAgora.supAGORA80,
-    supAgora.supAGORA70,
-    supAgora.supAGORR100,
-    supAgora.supAGORR90,
-    supAgora.supAGORR80,
-    supAgora.supAGORR70,
-  ];
-  for (const suplementos of suplementosCollection) {
-    precioMaterial = suplementos.find((p) => p.material === tela);
-    if (precioMaterial) {
-      return parseFloat(precioMaterial.precio) || 0;
-    }
-  }
   return 0;
 }
 
@@ -85,45 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
   generarResumen();
 });
 
-/*-------------------COJINES Y PRECIOS---------------------*/
-function obtenerCojinesSeleccionados() {
-  const cojinesSeleccionados = [];
-  for (let i = 1; i <= 3; i++) {
-    const cojinSelect = document.getElementById(`cojin${i}`);
-    if (cojinSelect.selectedIndex !== -1) {
-      const cojinSeleccionado = {
-        id: cojinSelect.value,
-        nombre: cojinSelect.options[cojinSelect.selectedIndex].text,
-      };
-      if (cojinSeleccionado.id !== "None") {
-        cojinesSeleccionados.push(cojinSeleccionado);
-      }
-    }
-  }
-  return cojinesSeleccionados;
-}
-
-function obtenerPrecioCojin(id, tela) {
-  const cojinSeleccionado = cojines.find((cojin) => cojin.id === id);
-  console.log("Cojín Seleccionado:", cojinSeleccionado);
-  if (!cojinSeleccionado || !cojinSeleccionado.price) {
-    return 0;
-  }
-  const precioMaterial = cojinSeleccionado.price.find(
-    (p) => p.material === tela
-  );
-  console.log("Precio Material:", precioMaterial);
-  if (!precioMaterial) {
-    return 0;
-  }
-
-  return precioMaterial.precio;
-}
-
 function generarResumen() {
   const modelo = document.getElementById("modelo").value;
   const piezasSeleccionadas = obtenerPiezasSeleccionadas();
-  const cojinesSeleccionados = obtenerCojinesSeleccionados();
   const tela = document.getElementById("tela").value;
   const selectTelaContainer = document.getElementById(
     "selectTelaContainer"
@@ -136,13 +75,7 @@ function generarResumen() {
     return total + precioPieza;
   }, 0);
 
-  const precioCojines = cojinesSeleccionados.reduce((total, cojin) => {
-    const precioCojin = obtenerPrecioCojin(cojin.id, tela);
-    return total + precioCojin;
-  }, 0);
-
-  const precioTotal = precioPiezas + precioCojines;
-  const suplementosTotal = precioCojines;
+  const precioTotal = precioPiezas;
   const codigoDescuento = document.getElementById("descuento").value;
   const descuento = obtenerDescuento(codigoDescuento);
   const precioConDescuento = precioTotal * (1 - descuento);
@@ -180,23 +113,7 @@ function generarResumen() {
         : ""
     }
   
-    ${
-      cojinesSeleccionados.length > 0
-        ? `<li class="inter-resumen">Cojines seleccionados:</li><ul>` +
-          cojinesSeleccionados
-            .map(
-              (cojin) =>
-                `<li class="itemsResumen inter-soporte">${
-                  cojin.nombre
-                } &nbsp <span id="preciosMaterialCojin"> ${obtenerPrecioCojin(
-                  cojin.id,
-                  tela
-                ).toFixed(2)}€</span></li>`
-            )
-            .join("") +
-          "</ul>"
-        : ""
-    }
+    
     <li class="inter-resumen">Serie seleccionada: ${tela}</li>
     <li class="inter-resumen">Tela seleccionada: ${selectTelaContainer}</li>
     <li class="precioResumen inter-resumen">Precio Total: <span id="precioTotal"> &nbsp ${precioTotal.toFixed(
