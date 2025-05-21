@@ -1,29 +1,58 @@
+function llenarSelects() {
+  for (let i = 1; i <= 8; i++) {
+    const select = document.getElementById(`pieza${i}`);
+    if (!select) continue;
+
+    // Limpiar opciones previas
+    select.innerHTML = "";
+
+    piezasVera.forEach((pieza) => {
+      const option = document.createElement("option");
+      option.value = pieza.id;
+      option.textContent = pieza.title;
+      option.dataset.imageUrl = pieza.imageUrl;
+      option.dataset.medida = pieza.medida;
+      select.appendChild(option);
+    });
+
+    // Por defecto seleccionar la primera opción ("None")
+    select.selectedIndex = 0;
+  }
+}
+
 function mostrarImagenes() {
   const imagenesDiv = document.getElementById("imagenPiezas");
-  imagenesDiv.innerHTML = ""; // Limpiar las imágenes anteriores
-  imagenesDiv.style.position = "relative"; // Asegurar que el contenedor sea relativo
+  imagenesDiv.innerHTML = ""; // Limpiar imágenes anteriores
+  imagenesDiv.style.position = "relative";
+  const cotasDiv = document.getElementById("numerosCotas");
 
-  let currentY = 0;
   let currentX = 0;
-  let rotateAfterYutra = false; // Bandera para saber si rotamos después de YUTRA
-  let specialPiece = { x: 0, y: 0, width: 0, height: 0 }; // Posición y tamaño de YUTRA calculado dinámicamente
-
+  let currentY = 0;
+  let rotateAfterYutra = false;
+  let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
   const specialPieces = ["BIAR108S", "VERR108S"];
 
   const promises = [];
+  let sumaMedidas = 0;
 
   for (let i = 1; i <= 8; i++) {
     const piezaSelect = document.getElementById(`pieza${i}`);
     if (piezaSelect && piezaSelect.selectedIndex !== -1) {
       const selectedOption = piezaSelect.options[piezaSelect.selectedIndex];
+
       const imageUrl = selectedOption.dataset.imageUrl;
       const piezaId = selectedOption.value;
+      const medida = selectedOption ? selectedOption.medida : 0;
+
+      console.log(`Pieza ${i}:`, piezaId, "- Medida:", medida);
+
+      if (!isNaN(medida)) sumaMedidas += medida;
 
       if (imageUrl && piezaId !== "None") {
         const imgElement = document.createElement("img");
         imgElement.src = imageUrl;
         imgElement.alt = selectedOption.textContent;
-        imgElement.style.position = "absolute"; // Para poder posicionarlas libremente
+        imgElement.style.position = "absolute";
         imgElement.classList.add("img-config");
         imagenesDiv.appendChild(imgElement);
 
@@ -31,9 +60,7 @@ function mostrarImagenes() {
           imgElement.onload = () => {
             setTimeout(() => {
               const imgRect = imgElement.getBoundingClientRect();
-              console.log("Dimensiones:", imgRect.width, imgRect.height);
 
-              // Verificar si es una de las piezas especiales
               if (specialPieces.includes(piezaId)) {
                 specialPiece.x = currentX;
                 specialPiece.y = currentY;
@@ -48,26 +75,23 @@ function mostrarImagenes() {
                 currentY = specialPiece.y + imgRect.height;
                 rotateAfterYutra = true;
               } else if (rotateAfterYutra) {
-                /*-------ROTACIONB DE PEIZAS POST ESPECIALES------*/
                 imgElement.style.transform = "rotate(90deg)";
                 imgElement.style.left = `${specialPiece.x}px`;
                 imgElement.style.top = `${
                   specialPiece.y + specialPiece.width
-                }px`; // Usamos width en vez de height xq cambia al estar rotado 90 grados
+                }px`;
 
-                specialPiece.y += imgRect.width; // Ya que la pieza está rotada, su nuevo alto es su antiguo ancho como explica arriba
+                specialPiece.y += imgRect.width;
               } else {
                 imgElement.style.left = `${currentX}px`;
                 imgElement.style.top = `${currentY}px`;
 
                 currentX += imgRect.width;
               }
-
               resolve();
             }, 50);
           };
         });
-
         promises.push(imageLoadPromise);
       }
     }
@@ -75,30 +99,19 @@ function mostrarImagenes() {
 
   Promise.all(promises).then(() => {
     console.log("Todas las imágenes están cargadas y posicionadas.");
+    if (cotasDiv) cotasDiv.textContent = `Total medidas: ${sumaMedidas} cm`;
   });
 }
 
-function renderResults(results) {
-  const resultsContainer = document.getElementById("resultados");
-  if (!resultsContainer) return;
+// Ejecutamos la carga inicial y la función para mostrar imágenes
+llenarSelects();
 
-  resultsContainer.innerHTML = "";
-
-  results.forEach((item) => {
-    const div = document.createElement("div");
-    div.textContent = item.titulo;
-    div.id = item.id;
-
-    if (item.titulo.toLowerCase().includes("sofa")) {
-      div.style.paddingLeft = "5px";
-    }
-
-    resultsContainer.appendChild(div);
-  });
-}
-
-if (typeof generarResumen === "function") {
-  generarResumen();
+// Por ejemplo, llamar mostrarImagenes() cuando cambie un select:
+for (let i = 1; i <= 8; i++) {
+  const select = document.getElementById(`pieza${i}`);
+  if (select) {
+    select.addEventListener("change", mostrarImagenes);
+  }
 }
 
 mostrarImagenes();

@@ -9,6 +9,21 @@ const modeloImg = {
       img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/IMAGEN_VERA.png",
     },
   ],
+  Luna: [
+    {
+      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/IMAGEN_LUNA.png",
+    },
+  ],
+  Aura: [
+    {
+      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/IMAGEN_AURA.png",
+    },
+  ],
+  Nora: [
+    {
+      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/IMAGEN_NORA.png",
+    },
+  ],
 };
 
 document.addEventListener("DOMContentLoaded", function () {

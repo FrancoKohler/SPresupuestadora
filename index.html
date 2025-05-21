@@ -16,6 +16,9 @@
      <!-----DATA PIEZAS Y PRECIOS------>
     <script defer src="./app/data/piezasBianca.js"></script>
     <script defer src="./app/data/piezasVera.js"></script>
+    <script defer src="./app/data/piezasNora.js"></script>
+    <script defer src="./app/data/piezasLuna.js"></script>
+    <script defer src="./app/data/piezasAura.js"></script>
     <script defer src="./app/data/cojines.js"></script>
 
         <!-----SCRIPTS------>
@@ -213,7 +216,10 @@
                 
                 <select name="modelo" id="modelo" class="dropdown">
                     <optgroup label="SOFÁS">
+                        <option value="Aura">Aura</option>
                         <option value="Bianca">BIANCA</option>
+                        <option value="Nora">NORA</option>
+                        <option value="Luna">LUNA</option> 
                         <option value="Vera">VERA</option>
                     </optgroup>
                    
@@ -251,9 +257,13 @@
                 <div class="category-select">
                     <select class="dropdown-select" id="categorySelect">
                         <option value="">Selecciona una categoría</option>
+                        <option value="Barbados">BARBADOS</option>
                         <option value="Burberry">BURBERRY</option>
                         <option value="Capri">CAPRI</option>
                         <option value="Club">CLUB</option>
+                        <option value="Lino">LINO</option>
+                        <option value="Mystic">MYSTIC</option>
+                        
                     </select>
                 </div>
                 
@@ -310,6 +320,7 @@
                 <!-------------CONFIGURACION SECCION-------------->
                 <section class="configuracion-seccion">
                     <a class="seccion-titulo configuracion-titulo inter-mid-titulos"> Configuración</a>
+                    <div class="cotas" id="cotas"><p id="numerosCotas"></p></div>
                     <div class="pre-config" id="imagenPiezas">
                     <!--LLENO EN JS-->
                     <canvas width=500 height=500>

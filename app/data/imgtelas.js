@@ -199,21 +199,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   inicializarTela();
 });
-
-/*--------------COJINES-------------*/
-
-/*  const dropdownCjs = ["cojin1", "cojin2", "cojin3", "cojin4"];
-
-  function populateDropdownsCojines(options) {
-    dropdownCjs.forEach((selectId) => {
-      const select = document.getElementById(selectId);
-      options.forEach((option) => {
-        const optionElement = document.createElement("option");
-        optionElement.value = option.id;
-        optionElement.textContent = option.title.toUpperCase();
-        select.appendChild(optionElement);
-      });
-    });
-  }
-
-  populateDropdownsCojines(cojines); */

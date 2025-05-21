@@ -134,12 +134,14 @@ const preciosBianca = {
   ],
 };
 
-/*-------------------PIEZAS BIANCA--------------------*/ const piezasBianca = [
+/*-------------------PIEZAS BIANCA--------------------*/
+const piezasBianca = [
   {
     id: "None",
     title: "Sin pieza seleccionada",
     imageUrl: "..",
     categoria: "BIANCA",
+    medida: "0",
   },
   {
     id: "BIAM110D",
@@ -149,6 +151,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM110D,
     medida: 134,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM110I",
@@ -158,6 +161,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM110D,
     medida: 134,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM100D",
@@ -167,6 +171,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM100D,
     medida: 124,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM100I",
@@ -176,6 +181,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM100D,
     medida: 124,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM90D",
@@ -185,6 +191,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM90D,
     medida: 114,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM90I",
@@ -194,6 +201,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM90D,
     medida: 114,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM80D",
@@ -203,6 +211,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM80D,
     medida: 104,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM80I",
@@ -212,6 +221,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM80D,
     medida: 104,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM110S",
@@ -221,6 +231,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM110S,
     medida: 110,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM100S",
@@ -230,6 +241,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM100S,
     medida: 100,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM90S",
@@ -239,6 +251,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM90S,
     medida: 90,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAM80S",
@@ -248,6 +261,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAM80S,
     medida: 80,
     categoria: "MODULOS",
+    medidap: 108,
   },
   {
     id: "BIAC110D",
@@ -257,6 +271,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAC110D,
     medida: 134,
     categoria: "CHAISE LONGUE",
+    medidap: 165,
   },
   {
     id: "BIAC110I",
@@ -266,6 +281,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAC110D,
     medida: 134,
     categoria: "CHAISE LONGUE",
+    medidap: 165,
   },
   {
     id: "BIAC100D",
@@ -275,6 +291,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAC100D,
     medida: 124,
     categoria: "CHAISE LONGUE",
+    medidap: 165,
   },
   {
     id: "BIAC100I",
@@ -284,6 +301,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAC100D,
     medida: 124,
     categoria: "CHAISE LONGUE",
+    medidap: 165,
   },
   {
     id: "BIAC90D",
@@ -293,6 +311,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAC90D,
     medida: 114,
     categoria: "CHAISE LONGUE",
+    medidap: 165,
   },
   {
     id: "BIAC90I",
@@ -302,6 +321,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAC90D,
     medida: 114,
     categoria: "CHAISE LONGUE",
+    medidap: 165,
   },
   {
     id: "BIAC80D",
@@ -311,6 +331,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAC80D,
     medida: 104,
     categoria: "CHAISE LONGUE",
+    medidap: 165,
   },
   {
     id: "BIAC80I",
@@ -320,6 +341,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAC80D,
     medida: 104,
     categoria: "CHAISE LONGUE",
+    medidap: 165,
   },
   {
     id: "BIAR108S",
@@ -329,6 +351,7 @@ const preciosBianca = {
     price: preciosBianca.comunBIAR108S,
     medida: 108,
     categoria: "RINCÓN",
+    medidap: 108,
   },
   {
     id: "BIAP60S",
@@ -338,5 +361,6 @@ const preciosBianca = {
     price: preciosBianca.comunBIAP60S,
     medida: 60,
     categoria: "RINCÓN",
+    medidap: 108,
   },
 ];

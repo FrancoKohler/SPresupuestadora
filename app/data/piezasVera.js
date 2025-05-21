@@ -108,13 +108,13 @@ const preciosVera = {
     { material: "SERIE 5", precio: 515 },
   ],
 };
-
 const piezasVera = [
   {
     id: "None",
     title: "Sin pieza seleccionada",
     imageUrl: "..",
     categoria: "VERA",
+    medida: "0",
   },
   {
     id: "VERM110S",
@@ -124,6 +124,7 @@ const piezasVera = [
     price: preciosVera.sinBrazo110,
     medida: 110,
     categoria: "MODULOS",
+    medidap: 112,
   },
   {
     id: "VERM100S",
@@ -133,6 +134,7 @@ const piezasVera = [
     price: preciosVera.sinBrazo100,
     medida: 100,
     categoria: "MODULOS",
+    medidap: 112,
   },
   {
     id: "VERM90S",
@@ -142,6 +144,7 @@ const piezasVera = [
     price: preciosVera.sinBrazo90,
     medida: 90,
     categoria: "MODULOS",
+    medidap: 112,
   },
   {
     id: "VERM80S",
@@ -151,6 +154,7 @@ const piezasVera = [
     price: preciosVera.sinBrazo80,
     medida: 80,
     categoria: "MODULOS",
+    medidap: 112,
   },
   {
     id: "VERT110D",
@@ -160,6 +164,7 @@ const piezasVera = [
     price: preciosVera.terminal110,
     medida: 160,
     categoria: "TERMINALES",
+    medidap: 112,
   },
   {
     id: "VERT110I",
@@ -169,6 +174,7 @@ const piezasVera = [
     price: preciosVera.terminal110,
     medida: 160,
     categoria: "TERMINALES",
+    medidap: 112,
   },
   {
     id: "VERT100D",
@@ -178,6 +184,7 @@ const piezasVera = [
     price: preciosVera.terminal100,
     medida: 150,
     categoria: "TERMINALES",
+    medidap: 112,
   },
   {
     id: "VERT100I",
@@ -187,6 +194,7 @@ const piezasVera = [
     price: preciosVera.terminal100,
     medida: 150,
     categoria: "TERMINALES",
+    medidap: 112,
   },
   {
     id: "VERT90D",
@@ -196,6 +204,7 @@ const piezasVera = [
     price: preciosVera.terminal90,
     medida: 140,
     categoria: "TERMINALES",
+    medidap: 112,
   },
   {
     id: "VERT90I",
@@ -205,6 +214,7 @@ const piezasVera = [
     price: preciosVera.terminal90,
     medida: 140,
     categoria: "TERMINALES",
+    medidap: 112,
   },
   {
     id: "VERT80D",
@@ -214,6 +224,7 @@ const piezasVera = [
     price: preciosVera.terminal80,
     medida: 130,
     categoria: "TERMINALES",
+    medidap: 112,
   },
   {
     id: "VERT80I",
@@ -223,6 +234,7 @@ const piezasVera = [
     price: preciosVera.terminal80,
     medida: 130,
     categoria: "TERMINALES",
+    medidap: 112,
   },
   {
     id: "VERC110D",
@@ -232,6 +244,7 @@ const piezasVera = [
     price: preciosVera.chaise110,
     medida: 140,
     categoria: "CHAISE",
+    medidap: 165,
   },
   {
     id: "VERC110I",
@@ -241,6 +254,7 @@ const piezasVera = [
     price: preciosVera.chaise110,
     medida: 140,
     categoria: "CHAISE",
+    medidap: 165,
   },
   {
     id: "VERC100D",
@@ -250,6 +264,7 @@ const piezasVera = [
     price: preciosVera.chaise100,
     medida: 130,
     categoria: "CHAISE",
+    medidap: 165,
   },
   {
     id: "VERC100I",
@@ -259,6 +274,7 @@ const piezasVera = [
     price: preciosVera.chaise100,
     medida: 130,
     categoria: "CHAISE",
+    medidap: 165,
   },
   {
     id: "VERC90D",
@@ -268,6 +284,7 @@ const piezasVera = [
     price: preciosVera.chaise90,
     medida: 120,
     categoria: "CHAISE",
+    medidap: 165,
   },
   {
     id: "VERC90I",
@@ -277,6 +294,7 @@ const piezasVera = [
     price: preciosVera.chaise90,
     medida: 120,
     categoria: "CHAISE",
+    medidap: 165,
   },
   {
     id: "VERC80D",
@@ -286,6 +304,7 @@ const piezasVera = [
     price: preciosVera.chaise80,
     medida: 110,
     categoria: "CHAISE",
+    medidap: 165,
   },
   {
     id: "VERC80I",
@@ -295,6 +314,7 @@ const piezasVera = [
     price: preciosVera.chaise80,
     medida: 110,
     categoria: "CHAISE",
+    medidap: 165,
   },
   {
     id: "VERR108S",
@@ -304,6 +324,7 @@ const piezasVera = [
     price: preciosVera.rincon,
     medida: 110,
     categoria: "RINCON",
+    medidap: 112,
   },
   {
     id: "VERP60S",
@@ -313,5 +334,6 @@ const piezasVera = [
     price: preciosVera.pouf,
     medida: 60,
     categoria: "POUF",
+    medidap: 112,
   },
 ];
