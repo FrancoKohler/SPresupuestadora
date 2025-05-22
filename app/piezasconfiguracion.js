@@ -1,12 +1,12 @@
-function llenarSelects() {
-  const todasPiezas = [
-    ...piezasAura.filter((p) => p.id !== "None"),
-    ...piezasBianca.filter((p) => p.id !== "None"),
-    ...piezasLuna.filter((p) => p.id !== "None"),
-    ...piezasNora.filter((p) => p.id !== "None"),
-    ...piezasVera.filter((p) => p.id !== "None"),
-  ];
+const todasPiezas = [
+  ...piezasAura.filter((p) => p.id !== "None"),
+  ...piezasBianca.filter((p) => p.id !== "None"),
+  ...piezasLuna.filter((p) => p.id !== "None"),
+  ...piezasNora.filter((p) => p.id !== "None"),
+  ...piezasVera.filter((p) => p.id !== "None"),
+];
 
+function llenarSelects() {
   for (let i = 1; i <= 8; i++) {
     const select = document.getElementById(`pieza${i}`);
     if (!select) continue;
@@ -34,6 +34,7 @@ function mostrarImagenes() {
   let currentY = 0;
   let rotateAfterYutra = false;
   let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
+  let totalMedida = 0;
 
   const specialPieces = [
     "BIAR108S",
@@ -176,36 +177,45 @@ function mostrarImagenes() {
     "AURM80I",
   ];
 
+  const cotasDiv = document.getElementById("cotas");
   const promises = [];
 
   for (let i = 1; i <= 8; i++) {
     const piezaSelect = document.getElementById(`pieza${i}`);
     if (!piezaSelect || piezaSelect.selectedIndex <= 0) continue;
-
     const selectedOption = piezaSelect.options[piezaSelect.selectedIndex];
     const imageUrl = selectedOption.dataset.imageUrl;
     const piezaId = selectedOption.value;
     const width = 100;
     const height = 100;
     const heightChaise = 150;
-    const widthChaise = 150;
+    const widthTerminal = 150;
     const widthBrazo = 120;
-
+    let finalWidthToApply = width;
     const isChaiseLongue = chaiseLongueIds.includes(piezaId);
     const isTerminal = terminalId.includes(piezaId);
     const isBrazo = brazoId.includes(piezaId);
 
     const finalHeight = isChaiseLongue ? heightChaise : height;
-    const finalWidth = isTerminal ? widthChaise : width;
-    const finalWidthBrazo = isBrazo ? widthBrazo : width;
+
+    const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
+    if (piezaSeleccionada && piezaSeleccionada.medida) {
+      totalMedida += piezaSeleccionada.medida;
+    }
 
     if (imageUrl && piezaId !== "None") {
       const imgElement = document.createElement("img");
-      imgElement.style.width = `${width}px`;
-      imgElement.style.height = `${finalHeight}px`;
-      imgElement.style.width = `${finalWidth}px`;
-      imgElement.style.width = `${finalWidthBrazo}px`;
 
+      if (isChaiseLongue) {
+        finalWidthToApply = widthBrazo;
+      } else if (isTerminal) {
+        finalWidthToApply = widthTerminal;
+      } else if (isBrazo) {
+        finalWidthToApply = widthBrazo;
+      }
+
+      imgElement.style.width = `${finalWidthToApply}px`;
+      imgElement.style.height = `${finalHeight}px`;
       imgElement.src = imageUrl;
       imgElement.alt = selectedOption.textContent;
 
@@ -231,7 +241,6 @@ function mostrarImagenes() {
               imgElement.style.left = `${specialPiece.x}px`;
               imgElement.style.top = `${specialPiece.y}px`;
               imgElement.style.transformOrigin = "center";
-              imgElement.style.widht = "100px";
               currentX = specialPiece.x + imgRect.width;
               currentY = specialPiece.y + imgRect.height;
               rotateAfterYutra = true;
@@ -254,6 +263,7 @@ function mostrarImagenes() {
       promises.push(imageLoadPromise);
     }
   }
+  cotasDiv.innerHTML = `<p>ANCHO: ${totalMedida} cm</p>`;
 }
 
 llenarSelects();
