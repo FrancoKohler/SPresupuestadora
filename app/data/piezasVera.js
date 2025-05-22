@@ -157,21 +157,21 @@ const piezasVera = [
   },
   // New pieces with arms added below
   {
-    id: "VERM1IOD",
-    title: "VERM1IOD Mód. 110 con brazo der. (140 cm)",
+    id: "VERM11OD",
+    title: "VERM11OD Mód. 110 con brazo der. (140 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM1IOD.png",
-    price: preciosVera.conBrazo110,
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM11OD.png",
+    price: preciosVera.comunVERM110D,
     categoria: "MODULOS",
     width: 100,
     height: 135,
   },
   {
-    id: "VERM1IOI",
-    title: "VERM1IOI Mód. 110 con brazo izq. (140 cm)",
+    id: "VERM11OI",
+    title: "VERM11OI Mód. 110 con brazo izq. (140 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM1IOI.png",
-    price: preciosVera.conBrazo110,
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM11OI.png",
+    price: preciosVera.comunVERM110D,
     categoria: "MODULOS",
     width: 100,
     height: 135,
@@ -181,7 +181,7 @@ const piezasVera = [
     title: "VERM100D Mód. 100 con brazo der. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM100D.png",
-    price: preciosVera.conBrazo100,
+    price: preciosVera.comunVERM100D,
     categoria: "MODULOS",
     width: 100,
     height: 135,
@@ -191,7 +191,7 @@ const piezasVera = [
     title: "VERM100I Mód. 100 con brazo izq. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM100I.png",
-    price: preciosVera.conBrazo100,
+    price: preciosVera.comunVERM100D,
     categoria: "MODULOS",
     width: 100,
     height: 135,
@@ -201,7 +201,7 @@ const piezasVera = [
     title: "VERM90D Mód. 90 con brazo der. (120 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM90D.png",
-    price: preciosVera.conBrazo90,
+    price: preciosVera.comunVERM90D,
     categoria: "MODULOS",
     width: 100,
     height: 135,
@@ -211,7 +211,7 @@ const piezasVera = [
     title: "VERM90I Mód. 90 con brazo izq. (120 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM90I.png",
-    price: preciosVera.conBrazo90,
+    price: preciosVera.comunVERM90D,
     categoria: "MODULOS",
     width: 100,
     height: 135,
@@ -221,7 +221,7 @@ const piezasVera = [
     title: "VERM80D Mód. 80 con brazo der. (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM80D.png",
-    price: preciosVera.conBrazo80,
+    price: preciosVera.comunVERM80D,
     categoria: "MODULOS",
     width: 100,
     height: 135,
@@ -231,7 +231,7 @@ const piezasVera = [
     title: "VERM80I Mód. 80 con brazo izq. (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM80I.png",
-    price: preciosVera.conBrazo80,
+    price: preciosVera.comunVERM80D,
     categoria: "MODULOS",
     width: 100,
     height: 135,

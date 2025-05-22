@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     telaDropdown.innerHTML = ""; // Limpiar las opciones existentes
 
     if (modeloSeleccionado === "Bianca") {
-      // Agregar materiales del modelo Agora
+      // Agregar materiales del modelo
       materialesBianca.forEach((material) => {
         const option = document.createElement("option");
         option.value = material;
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
     if (modeloSeleccionado === "Vera") {
-      // Agregar materiales del modelo Agora
+      // Agregar materiales del modelo
       materialesVera.forEach((material) => {
         const option = document.createElement("option");
         option.value = material;
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
     if (modeloSeleccionado === "Aura") {
-      // Agregar materiales del modelo Agora
+      // Agregar materiales del modelo
       materialesAura.forEach((material) => {
         const option = document.createElement("option");
         option.value = material;
@@ -151,18 +151,18 @@ document.addEventListener("DOMContentLoaded", function () {
         telaDropdown.appendChild(option);
       });
     }
-    if (modeloSeleccionado === "Vera") {
-      // Agregar materiales del modelo Agora
-      materialesVera.forEach((material) => {
+    if (modeloSeleccionado === "Luna") {
+      // Agregar materiales del modelo Luna
+      materialesLuna.forEach((material) => {
         const option = document.createElement("option");
         option.value = material;
         option.textContent = material;
         telaDropdown.appendChild(option);
       });
     }
-    if (modeloSeleccionado === "Vera") {
-      // Agregar materiales del modelo Agora
-      materialesVera.forEach((material) => {
+    if (modeloSeleccionado === "Nora") {
+      // Agregar materiales del modelo Nora
+      materialesNora.forEach((material) => {
         const option = document.createElement("option");
         option.value = material;
         option.textContent = material;

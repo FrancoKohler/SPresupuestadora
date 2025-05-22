@@ -112,24 +112,68 @@ function mostrarImagenes() {
     "PROT100I",
     "PROT80D",
     "PROT80I",
-    /*-----BIANCA CHAISE-----*/
-    "BIAC110D",
-    "BIAC110I",
-    "BIAC100D",
-    "BIAC100I",
-    "BIAC90D",
-    "BIAC90I",
-    "BIAC80D",
-    "BIAC80I",
-    /*-----AURA CHAISE-----*/
-    "AURC110D",
-    "AURC110I",
-    "AURC100D",
-    "AURC100I",
-    "AURC90D",
-    "AURC90I",
-    "AURC80D",
-    "AURC80I",
+    /*-----BIANCA TERMINAL-----*/
+    "BIAT110D",
+    "BIAT110I",
+    "BIAT100D",
+    "BIAT100I",
+    "BIAT90D",
+    "BIAT90I",
+    "BIAT80D",
+    "BIAT80I",
+    /*-----AURA TERMINAL-----*/
+    "AURT110D",
+    "AURT110I",
+    "AURT100D",
+    "AURT100I",
+    "AURT90D",
+    "AURT90I",
+    "AURT80D",
+    "AURT80I",
+  ];
+
+  const brazoId = [
+    /*-----VERA BRAZO-----*/
+    "VERM11OD",
+    "VERM11OI",
+    "VERM100D",
+    "VERM100I",
+    "VERM90D",
+    "VERM90I",
+    "VERM80D",
+    "VERM80I",
+    /*-----NORA BRAZO-----*/
+    "NORM110D",
+    "NORM110I",
+    "NORM100D",
+    "NORM100I",
+    "NORM90D",
+    "NORM90I",
+    "NORM80D",
+    "NORM80I",
+    /*-----LUNA BRAZO-----*/
+    "PROM100D",
+    "PROM100I",
+    "PROM80D",
+    "PROM80I",
+    /*-----BIANCA BRAZO-----*/
+    "BIAM110D",
+    "BIAM110I",
+    "BIAM100D",
+    "BIAM100I",
+    "BIAM90D",
+    "BIAM90I",
+    "BIAM80D",
+    "BIAM80I",
+    /*-----AURA BRAZO-----*/
+    "AURM110D",
+    "AURM110I",
+    "AURM100D",
+    "AURM100I",
+    "AURM90D",
+    "AURM90I",
+    "AURM80D",
+    "AURM80I",
   ];
 
   const promises = [];
@@ -145,22 +189,22 @@ function mostrarImagenes() {
     const height = 100;
     const heightChaise = 150;
     const widthChaise = 150;
+    const widthBrazo = 120;
 
     const isChaiseLongue = chaiseLongueIds.includes(piezaId);
     const isTerminal = terminalId.includes(piezaId);
+    const isBrazo = brazoId.includes(piezaId);
 
     const finalHeight = isChaiseLongue ? heightChaise : height;
     const finalWidth = isTerminal ? widthChaise : width;
-
-    console.log(
-      `Insertando imagen ${piezaId} con tamaño: ${width}x${finalHeight}`
-    );
+    const finalWidthBrazo = isBrazo ? widthBrazo : width;
 
     if (imageUrl && piezaId !== "None") {
       const imgElement = document.createElement("img");
       imgElement.style.width = `${width}px`;
       imgElement.style.height = `${finalHeight}px`;
-      imgElement.style.height = `${finalWidth}px`;
+      imgElement.style.width = `${finalWidth}px`;
+      imgElement.style.width = `${finalWidthBrazo}px`;
 
       imgElement.src = imageUrl;
       imgElement.alt = selectedOption.textContent;
@@ -187,7 +231,7 @@ function mostrarImagenes() {
               imgElement.style.left = `${specialPiece.x}px`;
               imgElement.style.top = `${specialPiece.y}px`;
               imgElement.style.transformOrigin = "center";
-
+              imgElement.style.widht = "100px";
               currentX = specialPiece.x + imgRect.width;
               currentY = specialPiece.y + imgRect.height;
               rotateAfterYutra = true;

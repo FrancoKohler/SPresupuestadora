@@ -48,6 +48,7 @@ const preciosBianca = {
     { material: "SERIE 4", precio: 720 },
     { material: "SERIE 5", precio: 779 },
   ],
+
   comunBIAM110DM: [
     { material: "SERIE 2", precio: 922 },
     { material: "SERIE 3", precio: 984 },
@@ -263,6 +264,89 @@ const piezasBianca = [
     categoria: "MODULOS",
     medidap: 108,
   },
+  /*-------REPISAS------*/
+  {
+    id: "BIAM110DM",
+    title: "BIAM110DM Mód. 110 con repisa der. (160 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110DM.png",
+    price: preciosBianca.comunBIAM110DM,
+    medida: 160,
+    categoria: "MODULOS",
+    medidap: 108,
+  },
+  {
+    id: "BIAM110IM",
+    title: "BIAM110IM Mód. 110 con repisa iza. (160 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110IM.png",
+    price: preciosBianca.comunBIAM110DM,
+    medida: 160,
+    categoria: "MODULOS",
+    medidap: 108,
+  },
+  {
+    id: "BIAM100DM",
+    title: "BIAM100DM Mód. 100 con repisa der. (150 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100DM.png",
+    price: preciosBianca.comunBIAM100DM,
+    medida: 150,
+    categoria: "MODULOS",
+    medidap: 108,
+  },
+  {
+    id: "BIAM100IM",
+    title: "BIAM100IM Mód. 100 con repisa izq. (150 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100DM.png",
+    price: preciosBianca.comunBIAM100DM,
+    medida: 150,
+    categoria: "MODULOS",
+    medidap: 108,
+  },
+  {
+    id: "BIAM90DM",
+    title: "BIAM90DM Mód. 90 con repisa der. (140 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90DM.png",
+    price: preciosBianca.comunBIAM90DM,
+    medida: 140,
+    categoria: "MODULOS",
+    medidap: 108,
+  },
+  {
+    id: "BIAM90IM",
+    title: "BIAM90IM Mód. 90 con repisa izq. (140 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90IM.png",
+    price: preciosBianca.comunBIAM90DM,
+    medida: 140,
+    categoria: "MODULOS",
+    medidap: 108,
+  },
+  {
+    id: "BIAM80DM",
+    title: "BIAM80DM Mód. 80 con repisa der. (130 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80DM.png",
+    price: preciosBianca.comunBIAM80DM,
+    medida: 140,
+    categoria: "MODULOS",
+    medidap: 108,
+  },
+  {
+    id: "BIAM80IM",
+    title: "BIAM80IM Mód. 80 con repisa izq. (130 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80IM.png",
+    price: preciosBianca.comunBIAM80DM,
+    medida: 140,
+    categoria: "MODULOS",
+    medidap: 108,
+  },
+  /*-------Terminal------*/
+
   {
     id: "BIAT110D",
     title: "BIAT110D Terminal 110 derecho (160 cm)",
@@ -271,7 +355,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT110D,
     medida: 160,
     categoria: "TERMINAL",
-    medidap: 0, // Ajustar según corresponda
+    medidap: 0,
   },
   {
     id: "BIAT110I",
