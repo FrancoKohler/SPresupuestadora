@@ -134,7 +134,8 @@ const preciosBianca = {
   ],
 };
 
-/*-------------------PIEZAS BIANCA--------------------*/ const piezasBianca = [
+/*-------------------PIEZAS BIANCA--------------------*/
+const piezasBianca = [
   {
     id: "None",
     title: "Sin pieza seleccionada",
@@ -261,6 +262,86 @@ const preciosBianca = {
     medida: 80,
     categoria: "MODULOS",
     medidap: 108,
+  },
+  {
+    id: "BIAT110D",
+    title: "BIAT110D Terminal 110 derecho (160 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAT110D.png",
+    price: preciosBianca.comunBIAT110D,
+    medida: 160,
+    categoria: "TERMINAL",
+    medidap: 0, // Ajustar según corresponda
+  },
+  {
+    id: "BIAT110I",
+    title: "BIAT110I Terminal 110 izquierdo (160 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAT110I.png",
+    price: preciosBianca.comunBIAT110D,
+    medida: 160,
+    categoria: "TERMINAL",
+    medidap: 0,
+  },
+  {
+    id: "BIAT100D",
+    title: "BIAT100D Terminal 100 derecho (150 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAT100D.png",
+    price: preciosBianca.comunBIAT100D,
+    medida: 150,
+    categoria: "TERMINAL",
+    medidap: 0,
+  },
+  {
+    id: "BIAT100I",
+    title: "BIAT100I Terminal 100 izquierdo (150 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAT100I.png",
+    price: preciosBianca.comunBIAT100D,
+    medida: 150,
+    categoria: "TERMINAL",
+    medidap: 0,
+  },
+  {
+    id: "BIAT90D",
+    title: "BIAT90D Terminal 90 derecho (140 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAT90D.png",
+    price: preciosBianca.comunBIAT90D,
+    medida: 140,
+    categoria: "TERMINAL",
+    medidap: 0,
+  },
+  {
+    id: "BIAT90I",
+    title: "BIAT90I Terminal 90 izquierdo (140 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAT90I.png",
+    price: preciosBianca.comunBIAT90D,
+    medida: 140,
+    categoria: "TERMINAL",
+    medidap: 0,
+  },
+  {
+    id: "BIAT80D",
+    title: "BIAT80D Terminal 80 derecho (130 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAT80D.png",
+    price: preciosBianca.comunBIAT80D,
+    medida: 130,
+    categoria: "TERMINAL",
+    medidap: 0,
+  },
+  {
+    id: "BIAT80I",
+    title: "BIAT80I Terminal 80 izquierdo (130 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAT80I.png",
+    price: preciosBianca.comunBIAT80D,
+    medida: 130,
+    categoria: "TERMINAL",
+    medidap: 0,
   },
   {
     id: "BIAC110D",

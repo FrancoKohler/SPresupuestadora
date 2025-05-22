@@ -140,6 +140,162 @@ document.addEventListener("DOMContentLoaded", function () {
         id: "CLUB171",
       },
     ],
+    BARBADOS: [
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS01.svg",
+        nombre: "BARBADOS01",
+        id: "BARBADOS01",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS02.svg",
+        nombre: "BARBADOS02",
+        id: "BARBADOS02",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS03.svg",
+        nombre: "BARBADOS03",
+        id: "BARBADOS03",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS05.svg",
+        nombre: "BARBADOS05",
+        id: "BARBADOS05",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS06.svg",
+        nombre: "BARBADOS06",
+        id: "BARBADOS06",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS08.svg",
+        nombre: "BARBADOS08",
+        id: "BARBADOS08",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS09.svg",
+        nombre: "BARBADOS09",
+        id: "BARBADOS09",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS10.svg",
+        nombre: "BARBADOS10",
+        id: "BARBADOS10",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS19.svg",
+        nombre: "BARBADOS19",
+        id: "BARBADOS19",
+      },
+      {
+        img: "assets/TELAS/BARBADOS/BARBADOS20.svg",
+        nombre: "BARBADOS20",
+        id: "BARBADOS20",
+      },
+    ],
+    LINO: [
+      {
+        img: "assets/TELAS/LINO/LINO008.svg",
+        nombre: "LINO008",
+        id: "LINO008",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO028.svg",
+        nombre: "LINO028",
+        id: "LINO028",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO122.svg",
+        nombre: "LINO122",
+        id: "LINO122",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO124.svg",
+        nombre: "LINO124",
+        id: "LINO124",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO125.svg",
+        nombre: "LINO125",
+        id: "LINO125",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO126.svg",
+        nombre: "LINO126",
+        id: "LINO126",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO127.svg",
+        nombre: "LINO127",
+        id: "LINO127",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO142.svg",
+        nombre: "LINO142",
+        id: "LINO142",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO542.svg",
+        nombre: "LINO542",
+        id: "LINO542",
+      },
+      {
+        img: "assets/TELAS/LINO/LINO638.svg",
+        nombre: "LINO638",
+        id: "LINO638",
+      },
+    ],
+    MYSTIC: [
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC03.svg",
+        nombre: "MYSTIC03",
+        id: "MYSTIC03",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC12.svg",
+        nombre: "MYSTIC12",
+        id: "MYSTIC12",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC69.svg",
+        nombre: "MYSTIC69",
+        id: "MYSTIC69",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC177.svg",
+        nombre: "MYSTIC177",
+        id: "MYSTIC177",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC252.svg",
+        nombre: "MYSTIC252",
+        id: "MYSTIC252",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC324.svg",
+        nombre: "MYSTIC324",
+        id: "MYSTIC324",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC546.svg",
+        nombre: "MYSTIC546",
+        id: "MYSTIC546",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC551.svg",
+        nombre: "MYSTIC551",
+        id: "MYSTIC551",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC559.svg",
+        nombre: "MYSTIC559",
+        id: "MYSTIC559",
+      },
+      {
+        img: "assets/TELAS/MYSTIC/MYSTIC603.svg",
+        nombre: "MYSTIC603",
+        id: "MYSTIC603",
+      },
+    ],
   };
   function actualizarImgSegunTela() {
     const selectedCategory = categorySelect.value;

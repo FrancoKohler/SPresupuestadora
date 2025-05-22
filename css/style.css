@@ -305,14 +305,13 @@ li {
   color: #000000;
 }
 #imagenPiezas {
+  margin: auto;
   position: relative;
-  padding-right: 30rem;
   display: block;
   align-items: center;
-  width: 60%;
+  width: 100%;
   height: 500px;
   margin: 10px 0;
-  border: 1px dashed #ccc;
   overflow: visible;
 }
 .img-config {
@@ -327,7 +326,6 @@ li {
   transform-origin: center;
   position: absolute;
   object-fit: fill;
-  aspect-ratio: 1 / 1;
 }
 /*DROPDOWN*/
 .teladiv {
