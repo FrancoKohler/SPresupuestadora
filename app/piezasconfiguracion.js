@@ -143,7 +143,16 @@ function mostrarImagenes() {
     "VERM90I",
     "VERM80D",
     "VERM80I",
-    /*-----NORA BRAZO-----*/
+    /*-----NORA BRAZO/REPRISA-----*/
+    "NORM110DM",
+    "NORM110IM",
+    "NORM100DM",
+    "NORM100IM",
+    "NORM110DM",
+    "NORM90DM",
+    "NORM90IM",
+    "NORM80DM",
+    "NORM80IM",
     "NORM110D",
     "NORM110I",
     "NORM100D",
@@ -157,7 +166,16 @@ function mostrarImagenes() {
     "PROM100I",
     "PROM80D",
     "PROM80I",
-    /*-----BIANCA BRAZO-----*/
+    /*-----BIANCA BRAZO/REPISA-----*/
+    "BIAM110DM",
+    "BIAM110IM",
+    "BIAM100DM",
+    "BIAM100IM",
+    "BIAM90DM",
+    "BIAM90IM",
+    "BIAM80DM",
+    "BIAM80IM",
+    "BIAM110I",
     "BIAM110D",
     "BIAM110I",
     "BIAM100D",
@@ -199,9 +217,8 @@ function mostrarImagenes() {
     const finalHeight = isChaiseLongue ? heightChaise : height;
 
     const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
-    if (piezaSeleccionada && piezaSeleccionada.medida) {
-      totalMedida += piezaSeleccionada.medida;
-    }
+
+    let sumarMedida = true;
 
     if (imageUrl && piezaId !== "None") {
       const imgElement = document.createElement("img");
@@ -245,6 +262,8 @@ function mostrarImagenes() {
               currentY = specialPiece.y + imgRect.height;
               rotateAfterYutra = true;
             } else if (rotateAfterYutra) {
+              sumarMedida = false; // Desactiva la suma
+
               imgElement.style.transform = "rotate(90deg)";
               imgElement.style.left = `${specialPiece.x}px`;
               imgElement.style.top = `${specialPiece.y + specialPiece.width}px`;
@@ -253,7 +272,6 @@ function mostrarImagenes() {
             } else {
               imgElement.style.left = `${currentX}px`;
               imgElement.style.top = `${currentY}px`;
-
               currentX += imgRect.width;
             }
             resolve();
@@ -261,6 +279,11 @@ function mostrarImagenes() {
         };
       });
       promises.push(imageLoadPromise);
+    }
+
+    // Suma solo si `sumarMedida` es true
+    if (piezaSeleccionada && piezaSeleccionada.medida && sumarMedida) {
+      totalMedida += piezaSeleccionada.medida;
     }
   }
   cotasDiv.innerHTML = `<p>ANCHO: ${totalMedida} cm</p>`;

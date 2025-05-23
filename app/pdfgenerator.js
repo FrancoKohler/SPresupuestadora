@@ -21,7 +21,7 @@ function generateRandomReferenceNumber() {
 const numeroReferencia = generateRandomReferenceNumber();
 
 async function createPDF() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 50));
   const modelo = document.getElementById("modelo").value;
   const nombreEmpresa = document.getElementById("nombreEmpresa").value;
   const cifEmpresa = document.getElementById("cifEmpresa").value;
@@ -240,7 +240,7 @@ async function createPDF() {
     imagenesDiv.style.display = "block";
 
     await waitForImagesToLoad(document.getElementById("imagenPiezas"));
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 50));
     const canvas = await html2canvas(imagenesDiv, {
       useCORS: true,
       scrollY: -window.scrollY,
@@ -536,14 +536,60 @@ async function createPDF() {
 }
 
 // Función para generar ambos PDFs
-async function generatePDFs() {
-  await createPDF();
-  await new Promise((resolve) => setTimeout(resolve, 2500));
-}
-
-// Añadir event listener al botón
 document.addEventListener("DOMContentLoaded", () => {
-  document
-    .getElementById("generateBtn")
-    .addEventListener("click", generatePDFs);
+  const botonPdf = document.getElementById("generateBtn");
+
+  botonPdf.addEventListener("click", () => {
+    const campos = [
+      { id: "nombreCliente", label: "Nombre y Apellido" },
+      { id: "emailCliente", label: "Email", tipo: "email" },
+      { id: "codigoPostal", label: "Código Postal" },
+      { id: "calle", label: "Calle" },
+      { id: "puertaPiso", label: "Puerta/Piso" },
+      { id: "nombreEmpresa", label: "Nombre Empresa" },
+      { id: "emailEmpresa", label: "Email Empresa", tipo: "email" },
+    ];
+
+    let formularioValido = true;
+    let mensajesError = [];
+
+    campos.forEach((campo) => {
+      const input = document.getElementById(campo.id);
+      if (!input.value.trim()) {
+        formularioValido = false;
+        mensajesError.push(`- ${campo.label} es obligatorio.`);
+      } else if (
+        campo.tipo === "email" &&
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)
+      ) {
+        formularioValido = false;
+        mensajesError.push(`- El formato del email no es válido.`);
+      }
+    });
+
+    if (!formularioValido) {
+      Swal.fire({
+        icon: "error",
+        title: "Campos incompletos o inválidos",
+        html: `<div class="textAlert">${mensajesError
+          .map((msg) => `<p>${msg}</p>`)
+          .join("")}</div>`,
+
+        confirmButtonText: "Aceptar",
+        customClass: {
+          popup: "popupAlert",
+          title: "titleAlert",
+          html: "textAlert",
+          confirmButton: "btnAlert",
+        },
+      });
+      return;
+    }
+    async function generatePDFs() {
+      await createPDF();
+    }
+    // Si todo es válido
+    botonPdf.classList.add("active");
+    generatePDFs();
+  });
 });

@@ -141,8 +141,6 @@ const piezasNora = [
     title: "Sin pieza seleccionada",
     imageUrl: "..",
     categoria: "NORA",
-    width: 0,
-    height: 0,
   },
   {
     id: "NORM110D",
@@ -150,9 +148,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM110D.png",
     price: preciosNora.comunNORM110D,
+    medida: 136,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 110,
   },
   {
     id: "NORM110I",
@@ -160,9 +158,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM110I.png",
     price: preciosNora.comunNORM110D,
+    medida: 136,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 110,
   },
   {
     id: "NORM100D",
@@ -170,9 +168,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM100D.png",
     price: preciosNora.comunNORM100D,
+    medida: 126,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 100,
   },
   {
     id: "NORM100I",
@@ -180,9 +178,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM100I.png",
     price: preciosNora.comunNORM100D,
+    medida: 126,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 100,
   },
   {
     id: "NORM90D",
@@ -190,9 +188,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM90D.png",
     price: preciosNora.comunNORM90D,
+    medida: 116,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 90,
   },
   {
     id: "NORM90I",
@@ -200,9 +198,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM90I.png",
     price: preciosNora.comunNORM90D,
+    medida: 116,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 90,
   },
   {
     id: "NORM80D",
@@ -210,9 +208,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM80D.png",
     price: preciosNora.comunNORM80D,
+    medida: 106,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 80,
   },
   {
     id: "NORM80I",
@@ -220,9 +218,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM80I.png",
     price: preciosNora.comunNORM80D,
+    medida: 106,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 80,
   },
   {
     id: "NORM110S",
@@ -230,9 +228,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM110S.png",
     price: preciosNora.comunNORM110S,
+    medida: 110,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 110,
   },
   {
     id: "NORM100S",
@@ -240,9 +238,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM100S.png",
     price: preciosNora.comunNORM100S,
+    medida: 100,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 100,
   },
   {
     id: "NORM90S",
@@ -250,9 +248,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM90S.png",
     price: preciosNora.comunNORM90S,
+    medida: 90,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 90,
   },
   {
     id: "NORM80S",
@@ -260,9 +258,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM80S.png",
     price: preciosNora.comunNORM80S,
+    medida: 80,
     categoria: "MODULOS",
-    width: 100,
-    height: 135,
+    medidap: 80,
   },
   {
     id: "NORM110DM",
@@ -270,9 +268,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM110DM.png",
     price: preciosNora.comunNORM110DM,
+    medida: 160,
     categoria: "MODULOS",
-    width: 150,
-    height: 135,
+    medidap: 110,
   },
   {
     id: "NORM110IM",
@@ -280,9 +278,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM110IM.png",
     price: preciosNora.comunNORM110DM,
+    medida: 160,
     categoria: "MODULOS",
-    width: 150,
-    height: 135,
+    medidap: 110,
   },
   {
     id: "NORM100DM",
@@ -290,9 +288,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM100DM.png",
     price: preciosNora.comunNORM100DM,
+    medida: 150,
     categoria: "MODULOS",
-    width: 150,
-    height: 135,
+    medidap: 100,
   },
   {
     id: "NORM100IM",
@@ -300,9 +298,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM100IM.png",
     price: preciosNora.comunNORM100DM,
+    medida: 150,
     categoria: "MODULOS",
-    width: 150,
-    height: 135,
+    medidap: 100,
   },
   {
     id: "NORM90DM",
@@ -310,9 +308,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM90DM.png",
     price: preciosNora.comunNORM90DM,
+    medida: 140,
     categoria: "MODULOS",
-    width: 150,
-    height: 135,
+    medidap: 90,
   },
   {
     id: "NORM90IM",
@@ -320,9 +318,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM90IM.png",
     price: preciosNora.comunNORM90DM,
+    medida: 140,
     categoria: "MODULOS",
-    width: 150,
-    height: 135,
+    medidap: 90,
   },
   {
     id: "NORM80DM",
@@ -330,9 +328,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM80DM.png",
     price: preciosNora.comunNORM80DM,
+    medida: 130,
     categoria: "MODULOS",
-    width: 150,
-    height: 135,
+    medidap: 80,
   },
   {
     id: "NORM80IM",
@@ -340,9 +338,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM80IM.png",
     price: preciosNora.comunNORM80DM,
+    medida: 130,
     categoria: "MODULOS",
-    width: 150,
-    height: 135,
+    medidap: 80,
   },
   {
     id: "NORT110D",
@@ -350,9 +348,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORT110D.png",
     price: preciosNora.comunNORT110D,
+    medida: 160,
     categoria: "TERMINAL",
-    width: 150,
-    height: 135,
+    medidap: 110,
   },
   {
     id: "NORT110I",
@@ -360,9 +358,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORT110I.png",
     price: preciosNora.comunNORT110D,
+    medida: 160,
     categoria: "TERMINAL",
-    width: 150,
-    height: 135,
+    medidap: 110,
   },
   {
     id: "NORT100D",
@@ -370,9 +368,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORT100D.png",
     price: preciosNora.comunNORT100D,
+    medida: 150,
     categoria: "TERMINAL",
-    width: 150,
-    height: 135,
+    medidap: 100,
   },
   {
     id: "NORT100I",
@@ -380,9 +378,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORT100I.png",
     price: preciosNora.comunNORT100D,
+    medida: 150,
     categoria: "TERMINAL",
-    width: 150,
-    height: 135,
+    medidap: 100,
   },
   {
     id: "NORT90D",
@@ -390,9 +388,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORT90D.png",
     price: preciosNora.comunNORT90D,
+    medida: 140,
     categoria: "TERMINAL",
-    width: 150,
-    height: 135,
+    medidap: 90,
   },
   {
     id: "NORT90I",
@@ -400,9 +398,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORT90I.png",
     price: preciosNora.comunNORT90D,
+    medida: 140,
     categoria: "TERMINAL",
-    width: 150,
-    height: 135,
+    medidap: 90,
   },
   {
     id: "NORT80D",
@@ -410,9 +408,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORT80D.png",
     price: preciosNora.comunNORT80D,
+    medida: 130,
     categoria: "TERMINAL",
-    width: 150,
-    height: 135,
+    medidap: 80,
   },
   {
     id: "NORT80I",
@@ -420,9 +418,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORT80I.png",
     price: preciosNora.comunNORT80D,
+    medida: 130,
     categoria: "TERMINAL",
-    width: 150,
-    height: 135,
+    medidap: 80,
   },
   {
     id: "NORC110D",
@@ -430,9 +428,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORC110D.png",
     price: preciosNora.comunNORC110D,
+    medida: 134,
     categoria: "CHAISE LONGUE",
-    width: 100,
-    height: 200,
+    medidap: 110,
   },
   {
     id: "NORC110I",
@@ -440,9 +438,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORC110I.png",
     price: preciosNora.comunNORC110D,
+    medida: 134,
     categoria: "CHAISE LONGUE",
-    width: 100,
-    height: 200,
+    medidap: 110,
   },
   {
     id: "NORC100D",
@@ -450,9 +448,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORC100D.png",
     price: preciosNora.comunNORC100D,
+    medida: 124,
     categoria: "CHAISE LONGUE",
-    width: 100,
-    height: 200,
+    medidap: 100,
   },
   {
     id: "NORC100I",
@@ -460,9 +458,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORC100I.png",
     price: preciosNora.comunNORC100D,
+    medida: 124,
     categoria: "CHAISE LONGUE",
-    width: 100,
-    height: 200,
+    medidap: 100,
   },
   {
     id: "NORC90D",
@@ -470,9 +468,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORC90D.png",
     price: preciosNora.comunNORC90D,
+    medida: 114,
     categoria: "CHAISE LONGUE",
-    width: 100,
-    height: 200,
+    medidap: 90,
   },
   {
     id: "NORC90I",
@@ -480,9 +478,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORC90I.png",
     price: preciosNora.comunNORC90D,
+    medida: 114,
     categoria: "CHAISE LONGUE",
-    width: 100,
-    height: 200,
+    medidap: 90,
   },
   {
     id: "NORC80D",
@@ -490,9 +488,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORC80D.png",
     price: preciosNora.comunNORC80D,
+    medida: 104,
     categoria: "CHAISE LONGUE",
-    width: 100,
-    height: 200,
+    medidap: 80,
   },
   {
     id: "NORC80I",
@@ -500,9 +498,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORC80I.png",
     price: preciosNora.comunNORC80D,
+    medida: 104,
     categoria: "CHAISE LONGUE",
-    width: 100,
-    height: 200,
+    medidap: 80,
   },
   {
     id: "NORR108S",
@@ -511,8 +509,8 @@ const piezasNora = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORR108S.png",
     price: preciosNora.comunNORR108S,
     categoria: "RINCÓN",
-    width: 100,
-    height: 135,
+    medidap: 108,
+    medida: 108,
   },
   {
     id: "NORP60S",
@@ -521,7 +519,7 @@ const piezasNora = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORP60S.png",
     price: preciosNora.comunNORP60S,
     categoria: "RINCÓN",
-    width: 100,
-    height: 135,
+    medidap: 60,
+    medida: 60,
   },
 ];
