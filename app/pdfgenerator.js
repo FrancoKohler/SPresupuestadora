@@ -231,8 +231,15 @@ async function createPDF() {
   );
   /*----CARGA DE IMAGENES Y DESCARGA DE PDF----*/
   drawText(page, "CONFIGURACION", 74, 350, 10, helveticaFont);
-  drawText(page, `ANCHO:${ancho}`, 150, 280, 8, helveticaFont);
-  drawText(page, `PROFUNDIDAD:${profundidad}`, 150, 250, 8, helveticaFont);
+  drawText(page, `ANCHO: ${ancho.textContent}`, 85, 330, 6, helveticaFont);
+  drawText(
+    page,
+    `PROFUNDIDAD: ${profundidad.textContent}`,
+    220,
+    290,
+    6,
+    helveticaFont
+  );
 
   // Draw the image on the page
 
@@ -258,7 +265,7 @@ async function createPDF() {
     const width = 170 * scale;
     const height = 100 * scale;
 
-    page.drawImage(pdfImage, { x: 85, y: 280, width: width, height: height });
+    page.drawImage(pdfImage, { x: 85, y: 250, width: width, height: height });
     console.log(canvas.width, canvas.height);
   }
 
