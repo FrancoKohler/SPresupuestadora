@@ -186,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newImg.src = BASE_URL + selectedTela.img;
       newImg.alt = selectedTela.name;
       newImg.classList.add("img-tela");
+      newImg.id = "telaReferenciaImg";
       divReferencia.appendChild(newImg);
     }
   }

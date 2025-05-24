@@ -56,6 +56,7 @@ function mostrarImagenes() {
   let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
   let totalMedida = 0;
   let cotaProfundidad = 0;
+  let alturaTotalPixels = 100;
 
   const specialPieces = [
     "BIAR108S",
@@ -292,6 +293,7 @@ function mostrarImagenes() {
 
               totalMedida += medida;
               cotaProfundidad += medidap;
+              alturaTotalPixels += finalWidthToApply; // En piezas rotadas, la altura de la imagen aumenta por el ancho de la pieza
               yaSumoProfundidad = true;
             } else {
               // PIEZAS NORMALES (antes de rotar)
@@ -321,9 +323,10 @@ function mostrarImagenes() {
   }
 
   Promise.all(promises).then(() => {
+    imagenesDiv.style.height = `${alturaTotalPixels}px`;
     cotasDiv.innerHTML = `
-      <p id="ancho">${totalMedida} cm</p>
-      <p class="profundidad" id="profundidad"> ${cotaProfundidad} cm</p>
+      <p id="ancho">ANCHO: ${totalMedida} cm</p>
+      <p class="profundidad" id="profundidad"> PROFUNDIDAD: ${cotaProfundidad} cm</p>
     `;
 
     /*    const lineaAncho = document.getElementById("lineaAncho");
