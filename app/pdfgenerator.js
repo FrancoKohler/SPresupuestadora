@@ -140,22 +140,16 @@ async function createPDF() {
   drawText(page, `Modelo: ${modelo}`, 52, 530, 15, helveticaFont);
   /*--------------HTML CANVAS MODELO--------*/
   //TOMA DE IMG DEL HTML PARA IMPRESION EN EL PDF
-  if (typeof html2canvas === "function") {
-    const modelosImg = document.getElementById("imgReferencia");
+  const modelosImg = document.getElementById("imgReferenciaModelo");
 
-    modelosImg.style.display = "none";
-    modelosImg.offsetHeight; //
-    modelosImg.style.display = "block";
-    const canvas = await html2canvas(modelosImg, {
-      useCORS: true,
-      scrollY: -window.scrollY,
-      scrollX: -window.scrollX,
-      allowTaint: true,
-    });
-    const imgData = canvas.toDataURL("image/png");
-    const pdfImage = await pdfDoc.embedPng(imgData);
-    page.drawImage(pdfImage, { x: 74, y: 400, width: 350, height: 100 });
-  }
+  const modelosImgData = await domtoimage.toPng(modelosImg, {
+    bustCache: true,
+  });
+  // Obten ancho y alto de la imagen
+  const widthModelo = modelosImg.offsetWidth;
+  const heightModelo = modelosImg.offsetHeight;
+  const pdfImage = await pdfDoc.embedPng(modelosImgData);
+  page.drawImage(pdfImage, { x: 74, y: 400, width: widthModelo, height: heightModelo });
 
   /*------------LINEA MODELO--------------*/
   page.drawRectangle({
@@ -235,39 +229,29 @@ async function createPDF() {
   drawText(
     page,
     `PROFUNDIDAD: ${profundidad.textContent}`,
-    220,
-    290,
+    85,
+    320,
     6,
     helveticaFont
   );
 
   // Draw the image on the page
 
-  if (typeof html2canvas === "function") {
-    const imagenesDiv = document.getElementById("imagenPiezas");
+  const imagenesDiv = document.getElementById("imagenPiezas");
 
-    imagenesDiv.style.display = "none";
-    imagenesDiv.offsetHeight; //
-    imagenesDiv.style.display = "block";
+  await waitForImagesToLoad(document.getElementById("imagenPiezas"));
+  const imgPiezasData = await domtoimage.toPng(imagenesDiv, {
+    cacheBust: true,
+  });
 
-    await waitForImagesToLoad(document.getElementById("imagenPiezas"));
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    const canvas = await html2canvas(imagenesDiv, {
-      useCORS: true,
-      scrollY: -window.scrollY,
-      scrollX: -window.scrollX,
-      allowTaint: true,
-    });
-    const imgData = canvas.toDataURL("image/png");
+  const pdfPiezasImage = await pdfDoc.embedPng(imgPiezasData);
 
-    const pdfImage = await pdfDoc.embedPng(imgData);
-    const scale = 0.5; // escala del 50%
-    const width = 170 * scale;
-    const height = 100 * scale;
+  const scale = 0.5
+  const width = imagenesDiv.offsetWidth * scale;
+  const height = imagenesDiv.offsetHeight * scale;
+  console.log("Imagen piezas:", imgPiezasData);
 
-    page.drawImage(pdfImage, { x: 85, y: 250, width: width, height: height });
-    console.log(canvas.width, canvas.height);
-  }
+  page.drawImage(pdfPiezasImage, { x: 75, y: 210, width: width, height: height });
 
   // Espera a que todas las imágenes se hayan cargado completamente
   function waitForImagesToLoad(container) {
@@ -291,21 +275,10 @@ async function createPDF() {
   drawText(page, `Articulo: ${tela}`, 430, 315, 8, helveticaFont);
   drawText(page, `Tela: ${telaNombre}`, 430, 295, 8, helveticaFont);
 
-  if (typeof html2canvas === "function") {
-    const telaImg = document.getElementById("telaReferencia");
-
-    telaImg.style.display = "none";
-    telaImg.style.display = "block";
-    const canvas = await html2canvas(telaImg, {
-      useCORS: true,
-      scrollY: -window.scrollY,
-      scrollX: -window.scrollX,
-      allowTaint: true,
-    });
-    const imgData = canvas.toDataURL("image/png");
-    const pdfImage = await pdfDoc.embedPng(imgData);
-    page.drawImage(pdfImage, { x: 364, y: 280, width: 50, height: 50 });
-  }
+  const telaImg = document.getElementById("telaReferenciaImg");
+  const telaImgData = await domtoimage.toPng(telaImg, { cacheBust: true });
+  const telaPdfImage = await pdfDoc.embedPng(telaImgData);
+  page.drawImage(telaPdfImage, { x: 364, y: 280, width: 50, height: 50 });
 
   /*-------------------------TARIFA-------------------------------*/
   drawText(page, "Tarifa", 52, 220, 15, helveticaFont);

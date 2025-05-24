@@ -197,8 +197,8 @@ select {
   align-items: center;
   padding-bottom: 2rem;
   padding-top: 2rem;
-  width: 60%;
-  height: 550px;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -209,9 +209,9 @@ select {
   display: block;
   align-items: center;
   width: 100%;
-  height: 600px;
-  margin: 10px 0;
+  height: 120px;
   overflow: visible;
+  /* No poner margin o padding que rompe a domtoimage */
 }
 
 .img-config {
@@ -228,8 +228,7 @@ select {
   object-fit: fill;
 }
 .profundidad {
-  position: absolute;
-  right: 20%;
+  position: relative;
 }
 #lineaProfundidad {
   position: absolute;
