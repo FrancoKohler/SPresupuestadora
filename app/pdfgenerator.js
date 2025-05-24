@@ -146,8 +146,9 @@ async function createPDF() {
     bustCache: true,
   });
   // Obten ancho y alto de la imagen
-  const widthModelo = modelosImg.offsetWidth;
-  const heightModelo = modelosImg.offsetHeight;
+  const scaleFactor = 0.5;
+const widthModelo = modelosImg.offsetWidth * scaleFactor;
+const heightModelo = modelosImg.offsetHeight * scaleFactor;
   const pdfImage = await pdfDoc.embedPng(modelosImgData);
   page.drawImage(pdfImage, { x: 74, y: 400, width: widthModelo, height: heightModelo });
 
@@ -225,12 +226,12 @@ async function createPDF() {
   );
   /*----CARGA DE IMAGENES Y DESCARGA DE PDF----*/
   drawText(page, "CONFIGURACION", 74, 350, 10, helveticaFont);
-  drawText(page, `ANCHO: ${ancho.textContent}`, 85, 330, 6, helveticaFont);
+  drawText(page, `Ancho: ${ancho.textContent}`, 85, 330, 6, helveticaFont);
   drawText(
     page,
-    `PROFUNDIDAD: ${profundidad.textContent}`,
-    85,
-    320,
+    `Profundidad: ${profundidad.textContent}`,
+    260,
+    290,
     6,
     helveticaFont
   );
@@ -246,12 +247,11 @@ async function createPDF() {
 
   const pdfPiezasImage = await pdfDoc.embedPng(imgPiezasData);
 
-  const scale = 0.5
-  const width = imagenesDiv.offsetWidth * scale;
+  const scale = 0.3;  const width = imagenesDiv.offsetWidth * scale;
   const height = imagenesDiv.offsetHeight * scale;
   console.log("Imagen piezas:", imgPiezasData);
 
-  page.drawImage(pdfPiezasImage, { x: 75, y: 210, width: width, height: height });
+  page.drawImage(pdfPiezasImage, { x: 75, y: 260, width: width, height: height });
 
   // Espera a que todas las imágenes se hayan cargado completamente
   function waitForImagesToLoad(container) {

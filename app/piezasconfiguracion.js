@@ -325,8 +325,8 @@ function mostrarImagenes() {
   Promise.all(promises).then(() => {
     imagenesDiv.style.height = `${alturaTotalPixels}px`;
     cotasDiv.innerHTML = `
-      <p id="ancho">ANCHO: ${totalMedida} cm</p>
-      <p class="profundidad" id="profundidad"> PROFUNDIDAD: ${cotaProfundidad} cm</p>
+      <p class="inter-resumen"  id="ancho">${totalMedida} cm</p>
+      <p class="profundidad inter-resumen" id="profundidad"> ${cotaProfundidad} cm</p>
     `;
 
     /*    const lineaAncho = document.getElementById("lineaAncho");

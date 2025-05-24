@@ -228,6 +228,8 @@ select {
   object-fit: fill;
 }
 .profundidad {
+  top: 80px;
+  left: 500%;
   position: relative;
 }
 #lineaProfundidad {
