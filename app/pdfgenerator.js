@@ -251,7 +251,7 @@ const heightModelo = modelosImg.offsetHeight * scaleFactor;
   const height = imagenesDiv.offsetHeight * scale;
   console.log("Imagen piezas:", imgPiezasData);
 
-  page.drawImage(pdfPiezasImage, { x: 75, y: 260, width: width, height: height });
+  page.drawImage(pdfPiezasImage, { x: 75, y: 265, width: width, height: height });
 
   // Espera a que todas las imágenes se hayan cargado completamente
   function waitForImagesToLoad(container) {
