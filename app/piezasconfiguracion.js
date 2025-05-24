@@ -331,16 +331,16 @@ function mostrarImagenes() {
       <p class="profundidad" id="profundidad"> ${cotaProfundidad} cm</p>
     `;
 
-    const lineaAncho = document.getElementById("lineaAncho");
+    /*    const lineaAncho = document.getElementById("lineaAncho");
     const lineaProfundidad = document.getElementById("lineaProfundidad");
 
-    // Ajustar posición y tamaño de las líneas
+    
     lineaAncho.style.width = `${totalMedida}px`;
     lineaAncho.style.bottom = "0";
     lineaAncho.style.left = "0";
 
     lineaProfundidad.style.height = `${cotaProfundidad}px`;
     lineaProfundidad.style.right = "0";
-    lineaProfundidad.style.top = "0";
+    lineaProfundidad.style.top = "0"; */
   });
 }

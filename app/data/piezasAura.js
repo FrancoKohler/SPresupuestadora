@@ -397,17 +397,6 @@ const piezasAura = [
     categoria: "CHAISE LONGUE",
     medidap: 165,
   },
-
-  {
-    id: "AURR108S",
-    title: "AURR108S Rincón cerrado (108 cm) *incluye 3 cojínes 45x45",
-    imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURR108S.png",
-    price: preciosAura.comunAURR108S,
-    medida: 108,
-    categoria: "RINCÓN",
-    medidap: 108,
-  },
   {
     id: "AURP60S",
     title: "AURP60S Pouff (60 cm)",
@@ -415,6 +404,16 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURP60S.png",
     price: preciosAura.comunAURP60S,
     medida: 60,
+    categoria: "RINCÓN",
+    medidap: 108,
+  },
+  {
+    id: "AURR108S",
+    title: "AURR108S Rincón cerrado (108 cm) *incluye 3 cojínes 45x45",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURR108S.png",
+    price: preciosAura.comunAURR108S,
+    medida: 108,
     categoria: "RINCÓN",
     medidap: 108,
   },
