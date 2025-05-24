@@ -78,7 +78,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROM100D,
     medida: 134,
     categoria: "MODULOS",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROM100I",
@@ -88,7 +88,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROM100D,
     medida: 134,
     categoria: "MODULOS",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROM80D",
@@ -98,7 +98,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROM80D,
     medida: 114,
     categoria: "MODULOS",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROM80I",
@@ -108,7 +108,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROM80D,
     medida: 114,
     categoria: "MODULOS",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROM100S",
@@ -118,7 +118,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROM100S,
     medida: 100,
     categoria: "MODULOS",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROM80S",
@@ -128,7 +128,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROM80S,
     medida: 80,
     categoria: "MODULOS",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROT100D",
@@ -138,7 +138,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROT100D,
     medida: 150,
     categoria: "TERMINAL",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROT100I",
@@ -148,7 +148,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROT100D,
     medida: 150,
     categoria: "TERMINAL",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROT80D",
@@ -158,7 +158,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROT80D,
     medida: 130,
     categoria: "TERMINAL",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROT80I",
@@ -168,7 +168,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROT80D,
     medida: 130,
     categoria: "TERMINAL",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROC100D",
@@ -178,7 +178,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROC100D,
     medida: 134,
     categoria: "CHAISE LONGUE",
-    medidap: 165,
+    medidap: 150,
   },
   {
     id: "PROC100I",
@@ -188,7 +188,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROC100D,
     medida: 134,
     categoria: "CHAISE LONGUE",
-    medidap: 165,
+    medidap: 150,
   },
   {
     id: "PROC80D",
@@ -198,7 +198,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROC80D,
     medida: 114,
     categoria: "CHAISE LONGUE",
-    medidap: 165,
+    medidap: 150,
   },
   {
     id: "PROC80I",
@@ -208,7 +208,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROC80D,
     medida: 114,
     categoria: "CHAISE LONGUE",
-    medidap: 165,
+    medidap: 150,
   },
   {
     id: "PROR105S",
@@ -218,7 +218,6 @@ const piezasLuna = [
     price: preciosLuna.comunPROR105S,
     medida: 105,
     categoria: "RINCÓN",
-    medidap: 108,
   },
   {
     id: "PROP60S",
@@ -228,6 +227,6 @@ const piezasLuna = [
     price: preciosLuna.comunPROP60S,
     medida: 60,
     categoria: "RINCÓN",
-    medidap: 108,
+    medidap: 105,
   },
 ];

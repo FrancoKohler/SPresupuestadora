@@ -29,12 +29,33 @@ function mostrarImagenes() {
   imagenesDiv.style.position = "relative";
   imagenesDiv.style.transform = "none";
   imagenesDiv.style.transformOrigin = "top-left";
+  if (!document.getElementById("lineaAncho")) {
+    const lineaAncho = document.createElement("div");
+    lineaAncho.id = "lineaAncho";
+    lineaAncho.style.position = "absolute";
+    lineaAncho.style.height = "1px";
+    lineaAncho.style.background = "black";
+    lineaAncho.style.top = "-10px";
+    lineaAncho.style.left = "0";
+    imagenesDiv.appendChild(lineaAncho);
+  }
 
+  if (!document.getElementById("lineaProfundidad")) {
+    const lineaProfundidad = document.createElement("div");
+    lineaProfundidad.id = "lineaProfundidad";
+    lineaProfundidad.style.position = "absolute";
+    lineaProfundidad.style.width = "1px";
+    lineaProfundidad.style.background = "black";
+    lineaProfundidad.style.top = "0";
+    lineaProfundidad.style.right = "0";
+    imagenesDiv.appendChild(lineaProfundidad);
+  }
   let currentX = 0;
   let currentY = 0;
   let rotateAfterYutra = false;
   let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
   let totalMedida = 0;
+  let cotaProfundidad = 0;
 
   const specialPieces = [
     "BIAR108S",
@@ -194,41 +215,39 @@ function mostrarImagenes() {
     "AURM80D",
     "AURM80I",
   ];
-
   const cotasDiv = document.getElementById("cotas");
   const promises = [];
 
   for (let i = 1; i <= 8; i++) {
     const piezaSelect = document.getElementById(`pieza${i}`);
     if (!piezaSelect || piezaSelect.selectedIndex <= 0) continue;
+
     const selectedOption = piezaSelect.options[piezaSelect.selectedIndex];
     const imageUrl = selectedOption.dataset.imageUrl;
     const piezaId = selectedOption.value;
+
     const width = 100;
     const height = 100;
     const heightChaise = 150;
     const widthTerminal = 150;
     const widthBrazo = 120;
     let finalWidthToApply = width;
+
     const isChaiseLongue = chaiseLongueIds.includes(piezaId);
     const isTerminal = terminalId.includes(piezaId);
     const isBrazo = brazoId.includes(piezaId);
 
     const finalHeight = isChaiseLongue ? heightChaise : height;
-
     const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
-
-    let sumarMedida = true;
-
+    const medida = piezaSeleccionada?.medida ?? 0;
+    const medidap = piezaSeleccionada?.medidap ?? 0;
     if (imageUrl && piezaId !== "None") {
       const imgElement = document.createElement("img");
 
-      if (isChaiseLongue) {
+      if (isChaiseLongue || isBrazo) {
         finalWidthToApply = widthBrazo;
       } else if (isTerminal) {
         finalWidthToApply = widthTerminal;
-      } else if (isBrazo) {
-        finalWidthToApply = widthBrazo;
       }
 
       imgElement.style.width = `${finalWidthToApply}px`;
@@ -238,11 +257,10 @@ function mostrarImagenes() {
 
       imgElement.style.position = "absolute";
       imgElement.classList.add("img-config");
-
-      imagenesDiv.appendChild(imgElement);
       imgElement.style.maxWidth = "none";
       imgElement.style.boxSizing = "border-box";
-      imgElement.style.border = "1px solid red";
+
+      imagenesDiv.appendChild(imgElement);
 
       const imageLoadPromise = new Promise((resolve) => {
         imgElement.onload = () => {
@@ -258,42 +276,71 @@ function mostrarImagenes() {
               imgElement.style.left = `${specialPiece.x}px`;
               imgElement.style.top = `${specialPiece.y}px`;
               imgElement.style.transformOrigin = "center";
+
               currentX = specialPiece.x + imgRect.width;
               currentY = specialPiece.y + imgRect.height;
-              rotateAfterYutra = true;
-            } else if (rotateAfterYutra) {
-              sumarMedida = false; // Desactiva la suma
 
+              totalMedida += medida;
+
+              rotateAfterYutra = true;
+              if (isChaiseLongue) {
+                cotaProfundidad = medidap;
+              } else {
+                cotaProfundidad += medidap;
+              }
+            } else if (rotateAfterYutra) {
               imgElement.style.transform = "rotate(90deg)";
               imgElement.style.left = `${specialPiece.x}px`;
               imgElement.style.top = `${specialPiece.y + specialPiece.width}px`;
 
               specialPiece.y += imgRect.width;
+
+              cotaProfundidad += medidap;
             } else {
+              // PIEZAS NORMALES (antes de rotar)
               imgElement.style.left = `${currentX}px`;
               imgElement.style.top = `${currentY}px`;
+
               currentX += imgRect.width;
+
+              totalMedida += medida;
+            }
+            if (isChaiseLongue) {
+              cotaProfundidad = medidap;
+            } else if (!rotateAfterYutra) {
+              cotaProfundidad = Math.max(cotaProfundidad, medidap);
+            } else {
+              cotaProfundidad += medidap;
+            }
+
+            if (specialPieces.includes(piezaId)) {
+              rotateAfterYutra = true;
             }
             resolve();
           }, 50);
         };
       });
+
       promises.push(imageLoadPromise);
     }
-
-    // Suma solo si `sumarMedida` es true
-    if (piezaSeleccionada && piezaSeleccionada.medida && sumarMedida) {
-      totalMedida += piezaSeleccionada.medida;
-    }
   }
-  cotasDiv.innerHTML = `<p>ANCHO: ${totalMedida} cm</p>`;
-}
 
-llenarSelects();
+  Promise.all(promises).then(() => {
+    cotasDiv.innerHTML = `
+      <p id="ancho">${totalMedida} cm</p>
+      <p class="profundidad" id="profundidad"> ${cotaProfundidad} cm</p>
+    `;
 
-for (let i = 1; i <= 8; i++) {
-  const select = document.getElementById(`pieza${i}`);
-  if (select) {
-    select.addEventListener("change", mostrarImagenes);
-  }
+    const lineaAncho = document.getElementById("lineaAncho");
+    const lineaProfundidad = document.getElementById("lineaProfundidad");
+
+    // Ajustar posición y tamaño de las líneas
+    lineaAncho.style.width = `${totalMedida}px`;
+    lineaAncho.style.bottom = "0";
+    lineaAncho.style.left = "0";
+
+    lineaProfundidad.style.height = `${cotaProfundidad}px`;
+    lineaProfundidad.style.right = "0";
+    lineaProfundidad.style.top = "0";
+  });
 }

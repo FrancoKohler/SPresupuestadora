@@ -198,7 +198,7 @@ select {
   padding-bottom: 2rem;
   padding-top: 2rem;
   width: 60%;
-  height: 350px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -209,22 +209,31 @@ select {
   display: block;
   align-items: center;
   width: 100%;
-  height: 400px;
+  height: 600px;
   margin: 10px 0;
   overflow: visible;
 }
+
 .img-config {
   object-fit: fill !important;
   max-width: none !important;
   max-height: none !important;
   display: block;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 0;
   border: none !important;
   outline: none !important;
   transform-origin: center;
   position: relative;
   object-fit: fill;
+}
+.profundidad {
+  position: absolute;
+  right: 20%;
+}
+#lineaProfundidad {
+  position: absolute;
+  left: 120%;
 }
 .div-configuracion-resumen {
   display: flex;

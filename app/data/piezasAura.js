@@ -125,7 +125,7 @@ const piezasAura = [
     price: preciosAura.comunAURM110D,
     medida: 136,
     categoria: "MODULOS",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "AURM110I",
@@ -135,7 +135,7 @@ const piezasAura = [
     price: preciosAura.comunAURM110D,
     medida: 136,
     categoria: "MODULOS",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "AURM100D",
@@ -145,7 +145,7 @@ const piezasAura = [
     price: preciosAura.comunAURM100D,
     medida: 126,
     categoria: "MODULOS",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "AURM100I",
@@ -155,7 +155,7 @@ const piezasAura = [
     price: preciosAura.comunAURM100D,
     medida: 126,
     categoria: "MODULOS",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "AURM90D",
@@ -165,7 +165,7 @@ const piezasAura = [
     price: preciosAura.comunAURM90D,
     medida: 116,
     categoria: "MODULOS",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "AURM90I",
@@ -175,7 +175,7 @@ const piezasAura = [
     price: preciosAura.comunAURM90D,
     medida: 116,
     categoria: "MODULOS",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "AURM80D",
@@ -185,7 +185,7 @@ const piezasAura = [
     price: preciosAura.comunAURM80D,
     medida: 106,
     categoria: "MODULOS",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "AURM80I",
@@ -195,7 +195,7 @@ const piezasAura = [
     price: preciosAura.comunAURM80D,
     medida: 106,
     categoria: "MODULOS",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "AURM110S",
@@ -205,7 +205,7 @@ const piezasAura = [
     price: preciosAura.comunAURM110S,
     medida: 110,
     categoria: "MODULOS",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "AURM100S",
@@ -215,7 +215,7 @@ const piezasAura = [
     price: preciosAura.comunAURM100S,
     medida: 100,
     categoria: "MODULOS",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "AURM90S",
@@ -225,7 +225,7 @@ const piezasAura = [
     price: preciosAura.comunAURM90S,
     medida: 90,
     categoria: "MODULOS",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "AURM80S",
@@ -235,7 +235,7 @@ const piezasAura = [
     price: preciosAura.comunAURM80S,
     medida: 80,
     categoria: "MODULOS",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "AURT110D",
@@ -245,7 +245,7 @@ const piezasAura = [
     price: preciosAura.comunAURT110D,
     medida: 160,
     categoria: "TERMINAL",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "AURT110I",
@@ -255,7 +255,7 @@ const piezasAura = [
     price: preciosAura.comunAURT110D,
     medida: 160,
     categoria: "TERMINAL",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "AURT100D",
@@ -265,7 +265,7 @@ const piezasAura = [
     price: preciosAura.comunAURT100D,
     medida: 150,
     categoria: "TERMINAL",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "AURT100I",
@@ -275,7 +275,7 @@ const piezasAura = [
     price: preciosAura.comunAURT100D,
     medida: 150,
     categoria: "TERMINAL",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "AURT90D",
@@ -285,7 +285,7 @@ const piezasAura = [
     price: preciosAura.comunAURT90D,
     medida: 140,
     categoria: "TERMINAL",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "AURT90I",
@@ -295,7 +295,7 @@ const piezasAura = [
     price: preciosAura.comunAURT90D,
     medida: 140,
     categoria: "TERMINAL",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "AURT80D",
@@ -305,7 +305,7 @@ const piezasAura = [
     price: preciosAura.comunAURT80D,
     medida: 130,
     categoria: "TERMINAL",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "AURT80I",
@@ -315,7 +315,7 @@ const piezasAura = [
     price: preciosAura.comunAURT80D,
     medida: 130,
     categoria: "TERMINAL",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "AURC110D",
@@ -325,7 +325,7 @@ const piezasAura = [
     price: preciosAura.comunAURC110D,
     medida: 136,
     categoria: "CHAISE LONGUE",
-    medidap: 110,
+    medidap: 165,
   },
   {
     id: "AURC110I",
@@ -335,7 +335,7 @@ const piezasAura = [
     price: preciosAura.comunAURC110D,
     medida: 136,
     categoria: "CHAISE LONGUE",
-    medidap: 110,
+    medidap: 165,
   },
   {
     id: "AURC100D",
@@ -345,7 +345,7 @@ const piezasAura = [
     price: preciosAura.comunAURC100D,
     medida: 126,
     categoria: "CHAISE LONGUE",
-    medidap: 100,
+    medidap: 165,
   },
   {
     id: "AURC100I",
@@ -355,7 +355,7 @@ const piezasAura = [
     price: preciosAura.comunAURC100D,
     medida: 126,
     categoria: "CHAISE LONGUE",
-    medidap: 100,
+    medidap: 165,
   },
   {
     id: "AURC90D",
@@ -365,7 +365,7 @@ const piezasAura = [
     price: preciosAura.comunAURC90D,
     medida: 116,
     categoria: "CHAISE LONGUE",
-    medidap: 90,
+    medidap: 165,
   },
   {
     id: "AURC90I",
@@ -375,7 +375,7 @@ const piezasAura = [
     price: preciosAura.comunAURC90D,
     medida: 116,
     categoria: "CHAISE LONGUE",
-    medidap: 90,
+    medidap: 165,
   },
   {
     id: "AURC80D",
@@ -385,7 +385,7 @@ const piezasAura = [
     price: preciosAura.comunAURC80D,
     medida: 106,
     categoria: "CHAISE LONGUE",
-    medidap: 80,
+    medidap: 165,
   },
   {
     id: "AURC80I",
@@ -395,8 +395,9 @@ const piezasAura = [
     price: preciosAura.comunAURC80D,
     medida: 106,
     categoria: "CHAISE LONGUE",
-    medidap: 80,
+    medidap: 165,
   },
+
   {
     id: "AURR108S",
     title: "AURR108S Rincón cerrado (108 cm) *incluye 3 cojínes 45x45",
@@ -415,6 +416,6 @@ const piezasAura = [
     price: preciosAura.comunAURP60S,
     medida: 60,
     categoria: "RINCÓN",
-    medidap: 60,
+    medidap: 108,
   },
 ];

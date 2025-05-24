@@ -355,7 +355,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT110D,
     medida: 160,
     categoria: "TERMINAL",
-    medidap: 0,
+    medidap: 108,
   },
   {
     id: "BIAT110I",
@@ -365,7 +365,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT110D,
     medida: 160,
     categoria: "TERMINAL",
-    medidap: 0,
+    medidap: 108,
   },
   {
     id: "BIAT100D",
@@ -375,7 +375,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT100D,
     medida: 150,
     categoria: "TERMINAL",
-    medidap: 0,
+    medidap: 108,
   },
   {
     id: "BIAT100I",
@@ -385,7 +385,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT100D,
     medida: 150,
     categoria: "TERMINAL",
-    medidap: 0,
+    medidap: 108,
   },
   {
     id: "BIAT90D",
@@ -395,7 +395,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT90D,
     medida: 140,
     categoria: "TERMINAL",
-    medidap: 0,
+    medidap: 108,
   },
   {
     id: "BIAT90I",
@@ -405,7 +405,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT90D,
     medida: 140,
     categoria: "TERMINAL",
-    medidap: 0,
+    medidap: 108,
   },
   {
     id: "BIAT80D",
@@ -415,7 +415,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT80D,
     medida: 130,
     categoria: "TERMINAL",
-    medidap: 0,
+    medidap: 108,
   },
   {
     id: "BIAT80I",
@@ -425,7 +425,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAT80D,
     medida: 130,
     categoria: "TERMINAL",
-    medidap: 0,
+    medidap: 108,
   },
   {
     id: "BIAC110D",
@@ -515,7 +515,6 @@ const piezasBianca = [
     price: preciosBianca.comunBIAR108S,
     medida: 108,
     categoria: "RINCÓN",
-    medidap: 108,
   },
   {
     id: "BIAP60S",

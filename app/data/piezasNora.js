@@ -148,9 +148,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM110D.png",
     price: preciosNora.comunNORM110D,
-    medida: 136,
+    medida: 134,
     categoria: "MODULOS",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "NORM110I",
@@ -158,9 +158,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM110I.png",
     price: preciosNora.comunNORM110D,
-    medida: 136,
+    medida: 134,
     categoria: "MODULOS",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "NORM100D",
@@ -168,9 +168,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM100D.png",
     price: preciosNora.comunNORM100D,
-    medida: 126,
+    medida: 124,
     categoria: "MODULOS",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "NORM100I",
@@ -178,9 +178,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM100I.png",
     price: preciosNora.comunNORM100D,
-    medida: 126,
+    medida: 124,
     categoria: "MODULOS",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "NORM90D",
@@ -188,9 +188,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM90D.png",
     price: preciosNora.comunNORM90D,
-    medida: 116,
+    medida: 114,
     categoria: "MODULOS",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "NORM90I",
@@ -198,9 +198,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM90I.png",
     price: preciosNora.comunNORM90D,
-    medida: 116,
+    medida: 114,
     categoria: "MODULOS",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "NORM80D",
@@ -208,9 +208,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM80D.png",
     price: preciosNora.comunNORM80D,
-    medida: 106,
+    medida: 104,
     categoria: "MODULOS",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "NORM80I",
@@ -218,9 +218,9 @@ const piezasNora = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORM80I.png",
     price: preciosNora.comunNORM80D,
-    medida: 106,
+    medida: 104,
     categoria: "MODULOS",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "NORM110S",
@@ -230,7 +230,7 @@ const piezasNora = [
     price: preciosNora.comunNORM110S,
     medida: 110,
     categoria: "MODULOS",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "NORM100S",
@@ -240,7 +240,7 @@ const piezasNora = [
     price: preciosNora.comunNORM100S,
     medida: 100,
     categoria: "MODULOS",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "NORM90S",
@@ -250,7 +250,7 @@ const piezasNora = [
     price: preciosNora.comunNORM90S,
     medida: 90,
     categoria: "MODULOS",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "NORM80S",
@@ -260,7 +260,7 @@ const piezasNora = [
     price: preciosNora.comunNORM80S,
     medida: 80,
     categoria: "MODULOS",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "NORM110DM",
@@ -270,7 +270,7 @@ const piezasNora = [
     price: preciosNora.comunNORM110DM,
     medida: 160,
     categoria: "MODULOS",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "NORM110IM",
@@ -280,7 +280,7 @@ const piezasNora = [
     price: preciosNora.comunNORM110DM,
     medida: 160,
     categoria: "MODULOS",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "NORM100DM",
@@ -290,7 +290,7 @@ const piezasNora = [
     price: preciosNora.comunNORM100DM,
     medida: 150,
     categoria: "MODULOS",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "NORM100IM",
@@ -300,7 +300,7 @@ const piezasNora = [
     price: preciosNora.comunNORM100DM,
     medida: 150,
     categoria: "MODULOS",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "NORM90DM",
@@ -310,7 +310,7 @@ const piezasNora = [
     price: preciosNora.comunNORM90DM,
     medida: 140,
     categoria: "MODULOS",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "NORM90IM",
@@ -320,7 +320,7 @@ const piezasNora = [
     price: preciosNora.comunNORM90DM,
     medida: 140,
     categoria: "MODULOS",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "NORM80DM",
@@ -330,7 +330,7 @@ const piezasNora = [
     price: preciosNora.comunNORM80DM,
     medida: 130,
     categoria: "MODULOS",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "NORM80IM",
@@ -340,7 +340,7 @@ const piezasNora = [
     price: preciosNora.comunNORM80DM,
     medida: 130,
     categoria: "MODULOS",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "NORT110D",
@@ -350,7 +350,7 @@ const piezasNora = [
     price: preciosNora.comunNORT110D,
     medida: 160,
     categoria: "TERMINAL",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "NORT110I",
@@ -360,7 +360,7 @@ const piezasNora = [
     price: preciosNora.comunNORT110D,
     medida: 160,
     categoria: "TERMINAL",
-    medidap: 110,
+    medidap: 108,
   },
   {
     id: "NORT100D",
@@ -370,7 +370,7 @@ const piezasNora = [
     price: preciosNora.comunNORT100D,
     medida: 150,
     categoria: "TERMINAL",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "NORT100I",
@@ -380,7 +380,7 @@ const piezasNora = [
     price: preciosNora.comunNORT100D,
     medida: 150,
     categoria: "TERMINAL",
-    medidap: 100,
+    medidap: 108,
   },
   {
     id: "NORT90D",
@@ -390,7 +390,7 @@ const piezasNora = [
     price: preciosNora.comunNORT90D,
     medida: 140,
     categoria: "TERMINAL",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "NORT90I",
@@ -400,7 +400,7 @@ const piezasNora = [
     price: preciosNora.comunNORT90D,
     medida: 140,
     categoria: "TERMINAL",
-    medidap: 90,
+    medidap: 108,
   },
   {
     id: "NORT80D",
@@ -410,7 +410,7 @@ const piezasNora = [
     price: preciosNora.comunNORT80D,
     medida: 130,
     categoria: "TERMINAL",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "NORT80I",
@@ -420,7 +420,7 @@ const piezasNora = [
     price: preciosNora.comunNORT80D,
     medida: 130,
     categoria: "TERMINAL",
-    medidap: 80,
+    medidap: 108,
   },
   {
     id: "NORC110D",
@@ -430,7 +430,7 @@ const piezasNora = [
     price: preciosNora.comunNORC110D,
     medida: 134,
     categoria: "CHAISE LONGUE",
-    medidap: 110,
+    medidap: 165,
   },
   {
     id: "NORC110I",
@@ -440,7 +440,7 @@ const piezasNora = [
     price: preciosNora.comunNORC110D,
     medida: 134,
     categoria: "CHAISE LONGUE",
-    medidap: 110,
+    medidap: 165,
   },
   {
     id: "NORC100D",
@@ -450,7 +450,7 @@ const piezasNora = [
     price: preciosNora.comunNORC100D,
     medida: 124,
     categoria: "CHAISE LONGUE",
-    medidap: 100,
+    medidap: 165,
   },
   {
     id: "NORC100I",
@@ -460,7 +460,7 @@ const piezasNora = [
     price: preciosNora.comunNORC100D,
     medida: 124,
     categoria: "CHAISE LONGUE",
-    medidap: 100,
+    medidap: 165,
   },
   {
     id: "NORC90D",
@@ -470,7 +470,7 @@ const piezasNora = [
     price: preciosNora.comunNORC90D,
     medida: 114,
     categoria: "CHAISE LONGUE",
-    medidap: 90,
+    medidap: 165,
   },
   {
     id: "NORC90I",
@@ -480,7 +480,7 @@ const piezasNora = [
     price: preciosNora.comunNORC90D,
     medida: 114,
     categoria: "CHAISE LONGUE",
-    medidap: 90,
+    medidap: 165,
   },
   {
     id: "NORC80D",
@@ -490,7 +490,7 @@ const piezasNora = [
     price: preciosNora.comunNORC80D,
     medida: 104,
     categoria: "CHAISE LONGUE",
-    medidap: 80,
+    medidap: 165,
   },
   {
     id: "NORC80I",
@@ -500,7 +500,7 @@ const piezasNora = [
     price: preciosNora.comunNORC80D,
     medida: 104,
     categoria: "CHAISE LONGUE",
-    medidap: 80,
+    medidap: 165,
   },
   {
     id: "NORR108S",
@@ -509,7 +509,6 @@ const piezasNora = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORR108S.png",
     price: preciosNora.comunNORR108S,
     categoria: "RINCÓN",
-    medidap: 108,
     medida: 108,
   },
   {
@@ -519,7 +518,7 @@ const piezasNora = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/NORP60S.png",
     price: preciosNora.comunNORP60S,
     categoria: "RINCÓN",
-    medidap: 60,
+    medidap: 108,
     medida: 60,
   },
 ];

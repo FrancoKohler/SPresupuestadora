@@ -41,6 +41,8 @@ async function createPDF() {
   const precioTotalElement = document.getElementById("precioTotal");
   const descuentoAplicadoElement = document.getElementById("descuentoAplicado");
   const precioTotalDescElement = document.getElementById("precioTotalDesc");
+  const lineaAncho = document.getElementById("lineaAncho");
+  const lineaProfundidad = document.getElementById("lineaProfundidad");
 
   const selectIds = [
     "pieza1",
