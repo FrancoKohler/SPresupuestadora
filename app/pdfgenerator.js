@@ -41,8 +41,8 @@ async function createPDF() {
   const precioTotalElement = document.getElementById("precioTotal");
   const descuentoAplicadoElement = document.getElementById("descuentoAplicado");
   const precioTotalDescElement = document.getElementById("precioTotalDesc");
-  const lineaAncho = document.getElementById("lineaAncho");
-  const lineaProfundidad = document.getElementById("lineaProfundidad");
+  const ancho = document.getElementById("ancho");
+  const profundidad = document.getElementById("profundidad");
 
   const selectIds = [
     "pieza1",
@@ -231,6 +231,8 @@ async function createPDF() {
   );
   /*----CARGA DE IMAGENES Y DESCARGA DE PDF----*/
   drawText(page, "CONFIGURACION", 74, 350, 10, helveticaFont);
+  drawText(page, `ANCHO:${ancho}`, 150, 280, 8, helveticaFont);
+  drawText(page, `PROFUNDIDAD:${profundidad}`, 150, 250, 8, helveticaFont);
 
   // Draw the image on the page
 

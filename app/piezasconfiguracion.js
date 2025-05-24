@@ -266,7 +266,7 @@ function mostrarImagenes() {
         imgElement.onload = () => {
           setTimeout(() => {
             const imgRect = imgElement.getBoundingClientRect();
-
+            let yaSumoProfundidad = false;
             if (specialPieces.includes(piezaId)) {
               specialPiece.x = currentX;
               specialPiece.y = currentY;
@@ -283,11 +283,6 @@ function mostrarImagenes() {
               totalMedida += medida;
 
               rotateAfterYutra = true;
-              if (isChaiseLongue) {
-                cotaProfundidad = medidap;
-              } else {
-                cotaProfundidad += medidap;
-              }
             } else if (rotateAfterYutra) {
               imgElement.style.transform = "rotate(90deg)";
               imgElement.style.left = `${specialPiece.x}px`;
@@ -295,7 +290,9 @@ function mostrarImagenes() {
 
               specialPiece.y += imgRect.width;
 
+              totalMedida += medida;
               cotaProfundidad += medidap;
+              yaSumoProfundidad = true;
             } else {
               // PIEZAS NORMALES (antes de rotar)
               imgElement.style.left = `${currentX}px`;
@@ -305,16 +302,14 @@ function mostrarImagenes() {
 
               totalMedida += medida;
             }
-            if (isChaiseLongue) {
-              cotaProfundidad = medidap;
-            } else if (!rotateAfterYutra) {
-              cotaProfundidad = Math.max(cotaProfundidad, medidap);
-            } else {
-              cotaProfundidad += medidap;
-            }
-
-            if (specialPieces.includes(piezaId)) {
-              rotateAfterYutra = true;
+            if (!yaSumoProfundidad) {
+              if (isChaiseLongue) {
+                cotaProfundidad = medidap;
+              } else if (!rotateAfterYutra) {
+                cotaProfundidad = Math.max(cotaProfundidad, medidap);
+              } else if (!specialPieces.includes(piezaId)) {
+                cotaProfundidad += medidap;
+              }
             }
             resolve();
           }, 50);
