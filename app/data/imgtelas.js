@@ -105,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
     Vera:   { "SERIE 2": ["Capri", "Osaka"], "SERIE 4": ["Club"] },
     Dafne:  { "SERIE 2": ["Capri"], "SERIE 3": ["Burberry", "Mystic"] },
   };
-
   const displayName = (cat) => (cat === "Lino" ? "LINO LINO" : cat.toUpperCase());
 
   // Normaliza "SERIE 02" → "SERIE 2"
