@@ -121,7 +121,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM110S.png",
     price: preciosVera.sinBrazo110,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 112,
     medida: 110,
   },
@@ -131,7 +131,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM100S.png",
     price: preciosVera.sinBrazo100,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 112,
     medida: 100,
   },
@@ -141,7 +141,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM90S.png",
     price: preciosVera.sinBrazo90,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 112,
     medida: 90,
   },
@@ -151,7 +151,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM80S.png",
     price: preciosVera.sinBrazo80,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 112,
     medida: 80,
   },
@@ -162,7 +162,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM110D.png",
     price: preciosVera.comunVERM110D,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 112,
     medida: 140,
   },
@@ -172,7 +172,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM110I.png",
     price: preciosVera.comunVERM110D,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 112,
     medida: 140,
   },
@@ -182,7 +182,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM100D.png",
     price: preciosVera.comunVERM100D,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 112,
     medida: 130,
   },
@@ -192,7 +192,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM100I.png",
     price: preciosVera.comunVERM100D,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 112,
     medida: 130,
   },
@@ -202,7 +202,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM90D.png",
     price: preciosVera.comunVERM90D,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 112,
     medida: 120,
   },
@@ -212,7 +212,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM90I.png",
     price: preciosVera.comunVERM90D,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 112,
     medida: 120,
   },
@@ -222,7 +222,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM80D.png",
     price: preciosVera.comunVERM80D,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 112,
     medida: 100,
   },
@@ -232,7 +232,7 @@ const piezasVera = [
     imageUrl:
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/VERM80I.png",
     price: preciosVera.comunVERM80D,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 112,
     medida: 110,
   },

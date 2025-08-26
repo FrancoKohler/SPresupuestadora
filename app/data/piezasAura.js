@@ -124,7 +124,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM110D.png",
     price: preciosAura.comunAURM110D,
     medida: 136,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -134,7 +134,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM110I.png",
     price: preciosAura.comunAURM110D,
     medida: 136,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -144,7 +144,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM100D.png",
     price: preciosAura.comunAURM100D,
     medida: 126,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -154,7 +154,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM100I.png",
     price: preciosAura.comunAURM100D,
     medida: 126,
-    categoria: "MODULOS",
+    categoria: "MODULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -164,7 +164,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM90D.png",
     price: preciosAura.comunAURM90D,
     medida: 116,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -174,7 +174,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM90I.png",
     price: preciosAura.comunAURM90D,
     medida: 116,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -184,7 +184,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM80D.png",
     price: preciosAura.comunAURM80D,
     medida: 106,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -194,7 +194,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM80I.png",
     price: preciosAura.comunAURM80D,
     medida: 106,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -204,7 +204,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM110S.png",
     price: preciosAura.comunAURM110S,
     medida: 110,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 108,
   },
   {
@@ -214,7 +214,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM100S.png",
     price: preciosAura.comunAURM100S,
     medida: 100,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 108,
   },
   {
@@ -224,7 +224,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM90S.png",
     price: preciosAura.comunAURM90S,
     medida: 90,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 108,
   },
   {
@@ -234,7 +234,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM80S.png",
     price: preciosAura.comunAURM80S,
     medida: 80,
-    categoria: "MODULOS",
+    categoria: "MODUMÓDULOS SIN BRAZOLOS",
     medidap: 108,
   },
   {

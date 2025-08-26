@@ -151,7 +151,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110D.png",
     price: preciosBianca.comunBIAM110D,
     medida: 134,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -161,7 +161,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110I.png",
     price: preciosBianca.comunBIAM110D,
     medida: 134,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -171,7 +171,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100D.png",
     price: preciosBianca.comunBIAM100D,
     medida: 124,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -181,7 +181,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100I.png",
     price: preciosBianca.comunBIAM100D,
     medida: 124,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -191,7 +191,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90D.png",
     price: preciosBianca.comunBIAM90D,
     medida: 114,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -201,7 +201,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90I.png",
     price: preciosBianca.comunBIAM90D,
     medida: 114,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -211,7 +211,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80D.png",
     price: preciosBianca.comunBIAM80D,
     medida: 104,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -221,7 +221,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80I.png",
     price: preciosBianca.comunBIAM80D,
     medida: 104,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -231,7 +231,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110S.png",
     price: preciosBianca.comunBIAM110S,
     medida: 110,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 108,
   },
   {
@@ -241,7 +241,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100S.png",
     price: preciosBianca.comunBIAM100S,
     medida: 100,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 108,
   },
   {
@@ -251,7 +251,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90S.png",
     price: preciosBianca.comunBIAM90S,
     medida: 90,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 108,
   },
   {
@@ -261,7 +261,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80S.png",
     price: preciosBianca.comunBIAM80S,
     medida: 80,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 108,
   },
   /*-------REPISAS------*/
@@ -272,7 +272,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110DM.png",
     price: preciosBianca.comunBIAM110DM,
     medida: 160,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -282,7 +282,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM110IM.png",
     price: preciosBianca.comunBIAM110DM,
     medida: 160,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -292,7 +292,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100DM.png",
     price: preciosBianca.comunBIAM100DM,
     medida: 150,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -302,7 +302,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM100DM.png",
     price: preciosBianca.comunBIAM100DM,
     medida: 150,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -312,7 +312,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90DM.png",
     price: preciosBianca.comunBIAM90DM,
     medida: 140,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -322,7 +322,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM90IM.png",
     price: preciosBianca.comunBIAM90DM,
     medida: 140,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -332,7 +332,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80DM.png",
     price: preciosBianca.comunBIAM80DM,
     medida: 140,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -342,7 +342,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/BIAM80IM.png",
     price: preciosBianca.comunBIAM80DM,
     medida: 140,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   /*-------Terminal------*/

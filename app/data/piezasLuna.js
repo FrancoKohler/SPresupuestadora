@@ -77,7 +77,7 @@ const piezasLuna = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM100D.png",
     price: preciosLuna.comunPROM100D,
     medida: 134,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 105,
   },
   {
@@ -87,7 +87,7 @@ const piezasLuna = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM100I.png",
     price: preciosLuna.comunPROM100D,
     medida: 134,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 105,
   },
   {
@@ -97,7 +97,7 @@ const piezasLuna = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM80D.png",
     price: preciosLuna.comunPROM80D,
     medida: 114,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 105,
   },
   {
@@ -107,7 +107,7 @@ const piezasLuna = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM80I.png",
     price: preciosLuna.comunPROM80D,
     medida: 114,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 105,
   },
   {
@@ -117,7 +117,7 @@ const piezasLuna = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM100S.png",
     price: preciosLuna.comunPROM100S,
     medida: 100,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 105,
   },
   {
@@ -127,7 +127,7 @@ const piezasLuna = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM80S.png",
     price: preciosLuna.comunPROM80S,
     medida: 80,
-    categoria: "MODULOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 105,
   },
   {
