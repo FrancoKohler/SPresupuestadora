@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
       newImg.src = modeloImg[modeloSeleccionado][0].img;
       newImg.alt = modeloSeleccionado;
       newImg.classList.add("referencia-img");
-      newImg.id = "imgReferenciaModelo";
       divReferencia.appendChild(newImg);
     }
   }

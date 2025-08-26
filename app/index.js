@@ -1,6 +1,8 @@
 /*---------------------DESCUENTO INPUT-----------------*/
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("descuento").addEventListener("input", generarResumen);
+  document
+    .getElementById("descuento")
+    .addEventListener("input", generarResumen);
 });
 /*---POPULATE QUE HACE POR PIEZA Y POR DROPDWON---*/
 function obtenerPiezasSeleccionadas() {
@@ -119,16 +121,18 @@ function generarResumen() {
     )}€</span></li>
      ${
        descuento > 0
-         ? `<li class="inter-resumen">Descuento aplicado: <span id="descuentoAplicado">${(
+         ? `<li>Descuento aplicado: <span id="descuentoAplicado">${(
              descuento * 100
            ).toFixed(0)}%</span></li>
-         <li class="inter-resumen">Precio Total con descuento: <span id="precioTotalDesc"> ${precioConDescuento.toFixed(
+         <li>Precio Total con descuento: <span id="precioTotalDesc"> ${precioConDescuento.toFixed(
            2
          )}€</span></li>`
          : ""
      }
   `;
 }
+
+generarResumen();
 
 /*----------------OVERLAY------------------*/
 const modal = document.getElementById("modal");

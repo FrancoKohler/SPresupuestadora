@@ -1,9 +1,9 @@
 /*-------------------SHOW MORE PIEZAS----------*/
 
-let nextIndexPiezas = 5;
+let nextIndexPiezas = 4;
 // Ocultar los selects adicionales al cargar la página
 function ocultarPiezas() {
-  for (let i = 5; i <= 8; i++) {
+  for (let i = 4; i <= 8; i++) {
     const dropdown = document.getElementById(`pieza${i}`);
     if (dropdown) {
       dropdown.classList.add("hidden"); // Asegurarse de que los selects adicionales están ocultos

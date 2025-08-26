@@ -20,6 +20,7 @@
   font-size: 12.5px;
   font-weight: 500;
 }
+
 .inter-soporte {
   font-family: "Inter", sans-serif;
   font-size: 12px;
@@ -84,16 +85,26 @@ p {
 .div-referencia {
   padding-top: 1rem;
 }
-
+.tela-div-h.hidden { display: none !important; }
+.tela-div-h.active { display: flex; }
 .referencia-img {
   margin-top: 1rem;
   border-radius: 1rem;
   width: 40%;
   height: auto;
 }
+.inner-telas{
+  height: 40px;
+  gap: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .img-tela {
-  padding-top: 1rem;
-  width: 25%;
+  padding-top: 50px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
 }
 .img-tela img {
   width: 10%;
@@ -197,21 +208,22 @@ select {
   align-items: center;
   padding-bottom: 2rem;
   padding-top: 2rem;
-  width: 100%;
-  height: auto;
+  width: 60%;
+  height: 550px;
   display: flex;
   flex-direction: column;
   margin: auto;
 }
 #imagenPiezas {
+  object-fit: contain;
   margin: auto;
   position: relative;
   display: block;
   align-items: center;
   width: 100%;
-  height: 120px;
+  height: 600px;
+  margin: 10px 0;
   overflow: visible;
-  /* No poner margin o padding que rompe a domtoimage */
 }
 
 .img-config {
@@ -228,9 +240,8 @@ select {
   object-fit: fill;
 }
 .profundidad {
-  top: 80px;
-  left: 500%;
-  position: relative;
+  position: absolute;
+  right: 20%;
 }
 #lineaProfundidad {
   position: absolute;
@@ -354,7 +365,6 @@ li {
 }
 .tela-div-h {
   padding-top: 2rem;
-  display: flex;
   flex-direction: column;
 }
 .telas-image {

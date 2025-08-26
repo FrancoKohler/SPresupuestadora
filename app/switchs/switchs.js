@@ -1,37 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const modeloSelect = document.getElementById("modelo");
-  const telaDropdown = document.getElementById("tela");
-  const categorySelect = document.getElementById("categorySelect");
-  const teladiv = document.getElementById("telaDiv");
+  const modeloSelect   = document.getElementById("modelo");
+  const telaDropdown   = document.getElementById("tela");          // SERIE (lo gestiona imgtelas.js)
+  const categorySelect = document.getElementById("categorySelect"); // Categoría (lo gestiona imgtelas.js)
 
+  // Colecciones de piezas por modelo (ya existen en tu proyecto)
   const coleccionPiezas = {
-    Aura: piezasAura,
+    Aura:   piezasAura,
     Bianca: piezasBianca,
-    Luna: piezasLuna,
-    Nora: piezasNora,
-    Vera: piezasVera,
+    Luna:   piezasLuna,
+    Nora:   piezasNora,
+    Vera:   piezasVera,
   };
 
-  const categoriasPorSerie = {
-    "SERIE 2": ["Capri"],
-    "SERIE 3": ["Burberry", "Barbados", "Mystic", "Lino"],
-    "SERIE 4": ["Club"],
-  };
-
-  function obtenerMateriales(piezas) {
-    const materiales = new Set();
-    piezas.forEach((pieza) => {
-      pieza.price?.forEach((precio) => {
-        materiales.add(precio.material);
-      });
-    });
-    return materiales;
-  }
-
+  // ---- UTILIDADES SOLO PARA PIEZAS ----
   function actualizarPiezasDropdown(piezas) {
     const categorias = [...new Set(piezas.map((p) => p.categoria))];
     for (let i = 1; i <= 8; i++) {
       const dropdown = document.getElementById(`pieza${i}`);
+      if (!dropdown) continue;
       dropdown.innerHTML = "";
       categorias.forEach((categoria) => {
         const optgroup = document.createElement("optgroup");
@@ -51,47 +37,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function actualizarTelaDropdown(materiales) {
-    telaDropdown.innerHTML = "";
-    materiales.forEach((material) => {
-      const option = document.createElement("option");
-      option.value = material;
-      option.textContent = material;
-      telaDropdown.appendChild(option);
-    });
-  }
-
-  function manejarCambioTela() {
-    const serieSeleccionada = telaDropdown.value;
-    teladiv.style.display = serieSeleccionada === "SERIE 5" ? "none" : "block";
-
-    categorySelect.innerHTML =
-      '<option value="">Selecciona una categoría</option>';
-    if (categoriasPorSerie[serieSeleccionada]) {
-      categoriasPorSerie[serieSeleccionada].forEach((cat) => {
-        const option = document.createElement("option");
-        option.value = cat;
-        option.textContent = cat.toUpperCase();
-        categorySelect.appendChild(option);
-      });
-    }
-  }
+  // **IMPORTANTE**: NO tocamos telas/series/categorías aquí.
+  // - NO poblar telaDropdown (SERIE) aquí.
+  // - NO escribir en categorySelect aquí.
+  // - NO cambiar estilos de bloques de tela aquí.
 
   function actualizarVistaModelo() {
     const modeloSeleccionado = modeloSelect.value;
     const piezas = coleccionPiezas[modeloSeleccionado] || [];
-    const materiales = obtenerMateriales(piezas);
 
+    // Actualizar SOLO piezas
     actualizarPiezasDropdown(piezas);
-    actualizarTelaDropdown(materiales);
 
-    mostrarImagenes();
-    generarResumen();
+    // Delegar SERIES/CATEGORÍAS/IMÁGENES a imgtelas.js:
+    // Disparar "change" en #modelo para que imgtelas.js rellene las series y
+    // aplique el mapa correcto (y muestre/oculte el bloque teladiv por clases).
+    const evt = new Event("change", { bubbles: true });
+    modeloSelect.dispatchEvent(evt);
+
+    // Si deseas, puedes llamar a tus otras funciones de visualización/resumen:
+    if (typeof mostrarImagenes === "function") mostrarImagenes();
+    if (typeof generarResumen === "function") generarResumen();
   }
 
-  // Eventos
+  // Eventos (SOLO modelo aquí)
   modeloSelect.addEventListener("change", actualizarVistaModelo);
-  telaDropdown.addEventListener("change", manejarCambioTela);
 
   // Inicialización
   actualizarVistaModelo();
