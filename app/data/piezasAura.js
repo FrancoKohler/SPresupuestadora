@@ -154,7 +154,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM100I.png",
     price: preciosAura.comunAURM100D,
     medida: 126,
-    categoria: "MODULOS CON BRAZO",
+    categoria: "MÓDULOS CON BRAZO",
     medidap: 108,
   },
   {
@@ -234,7 +234,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/AURM80S.png",
     price: preciosAura.comunAURM80S,
     medida: 80,
-    categoria: "MODUMÓDULOS SIN BRAZOLOS",
+    categoria: "MÓDULOS SIN BRAZO",
     medidap: 108,
   },
   {
