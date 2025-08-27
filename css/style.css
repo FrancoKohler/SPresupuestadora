@@ -96,6 +96,7 @@ p {
 .inner-telas{
   padding-top: 20px;
   height: 40px;
+  margin-bottom: 35px;
   gap: 5px;
   display: flex;
   flex-direction: row;
@@ -142,7 +143,10 @@ option,
 select {
   cursor: pointer;
 }
-
+section{
+  width: 100% !important;
+  max-width: 750px !important;
+}
 /*SECCION PIEZAS*/
 .pieza-seccion {
   display: flex;
@@ -546,4 +550,47 @@ li {
   width: 60%;
   flex-direction: column;
   text-align: left;
+}
+/*-------LINEAS COTAS-----*/
+#lineaAncho {
+  position: absolute;
+  height: 1px;
+  margin-top: -20px;
+  background: #000;
+  z-index: 5;
+  /* Transiciones suaves al reacomodar */
+  transition: width 0.25s ease, top 0.25s ease, left 0.25s ease;
+}#lineaProfundidad {
+  position: absolute;
+  width: 1px;
+  background: #000;
+  z-index: 5;
+  transition: height 0.25s ease, top 0.25s ease, left 0.25s ease;
+}
+
+/* Flechas */
+#lineaAncho::before, #lineaAncho::after,
+#lineaProfundidad::before, #lineaProfundidad::after {
+  content: "";
+  position: absolute;
+  width: 0; height: 0;
+  border: 6px solid transparent;
+}
+#lineaAncho::before { left: -2px; top: -5px; border-right-color: #000; }
+#lineaAncho::after  { right: -2px; top: -5px; border-left-color:  #000; }
+#lineaProfundidad::before { top: -2px; left: -5px; border-bottom-color: #000; }
+#lineaProfundidad::after  { bottom: -2px; left: -5px; border-top-color:    #000; }
+
+#ancho, #profundidad {
+  font-family: "Inter", sans-serif;
+  font-size: 18px !important;
+  font-weight: 600;
+  color: #000;
+  background: #fff;
+  border: none !important;
+  padding: 2px 6px;
+  border-radius: 6px;
+  z-index: 5;           /* bien arriba */
+  pointer-events: none; /* no bloquea clics */
+  white-space: nowrap;
 }
