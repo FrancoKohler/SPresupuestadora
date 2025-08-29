@@ -5,22 +5,39 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("input", generarResumen);
 });
 /*---POPULATE QUE HACE POR PIEZA Y POR DROPDWON---*/
+// Reemplaza:
 function obtenerPiezasSeleccionadas() {
-  const piezasSeleccionadas = [];
+  const piezas = [];
   for (let i = 1; i <= 8; i++) {
-    const piezaSelect = document.getElementById(`pieza${i}`);
-
-    if (piezaSelect.selectedIndex !== -1) {
-      const piezaSeleccionada = {
-        id: piezaSelect.value,
-        nombre: piezaSelect.options[piezaSelect.selectedIndex].text,
-      };
-      if (piezaSeleccionada.id !== "None") {
-        piezasSeleccionadas.push(piezaSeleccionada);
-      }
+    const select = document.getElementById(`pieza${i}`);
+    if (!select || select.selectedIndex === -1) continue;
+    const value = select.value;
+    const text = select.options[select.selectedIndex]?.text ?? '';
+    if (value !== "None") {
+      piezas.push({ id: value, nombre: text, slot: i });
     }
   }
-  return piezasSeleccionadas;
+  return piezas;
+}
+
+// Nuevo: devuelve array [slot1..slot8] con nulls donde no hay pieza
+function obtenerPiezasPorSlot() {
+  const arr = new Array(8).fill(null);
+  for (let i = 1; i <= 8; i++) {
+    const select = document.getElementById(`pieza${i}`);
+    if (!select || select.selectedIndex === -1) continue;
+    const value = select.value;
+    const text = select.options[select.selectedIndex]?.text ?? '';
+    if (value !== "None") {
+      arr[i - 1] = {
+        id: value,
+        nombre: text,
+        slot: i,
+        option: select.options[select.selectedIndex]
+      };
+    }
+  }
+  return arr;
 }
 
 /*--------------------PRECIOS DE LAS PEIZAS SEGUN MODELO------------*/

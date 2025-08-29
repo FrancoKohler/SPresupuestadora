@@ -1,6 +1,3 @@
-/* =========================================================
-   P I E Z A S   +   C O T A S   V I V A S  (drop-in total)
-   ========================================================= */
 
    const todasPiezas = [
     ...piezasAura.filter((p) => p.id !== "None"),
@@ -27,19 +24,12 @@
     }
   }
   
-  /* =========================
-     COTAS "VIVAS" – UTILIDAD
-     ========================= */
-  
+
   function ensureCotasElements(imagenesDiv) {
     let lineaAncho = imagenesDiv.querySelector("#lineaAncho");
     if (!lineaAncho) {
       lineaAncho = document.createElement("div");
       lineaAncho.id = "lineaAncho";
-      lineaAncho.style.position = "absolute";
-      lineaAncho.style.height = "1px";
-      lineaAncho.style.background = "#000";
-      lineaAncho.style.zIndex = "2";
       imagenesDiv.appendChild(lineaAncho);
     }
   
@@ -47,10 +37,6 @@
     if (!lineaProfundidad) {
       lineaProfundidad = document.createElement("div");
       lineaProfundidad.id = "lineaProfundidad";
-      lineaProfundidad.style.position = "absolute";
-      lineaProfundidad.style.width = "1px";
-      lineaProfundidad.style.background = "#000";
-      lineaProfundidad.style.zIndex = "2";
       imagenesDiv.appendChild(lineaProfundidad);
     }
   
@@ -58,17 +44,6 @@
     if (!etiquetaAncho) {
       etiquetaAncho = document.createElement("p");
       etiquetaAncho.id = "ancho";
-      etiquetaAncho.style.position = "absolute";
-      etiquetaAncho.style.fontFamily = "Inter, sans-serif";
-      etiquetaAncho.style.fontSize = "13px";
-      etiquetaAncho.style.fontWeight = "600";
-      etiquetaAncho.style.color = "#000";
-      etiquetaAncho.style.background = "#fff";
-      etiquetaAncho.style.padding = "2px 6px";
-      etiquetaAncho.style.borderRadius = "6px";
-      etiquetaAncho.style.whiteSpace = "nowrap";
-      etiquetaAncho.style.pointerEvents = "none";
-      etiquetaAncho.style.zIndex = "5";
       imagenesDiv.appendChild(etiquetaAncho);
     }
   
@@ -76,38 +51,40 @@
     if (!etiquetaProfundidad) {
       etiquetaProfundidad = document.createElement("p");
       etiquetaProfundidad.id = "profundidad";
-      etiquetaProfundidad.style.position = "absolute";
-      etiquetaProfundidad.style.fontFamily = "Inter, sans-serif";
-      etiquetaProfundidad.style.fontSize = "13px";
-      etiquetaProfundidad.style.fontWeight = "600";
-      etiquetaProfundidad.style.color = "#000";
-      etiquetaProfundidad.style.background = "#fff";
-      etiquetaProfundidad.style.padding = "2px 6px";
-      etiquetaProfundidad.style.borderRadius = "6px";
-      etiquetaProfundidad.style.whiteSpace = "nowrap";
-      etiquetaProfundidad.style.pointerEvents = "none";
-      etiquetaProfundidad.style.zIndex = "5";
       imagenesDiv.appendChild(etiquetaProfundidad);
     }
   
-    return { lineaAncho, lineaProfundidad, etiquetaAncho, etiquetaProfundidad };
+    let disclaimer = imagenesDiv.querySelector("#disclaimerConfig");
+    if (!disclaimer) {
+      disclaimer = document.createElement("div");
+      disclaimer.id = "disclaimerConfig";
+      disclaimer.textContent = "Seleccione piezas para ver la configuración";
+      imagenesDiv.appendChild(disclaimer);
+    }
+  
+    return { lineaAncho, lineaProfundidad, etiquetaAncho, etiquetaProfundidad, disclaimer };
   }
   
+ 
   function posicionarCotas(imagenesDiv, totalMedidaCm, profundidadCm) {
     const imgs = Array.from(imagenesDiv.querySelectorAll(".img-config"));
-    const contRect = imagenesDiv.getBoundingClientRect();
-  
-    const { lineaAncho, lineaProfundidad, etiquetaAncho, etiquetaProfundidad } =
+    const { lineaAncho, lineaProfundidad, etiquetaAncho, etiquetaProfundidad, disclaimer } =
       ensureCotasElements(imagenesDiv);
-  
+    const contRect = imagenesDiv.getBoundingClientRect();
     if (!imgs.length) {
-      lineaAncho.style.width = "0px";
-      lineaProfundidad.style.height = "0px";
-      etiquetaAncho.textContent = "";
-      etiquetaProfundidad.textContent = "";
+      lineaAncho.style.display = "none";
+      lineaProfundidad.style.display = "none";
+      etiquetaAncho.style.display = "none";
+      etiquetaProfundidad.style.display = "none";
+      disclaimer.style.display = "block";
       return;
     }
   
+    disclaimer.style.display = "none";
+    lineaAncho.style.display = "block";
+    lineaProfundidad.style.display = "block";
+    etiquetaAncho.style.display = "block";
+    etiquetaProfundidad.style.display = "block";
     // Bounding box relativo al contenedor
     let left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
     imgs.forEach(img => {
@@ -206,133 +183,122 @@
     ];
   
     const promises = [];
+
+  // 🔁 Tomamos las piezas exactamente en el orden de los selects (slot1..slot8)
+  const piezasPorSlot = obtenerPiezasPorSlot(); // devuelve [slot1..slot8] con null donde no hay pieza
+
+  piezasPorSlot.forEach((piezaSlot) => {
+    if (!piezaSlot) return;
   
-    for (let i = 1; i <= 8; i++) {
-      const piezaSelect = document.getElementById(`pieza${i}`);
-      if (!piezaSelect || piezaSelect.selectedIndex <= 0) continue;
+    const selectedOption = piezaSlot.option;
+    const imageUrl = selectedOption.dataset.imageUrl;
+    const piezaId = piezaSlot.id;
   
-      const selectedOption = piezaSelect.options[piezaSelect.selectedIndex];
-      const imageUrl = selectedOption.dataset.imageUrl;
-      const piezaId = selectedOption.value;
+    // tamaños base (los mismos que ya usas)
+    const width = 100;
+    const height = 100;
+    const heightChaise = 150;
+    const widthTerminal = 150;
+    const widthBrazo = 120;
   
-      const width = 100;
-      const height = 100;
-      const heightChaise = 150;
-      const widthTerminal = 150;
-      const widthBrazo = 120;
-      let finalWidthToApply = width;
+    let finalWidthToApply = width;
+    const isChaiseLongue = chaiseLongueIds.includes(piezaId);
+    const isTerminal = terminalId.includes(piezaId);
+    const isBrazo = brazoId.includes(piezaId);
   
-      const isChaiseLongue = chaiseLongueIds.includes(piezaId);
-      const isTerminal = terminalId.includes(piezaId);
-      const isBrazo = brazoId.includes(piezaId);
+    const finalHeight = isChaiseLongue ? heightChaise : height;
+    if (isChaiseLongue || isBrazo) finalWidthToApply = widthBrazo;
+    else if (isTerminal) finalWidthToApply = widthTerminal;
   
-      const finalHeight = isChaiseLongue ? heightChaise : height;
-      const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
-      const medida = piezaSeleccionada?.medida ?? 0;
-      const medidap = piezaSeleccionada?.medidap ?? 0;
+    const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
+    const medida = piezaSeleccionada?.medida ?? 0;
+    const medidap = piezaSeleccionada?.medidap ?? 0;
   
-      if (imageUrl && piezaId !== "None") {
-        const imgElement = document.createElement("img");
+    if (imageUrl && piezaId !== "None") {
+      const imgElement = document.createElement("img");
+      imgElement.src = imageUrl;
+      imgElement.alt = selectedOption.textContent;
+      imgElement.classList.add("img-config");
+      imgElement.style.position = "absolute";
+      imgElement.style.width = `${finalWidthToApply}px`;
+      imgElement.style.height = `${finalHeight}px`;
+      imgElement.style.maxWidth = "none";
+      imgElement.style.boxSizing = "border-box";
   
-        if (isChaiseLongue || isBrazo) {
-          finalWidthToApply = widthBrazo;
-        } else if (isTerminal) {
-          finalWidthToApply = widthTerminal;
+      // ⬇️ POSICIONAMIENTO DETERMINISTA (sin esperar a onload)
+      let yaSumoProfundidad = false;
+  
+      if (specialPieces.includes(piezaId)) {
+        // guarda las “medidas” del especial usando los px que ya definimos
+        specialPiece.x = currentX;
+        specialPiece.y = currentY;
+        specialPiece.width  = finalWidthToApply;
+        specialPiece.height = finalHeight;
+  
+        imgElement.style.left = `${specialPiece.x}px`;
+        imgElement.style.top  = `${specialPiece.y}px`;
+  
+        currentX = specialPiece.x + finalWidthToApply;
+        currentY = specialPiece.y + finalHeight;
+  
+        totalMedida += medida;
+        rotateAfterYutra = true;
+  
+      } else if (rotateAfterYutra) {
+        imgElement.style.transform = "rotate(90deg)";
+        imgElement.style.left = `${specialPiece.x}px`;
+        imgElement.style.top  = `${specialPiece.y + specialPiece.width}px`;
+  
+        // avanza “y” usando el ancho px ya conocido
+        specialPiece.y += finalWidthToApply;
+  
+        totalMedida += medida;
+        cotaProfundidad += medidap;
+        yaSumoProfundidad = true;
+  
+      } else {
+        // piezas normales en línea
+        imgElement.style.left = `${currentX}px`;
+        imgElement.style.top  = `${currentY}px`;
+  
+        currentX += finalWidthToApply;
+        totalMedida += medida;
+      }
+  
+      if (!yaSumoProfundidad) {
+        if (isChaiseLongue) {
+          cotaProfundidad = medidap;
+        } else if (!rotateAfterYutra) {
+          cotaProfundidad = Math.max(cotaProfundidad, medidap);
+        } else if (!specialPieces.includes(piezaId)) {
+          cotaProfundidad += medidap;
         }
-  
-        imgElement.style.width = `${finalWidthToApply}px`;
-        imgElement.style.height = `${finalHeight}px`;
-        imgElement.src = imageUrl;
-        imgElement.alt = selectedOption.textContent;
-  
-        imgElement.style.position = "absolute";
-        imgElement.classList.add("img-config");
-        imgElement.style.maxWidth = "none";
-        imgElement.style.boxSizing = "border-box";
-  
-        imagenesDiv.appendChild(imgElement);
-  
-        const imageLoadPromise = new Promise((resolve) => {
-          imgElement.onload = () => {
-            setTimeout(() => {
-              const imgRect = imgElement.getBoundingClientRect();
-              let yaSumoProfundidad = false;
-  
-              if (specialPieces.includes(piezaId)) {
-                specialPiece.x = currentX;
-                specialPiece.y = currentY;
-                specialPiece.width = imgRect.width;
-                specialPiece.height = imgRect.height;
-  
-                imgElement.style.left = `${specialPiece.x}px`;
-                imgElement.style.top = `${specialPiece.y}px`;
-                imgElement.style.transformOrigin = "center";
-  
-                currentX = specialPiece.x + imgRect.width;
-                currentY = specialPiece.y + imgRect.height;
-  
-                totalMedida += medida;
-                rotateAfterYutra = true;
-  
-              } else if (rotateAfterYutra) {
-                imgElement.style.transform = "rotate(90deg)";
-                imgElement.style.left = `${specialPiece.x}px`;
-                imgElement.style.top = `${specialPiece.y + specialPiece.width}px`;
-  
-                specialPiece.y += imgRect.width;
-  
-                totalMedida += medida;
-                cotaProfundidad += medidap;
-                yaSumoProfundidad = true;
-  
-              } else {
-                // PIEZAS NORMALES (antes de rotar)
-                imgElement.style.left = `${currentX}px`;
-                imgElement.style.top = `${currentY}px`;
-  
-                currentX += imgRect.width;
-                totalMedida += medida;
-              }
-  
-              if (!yaSumoProfundidad) {
-                if (isChaiseLongue) {
-                  cotaProfundidad = medidap;
-                } else if (!rotateAfterYutra) {
-                  cotaProfundidad = Math.max(cotaProfundidad, medidap);
-                } else if (!specialPieces.includes(piezaId)) {
-                  cotaProfundidad += medidap;
-                }
-              }
-  
-              resolve();
-            }, 50);
-          };
-        });
-  
-        promises.push(imageLoadPromise);
       }
+  
+      imagenesDiv.appendChild(imgElement);
+  
+      // onload solo para sincronizar el “fin”
+      promises.push(new Promise((resolve) => { imgElement.onload = resolve; }));
     }
+  });
   
-    Promise.all(promises).then(() => {
-      // Guarda últimos valores para recalcular en resize
-      window.__ULTIMO_TOTAL_MEDIDA_CM__ = totalMedida;
-      window.__ULTIMA_PROFUNDIDAD_CM__ = cotaProfundidad;
-  
-      // Reposicionar cotas (líneas + etiquetas) DENTRO de #imagenPiezas
-      posicionarCotas(imagenesDiv, totalMedida, cotaProfundidad);
-    });
+  Promise.all(promises).then(() => {
+    window.__ULTIMO_TOTAL_MEDIDA_CM__ = totalMedida;
+    window.__ULTIMA_PROFUNDIDAD_CM__ = cotaProfundidad;
+    posicionarCotas(imagenesDiv, totalMedida, cotaProfundidad);
+  });
+} 
+
+/* Reposicionar cotas en resize usando los últimos valores */
+(function attachResizeOnce(){
+if (window.__COTAS_RESIZE_ATTACHED__) return;
+window.__COTAS_RESIZE_ATTACHED__ = true;
+window.addEventListener("resize", () => {
+  const imagenesDiv = document.getElementById("imagenPiezas");
+  if (!imagenesDiv) return;
+  if (window.__ULTIMO_TOTAL_MEDIDA_CM__ != null && window.__ULTIMA_PROFUNDIDAD_CM__ != null) {
+    posicionarCotas(imagenesDiv, window.__ULTIMO_TOTAL_MEDIDA_CM__, window.__ULTIMA_PROFUNDIDAD_CM__);
   }
-  
-  /* Reposicionar cotas en resize usando los últimos valores */
-  (function attachResizeOnce(){
-    if (window.__COTAS_RESIZE_ATTACHED__) return;
-    window.__COTAS_RESIZE_ATTACHED__ = true;
-    window.addEventListener("resize", () => {
-      const imagenesDiv = document.getElementById("imagenPiezas");
-      if (!imagenesDiv) return;
-      if (window.__ULTIMO_TOTAL_MEDIDA_CM__ != null && window.__ULTIMA_PROFUNDIDAD_CM__ != null) {
-        posicionarCotas(imagenesDiv, window.__ULTIMO_TOTAL_MEDIDA_CM__, window.__ULTIMA_PROFUNDIDAD_CM__);
-      }
-    });
-  })();
+});
+})();
   
