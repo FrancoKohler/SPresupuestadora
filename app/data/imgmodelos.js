@@ -1,27 +1,27 @@
 const modeloImg = {
   Bianca: [
     {
-      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/BIANCA/IMAGEN_BIANCA.png",
+      img: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/IMAGEN_BIANCA.png",
     },
   ],
   Vera: [
     {
-      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/VERA/IMAGEN_VERA.png",
+      img: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/IMAGEN_VERA.png",
     },
   ],
   Luna: [
     {
-      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/IMAGEN_LUNA.png",
+      img: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/IMAGEN_LUNA.png",
     },
   ],
   Aura: [
     {
-      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/AURA/IMAGEN_AURA.png",
+      img: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/AURA/IMAGEN_AURA.png",
     },
   ],
   Nora: [
     {
-      img: "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/NORA/IMAGEN_NORA.png",
+      img: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/IMAGEN_NORA.png",
     },
   ],
 };

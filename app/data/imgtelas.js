@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const BASE_URL = "https://francokohler.github.io/SPresupuestadora/assets/TELAS/";
+  const BASE_URL = "https://francokohler.github.io/SPresupuestadoraImg/TELAS/";
 
   // --- DOM ---
   const modeloSelect = document.getElementById("modelo");

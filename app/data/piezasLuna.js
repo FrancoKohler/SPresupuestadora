@@ -74,7 +74,7 @@ const piezasLuna = [
     id: "PROM100D",
     title: "PROM100D Mód. 100 con brazo der. (134 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM100D.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROM100D.png",
     price: preciosLuna.comunPROM100D,
     medida: 134,
     categoria: "MÓDULOS CON BRAZO",
@@ -84,7 +84,7 @@ const piezasLuna = [
     id: "PROM100I",
     title: "PROM100I Mód. 100 con brazo izq. (134 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM100I.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROM100I.png",
     price: preciosLuna.comunPROM100D,
     medida: 134,
     categoria: "MÓDULOS CON BRAZO",
@@ -94,7 +94,7 @@ const piezasLuna = [
     id: "PROM80D",
     title: "PROM80D Mód. 80 con brazo der. (114 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM80D.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROM80D.png",
     price: preciosLuna.comunPROM80D,
     medida: 114,
     categoria: "MÓDULOS CON BRAZO",
@@ -104,7 +104,7 @@ const piezasLuna = [
     id: "PROM80I",
     title: "PROM80I Mód. 80 con brazo izq. (114 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM80I.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROM80I.png",
     price: preciosLuna.comunPROM80D,
     medida: 114,
     categoria: "MÓDULOS CON BRAZO",
@@ -114,7 +114,7 @@ const piezasLuna = [
     id: "PROM100S",
     title: "PROM100S Mód. 100 sin brazo (100 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM100S.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROM100S.png",
     price: preciosLuna.comunPROM100S,
     medida: 100,
     categoria: "MÓDULOS SIN BRAZO",
@@ -124,7 +124,7 @@ const piezasLuna = [
     id: "PROM80S",
     title: "PROM80S Mód. 80 sin brazo (80 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROM80S.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROM80S.png",
     price: preciosLuna.comunPROM80S,
     medida: 80,
     categoria: "MÓDULOS SIN BRAZO",
@@ -134,7 +134,7 @@ const piezasLuna = [
     id: "PROT100D",
     title: "PROT100D Terminal 100 der. (150 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROT100D.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROT100D.png",
     price: preciosLuna.comunPROT100D,
     medida: 150,
     categoria: "TERMINAL",
@@ -144,7 +144,7 @@ const piezasLuna = [
     id: "PROT100I",
     title: "PROT100I Terminal 100 izq. (150 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROT100I.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROT100I.png",
     price: preciosLuna.comunPROT100D,
     medida: 150,
     categoria: "TERMINAL",
@@ -154,7 +154,7 @@ const piezasLuna = [
     id: "PROT80D",
     title: "PROT80D Terminal 80 der. (130 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROT80D.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROT80D.png",
     price: preciosLuna.comunPROT80D,
     medida: 130,
     categoria: "TERMINAL",
@@ -164,7 +164,7 @@ const piezasLuna = [
     id: "PROT80I",
     title: "PROT80I Terminal 80 izq. (130 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROT80I.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROT80I.png",
     price: preciosLuna.comunPROT80D,
     medida: 130,
     categoria: "TERMINAL",
@@ -174,7 +174,7 @@ const piezasLuna = [
     id: "PROC100D",
     title: "PROC100D Chaise longue 100 der. (134 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROC100D.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROC100D.png",
     price: preciosLuna.comunPROC100D,
     medida: 134,
     categoria: "CHAISE LONGUE",
@@ -184,7 +184,7 @@ const piezasLuna = [
     id: "PROC100I",
     title: "PROC100I Chaise longue 100 izq. (134 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROC100I.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROC100I.png",
     price: preciosLuna.comunPROC100D,
     medida: 134,
     categoria: "CHAISE LONGUE",
@@ -194,7 +194,7 @@ const piezasLuna = [
     id: "PROC80D",
     title: "PROC80D Chaise longue 80 der. (114 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROC80D.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROC80D.png",
     price: preciosLuna.comunPROC80D,
     medida: 114,
     categoria: "CHAISE LONGUE",
@@ -204,7 +204,7 @@ const piezasLuna = [
     id: "PROC80I",
     title: "PROC80I Chaise longue 80 izq. (114 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROC80I.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROC80I.png",
     price: preciosLuna.comunPROC80D,
     medida: 114,
     categoria: "CHAISE LONGUE",
@@ -214,7 +214,7 @@ const piezasLuna = [
     id: "PROR105S",
     title: "PROR105S Rincón cerrado (105 cm) *incluye 3 cojínes 45x45",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROR105S.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROR105S.png",
     price: preciosLuna.comunPROR105S,
     medida: 105,
     categoria: "RINCÓN",
@@ -223,7 +223,7 @@ const piezasLuna = [
     id: "PROP60S",
     title: "PROP60S Pouff (60 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadora/assets/MODELOS/LUNA/PROP60S.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROP60S.png",
     price: preciosLuna.comunPROP60S,
     medida: 60,
     categoria: "RINCÓN",

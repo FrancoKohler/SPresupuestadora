@@ -19,6 +19,65 @@ function generateRandomReferenceNumber() {
 }
 
 const numeroReferencia = generateRandomReferenceNumber();
+async function wait(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+// Ensures images inside an element are fully loaded
+async function waitForImagesToLoad(container) {
+  if (!container) return;
+  const images = container.getElementsByTagName("img");
+  const promises = Array.from(images).map(
+    img =>
+      new Promise((resolve) => {
+        if (img.complete) return resolve();
+        img.onload = () => resolve();
+        img.onerror = () => resolve(); // don't block on errors
+      })
+  );
+  await Promise.all(promises);
+}
+
+// Capture an element as a PNG data URL (or null if not valid)
+async function capturePNG(selectorOrEl) {
+  const el = typeof selectorOrEl === "string"
+    ? document.querySelector(selectorOrEl)
+    : selectorOrEl;
+  if (!el) return null;
+
+  // Make sure it's visible for html2canvas
+  const prevDisplay = el.style.display;
+  el.style.display = "block";
+
+  await waitForImagesToLoad(el);
+  await wait(120); // allow layout/paint to settle
+
+  const canvas = await html2canvas(el, {
+    useCORS: true,
+    allowTaint: true,
+    scrollY: -window.scrollY,
+    scrollX: -window.scrollX,
+    backgroundColor: null
+  });
+
+  // Restore original display
+  el.style.display = prevDisplay;
+
+  const dataUrl = canvas.toDataURL("image/png");
+  if (!dataUrl || !dataUrl.startsWith("data:image/png")) return null;
+  return dataUrl;
+}
+
+// Safe embed that accepts only valid PNG data URLs
+async function embedPngSafe(pdfDoc, dataUrl) {
+  if (!dataUrl || !dataUrl.startsWith("data:image/png")) return null;
+  try {
+    return await pdfDoc.embedPng(dataUrl);
+  } catch (e) {
+    console.warn("embedPng failed:", e);
+    return null;
+  }
+}
 
 async function createPDF() {
   await new Promise((resolve) => setTimeout(resolve, 50));
@@ -41,8 +100,8 @@ async function createPDF() {
   const precioTotalElement = document.getElementById("precioTotal");
   const descuentoAplicadoElement = document.getElementById("descuentoAplicado");
   const precioTotalDescElement = document.getElementById("precioTotalDesc");
-  const ancho = document.getElementById("ancho");
-  const profundidad = document.getElementById("profundidad");
+/*   const ancho = document.getElementById("ancho");
+  const profundidad = document.getElementById("profundidad"); */
 
   const selectIds = [
     "pieza1",
@@ -141,21 +200,18 @@ async function createPDF() {
   /*--------------HTML CANVAS MODELO--------*/
   //TOMA DE IMG DEL HTML PARA IMPRESION EN EL PDF
   if (typeof html2canvas === "function") {
-    const modelosImg = document.getElementById("imgReferencia");
-
-    modelosImg.style.display = "none";
-    modelosImg.offsetHeight; //
-    modelosImg.style.display = "block";
-    const canvas = await html2canvas(modelosImg, {
-      useCORS: true,
-      scrollY: -window.scrollY,
-      scrollX: -window.scrollX,
-      allowTaint: true,
-    });
-    const imgData = canvas.toDataURL("image/png");
-    const pdfImage = await pdfDoc.embedPng(imgData);
-    page.drawImage(pdfImage, { x: 74, y: 400, width: 350, height: 100 });
+    const imgDataCfg = await capturePNG("#imagenPiezas");
+    const pdfImageCfg = await embedPngSafe(pdfDoc, imgDataCfg);
+    if (pdfImageCfg) {
+      const scale = 0.5;
+      const width = 170 * scale;
+      const height = 100 * scale;
+      page.drawImage(pdfImageCfg, { x: 85, y: 250, width, height });
+    } else {
+      console.warn("No valid PNG for #imagenPiezas (skipping).");
+    }
   }
+  
 
   /*------------LINEA MODELO--------------*/
   page.drawRectangle({
@@ -231,7 +287,7 @@ async function createPDF() {
   );
   /*----CARGA DE IMAGENES Y DESCARGA DE PDF----*/
   drawText(page, "CONFIGURACION", 74, 350, 10, helveticaFont);
-  drawText(page, `ANCHO: ${ancho.textContent}`, 85, 330, 6, helveticaFont);
+/*   drawText(page, `ANCHO: ${ancho.textContent}`, 85, 330, 6, helveticaFont);
   drawText(
     page,
     `PROFUNDIDAD: ${profundidad.textContent}`,
@@ -239,7 +295,7 @@ async function createPDF() {
     290,
     6,
     helveticaFont
-  );
+  ); */
 
   // Draw the image on the page
 
@@ -292,20 +348,15 @@ async function createPDF() {
   drawText(page, `Tela: ${telaNombre}`, 430, 295, 8, helveticaFont);
 
   if (typeof html2canvas === "function") {
-    const telaImg = document.getElementById("telaReferencia");
-
-    telaImg.style.display = "none";
-    telaImg.style.display = "block";
-    const canvas = await html2canvas(telaImg, {
-      useCORS: true,
-      scrollY: -window.scrollY,
-      scrollX: -window.scrollX,
-      allowTaint: true,
-    });
-    const imgData = canvas.toDataURL("image/png");
-    const pdfImage = await pdfDoc.embedPng(imgData);
-    page.drawImage(pdfImage, { x: 364, y: 280, width: 50, height: 50 });
+    const imgDataTela = await capturePNG("#telaReferencia");
+    const pdfImageTela = await embedPngSafe(pdfDoc, imgDataTela);
+    if (pdfImageTela) {
+      page.drawImage(pdfImageTela, { x: 364, y: 280, width: 50, height: 50 });
+    } else {
+      console.warn("No valid PNG for #telaReferencia (skipping).");
+    }
   }
+  
 
   /*-------------------------TARIFA-------------------------------*/
   drawText(page, "Tarifa", 52, 220, 15, helveticaFont);
