@@ -164,6 +164,7 @@ section{
   justify-content: center;
   margin: auto;
 }
+
 .pieza-seccion,
 .modelo-seccion,
 .contacto-seccion,
@@ -225,7 +226,7 @@ section{
   padding-bottom: 2rem;
   padding-top: 2rem;
   width: 60%;
-  height: 550px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -237,7 +238,7 @@ section{
   display: block;
   align-items: center;
   width: 100%;
-  height: 600px;
+  height: 400px;
   margin: 10px 0;
   overflow: visible;
 }
@@ -253,7 +254,6 @@ section{
   outline: none !important;
   transform-origin: center;
   position: relative;
-  object-fit: fill;
 }
 .profundidad {
   position: absolute;

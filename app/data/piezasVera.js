@@ -115,46 +115,6 @@ const piezasVera = [
     imageUrl: "..",
     categoria: "VERA",
   },
-  {
-    id: "VERM110S",
-    title: "VERM110S Mód. 110 sin brazo (110 cm)",
-    imageUrl:
-      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM110S.png",
-    price: preciosVera.sinBrazo110,
-    categoria: "MÓDULOS SIN BRAZO",
-    medidap: 112,
-    medida: 110,
-  },
-  {
-    id: "VERM100S",
-    title: "VERM100S Mód. 100 sin brazo (100 cm)",
-    imageUrl:
-      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM100S.png",
-    price: preciosVera.sinBrazo100,
-    categoria: "MÓDULOS SIN BRAZO",
-    medidap: 112,
-    medida: 100,
-  },
-  {
-    id: "VERM90S",
-    title: "VERM90S Mód. 90 sin brazo (90 cm)",
-    imageUrl:
-      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM90S.png",
-    price: preciosVera.sinBrazo90,
-    categoria: "MÓDULOS SIN BRAZO",
-    medidap: 112,
-    medida: 90,
-  },
-  {
-    id: "VERM80S",
-    title: "VERM80S Mód. 80 sin brazo (80 cm)",
-    imageUrl:
-      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM80S.png",
-    price: preciosVera.sinBrazo80,
-    categoria: "MÓDULOS SIN BRAZO",
-    medidap: 112,
-    medida: 80,
-  },
   // New pieces with arms added below
   {
     id: "VERM11OD",
@@ -237,6 +197,47 @@ const piezasVera = [
     medida: 110,
   },
   {
+    id: "VERM110S",
+    title: "VERM110S Mód. 110 sin brazo (110 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM110S.png",
+    price: preciosVera.sinBrazo110,
+    categoria: "MÓDULOS SIN BRAZO",
+    medidap: 112,
+    medida: 110,
+  },
+  {
+    id: "VERM100S",
+    title: "VERM100S Mód. 100 sin brazo (100 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM100S.png",
+    price: preciosVera.sinBrazo100,
+    categoria: "MÓDULOS SIN BRAZO",
+    medidap: 112,
+    medida: 100,
+  },
+  {
+    id: "VERM90S",
+    title: "VERM90S Mód. 90 sin brazo (90 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM90S.png",
+    price: preciosVera.sinBrazo90,
+    categoria: "MÓDULOS SIN BRAZO",
+    medidap: 112,
+    medida: 90,
+  },
+  {
+    id: "VERM80S",
+    title: "VERM80S Mód. 80 sin brazo (80 cm)",
+    imageUrl:
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM80S.png",
+    price: preciosVera.sinBrazo80,
+    categoria: "MÓDULOS SIN BRAZO",
+    medidap: 112,
+    medida: 80,
+  },
+  
+  {
     id: "VERT110D",
     title: "VERT110D Terminal 110 der. (160 cm)",
     imageUrl:
@@ -250,7 +251,7 @@ const piezasVera = [
     id: "VERT110I",
     title: "VERT110I Terminal 110 izq. (160 cm)",
     imageUrl:
-      "https://francokohler.github.io/SPresupuestadoraImgs/MODELOS/VERA/VERT110I.png",
+    "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT110I.png",
     price: preciosVera.terminal110,
     categoria: "TERMINALES",
     medidap: 112,
@@ -404,6 +405,7 @@ const piezasVera = [
     price: preciosVera.rincon,
     categoria: "RINCON",
     medida: 110,
+    medidap: 108,
   },
   {
     id: "VERP60S",

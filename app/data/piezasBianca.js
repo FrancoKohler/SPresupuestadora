@@ -272,7 +272,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM110DM.png",
     price: preciosBianca.comunBIAM110DM,
     medida: 160,
-    categoria: "MÓDULOS CON BRAZO",
+    categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
   {
@@ -282,7 +282,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM110IM.png",
     price: preciosBianca.comunBIAM110DM,
     medida: 160,
-    categoria: "MÓDULOS CON BRAZO",
+    categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
   {
@@ -292,7 +292,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM100DM.png",
     price: preciosBianca.comunBIAM100DM,
     medida: 150,
-    categoria: "MÓDULOS CON BRAZO",
+    categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
   {
@@ -302,7 +302,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM100DM.png",
     price: preciosBianca.comunBIAM100DM,
     medida: 150,
-    categoria: "MÓDULOS CON BRAZO",
+    categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
   {
@@ -312,7 +312,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM90DM.png",
     price: preciosBianca.comunBIAM90DM,
     medida: 140,
-    categoria: "MÓDULOS CON BRAZO",
+    categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
   {
@@ -322,7 +322,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM90IM.png",
     price: preciosBianca.comunBIAM90DM,
     medida: 140,
-    categoria: "MÓDULOS CON BRAZO",
+    categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
   {
@@ -332,7 +332,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM80DM.png",
     price: preciosBianca.comunBIAM80DM,
     medida: 140,
-    categoria: "MÓDULOS CON BRAZO",
+    categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
   {
@@ -342,7 +342,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM80IM.png",
     price: preciosBianca.comunBIAM80DM,
     medida: 140,
-    categoria: "MÓDULOS CON BRAZO",
+    categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
   /*-------Terminal------*/
@@ -515,6 +515,7 @@ const piezasBianca = [
     price: preciosBianca.comunBIAR108S,
     medida: 108,
     categoria: "RINCÓN",
+    medidap: 108,
   },
   {
     id: "BIAP60S",
@@ -523,7 +524,7 @@ const piezasBianca = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAP60S.png",
     price: preciosBianca.comunBIAP60S,
     medida: 60,
-    categoria: "RINCÓN",
+    categoria: "POUFF",
     medidap: 108,
   },
 ];

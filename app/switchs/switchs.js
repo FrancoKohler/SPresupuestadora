@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Luna: piezasLuna,
     Nora: piezasNora,
     Vera: piezasVera,
+    Dafne: piezasDafne,
   };
   function esIzquierda(p) {
     return /\bizq/i.test(p.title) || /\bizquierd/i.test(p.title) || /I$/i.test(p.id);

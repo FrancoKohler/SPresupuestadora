@@ -5,6 +5,7 @@
     ...piezasLuna.filter((p) => p.id !== "None"),
     ...piezasNora.filter((p) => p.id !== "None"),
     ...piezasVera.filter((p) => p.id !== "None"),
+    ...piezasDafne.filter((p) => p.id !== "None"),
   ];
   
   function llenarSelects() {
@@ -227,24 +228,27 @@
   
       // ⬇️ POSICIONAMIENTO DETERMINISTA (sin esperar a onload)
       let yaSumoProfundidad = false;
-  
       if (specialPieces.includes(piezaId)) {
-        // guarda las “medidas” del especial usando los px que ya definimos
+        // guarda las “medidas” del especial
         specialPiece.x = currentX;
         specialPiece.y = currentY;
         specialPiece.width  = finalWidthToApply;
         specialPiece.height = finalHeight;
-  
+      
         imgElement.style.left = `${specialPiece.x}px`;
         imgElement.style.top  = `${specialPiece.y}px`;
-  
+      
         currentX = specialPiece.x + finalWidthToApply;
         currentY = specialPiece.y + finalHeight;
-  
+      
         totalMedida += medida;
         rotateAfterYutra = true;
-  
-      } else if (rotateAfterYutra) {
+      
+        // ✅ AÑADIR ESTO: la pieza rincón debe aportar profundidad desde el inicio
+        cotaProfundidad = Math.max(cotaProfundidad, medidap || 0);
+        yaSumoProfundidad = true;  // evita que el bloque inferior la vuelva a tocar
+      }
+       else if (rotateAfterYutra) {
         imgElement.style.transform = "rotate(90deg)";
         imgElement.style.left = `${specialPiece.x}px`;
         imgElement.style.top  = `${specialPiece.y + specialPiece.width}px`;
@@ -289,7 +293,6 @@
   });
 } 
 
-/* Reposicionar cotas en resize usando los últimos valores */
 (function attachResizeOnce(){
 if (window.__COTAS_RESIZE_ATTACHED__) return;
 window.__COTAS_RESIZE_ATTACHED__ = true;

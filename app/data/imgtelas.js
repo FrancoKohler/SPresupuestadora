@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
       { img: "BURBERRY/BURBERRY04.svg", nombre: "BURBERRY04", id: "BURBERRY04" },
       { img: "BURBERRY/BURBERRY05.svg", nombre: "BURBERRY05", id: "BURBERRY05" },
       { img: "BURBERRY/BURBERRY06.svg", nombre: "BURBERRY06", id: "BURBERRY06" },
-      { img: "BURBERRY/BURBERRY07.svg", nombre: "BURBERRY07", id: "BURBERRY07" },
       { img: "BURBERRY/BURBERRY08.svg", nombre: "BURBERRY08", id: "BURBERRY08" },
       { img: "BURBERRY/BURBERRY09.svg", nombre: "BURBERRY09", id: "BURBERRY09" },
       { img: "BURBERRY/BURBERRY12.svg", nombre: "BURBERRY12", id: "BURBERRY12" },
@@ -93,7 +92,19 @@ document.addEventListener("DOMContentLoaded", function () {
       { img: "MYSTIC/MYSTIC559.svg", nombre: "MYSTIC559", id: "MYSTIC559" },
       { img: "MYSTIC/MYSTIC603.svg", nombre: "MYSTIC603", id: "MYSTIC603" },
     ],
-    // Osaka: [] // cuando subas muestras
+     Osaka : [
+      { img: "OSAKA/OSAKA01.svg", nombre: "OSAKA01", id: "OSAKA01" },
+      { img: "OSAKA/OSAKA03.svg", nombre: "OSAKA03", id: "OSAKA03" },
+      { img: "OSAKA/OSAKA04.svg", nombre: "OSAKA04", id: "OSAKA04" },
+      { img: "OSAKA/OSAKA05.svg", nombre: "OSAKA05", id: "OSAKA05" },
+      { img: "OSAKA/OSAKA06.svg", nombre: "OSAKA06", id: "OSAKA06" },
+      { img: "OSAKA/OSAKA07.svg", nombre: "OSAKA07", id: "OSAKA07" },
+      { img: "OSAKA/OSAKA08.svg", nombre: "OSAKA08", id: "OSAKA08" },
+      { img: "OSAKA/OSAKA09.svg", nombre: "OSAKA09", id: "OSAKA09" },
+      { img: "OSAKA/OSAKA10.svg", nombre: "OSAKA10", id: "OSAKA10" },
+      { img: "OSAKA/OSAKA17.svg", nombre: "OSAKA17", id: "OSAKA17" },
+    ]
+    
   };
 
   // --- MAPA Modelo → Serie → Categorías (respeta tu lista) ---

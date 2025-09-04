@@ -404,7 +404,7 @@ const piezasAura = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/AURA/AURP60S.png",
     price: preciosAura.comunAURP60S,
     medida: 60,
-    categoria: "RINCÓN",
+    categoria: "POUFF",
     medidap: 108,
   },
   {

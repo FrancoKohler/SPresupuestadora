@@ -48,6 +48,7 @@ function obtenerPrecioPorMaterial(idPieza, tela) {
     piezasLuna,
     piezasNora,
     piezasAura,
+    piezasDafne,
   ];
   let precioMaterial;
 

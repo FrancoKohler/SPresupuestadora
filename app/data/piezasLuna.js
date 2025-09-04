@@ -218,6 +218,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROR105S,
     medida: 105,
     categoria: "RINCÓN",
+    medidap: 108,
   },
   {
     id: "PROP60S",
@@ -226,7 +227,7 @@ const piezasLuna = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/LUNA/PROP60S.png",
     price: preciosLuna.comunPROP60S,
     medida: 60,
-    categoria: "RINCÓN",
+    categoria: "POUFF",
     medidap: 105,
   },
 ];
