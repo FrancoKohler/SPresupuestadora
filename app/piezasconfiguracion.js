@@ -203,13 +203,20 @@
     const widthBrazo = 120;
   
     let finalWidthToApply = width;
-    const isChaiseLongue = chaiseLongueIds.includes(piezaId);
-    const isTerminal = terminalId.includes(piezaId);
-    const isBrazo = brazoId.includes(piezaId);
-  
-    const finalHeight = isChaiseLongue ? heightChaise : height;
-    if (isChaiseLongue || isBrazo) finalWidthToApply = widthBrazo;
-    else if (isTerminal) finalWidthToApply = widthTerminal;
+const isChaiseLongue = chaiseLongueIds.includes(piezaId);
+const isTerminal = terminalId.includes(piezaId);
+const isBrazo = brazoId.includes(piezaId);
+
+// Ajustamos ancho en función de tipo
+const finalHeight = isChaiseLongue ? heightChaise : height;
+if (isChaiseLongue || isBrazo) finalWidthToApply = widthBrazo;
+else if (isTerminal) finalWidthToApply = widthTerminal;
+
+// 🔍 EXTRA: si el título contiene "REPISA", sumamos +25px
+if (selectedOption.textContent.toUpperCase().includes("REPISA")) {
+  finalWidthToApply += 35;
+}
+
   
     const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
     const medida = piezaSeleccionada?.medida ?? 0;

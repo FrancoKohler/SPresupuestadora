@@ -20,7 +20,6 @@ function obtenerPiezasSeleccionadas() {
   return piezas;
 }
 
-// Nuevo: devuelve array [slot1..slot8] con nulls donde no hay pieza
 function obtenerPiezasPorSlot() {
   const arr = new Array(8).fill(null);
   for (let i = 1; i <= 8; i++) {

@@ -133,6 +133,36 @@ const preciosBianca = {
     { material: "SERIE 4", precio: 439 },
     { material: "SERIE 5", precio: 473 },
   ],
+  comunBIAM80DMN: [
+    { material: "SERIE 2", precio: 1032 },
+    { material: "SERIE 3", precio: 1087 },
+    { material: "SERIE 4", precio: 1141 },
+    { material: "SERIE 5", precio: 1209 },
+  ],
+
+  // --- 90 cm con tapa madera natural ---
+  comunBIAM90DMN: [
+    { material: "SERIE 2", precio: 1075 },
+    { material: "SERIE 3", precio: 1132 },
+    { material: "SERIE 4", precio: 1189 },
+    { material: "SERIE 5", precio: 1261 },
+  ],
+
+  // --- 100 cm con tapa madera natural ---
+  comunBIAM100DMN: [
+    { material: "SERIE 2", precio: 1101 },
+    { material: "SERIE 3", precio: 1160 },
+    { material: "SERIE 4", precio: 1220 },
+    { material: "SERIE 5", precio: 1294 },
+  ],
+
+  // --- 110 cm con tapa madera natural ---
+  comunBIAM110DMN: [
+    { material: "SERIE 2", precio: 1212 },
+    { material: "SERIE 3", precio: 1204 },
+    { material: "SERIE 4", precio: 1267 },
+    { material: "SERIE 5", precio: 1345 },
+  ],
 };
 
 /*-------------------PIEZAS BIANCA--------------------*/
@@ -527,4 +557,84 @@ const piezasBianca = [
     categoria: "POUFF",
     medidap: 108,
   },
+  {
+    id: "BIAM80DMMN",
+    title: "BIAM80DMMN Mód. 80 con repisa der. + tapa madera natural (130 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM80DM.png",
+    price: preciosBianca.comunBIAM80DMN,
+    medida: 130,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "BIAM80IMMN",
+    title: "BIAM80IMMN Mód. 80 con repisa izq. + tapa madera natural (130 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM80IM.png",
+    price: preciosBianca.comunBIAM80DMN,
+    medida: 130,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+
+  // --- 90 cm ---
+  {
+    id: "BIAM90DMMN",
+    title: "BIAM90DMMN Mód. 90 con repisa der. + tapa madera natural (140 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM90DM.png",
+    price: preciosBianca.comunBIAM90DMN,
+    medida: 140,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "BIAM90IMMN",
+    title: "BIAM90IMMN Mód. 90 con repisa izq. + tapa madera natural (140 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM90IM.png",
+    price: preciosBianca.comunBIAM90DMN,
+    medida: 140,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+
+  // --- 100 cm ---
+  {
+    id: "BIAM100DMMN",
+    title: "BIAM100DMMN Mód. 100 con repisa der. + tapa madera natural (150 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM100DM.png",
+    price: preciosBianca.comunBIAM100DMN,
+    medida: 150,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "BIAM100IMMN",
+    title: "BIAM100IMMN Mód. 100 con repisa izq. + tapa madera natural (150 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM100IM.png",
+    price: preciosBianca.comunBIAM100DMN,
+    medida: 150,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+
+  // --- 110 cm ---
+  {
+    id: "BIAM110DMMN",
+    title: "BIAM110DMMN Mód. 110 con repisa der. + tapa madera natural (160 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM110DM.png",
+    price: preciosBianca.comunBIAM110DMN,
+    medida: 160,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "BIAM110IMMN",
+    title: "BIAM110IMMN Mód. 110 con repisa izq. + tapa madera natural (160 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM110IM.png",
+    price: preciosBianca.comunBIAM110DMN,
+    medida: 160,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+
+  
 ];

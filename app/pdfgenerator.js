@@ -119,7 +119,6 @@ async function createPDF() {
     ...piezasLuna,
     ...piezasNora,
     ...piezasVera,
-    ...piezasDafne,
   ];
 
   // Crear nuevo documento PDF
@@ -127,8 +126,11 @@ async function createPDF() {
   const pdfDoc = await PDFDocument.create();
   const page = pdfDoc.addPage([550, 750]);
 
-  // Cargar la fuente Helvetica
-  const helveticaFont = await pdfDoc.embedFont(StandardFonts.Inter);
+  const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+  
+  
+
   /*-------COLOR ------*/
   const color838383 = rgb(0.4, 0.4, 0.4);
   const colorLine = rgb(0.7, 0.7, 0.7);

@@ -1,5 +1,51 @@
-/---------------PRECIOS NORA----------------------/;
+
 const preciosNora = {
+  comunNORM80DMN: [
+    { material: "SERIE 2", precio: 991 },
+    { material: "SERIE 3", precio: 1045 },
+    { material: "SERIE 4", precio: 1100 },
+    { material: "SERIE 5", precio: 1168 },
+  ],
+
+  // --- 90 cm con repisa + tapa madera ---
+  comunNORM90DMN: [
+    { material: "SERIE 2", precio: 1032 },
+    { material: "SERIE 3", precio: 1089 },
+    { material: "SERIE 4", precio: 1146 },
+    { material: "SERIE 5", precio: 1218 },
+  ],
+
+  // --- 100 cm con repisa + tapa madera ---
+  comunNORM100DMN: [
+    { material: "SERIE 2", precio: 1054 },
+    { material: "SERIE 3", precio: 1113 },
+    { material: "SERIE 4", precio: 1173 },
+    { material: "SERIE 5", precio: 1247 },
+  ],
+
+  // --- 110 cm con repisa + tapa madera ---
+  comunNORM110DMN: [
+    { material: "SERIE 2", precio: 1092 },
+    { material: "SERIE 3", precio: 1154 },
+    { material: "SERIE 4", precio: 1217 },
+    { material: "SERIE 5", precio: 1295 },
+  ],
+
+  // --- Pouff + cajón madera natural/negro ---
+  comunNORP60SC: [
+    { material: "SERIE 2", precio: 630 },
+    { material: "SERIE 3", precio: 657 },
+    { material: "SERIE 4", precio: 684 },
+    { material: "SERIE 5", precio: 718 },
+  ],
+
+  // --- Pouff + tapa madera natural/negro ---
+  comunNORP60SM: [
+    { material: "SERIE 2", precio: 500 },
+    { material: "SERIE 3", precio: 527 },
+    { material: "SERIE 4", precio: 554 },
+    { material: "SERIE 5", precio: 588 },
+  ],
   comunNORM110D: [
     { material: "SERIE 2", precio: 884 },
     { material: "SERIE 3", precio: 951 },
@@ -343,6 +389,147 @@ const piezasNora = [
     medidap: 108,
   },
   {
+    id: "NORM80DMMNE",
+    title: "NORM80DMMNE MÓD. 80 CON REPISA DER. + TAPA MADERA NEGRA (130 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80DMMNE.png",
+    price: preciosNora.comunNORM80DMN,
+    medida: 130,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM80DMMN",
+    title: "NORM80DMMN Mód. 80 con repisa der. + tapa madera natural (130 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80DMMN.png",
+    price: preciosNora.comunNORM80DMN,
+    medida: 130,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM80IMMN",
+    title: "NORM80IMMN Mód. 80 con repisa izq. + tapa madera natural (130 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80IMMN.png",
+    price: preciosNora.comunNORM80DMN,
+    medida: 130,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM80IMMNE",
+    title: "NORM80IMMNE MÓD. 80 CON REPISA IZQ. + TAPA MADERA NEGRA (130 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80IMMNE.png",
+    price: preciosNora.comunNORM80DMN,
+    medida: 130,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+
+  // --- 90 cm ---
+  {
+    id: "NORM90DMMN",
+    title: "NORM90DMMN Mód. 90 con repisa der. + tapa madera natural (140 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90DMMN.png",
+    price: preciosNora.comunNORM90DMN,
+    medida: 140,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM90DMMNE",
+    title: "NORM90DMMNE MÓD. 90 CON REPISA DER. + TAPA MADERA NEGRA (140 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90DMMNE.png",
+    price: preciosNora.comunNORM90DMN,
+    medida: 140,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM90IMMN",
+    title: "NORM90IMMN Mód. 90 con repisa izq. + tapa madera natural (140 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90IMMN.png",
+    price: preciosNora.comunNORM90DMN,
+    medida: 140,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM90IMMNE",
+    title: "NORM90IMMNE MÓD. 90 CON REPISA IZQ. + TAPA MADERA NEGRA (140 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90IMMNE.png",
+    price: preciosNora.comunNORM90DMN,
+    medida: 140,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+
+  // --- 100 cm ---
+  {
+    id: "NORM100DMMNE",
+    title: "NORM100DMMNE MÓD. 100 CON REPISA DER. + TAPA MADERA NEGRA (150 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DMMNE.png",
+    price: preciosNora.comunNORM100DMN,
+    medida: 150,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM100DMMN",
+    title: "NORM100DMMN Mód. 100 con repisa der. + tapa madera natural (150 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DMMN.png",
+    price: preciosNora.comunNORM100DMN,
+    medida: 150,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM100IMMN",
+    title: "NORM100IMMN Mód. 100 con repisa izq. + tapa madera natural (150 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100IMMN.png",
+    price: preciosNora.comunNORM100DMN,
+    medida: 150,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+
+  // --- 110 cm ---
+  {
+    id: "NORM110DMMNE",
+    title: "NORM110DMMNE MÓD. 110 CON REPISA DER. + TAPA MADERA NEGRA (160 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110DMMNE.png",
+    price: preciosNora.comunNORM110DMN,
+    medida: 160,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM110DMMN",
+    title: "NORM110DMMN Mód. 110 con repisa der. + tapa madera natural (160 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110DMMN.png",
+    price: preciosNora.comunNORM110DMN,
+    medida: 160,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM110IMMNE",
+    title: "NORM110IMMNE MÓD. 110 CON REPISA IZQ. + TAPA MADERA NEGRA (160 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IMMNE.png",
+    price: preciosNora.comunNORM110DMN,
+    medida: 160,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM110IMMN",
+    title: "NORM110IMMN Mód. 110 con repisa izq. + tapa madera natural (160 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IMMN.png",
+    price: preciosNora.comunNORM110DMN,
+    medida: 160,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
     id: "NORT110D",
     title: "NORT110D Terminal 110 derecho (160 cm)",
     imageUrl:
@@ -521,5 +708,43 @@ const piezasNora = [
     categoria: "POUFF",
     medidap: 108,
     medida: 60,
+  },
+  {
+    id: "NORP60SCN",
+    title: "NORP60SCN Pouff + cajón madera natural (60 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60SCN.png",
+    price: preciosNora.comunNORP60SC,
+    medida: 60,
+    categoria: "POUFF",
+    medidap: 108,
+  },
+  {
+    id: "NORP60SCNE",
+    title: "NORP60SCNE Pouff + cajón madera negro (60 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60SCNE.png",
+    price: preciosNora.comunNORP60SC,
+    medida: 60,
+    categoria: "POUFF",
+    medidap: 108,
+  },
+
+  // --- Pouff tapa ---
+  {
+    id: "NORP60SMN",
+    title: "NORP60SMN Pouff + tapa madera natural (60 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60SMN.png",
+    price: preciosNora.comunNORP60SM,
+    medida: 60,
+    categoria: "POUFF",
+    medidap: 108,
+  },
+  {
+    id: "NORP60SMNE",
+    title: "NORP60SMNE Pouff + tapa madera negro (60 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60SMNE.png",
+    price: preciosNora.comunNORP60SM,
+    medida: 60,
+    categoria: "POUFF",
+    medidap: 108,
   },
 ];
