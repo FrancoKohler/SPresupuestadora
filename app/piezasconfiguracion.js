@@ -212,9 +212,12 @@ const finalHeight = isChaiseLongue ? heightChaise : height;
 if (isChaiseLongue || isBrazo) finalWidthToApply = widthBrazo;
 else if (isTerminal) finalWidthToApply = widthTerminal;
 
-// 🔍 EXTRA: si el título contiene "REPISA", sumamos +25px
-if (selectedOption.textContent.toUpperCase().includes("REPISA")) {
-  finalWidthToApply += 35;
+// 🔍 EXTRA: ajustar ancho según el título
+const piezaTitle = selectedOption.textContent.toUpperCase();
+if (piezaTitle.includes("REPISA")) {
+  finalWidthToApply += 25;
+} else if (piezaTitle.includes("POUFF")) {
+  finalWidthToApply -= 40;
 }
 
   

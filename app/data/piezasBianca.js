@@ -644,7 +644,7 @@ const piezasBianca = [
   },
   {
     id: "BIAM100DMMNE",
-    title: "BIAM100DMMNE Mód. 100 con repisa der. + tapa madera natural (150 cm)",
+    title: "BIAM100DMMNE Mód. 100 con repisa der. + tapa madera negra (150 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM100DMMNE.png",
     price: preciosBianca.comunBIAM100DMN,
     medida: 150,

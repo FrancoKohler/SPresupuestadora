@@ -388,15 +388,7 @@ const piezasNora = [
     categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
-  {
-    id: "NORM80DMMNE",
-    title: "NORM80DMMNE MÓD. 80 CON REPISA DER. + TAPA MADERA NEGRA (130 CM)",
-    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80DMMNE.png",
-    price: preciosNora.comunNORM80DMN,
-    medida: 130,
-    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
-    medidap: 108,
-  },
+ 
   {
     id: "NORM80DMMN",
     title: "NORM80DMMN Mód. 80 con repisa der. + tapa madera natural (130 cm)",
@@ -410,6 +402,15 @@ const piezasNora = [
     id: "NORM80IMMN",
     title: "NORM80IMMN Mód. 80 con repisa izq. + tapa madera natural (130 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80IMMN.png",
+    price: preciosNora.comunNORM80DMN,
+    medida: 130,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+  {
+    id: "NORM80DMMNE",
+    title: "NORM80DMMNE MÓD. 80 CON REPISA DER. + TAPA MADERA NEGRA (130 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80DMMNE.png",
     price: preciosNora.comunNORM80DMN,
     medida: 130,
     categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
@@ -464,19 +465,20 @@ const piezasNora = [
   },
 
   // --- 100 cm ---
+ 
   {
-    id: "NORM100DMMNE",
-    title: "NORM100DMMNE MÓD. 100 CON REPISA DER. + TAPA MADERA NEGRA (150 CM)",
-    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DMMNE.png",
+    id: "NORM100DMMN",
+    title: "NORM100DMMN Mód. 100 con repisa der. + tapa madera natural (150 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DMMN.png",
     price: preciosNora.comunNORM100DMN,
     medida: 150,
     categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
     medidap: 108,
   },
   {
-    id: "NORM100DMMN",
-    title: "NORM100DMMN Mód. 100 con repisa der. + tapa madera natural (150 cm)",
-    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DMMN.png",
+    id: "NORM100DMMNE",
+    title: "NORM100DMMNE MÓD. 100 CON REPISA DER. + TAPA MADERA NEGRA (150 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DMMNE.png",
     price: preciosNora.comunNORM100DMN,
     medida: 150,
     categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
@@ -491,17 +493,18 @@ const piezasNora = [
     categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
     medidap: 108,
   },
-
-  // --- 110 cm ---
   {
-    id: "NORM110DMMNE",
-    title: "NORM110DMMNE MÓD. 110 CON REPISA DER. + TAPA MADERA NEGRA (160 CM)",
-    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110DMMNE.png",
-    price: preciosNora.comunNORM110DMN,
-    medida: 160,
+    id: "NORM100IMMNE",
+    title: "NORM100IMMNE MÓD. 100 CON REPISA IZQ. + TAPA MADERA NEGRA (150 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100IMMNE.png",
+    price: preciosNora.comunNORM100DMN,
+    medida: 150,
     categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
     medidap: 108,
   },
+
+  // --- 110 cm ---
+
   {
     id: "NORM110DMMN",
     title: "NORM110DMMN Mód. 110 con repisa der. + tapa madera natural (160 cm)",
@@ -512,18 +515,28 @@ const piezasNora = [
     medidap: 108,
   },
   {
-    id: "NORM110IMMNE",
-    title: "NORM110IMMNE MÓD. 110 CON REPISA IZQ. + TAPA MADERA NEGRA (160 CM)",
-    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IMMNE.png",
+    id: "NORM110DMMNE",
+    title: "NORM110DMMNE MÓD. 110 CON REPISA DER. + TAPA MADERA NEGRA (160 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110DMMNE.png",
+    price: preciosNora.comunNORM110DMN,
+    medida: 160,
+    categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
+    medidap: 108,
+  },
+
+  {
+    id: "NORM110IMMN",
+    title: "NORM110IMMN Mód. 110 con repisa izq. + tapa madera natural (160 cm)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IMMN.png",
     price: preciosNora.comunNORM110DMN,
     medida: 160,
     categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",
     medidap: 108,
   },
   {
-    id: "NORM110IMMN",
-    title: "NORM110IMMN Mód. 110 con repisa izq. + tapa madera natural (160 cm)",
-    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IMMN.png",
+    id: "NORM110IMMNE",
+    title: "NORM110IMMNE MÓD. 110 CON REPISA IZQ. + TAPA MADERA NEGRA (160 CM)",
+    imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IMMNE.png",
     price: preciosNora.comunNORM110DMN,
     medida: 160,
     categoria: "MÓDULOS CON REPISA CON TAPA DE MADERA",

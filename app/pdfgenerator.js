@@ -127,6 +127,7 @@ async function createPDF() {
   const page = pdfDoc.addPage([550, 750]);
 
   const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  const helveticaBoldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
   
   
@@ -148,7 +149,7 @@ async function createPDF() {
     });
   }
 
-  drawText(page, "Presupuesto", 52, 720, 15, helveticaFont);
+  drawText(page, "PRESUPUESTO", 52, 720, 15, helveticaBoldFont);
   /*------------LINEA PRESUPUESTO--------------*/
   page.drawRectangle({
     x: 48,
@@ -199,7 +200,7 @@ async function createPDF() {
   drawText(page, `Email Empresa: ${emailEmpresa}`, 364, 610, 8, helveticaFont);
   /*---------MODELO Y CONFIGURACION-----------*/
 
-  drawText(page, `Modelo: ${modelo}`, 52, 530, 15, helveticaFont);
+  drawText(page, `MODELO: ${modelo}`, 52, 530, 15, helveticaFont);
   /*--------------HTML CANVAS MODELO--------*/
   //TOMA DE IMG DEL HTML PARA IMPRESION EN EL PDF
   if (typeof html2canvas === "function") {
@@ -225,7 +226,7 @@ async function createPDF() {
     borderColor: colorLine,
     borderWidth: 0.2,
   });
-  drawText(page, "REFERENCIA", 74, 500, 10, helveticaFont);
+  drawText(page, "REFERENCIA", 74, 500, 10, helveticaBoldFont);
 
   drawText(
     page,
@@ -238,7 +239,7 @@ async function createPDF() {
   );
   /*--------------------IMAGEN TELA MUESTRA---------------*/
 
-  drawText(page, "PRESUPUESTO", 364, 500, 10, helveticaFont);
+  drawText(page, "PRESUPUESTO", 364, 500, 10, helveticaBoldFont);
   /*Fecha Emision*/
   drawText(page, `Fecha Emisión: ${formattedDate}`, 364, 480, 8, helveticaFont);
   // Número de Referencia
@@ -248,7 +249,7 @@ async function createPDF() {
     364,
     460,
     8,
-    helveticaFont
+    helveticaBoldFont
   );
   /*Leyenda de presupuesto*/
   drawText(
@@ -289,7 +290,7 @@ async function createPDF() {
     color838383
   );
   /*----CARGA DE IMAGENES Y DESCARGA DE PDF----*/
-  drawText(page, "CONFIGURACION", 74, 350, 10, helveticaFont);
+  drawText(page, "CONFIGURACÓN", 74, 350, 10, helveticaBoldFont);
 /*   drawText(page, `ANCHO: ${ancho.textContent}`, 85, 330, 6, helveticaFont);
   drawText(
     page,
@@ -346,7 +347,7 @@ async function createPDF() {
   }
 
   /*----------------------TEJIDO-----------------------------------*/
-  drawText(page, "TEJIDO", 364, 350, 10, helveticaFont);
+  drawText(page, "TEJIDO", 364, 350, 10, helveticaBoldFont);
   drawText(page, `Articulo: ${tela}`, 430, 315, 8, helveticaFont);
   drawText(page, `Tela: ${telaNombre}`, 430, 295, 8, helveticaFont);
 
@@ -362,7 +363,7 @@ async function createPDF() {
   
 
   /*-------------------------TARIFA-------------------------------*/
-  drawText(page, "Tarifa", 52, 220, 15, helveticaFont);
+  drawText(page, "TARIFA", 52, 220, 15, helveticaBoldFont);
   /*------------LINEA TARIFA--------------*/
   page.drawRectangle({
     x: 48,
@@ -372,9 +373,9 @@ async function createPDF() {
     borderColor: colorLine,
     borderWidth: 0.2,
   });
-  drawText(page, "PIEZA", 76, 190, 8, helveticaFont);
+  drawText(page, "PIEZA", 76, 190, 8, helveticaBoldFont);
   /* drawText(page, "CANT.", 320, 190, 8, helveticaFont); */
-  drawText(page, "VALOR U.", 362, 190, 8, helveticaFont);
+  drawText(page, "VALOR U.", 362, 190, 8, helveticaBoldFont);
   /* drawText(page, "VALOR TOT.", 441, 190, 8, helveticaFont); */
 
   /*-----------------------ACLARACIONES PRECIOS-----------------*/
@@ -479,7 +480,7 @@ async function createPDF() {
   );
 
   /*------------RECUADRO PRECIOS TOTAL--------------*/
-  drawText(page, "TOTAL", 430, 67, 8, helveticaFont);
+  drawText(page, "TOTAL", 430, 67, 8, helveticaBoldFont);
   page.drawRectangle({
     x: 430,
     y: 50,
@@ -497,7 +498,7 @@ async function createPDF() {
     console.error("Elemento 'precioTotal' no encontrado");
   }
   /*------------RECUADRO PRECIOS DESCUENTO APLICADO--------------*/
-  drawText(page, "TOTAL C. DESC", 430, 40, 8, helveticaFont);
+  drawText(page, "TOTAL C. DESC", 430, 40, 8, helveticaBoldFont);
   page.drawRectangle({
     x: 430,
     y: 23,
@@ -515,7 +516,7 @@ async function createPDF() {
     console.error("Elemento 'precioTotalDesc' no encontrado");
   }
   /*------------RECUADRO PRECIOS CODIGO DESCUENTO-------------*/
-  drawText(page, "DESC", 350, 40, 8, helveticaFont);
+  drawText(page, "DESC", 350, 40, 8, helveticaBoldFont);
   page.drawRectangle({
     x: 350,
     y: 23,
