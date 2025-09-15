@@ -151,6 +151,8 @@
     let currentX = 0;
     let currentY = 0;
     let rotateAfterYutra = false;
+    let rotateHasHappened = false;
+    let rotationAnchor = null;
     let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
     let totalMedida = 0;
     let cotaProfundidad = 0;
@@ -238,56 +240,74 @@ if (piezaTitle.includes("REPISA")) {
   
       // ⬇️ POSICIONAMIENTO DETERMINISTA (sin esperar a onload)
       let yaSumoProfundidad = false;
-      if (specialPieces.includes(piezaId)) {
-        // guarda las “medidas” del especial
-        specialPiece.x = currentX;
-        specialPiece.y = currentY;
-        specialPiece.width  = finalWidthToApply;
-        specialPiece.height = finalHeight;
-      
-        imgElement.style.left = `${specialPiece.x}px`;
-        imgElement.style.top  = `${specialPiece.y}px`;
-      
-        currentX = specialPiece.x + finalWidthToApply;
-        currentY = specialPiece.y + finalHeight;
-      
-        totalMedida += medida;
-        rotateAfterYutra = true;
-      
-        // ✅ AÑADIR ESTO: la pieza rincón debe aportar profundidad desde el inicio
-        cotaProfundidad = Math.max(cotaProfundidad, medidap || 0);
-        yaSumoProfundidad = true;  // evita que el bloque inferior la vuelva a tocar
-      }
-       else if (rotateAfterYutra) {
-        imgElement.style.transform = "rotate(90deg)";
-        imgElement.style.left = `${specialPiece.x}px`;
-        imgElement.style.top  = `${specialPiece.y + specialPiece.width}px`;
-  
-        // avanza “y” usando el ancho px ya conocido
-        specialPiece.y += finalWidthToApply;
-  
-        totalMedida += medida;
-        cotaProfundidad += medidap;
-        yaSumoProfundidad = true;
-  
-      } else {
-        // piezas normales en línea
-        imgElement.style.left = `${currentX}px`;
-        imgElement.style.top  = `${currentY}px`;
-  
-        currentX += finalWidthToApply;
-        totalMedida += medida;
-      }
-  
-      if (!yaSumoProfundidad) {
-        if (isChaiseLongue) {
-          cotaProfundidad = medidap;
-        } else if (!rotateAfterYutra) {
-          cotaProfundidad = Math.max(cotaProfundidad, medidap);
-        } else if (!specialPieces.includes(piezaId)) {
-          cotaProfundidad += medidap;
-        }
-      }
+     
+
+// 🔔 ¿es pieza que dispara giro?
+const esTriggerGiro = specialPieces.includes(piezaId);
+
+if (esTriggerGiro && !rotateHasHappened) {
+  // ⏱️ Primer y ÚNICO giro
+  rotateHasHappened = true;
+  rotateAfterYutra = true;
+
+  // Fijamos ancla y medimos esta pieza (sí cuenta al ancho)
+  specialPiece.x = currentX;
+  specialPiece.y = currentY;
+  specialPiece.width  = finalWidthToApply;
+  specialPiece.height = finalHeight;
+
+  imgElement.style.left = `${specialPiece.x}px`;
+  imgElement.style.top  = `${specialPiece.y}px`;
+
+  // Avanza cursores “como antes” (esta pieza cierra el tramo de ancho)
+  currentX = specialPiece.x + finalWidthToApply;
+  currentY = specialPiece.y + finalHeight;
+
+  // ✅ Esta pieza SÍ suma ancho (última que lo hace)
+  totalMedida += medida;
+
+  // ✅ Aporta también profundidad base
+  cotaProfundidad = Math.max(cotaProfundidad, medidap || 0);
+  yaSumoProfundidad = true;
+
+} else if (rotateAfterYutra) {
+  // 📦 Piezas DESPUÉS del giro (apilan en profundidad)
+  imgElement.style.transform = "rotate(90deg)";
+
+  // Mantén el borde derecho fijo al ancho del rincón (ancla)
+  imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight}px`;
+  imgElement.style.top  = `${specialPiece.y + specialPiece.width}px`;
+
+  // Avanza el apilado vertical usando el ancho renderizado de la pieza
+  specialPiece.y += finalWidthToApply;
+
+  // ❌ No sumar más al ancho desde aquí
+  // totalMedida += medida;  // (intencionadamente NO)
+
+  // ✅ Solo profundidad
+  cotaProfundidad += medidap;
+  yaSumoProfundidad = true;
+
+} else {
+  // 🚗 Piezas ANTES del giro: flujo horizontal normal
+  imgElement.style.left = `${currentX}px`;
+  imgElement.style.top  = `${currentY}px`;
+
+  currentX += finalWidthToApply;
+  totalMedida += medida; // aquí sí aporta al ancho
+}
+
+// Ajuste de profundidad si aún no se trató arriba
+if (!yaSumoProfundidad) {
+  if (isChaiseLongue) {
+    cotaProfundidad = medidap;
+  } else if (!rotateAfterYutra) {
+    cotaProfundidad = Math.max(cotaProfundidad, medidap);
+  } else if (!esTriggerGiro) {
+    cotaProfundidad += medidap;
+  }
+}
+
   
       imagenesDiv.appendChild(imgElement);
   

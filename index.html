@@ -135,20 +135,78 @@
                 <div class="form-inputs">
                 <label for="pais" class="input-title inter-subtitulos">Pais*</label>
                 <select name="pais" id="pais" class="dropdown">
-                <option value="España">España</option>
-                <option value="Francia">Francia</option>
-                <option value="Italia">Italia</option>
-                <option value="Alemania">Alemania</option>
-                </select>
+                   
+                        <option style="font-weight: bold;" value="España">España</option>
+                
+                   
+                    <option value="Alemania">Alemania</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Bélgica">Bélgica</option>
+                    <option value="Bulgaria">Bulgaria</option>
+                    <option value="Chipre">Chipre</option>
+                    <option value="Croacia">Croacia</option>
+                    <option value="Dinamarca">Dinamarca</option>
+                    <option value="Eslovaquia">Eslovaquia</option>
+                    <option value="Eslovenia">Eslovenia</option>
+                    <option value="España">España</option>
+                    <option value="Estonia">Estonia</option>
+                    <option value="Finlandia">Finlandia</option>
+                    <option value="Francia">Francia</option>
+                    <option value="Grecia">Grecia</option>
+                    <option value="Hungría">Hungría</option>
+                    <option value="Irlanda">Irlanda</option>
+                    <option value="Italia">Italia</option>
+                    <option value="Letonia">Letonia</option>
+                    <option value="Lituania">Lituania</option>
+                    <option value="Luxemburgo">Luxemburgo</option>
+                    <option value="Malta">Malta</option>
+                    <option value="Países Bajos">Países Bajos</option>
+                    <option value="Polonia">Polonia</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="República Checa">República Checa</option>
+                    <option value="Rumanía">Rumanía</option>
+                    <option value="Suecia">Suecia</option>
+                  
+                    <option value="Noruega">Noruega</option>
+                    <option value="Suiza">Suiza</option>
+                    <option value="Reino Unido">Reino Unido</option>
+                    <option value="Islandia">Islandia</option>
+                    <option value="Liechtenstein">Liechtenstein</option>
+                  </select>
+                  
                 </div>
+                <div id="comunidades-wrapper" style=" display:flex; flex-direction:column; gap:8px;">
+                    <label for="comunidad" class="input-title inter-subtitulos">Comunidad Autónoma*</label>
+                    <select name="comunidad" id="comunidad" class="dropdown">
+                      <option value="Andalucía">Andalucía</option>
+                      <option value="Aragón">Aragón</option>
+                      <option value="Asturias">Asturias</option>
+                      <option value="Baleares">Islas Baleares</option>
+                      <option value="Canarias">Islas Canarias</option>
+                      <option value="Cantabria">Cantabria</option>
+                      <option value="Castilla y León">Castilla y León</option>
+                      <option value="Castilla-La Mancha">Castilla-La Mancha</option>
+                      <option value="Cataluña">Cataluña</option>
+                      <option value="Comunidad Valenciana">Comunidad Valenciana</option>
+                      <option value="Extremadura">Extremadura</option>
+                      <option value="Galicia">Galicia</option>
+                      <option value="Madrid">Madrid</option>
+                      <option value="Murcia">Murcia</option>
+                      <option value="Navarra">Navarra</option>
+                      <option value="País Vasco">País Vasco</option>
+                      <option value="La Rioja">La Rioja</option>
+                    </select>
+                  </div>
                 <!--CIUDAD SELECTOR-->
                 <div class="form-inputs">
                 <label for="ciudad" class="input-title inter-subtitulos">Ciudad*</label>
-                <select name="ciudad" id="ciudad" class="dropdown">
-                <option value="Valencia">Valencia</option>
-                <option value="Barcelona">Barcelona</option>
-                <option value="Madrid">Madrid</option>
-                <option value="Lisboa">Lisboa</option>
+                <input
+                class="top-input"
+                type="text"
+                id="ciudad"
+                name="phone"
+                required
+                />
                 </select>
                 </div>
                 <!--CODIGO POSTAL SELECTOR-->
@@ -184,8 +242,19 @@
                         required
                         />
                 </div>
-                <button class="btn-pdf" id="generateBtn">GENERAR PRESUPUESTO</button>
+              
     <!-- <p id="orderCode"></p> -->
+    <div class="end-seccion">  <div class="form-inputs ">
+        <h2 class="seccion-titulo"> Observaciones <br><span class="inter-subtitulos">Aclarar cualquier detalle adicional o especificación especial para este pedido.</span></h2>
+        <input
+        class="top-input"
+        type="text"
+        id="observaciones"
+        name="puerta"
+        placeholder="Por ejemplo: Fundas en AURA, medias especiales, detalles de vivienda..."
+        />
+    </div>
+    <button class="btn-pdf" id="generateBtn">GENERAR PRESUPUESTO</button></div>
               </div>
         </div>
     </div>
@@ -316,26 +385,30 @@
                     <canvas width=400 height=450>
                     </div>
                 </section>
-                <section id="seccionCojines">
-                    <h1 class="seccion-titulo "> Suplemento Cojines</h1>
-                    <div class="form-inputs">
-                <label for="cojin" class="input-title">Selecciona los cojines</label>
-                <select name="cojin" id="cojin1" class="dropdown">
-                <!--LLENO CON JS-->
-                </select>
-                <select name="cojin" id="cojin2" class="dropdown">
-                <!--LLENO CON JS-->
-                </select>
-                <select name="cojin" id="cojin3" class="dropdown">
-                <!--LLENO CON JS-->
-                </select>
-                <select name="cojin" id="cojin4" class="dropdown">
-                <!--LLENO CON JS-->
-                </select>
+           
+                <div id="seccionCojines">
+                    <a class="seccion-titulo inter-mid-titulos">Suplemento Cojines</a>
+                    <div class="cojines-div">
+                        <label class="input-title inter-subtitulos">Seleccione cantidad</label>
+                        <div class="inner-div-cj">
+                            <p class="p-cj" value="COJIN">Cojín Cuadrado 45x45 cms</p>
+                            <select name="Seleccione cantidades" id="cojines">
+                                <option value="0" class="cojinesopt">0</option>
+                                <option value="1" class="cojinesopt">1</option>
+                                <option value="2" class="cojinesopt">2</option>
+                                <option value="3" class="cojinesopt">3</option>
+                                <option value="4" class="cojinesopt">4</option>
+                                <option value="5" class="cojinesopt">5</option>
+                                <option value="6" class="cojinesopt">6</option>
+                                <option value="7" class="cojinesopt">7</option>
+                                <option value="8" class="cojinesopt">8</option>
+                              </select>
+                              
+                            
+                        </div>
+                    </div>
+                </div>
                 
-                <!-------BTN AGREGAR------->
-                <button id="showCojin" class="btn-agregar">Agregar más</button>
-            </div>
                 </section>
             
     </section>
