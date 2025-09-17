@@ -281,7 +281,7 @@ const piezasAura = [
     id: "AURT90D",
     title: "AURT90D Terminal 90 derecho (140 cm)",
     imageUrl:
-      "https://francokohler.github.io/MODELOS/AURA/AURT90D.png",
+      "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/AURA/AURT90D.png",
     price: preciosAura.comunAURT90D,
     medida: 140,
     categoria: "TERMINAL",

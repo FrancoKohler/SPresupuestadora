@@ -129,12 +129,21 @@ p {
   padding: 0.5rem 5px;
   cursor: pointer;
 }
+.ipts{
+  padding-bottom: 0px !important;
+  margin-bottom: 5px !important;
+}
 .input-title {
   color: #343434;
   padding-top: 1rem;
 }
 input {
   display: flex;
+}
+.paddingbt{
+  padding-bottom: 25px !important;
+  
+  border-bottom: #343434 1px solid !important;
 }
 .dropdown {
   padding-top: 1rem;
@@ -212,8 +221,8 @@ section{
 .end-seccion{
   width: 100% !important;
   max-width: 750px !important;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding-bottom: 25px;
+  padding-top: 25px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -417,6 +426,7 @@ button:hover,
   transition: 1s;
 }
 .btn-pdf {
+  margin-top: 25px !important;
   font-size: 14px;
   width: 250px;
   cursor: pointer;

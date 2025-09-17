@@ -318,7 +318,7 @@ if (esTriggerGiro && !rotateHasHappened) {
   // Update specialPiece.y for next iteration
   specialPiece.y += finalWidthToApply;
 
-  cotaProfundidad += medidap;
+  cotaProfundidad += medida;
   yaSumoProfundidad = true;
 } else {
   imgElement.style.left = `${currentX}px`;
@@ -331,9 +331,7 @@ if (esTriggerGiro && !rotateHasHappened) {
 
 // Ajuste de profundidad si aún no se trató arriba
 if (!yaSumoProfundidad) {
-  if (isChaiseLongue) {
-    cotaProfundidad = medidap;
-  } else if (!rotateAfterYutra) {
+    if (!rotateAfterYutra) {
     cotaProfundidad = Math.max(cotaProfundidad, medidap);
   } else if (!esTriggerGiro) {
     cotaProfundidad += medida;
