@@ -320,7 +320,7 @@ const piezasBianca = [
   },
   {
     id: "BIAM110IM",
-    title: "BIAM110IM Mód. 110 con repisa iza. (160 cm)",
+    title: "BIAM110IM Mód. 110 con repisa izq. (160 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/BIANCA/BIAM110IM.png",
     price: preciosBianca.comunBIAM110DM,
@@ -388,7 +388,7 @@ const piezasBianca = [
     categoria: "MÓDULOS CON REPISA",
     medidap: 108,
   },
-  /*-------Terminal------*/
+  /*-------REPISA TAPA------*/
   {
     id: "BIAM80DMMN",
     title: "BIAM80DMMN Mód. 80 con repisa der. + tapa madera natural (130 cm)",

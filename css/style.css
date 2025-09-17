@@ -309,7 +309,7 @@ section{
   border: none !important;
   outline: none !important;
   transform-origin: center;
-  position: relative;
+  position: absolute;
 }
 .profundidad {
   position: absolute;

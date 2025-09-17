@@ -132,9 +132,6 @@
     etiquetaProfundidad.style.margin = "0";
   }
   
-  /* ==========================================================
-     R E N D E R   D E   I M Á G E N E S   +   C O T A S
-     ========================================================== */
   
   function mostrarImagenes() {
     const imagenesDiv = document.getElementById("imagenPiezas");
@@ -184,7 +181,29 @@
       "BIAM110I","BIAM110D","BIAM110I","BIAM100D","BIAM100I","BIAM90D","BIAM90I","BIAM80D","BIAM80I",
       /*-----AURA BRAZO-----*/ "AURM110D","AURM110I","AURM100D","AURM100I","AURM90D","AURM90I","AURM80D","AURM80I",
     ];
+    const pouffId = [
+        /*----AURA POUFF---*/"AURP60S",
+         /*----NORA POUFF---*/"NORP60S",
+         /*---LUNA---*/"PROP60S",
+          /*---VERA--*/"VERP60S",
+
+          /*---BIANCA--*/"BIAP60S",
+    ];
+    const pouffTPId = [
+       /*----NORA POUFF---*/"NORP60SMNE","NORP60SCNE","NORP60SCN","NORP60SMN",
+       "NORP60SMNE",
+        /*---BIANCA--*/"BIAP60SCN","BIAP60SCNE","BIAP60SMN","BIAP60SMNE",
+  ];
   
+  const modTapa = [
+    /*----NORA POUFF---*/
+"NORM80DMMN","NORM80DMMNE","NORM80IMMN","NORM80IMMNE","NORM90DMMN","NORM90DMMNE","NORM90IMMN","NORM90IMMNE","NORM100DMMN","NORM100DMMNE","NORM100IMMN","NORM100IMMNE","NORM110DMMN","NORM110DMMNE","NORM110IMMN","NORM110IMMNE",
+
+     /*---BIANCA--*/
+    "BIAM80DMMN","BIAM80DMMNE","BIAM80IMMN","BIAM80IMMNE","BIAM90DMMN","BIAM90DMMNE","BIAM90IMMN","BIAM90IMMNE","BIAM100DMMN","BIAM100DMMNE","BIAM100IMMN","BIAM100IMMNE","BIAM110DMMN","BIAM110DMMNE","BIAM110IMMN","BIAM110IMMNE","BIAP60SCN","BIAP60SCNE","BIAP60SMN","BIAP60SMNE",
+
+];
+
     const promises = [];
 
   // 🔁 Tomamos las piezas exactamente en el orden de los selects (slot1..slot8)
@@ -205,22 +224,22 @@
     const widthBrazo = 120;
   
     let finalWidthToApply = width;
-const isChaiseLongue = chaiseLongueIds.includes(piezaId);
-const isTerminal = terminalId.includes(piezaId);
-const isBrazo = brazoId.includes(piezaId);
+    const isChaiseLongue = chaiseLongueIds.includes(piezaId);
+    const isTerminal = terminalId.includes(piezaId);
+    const isBrazo = brazoId.includes(piezaId);
 
-// Ajustamos ancho en función de tipo
-const finalHeight = isChaiseLongue ? heightChaise : height;
-if (isChaiseLongue || isBrazo) finalWidthToApply = widthBrazo;
-else if (isTerminal) finalWidthToApply = widthTerminal;
+    // Ajustamos ancho en función de tipo
+    const finalHeight = isChaiseLongue ? heightChaise : height;
+    if (isChaiseLongue || isBrazo) finalWidthToApply = widthBrazo;
+    else if (isTerminal) finalWidthToApply = widthTerminal;
 
-// 🔍 EXTRA: ajustar ancho según el título
-const piezaTitle = selectedOption.textContent.toUpperCase();
-if (piezaTitle.includes("REPISA")) {
-  finalWidthToApply += 25;
-} else if (piezaTitle.includes("POUFF")) {
-  finalWidthToApply -= 40;
-}
+    // 🔍 EXTRA: ajustar ancho según el título
+    const piezaTitle = selectedOption.textContent.toUpperCase();
+    if (piezaTitle.includes("REPISA")) {
+      finalWidthToApply += 25;
+    } else if (piezaTitle.includes("POUFF")) {
+      finalWidthToApply -= 40;
+    }
 
   
     const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
@@ -238,19 +257,13 @@ if (piezaTitle.includes("REPISA")) {
       imgElement.style.maxWidth = "none";
       imgElement.style.boxSizing = "border-box";
   
-      // ⬇️ POSICIONAMIENTO DETERMINISTA (sin esperar a onload)
       let yaSumoProfundidad = false;
-     
-
-// 🔔 ¿es pieza que dispara giro?
+    
 const esTriggerGiro = specialPieces.includes(piezaId);
-
+// Adjust rotation and add X translation for brazo pieces
 if (esTriggerGiro && !rotateHasHappened) {
-  // ⏱️ Primer y ÚNICO giro
   rotateHasHappened = true;
   rotateAfterYutra = true;
-
-  // Fijamos ancla y medimos esta pieza (sí cuenta al ancho)
   specialPiece.x = currentX;
   specialPiece.y = currentY;
   specialPiece.width  = finalWidthToApply;
@@ -259,43 +272,62 @@ if (esTriggerGiro && !rotateHasHappened) {
   imgElement.style.left = `${specialPiece.x}px`;
   imgElement.style.top  = `${specialPiece.y}px`;
 
-  // Avanza cursores “como antes” (esta pieza cierra el tramo de ancho)
   currentX = specialPiece.x + finalWidthToApply;
   currentY = specialPiece.y + finalHeight;
 
-  // ✅ Esta pieza SÍ suma ancho (última que lo hace)
   totalMedida += medida;
-
-  // ✅ Aporta también profundidad base
   cotaProfundidad = Math.max(cotaProfundidad, medidap || 0);
   yaSumoProfundidad = true;
-
 } else if (rotateAfterYutra) {
-  // 📦 Piezas DESPUÉS del giro (apilan en profundidad)
   imgElement.style.transform = "rotate(90deg)";
+  
+  if (brazoId.includes(piezaId)) {
+    // Apply 10px shift on the X-axis for brazo pieces
+    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 10}px`;
+    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 110}px`; 
+  } else if (terminalId.includes(piezaId)) {
+    // Apply 25px shift on the X-axis for terminal pieces
+    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 25}px`;
+    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 125}px`;
+  }
+  else if (chaiseLongueIds.includes(piezaId)) {
+    // Apply 25px shift on the X-axis for terminal pieces
+    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + 15}px`;
+    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 135}px`;
+  } 
+  else if (pouffId.includes(piezaId)) {
+    // Apply 25px shift on the X-axis for terminal pieces
+    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + 20}px`;
+    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 80}px`;
+  } 
+  else if (pouffTPId.includes(piezaId)) {
+    // Apply 25px shift on the X-axis for terminal pieces
+    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + 20}px`;
+    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 80}px`;
+  }
+  else if (modTapa.includes(piezaId)) {
+    // Apply 25px shift on the X-axis for terminal pieces
+    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 13}px`;
+    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 112}px`;
+  } else {
+    // Default positioning for other pieces
+    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight}px`;
+    imgElement.style.top  = `${specialPiece.y + specialPiece.width}px`;
+  }
 
-  // Mantén el borde derecho fijo al ancho del rincón (ancla)
-  imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight}px`;
-  imgElement.style.top  = `${specialPiece.y + specialPiece.width}px`;
-
-  // Avanza el apilado vertical usando el ancho renderizado de la pieza
+  // Update specialPiece.y for next iteration
   specialPiece.y += finalWidthToApply;
 
-  // ❌ No sumar más al ancho desde aquí
-  // totalMedida += medida;  // (intencionadamente NO)
-
-  // ✅ Solo profundidad
   cotaProfundidad += medidap;
   yaSumoProfundidad = true;
-
 } else {
-  // 🚗 Piezas ANTES del giro: flujo horizontal normal
   imgElement.style.left = `${currentX}px`;
   imgElement.style.top  = `${currentY}px`;
 
   currentX += finalWidthToApply;
-  totalMedida += medida; // aquí sí aporta al ancho
+  totalMedida += medida;
 }
+
 
 // Ajuste de profundidad si aún no se trató arriba
 if (!yaSumoProfundidad) {
@@ -304,7 +336,8 @@ if (!yaSumoProfundidad) {
   } else if (!rotateAfterYutra) {
     cotaProfundidad = Math.max(cotaProfundidad, medidap);
   } else if (!esTriggerGiro) {
-    cotaProfundidad += medidap;
+    cotaProfundidad += medida;
+   
   }
 }
 
