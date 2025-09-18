@@ -215,7 +215,6 @@ section{
   padding-bottom: 2rem;
   padding-top: 2rem;
   margin-bottom: 20px;
-  border-bottom: #343434 1px solid;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -235,7 +234,6 @@ section{
 
 .pieza-seccion,
 .modelo-seccion,
-.contacto-seccion,
 .tela-seccion {
   padding-bottom: 2rem;
   padding-top: 2rem;
