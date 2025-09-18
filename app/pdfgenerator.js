@@ -5,6 +5,7 @@ const currentDate = new Date();
 const formattedDate = `${currentDate.getDate()}/${
   currentDate.getMonth() + 1
 }/${currentDate.getFullYear()}`;
+
 /*--------GENERADOR DE CODIGO ALEATORIO--------*/
 function generateRandomReferenceNumber() {
   const characters =
@@ -19,56 +20,116 @@ function generateRandomReferenceNumber() {
 }
 
 const numeroReferencia = generateRandomReferenceNumber();
+
 async function wait(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
-// Ensures images inside an element are fully loaded
+// Función mejorada para esperar a que las imágenes se carguen completamente
 async function waitForImagesToLoad(container) {
   if (!container) return;
   const images = container.getElementsByTagName("img");
   const promises = Array.from(images).map(
     img =>
       new Promise((resolve) => {
-        if (img.complete) return resolve();
-        img.onload = () => resolve();
-        img.onerror = () => resolve(); // don't block on errors
+        if (img.complete && img.naturalHeight !== 0) {
+          resolve();
+        } else {
+          img.onload = () => resolve();
+          img.onerror = () => resolve(); // no bloquear en errores
+        }
       })
   );
   await Promise.all(promises);
 }
 
-// Capture an element as a PNG data URL (or null if not valid)
-async function capturePNG(selectorOrEl) {
+// Función mejorada para capturar elementos con dimensiones dinámicas
+async function capturePNG(selectorOrEl, options = {}) {
   const el = typeof selectorOrEl === "string"
     ? document.querySelector(selectorOrEl)
     : selectorOrEl;
   if (!el) return null;
 
-  // Make sure it's visible for html2canvas
-  const prevDisplay = el.style.display;
-  el.style.display = "block";
-
-  await waitForImagesToLoad(el);
-  await wait(120); // allow layout/paint to settle
-
-  const canvas = await html2canvas(el, {
+  // Configuraciones por defecto
+  const defaultOptions = {
+    scale: 2, // Mayor resolución
     useCORS: true,
     allowTaint: true,
+    backgroundColor: null,
     scrollY: -window.scrollY,
     scrollX: -window.scrollX,
-    backgroundColor: null
-  });
+    width: null, // Se calculará automáticamente
+    height: null, // Se calculará automáticamente
+    ...options
+  };
 
-  // Restore original display
-  el.style.display = prevDisplay;
+  // Hacer el elemento visible temporalmente
+  const prevStyles = {
+    display: el.style.display,
+    visibility: el.style.visibility,
+    opacity: el.style.opacity,
+    position: el.style.position,
+    left: el.style.left,
+    top: el.style.top
+  };
 
-  const dataUrl = canvas.toDataURL("image/png");
-  if (!dataUrl || !dataUrl.startsWith("data:image/png")) return null;
-  return dataUrl;
+  // Asegurar que el elemento sea visible
+  el.style.display = "block";
+  el.style.visibility = "visible";
+  el.style.opacity = "1";
+  
+  // Forzar un reflow para asegurar que las dimensiones se calculen correctamente
+  el.offsetHeight;
+  
+  await waitForImagesToLoad(el);
+  await wait(200); // Tiempo adicional para que se establezca el layout
+
+  try {
+    // Obtener las dimensiones reales del elemento
+    const rect = el.getBoundingClientRect();
+    const computedStyle = window.getComputedStyle(el);
+    
+    // Calcular dimensiones incluyendo padding y border si es necesario
+    const actualWidth = rect.width;
+    const actualHeight = rect.height;
+
+    // Configurar opciones de captura con dimensiones reales
+    const captureOptions = {
+      ...defaultOptions,
+      width: actualWidth > 0 ? actualWidth : undefined,
+      height: actualHeight > 0 ? actualHeight : undefined,
+    };
+
+    console.log(`Capturando elemento: ${selectorOrEl}`, {
+      width: actualWidth,
+      height: actualHeight,
+      rect
+    });
+
+    const canvas = await html2canvas(el, captureOptions);
+
+    // Restaurar estilos originales
+    Object.keys(prevStyles).forEach(key => {
+      el.style[key] = prevStyles[key];
+    });
+
+    const dataUrl = canvas.toDataURL("image/png");
+    if (!dataUrl || !dataUrl.startsWith("data:image/png")) return null;
+    return dataUrl;
+
+  } catch (error) {
+    console.error("Error capturando elemento:", error);
+    
+    // Restaurar estilos originales en caso de error
+    Object.keys(prevStyles).forEach(key => {
+      el.style[key] = prevStyles[key];
+    });
+    
+    return null;
+  }
 }
 
-// Safe embed that accepts only valid PNG data URLs
+// Función segura para embebido de PNG
 async function embedPngSafe(pdfDoc, dataUrl) {
   if (!dataUrl || !dataUrl.startsWith("data:image/png")) return null;
   try {
@@ -79,8 +140,48 @@ async function embedPngSafe(pdfDoc, dataUrl) {
   }
 }
 
+// Función para capturar y embeber imagen en PDF con dimensiones apropiadas
+async function captureAndEmbedImage(pdfDoc, page, selector, x, y, maxWidth, maxHeight) {
+  const imgData = await capturePNG(selector);
+  const pdfImage = await embedPngSafe(pdfDoc, imgData);
+  
+  if (pdfImage) {
+    const { width: imgWidth, height: imgHeight } = pdfImage;
+    
+    // Calcular escala manteniendo proporción
+    const scaleX = maxWidth / imgWidth;
+    const scaleY = maxHeight / imgHeight;
+    const scale = Math.min(scaleX, scaleY, 1); // No escalar hacia arriba
+    
+    const finalWidth = imgWidth * scale;
+    const finalHeight = imgHeight * scale;
+    
+    // Centrar la imagen en el área asignada si es más pequeña
+    const offsetX = (maxWidth - finalWidth) / 2;
+    const offsetY = (maxHeight - finalHeight) / 2;
+    
+    page.drawImage(pdfImage, {
+      x: x + offsetX,
+      y: y + offsetY,
+      width: finalWidth,
+      height: finalHeight
+    });
+    
+    console.log(`Imagen ${selector} embebida:`, {
+      originalSize: { width: imgWidth, height: imgHeight },
+      finalSize: { width: finalWidth, height: finalHeight },
+      scale
+    });
+    
+    return true;
+  }
+  return false;
+}
+
 async function createPDF() {
   await new Promise((resolve) => setTimeout(resolve, 50));
+  
+  // Obtener datos del formulario
   const modelo = document.getElementById("modelo").value;
   const nombreEmpresa = document.getElementById("nombreEmpresa").value;
   const cifEmpresa = document.getElementById("cifEmpresa").value;
@@ -100,25 +201,15 @@ async function createPDF() {
   const precioTotalElement = document.getElementById("precioTotal");
   const descuentoAplicadoElement = document.getElementById("descuentoAplicado");
   const precioTotalDescElement = document.getElementById("precioTotalDesc");
-/*   const ancho = document.getElementById("ancho");
-  const profundidad = document.getElementById("profundidad"); */
 
   const selectIds = [
-    "pieza1",
-    "pieza2",
-    "pieza3",
-    "pieza4",
-    "pieza5",
-    "pieza6",
-    "pieza7",
-    "pieza8",
+    "pieza1", "pieza2", "pieza3", "pieza4",
+    "pieza5", "pieza6", "pieza7", "pieza8",
   ];
+  
   const piezasSelect = [
-    ...piezasAura,
-    ...piezasBianca,
-    ...piezasLuna,
-    ...piezasNora,
-    ...piezasVera,
+    ...piezasAura, ...piezasBianca, ...piezasLuna,
+    ...piezasNora, ...piezasVera
   ];
 
   // Crear nuevo documento PDF
@@ -129,465 +220,347 @@ async function createPDF() {
   const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const helveticaBoldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-  
-  
-
-  /*-------COLOR ------*/
+  /*-------COLORES------*/
   const color838383 = rgb(0.4, 0.4, 0.4);
   const colorLine = rgb(0.7, 0.7, 0.7);
   const colorPrice = rgb(0.3, 0.3, 0.3);
 
-  /*----AÑADIR TEXTO AL PDF-----*/
-
+  /*----FUNCIÓN PARA AÑADIR TEXTO AL PDF-----*/
   function drawText(page, text, x, y, size, font, color) {
     page.drawText(text, {
-      x: x,
-      y: y,
-      size: size,
-      font: font,
-      color: color,
+      x: x, y: y, size: size, font: font, color: color,
     });
   }
 
+  // Header y líneas
   drawText(page, "PRESUPUESTO", 52, 720, 15, helveticaBoldFont);
-  /*------------LINEA PRESUPUESTO--------------*/
   page.drawRectangle({
-    x: 48,
-    y: 710,
-    width: 450,
-    height: 0.5,
-    borderColor: colorLine,
-    borderWidth: 0.2,
-  });
-
-  page.drawRectangle({
-    x: 430,
-    y: 23,
-    width: 60,
-    height: 15,
-    borderColor: rgb(0.7, 0.7, 0.7),
-    borderWidth: 0.2,
+    x: 48, y: 710, width: 450, height: 0.5,
+    borderColor: colorLine, borderWidth: 0.2,
   });
 
   /*-------------------INFO CLIENTE------------------- */
-  drawText(page, "INFORMACIÓN CLIENTE", 74, 690, 10, helveticaFont);
+  drawText(page, "INFORMACIÓN CLIENTE", 74, 690, 10, helveticaBoldFont);
   drawText(page, `Nombre: ${nombreCliente}`, 74, 670, 8, helveticaFont);
   drawText(page, `CIF Cliente: ${cifCliente}`, 74, 650, 8, helveticaFont);
   drawText(page, `País: ${pais}`, 74, 630, 8, helveticaFont);
-  drawText(
-    page,
-    `Direccion: ${calle},${puertaPiso},${ciudad},${codigoPostal}`,
-    74,
-    610,
-    8,
-    helveticaFont
-  );
+  drawText(page, `Direccion: ${calle},${puertaPiso},${ciudad},${codigoPostal}`, 74, 610, 8, helveticaFont);
   drawText(page, `Teléfono: ${telefonoCliente}`, 74, 590, 8, helveticaFont);
   drawText(page, `Email: ${emailCliente}`, 74, 570, 8, helveticaFont);
 
   // -------------------INFO EMPRESA-------------------
-  drawText(page, "INFORMACIÓN EMPRESA", 364, 690, 10, helveticaFont);
-  drawText(
-    page,
-    `Nombre Empresa: ${nombreEmpresa}`,
-    364,
-    670,
-    8,
-    helveticaFont
-  );
+  drawText(page, "INFORMACIÓN EMPRESA", 364, 690, 10, helveticaBoldFont);
+  drawText(page, `Nombre Empresa: ${nombreEmpresa}`, 364, 670, 8, helveticaFont);
   drawText(page, `Teléfono: ${telefonoEmpresa}`, 364, 650, 8, helveticaFont);
   drawText(page, `CIF Empresa: ${cifEmpresa}`, 364, 630, 8, helveticaFont);
   drawText(page, `Email Empresa: ${emailEmpresa}`, 364, 610, 8, helveticaFont);
+
   /*---------MODELO Y CONFIGURACION-----------*/
-
-  drawText(page, `MODELO: ${modelo}`, 52, 530, 15, helveticaFont);
-  /*--------------HTML CANVAS MODELO--------*/
-  //TOMA DE IMG DEL HTML PARA IMPRESION EN EL PDF
-  if (typeof html2canvas === "function") {
-    const imgDataCfg = await capturePNG("#imagenPiezas");
-    const pdfImageCfg = await embedPngSafe(pdfDoc, imgDataCfg);
-    if (pdfImageCfg) {
-      const scale = 0.5;
-      const width = 170 * scale;
-      const height = 100 * scale;
-      page.drawImage(pdfImageCfg, { x: 85, y: 250, width, height });
-    } else {
-      console.warn("No valid PNG for #imagenPiezas (skipping).");
-    }
-  }
+  drawText(page, `MODELO: ${modelo}`, 52, 530, 15, helveticaBoldFont);
   
-
   /*------------LINEA MODELO--------------*/
   page.drawRectangle({
-    x: 48,
-    y: 520,
-    width: 450,
-    height: 0.5,
-    borderColor: colorLine,
-    borderWidth: 0.2,
+    x: 48, y: 520, width: 450, height: 0.5,
+    borderColor: colorLine, borderWidth: 0.2,
   });
+  
   drawText(page, "REFERENCIA", 74, 500, 10, helveticaBoldFont);
-
-  drawText(
-    page,
-    "*imagen de referencia de otra configuración",
-    74,
-    390,
-    5,
-    helveticaFont,
-    color838383
+  
+  // CAPTURA DE IMAGEN DE REFERENCIA
+  console.log("Capturando imagen de referencia...");
+  const imgReferenciaSuccess = await captureAndEmbedImage(
+    pdfDoc, page, "#imgReferencia", 74, 320, 400, 250
   );
-  /*--------------------IMAGEN TELA MUESTRA---------------*/
-
-  drawText(page, "PRESUPUESTO", 364, 500, 10, helveticaBoldFont);
-  /*Fecha Emision*/
-  drawText(page, `Fecha Emisión: ${formattedDate}`, 364, 480, 8, helveticaFont);
-  // Número de Referencia
-  drawText(
-    page,
-    `N° Referencia: ${numeroReferencia}`,
-    364,
-    460,
-    8,
-    helveticaBoldFont
-  );
-  /*Leyenda de presupuesto*/
-  drawText(
-    page,
-    "*La fecha de emisión definirá la validez del presupuesto,",
-    364,
-    445,
-    5,
-    helveticaFont,
-    color838383
-  );
-
-  drawText(
-    page,
-    "más info en pie de página.",
-    364,
-    440,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "*El número de referencia servirá para localizar el",
-    364,
-    435,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "presupuesto ya realizado.",
-    364,
-    430,
-    5,
-    helveticaFont,
-    color838383
-  );
-  /*----CARGA DE IMAGENES Y DESCARGA DE PDF----*/
-  drawText(page, "CONFIGURACÓN", 74, 350, 10, helveticaBoldFont);
-/*   drawText(page, `ANCHO: ${ancho.textContent}`, 85, 330, 6, helveticaFont);
-  drawText(
-    page,
-    `PROFUNDIDAD: ${profundidad.textContent}`,
-    220,
-    290,
-    6,
-    helveticaFont
-  ); */
-
-  // Draw the image on the page
-
-  if (typeof html2canvas === "function") {
-    const imagenesDiv = document.getElementById("imagenPiezas");
-
-    imagenesDiv.style.display = "none";
-    imagenesDiv.offsetHeight; //
-    imagenesDiv.style.display = "block";
-
-    await waitForImagesToLoad(document.getElementById("imagenPiezas"));
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    const canvas = await html2canvas(imagenesDiv, {
-      useCORS: true,
-      scrollY: -window.scrollY,
-      scrollX: -window.scrollX,
-      allowTaint: true,
-    });
-    const imgData = canvas.toDataURL("image/png");
-
-    const pdfImage = await pdfDoc.embedPng(imgData);
-    const scale = 0.5; // escala del 50%
-    const width = 170 * scale;
-    const height = 100 * scale;
-
-    page.drawImage(pdfImage, { x: 85, y: 250, width: width, height: height });
-    console.log(canvas.width, canvas.height);
-  }
-
-  // Espera a que todas las imágenes se hayan cargado completamente
-  function waitForImagesToLoad(container) {
-    const images = container.getElementsByTagName("img");
-    const promises = Array.from(images).map(
-      (img) =>
-        new Promise((resolve, reject) => {
-          if (img.complete) {
-            resolve();
-          } else {
-            img.onload = resolve;
-            img.onerror = reject;
-          }
-        })
-    );
-    return Promise.all(promises);
-  }
-
-  /*----------------------TEJIDO-----------------------------------*/
-  drawText(page, "TEJIDO", 364, 350, 10, helveticaBoldFont);
-  drawText(page, `Articulo: ${tela}`, 430, 315, 8, helveticaFont);
-  drawText(page, `Tela: ${telaNombre}`, 430, 295, 8, helveticaFont);
-
-  if (typeof html2canvas === "function") {
-    const imgDataTela = await capturePNG("#telaReferencia");
-    const pdfImageTela = await embedPngSafe(pdfDoc, imgDataTela);
-    if (pdfImageTela) {
-      page.drawImage(pdfImageTela, { x: 364, y: 280, width: 50, height: 50 });
-    } else {
-      console.warn("No valid PNG for #telaReferencia (skipping).");
-    }
+  
+  if (!imgReferenciaSuccess) {
+    console.warn("No se pudo capturar la imagen de referencia");
+    drawText(page, "Imagen de referencia no disponible", 74, 450, 8, helveticaFont, color838383);
   }
   
+  drawText(page, "*imagen de referencia de otra configuración", 74, 390, 5, helveticaFont, color838383);
+
+  /*--------------------SECCIÓN PRESUPUESTO---------------*/
+  drawText(page, "PRESUPUESTO", 364, 500, 10, helveticaBoldFont);
+  drawText(page, `Fecha Emisión: ${formattedDate}`, 364, 480, 8, helveticaFont);
+  drawText(page, `N° Referencia: ${numeroReferencia}`, 364, 460, 8, helveticaBoldFont);
+  
+  /*Leyendas de presupuesto*/
+  drawText(page, "*La fecha de emisión definirá la validez del presupuesto,", 364, 445, 5, helveticaFont, color838383);
+  drawText(page, "más info en pie de página.", 364, 440, 5, helveticaFont, color838383);
+  drawText(page, "*El número de referencia servirá para localizar el", 364, 435, 5, helveticaFont, color838383);
+  drawText(page, "presupuesto ya realizado.", 364, 430, 5, helveticaFont, color838383);
+
+  /*----CONFIGURACIÓN----*/
+  drawText(page, "CONFIGURACIÓN", 74, 400, 10, helveticaBoldFont);
+  
+// Asegura visibles las cotas durante la captura
+function temporarilyShowMeasures(rootEl) {
+  const targets = rootEl.querySelectorAll(
+    '#lineaAncho, #lineaProfundidad, #ancho, #profundidad, .cota, [data-cota], [id*="cota"]'
+  );
+  const prev = [];
+  targets.forEach(el => {
+    prev.push([el, el.style.display, el.style.visibility, el.style.zIndex]);
+    el.style.display = 'block';
+    el.style.visibility = 'visible';
+    el.style.zIndex = '9999'; // por si están debajo
+  });
+  return () => prev.forEach(([el, d, v, z]) => {
+    el.style.display = d;
+    el.style.visibility = v;
+    el.style.zIndex = z;
+  });
+}
+
+// Rect expandido: unión de solo canvas + cotas
+function getExpandedViewportRectStrict(rootEl, opts = {}) {
+  const {
+    // cuánto permitir por arriba/abajo/laterales
+    padTop = 24, padRight = 16, padBottom = 0, padLeft = 16,
+    // tope inferior extra por debajo del canvas
+    bottomExtraFromCanvas = 0
+  } = opts;
+
+  const canvas = rootEl.querySelector('canvas');
+  if (!canvas) return null;
+
+  // Rects solo de elementos que nos interesan (cotas)
+  const measureNodes = rootEl.querySelectorAll(
+    '#lineaAncho, #lineaProfundidad, #ancho, #profundidad, .cota, [data-cota], [id*="cota"]'
+  );
+
+  const rects = [];
+  const canvasRect = canvas.getBoundingClientRect();
+  rects.push(canvasRect);
+
+  measureNodes.forEach(n => rects.push(n.getBoundingClientRect()));
+
+  // Unión
+  let minLeft   = Math.min(...rects.map(r => r.left))   - padLeft;
+  let minTop    = Math.min(...rects.map(r => r.top))    - padTop;
+  let maxRight  = Math.max(...rects.map(r => r.right))  + padRight;
+  let maxBottom = Math.max(...rects.map(r => r.bottom)) + padBottom;
+
+  // 🔒 Tope inferior duro: no bajar más que el fondo del canvas + margen pequeño
+  const hardBottom = canvasRect.bottom + bottomExtraFromCanvas;
+  if (maxBottom > hardBottom) maxBottom = hardBottom;
+
+  return {
+    x: Math.floor(minLeft),
+    y: Math.floor(minTop),
+    width: Math.ceil(maxRight - minLeft),
+    height: Math.ceil(maxBottom - minTop),
+  };
+}
+
+async function capturePNGExpanded(rootSelector, opts = {}) {
+  const rootEl = typeof rootSelector === 'string'
+    ? document.querySelector(rootSelector)
+    : rootSelector;
+  if (!rootEl) return null;
+
+  const restoreMeasures = temporarilyShowMeasures(rootEl);
+  await waitForImagesToLoad(rootEl);
+  await wait(60);
+
+  try {
+    // 👉 ajusta estos valores si necesitas más/menos margen
+    const area = getExpandedViewportRectStrict(rootEl, {
+      padTop: 24, padRight: 14, padBottom: 0, padLeft: 14,
+      bottomExtraFromCanvas: 0 // ↓ si aún captura algo de más, pon 6 o 0
+    });
+    if (!area) return null;
+
+    const canvas = await html2canvas(document.body, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: null,
+      scrollX: -window.scrollX,
+      scrollY: -window.scrollY,
+      x: area.x,
+      y: area.y,
+      width: area.width,
+      height: area.height,
+    });
+    return canvas.toDataURL('image/png');
+  } finally {
+    restoreMeasures();
+  }
+}
+
+
+const imgDataConfig = await capturePNGExpanded(
+  '#imagenPiezas',
+  'canvas, #lineaAncho, #lineaProfundidad, #ancho, #profundidad',
+  { pad: { top: 24, right: 16, bottom: 0, left: 16 }, clampToRoot: true }
+);
+
+const pdfImageConfig = await embedPngSafe(pdfDoc, imgDataConfig);
+if (pdfImageConfig) {
+  const { width: imgW, height: imgH } = pdfImageConfig;
+  const maxW = 250, maxH = 160; // tus límites actuales
+  const scale = Math.min(maxW / imgW, maxH / imgH, 1);
+  page.drawImage(pdfImageConfig, {
+    x: 74 + (maxW - imgW * scale) / 2,
+    y: 230 + (maxH - imgH * scale) / 2,
+    width: imgW * scale,
+    height: imgH * scale,
+  });
+} else {
+  drawText(page, "Imagen de configuración no disponible", 74, 350, 8, helveticaFont, color838383);
+}
+
+
+  /*----------------------TEJIDO-----------------------------------*/
+  drawText(page, "TEJIDO", 364, 400, 10, helveticaBoldFont);
+  drawText(page, `Articulo: ${tela}`, 364, 380, 8, helveticaFont);
+  drawText(page, `Tela: ${telaNombre}`, 364, 365, 8, helveticaFont);
+
+  // CAPTURA DE IMAGEN DE TELA
+  console.log("Capturando imagen de tela...");
+  const telaSuccess = await captureAndEmbedImage(
+    pdfDoc, page, "#telaReferencia", 345, 280,100, 100
+  );
+  
+  if (!telaSuccess) {
+    console.warn("No se pudo capturar la imagen de tela");
+  }
 
   /*-------------------------TARIFA-------------------------------*/
   drawText(page, "TARIFA", 52, 220, 15, helveticaBoldFont);
-  /*------------LINEA TARIFA--------------*/
   page.drawRectangle({
-    x: 48,
-    y: 210,
-    width: 450,
-    height: 0.5,
-    borderColor: colorLine,
-    borderWidth: 0.2,
+    x: 48, y: 210, width: 450, height: 0.5,
+    borderColor: colorLine, borderWidth: 0.2,
   });
+  
   drawText(page, "PIEZA", 76, 190, 8, helveticaBoldFont);
-  /* drawText(page, "CANT.", 320, 190, 8, helveticaFont); */
   drawText(page, "VALOR U.", 362, 190, 8, helveticaBoldFont);
-  /* drawText(page, "VALOR TOT.", 441, 190, 8, helveticaFont); */
 
-  /*-----------------------ACLARACIONES PRECIOS-----------------*/
-  drawText(
-    page,
-    "*Presupuesto con validez de 90 días a partir de la fecha de emisión.",
-    52,
-    65,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "*Los pedidos tendrán un plazo general de entrega de 6 semanas laborables.",
-    52,
-    60,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "No obstante, dicho plazo puede variar en función de la llegada a fábrica del tejido seleccionado, ",
-    52,
-    55,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "el aumento de la demanda temporal o la rotura de stock de otros componentes. ",
-    52,
-    50,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "En ese caso Singular informará debidamente de los posibles contratiempos ",
-    52,
-    45,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "indicando la fecha estimada en la confirmación del pedido. Se cobrarán 12€ ",
-    52,
-    40,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "de portes en envíos de mercancía con importe inferior a 300€+ IVA (poufs, ",
-    52,
-    35,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "metrajes, etc.) A partir de 300€, los portes serán gratuitos. ",
-    52,
-    30,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "*Los pedidos se realizarán a través del email pedidos@singular.com. Una vez enviada la confirmación del pedido, se considerará conforme si no se recibe una respuesta en el plazo de 2 días.  ",
-    52,
-    15,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "Transcurridos 5 días del envío de dicha confirmación, el pedido no se podrá cambiar ni cancelar. Se cobrarán 12€ de portes en envíos de mercancía con importe inferior a 300€+ IVA (poufs,   ",
-    52,
-    10,
-    5,
-    helveticaFont,
-    color838383
-  );
-  drawText(
-    page,
-    "metrajes, etc.) A partir de 300€, los portes serán gratuitos.   ",
-    52,
-    5,
-    5,
-    helveticaFont,
-    color838383
-  );
-
-  /*------------RECUADRO PRECIOS TOTAL--------------*/
-  drawText(page, "TOTAL", 430, 67, 8, helveticaBoldFont);
-  page.drawRectangle({
-    x: 430,
-    y: 50,
-    width: 60,
-    height: 15,
-    borderColor: rgb(0.7, 0.7, 0.7),
-    borderWidth: 0.2,
-  });
-  /*TEXTO PRECIO TOTAL*/
-  if (precioTotalElement) {
-    const precioTotal =
-      precioTotalElement.textContent || precioTotalElement.innerText;
-    drawText(page, `${precioTotal}`, 430, 54, 8, helveticaFont, colorPrice);
-  } else {
-    console.error("Elemento 'precioTotal' no encontrado");
-  }
-  /*------------RECUADRO PRECIOS DESCUENTO APLICADO--------------*/
-  drawText(page, "TOTAL C. DESC", 430, 40, 8, helveticaBoldFont);
-  page.drawRectangle({
-    x: 430,
-    y: 23,
-    width: 60,
-    height: 15,
-    borderColor: rgb(0.7, 0.7, 0.7),
-    borderWidth: 0.2,
-  });
-  /*TEXTO PRECIO TOTAL C.DESC*/
-  if (precioTotalDescElement) {
-    const precioTotalDesc =
-      precioTotalDescElement.textContent || precioTotalDescElement.innerText;
-    drawText(page, `${precioTotalDesc}`, 432, 27, 8, helveticaFont, colorPrice);
-  } else {
-    console.error("Elemento 'precioTotalDesc' no encontrado");
-  }
-  /*------------RECUADRO PRECIOS CODIGO DESCUENTO-------------*/
-  drawText(page, "DESC", 350, 40, 8, helveticaBoldFont);
-  page.drawRectangle({
-    x: 350,
-    y: 23,
-    width: 60,
-    height: 15,
-    borderColor: rgb(0.7, 0.7, 0.7),
-    borderWidth: 0.2,
-  });
-
-  /*TEXTO DESCUENTO QUE APLICA*/
-  if (descuentoAplicadoElement) {
-    const descuentoAplicado =
-      descuentoAplicadoElement.textContent ||
-      descuentoAplicadoElement.innerText;
-    drawText(
-      page,
-      `${descuentoAplicado}`,
-      352,
-      27,
-      8,
-      helveticaFont,
-      colorPrice
-    );
-  } else {
-    console.error("Elemento 'descuentoAplicado' no encontrado");
-  }
   /*------------RECUADRO PRECIOS--------------*/
   page.drawRectangle({
-    x: 48,
-    y: 77,
-    width: 450,
-    height: 105,
-    borderColor: rgb(0.7, 0.7, 0.7),
-    borderWidth: 0.2,
+    x: 48, y: 77, width: 450, height: 105,
+    borderColor: rgb(0.7, 0.7, 0.7), borderWidth: 0.2,
   });
-  /*-------------------------PRECIOS Y CODIGOS---------------------*/
 
+  /*-------------------------PRECIOS Y CODIGOS---------------------*/
   function procesarSelects() {
     const validSelectIds = selectIds.filter((selectId) => {
       const selectElement = document.getElementById(selectId);
       return selectElement && selectElement.value !== "None";
     });
-
+  
+    let currentYPos = 170; // base izquierda
+    const line = 12;
+  
+    // Piezas
     validSelectIds.forEach((selectId, index) => {
       const selectElement = document.getElementById(selectId);
       const selectedValue = selectElement.value;
-
-      const piezaData = piezasSelect.find(
-        (pieza) => pieza.id === selectedValue
-      );
+      const piezaData = piezasSelect.find((pieza) => pieza.id === selectedValue);
       const title = piezaData ? String(piezaData.title) : "";
-
-      const yPos = 170 - index * 12;
+      const yPos = currentYPos - index * line;
       drawText(page, title, 52, yPos, 8, helveticaFont, colorPrice);
     });
+  
+    // Avanza el cursor bajo las piezas
+    currentYPos = currentYPos - validSelectIds.length * line;
+  
+    // Cojines (si hay)
+    const selCoj = document.getElementById("cojines");
+    const cantidadCojines = selCoj ? (parseInt(selCoj.value, 10) || 0) : 0;
+    if (cantidadCojines > 0) {
+      // ID fijo del artículo (ajústalo si lo sacas de data-attrs)
+      const cojinosText = `CA4545 Cojín Cuadrado 45x45 cms (x${cantidadCojines})`;
+      // baja una línea antes de pintar para no pisar la última pieza
+      currentYPos -= line;
+      drawText(page, cojinosText, 52, currentYPos, 8, helveticaFont, colorPrice);
+    }
   }
+  
+  
   /*-------PRECIOS--------- */
-  const preciosMaterial = document.querySelectorAll("#preciosMaterial");
-  if (preciosMaterial.length > 0) {
-    preciosMaterial.forEach((precio, index) => {
-      const yPos = 170 - index * 12;
-      const textContent = precio.textContent.trim(); // Obtener el texto del elemento, asegurando que esté limpio
+/*-------PRECIOS--------- */
+const preciosMaterial = document.querySelectorAll("#preciosMaterial"); // idealmente: ".precioMaterial"
+const precioCojines = document.getElementById("precioCojines");
 
-      drawText(page, textContent, 362, yPos, 8, helveticaFont, colorPrice);
-    });
-  } else {
-    console.error(
-      "No se encontraron precios de materiales en el almacenamiento local."
-    );
-  }
+let priceY = 170;           // base derecha
+const line = 12;
+
+// Precios piezas
+if (preciosMaterial.length > 0) {
+  preciosMaterial.forEach((precio, index) => {
+    const yPos = priceY - index * line;
+    const textContent = (precio.textContent || "").trim();
+    drawText(page, textContent, 362, yPos, 8, helveticaFont, colorPrice);
+  });
+  priceY = priceY - preciosMaterial.length * line;
+}
+
+// Precio cojines (si aplica)
+const selCoj = document.getElementById("cojines");
+const cantidadCojines = selCoj ? (parseInt(selCoj.value, 10) || 0) : 0;
+if (cantidadCojines > 0 && precioCojines) {
+  // opcional: baja una línea para mantener la alineación con la izquierda
+  priceY -= line;
+  const precioCojinesText = (precioCojines.textContent || "").trim();
+  drawText(page, precioCojinesText, 362, priceY, 8, helveticaFont, colorPrice);
+}
+
   procesarSelects();
+
+  /*------------RECUADROS DE TOTALES--------------*/
+  drawText(page, "TOTAL", 430, 67, 8, helveticaBoldFont);
+  page.drawRectangle({
+    x: 430, y: 50, width: 60, height: 15,
+    borderColor: rgb(0.7, 0.7, 0.7), borderWidth: 0.2,
+  });
+
+  if (precioTotalElement) {
+    const precioTotal = precioTotalElement.textContent || precioTotalElement.innerText;
+    drawText(page, `${precioTotal}`, 430, 54, 8, helveticaFont, colorPrice);
+  }
+
+  drawText(page, "TOTAL C. DESC", 430, 40, 8, helveticaBoldFont);
+  page.drawRectangle({
+    x: 430, y: 23, width: 60, height: 15,
+    borderColor: rgb(0.7, 0.7, 0.7), borderWidth: 0.2,
+  });
+
+  if (precioTotalDescElement) {
+    const precioTotalDesc = precioTotalDescElement.textContent || precioTotalDescElement.innerText;
+    drawText(page, `${precioTotalDesc}`, 432, 27, 8, helveticaFont, colorPrice);
+  }
+
+  drawText(page, "DESC", 350, 40, 8, helveticaBoldFont);
+  page.drawRectangle({
+    x: 350, y: 23, width: 60, height: 15,
+    borderColor: rgb(0.7, 0.7, 0.7), borderWidth: 0.2,
+  });
+
+  if (descuentoAplicadoElement) {
+    const descuentoAplicado = descuentoAplicadoElement.textContent || descuentoAplicadoElement.innerText;
+    drawText(page, `${descuentoAplicado}`, 352, 27, 8, helveticaFont, colorPrice);
+  }
+
+  /*-----------------------ACLARACIONES PRECIOS-----------------*/
+  const aclaraciones = [
+    "*Presupuesto con validez de 90 días a partir de la fecha de emisión.",
+    "*Los pedidos tendrán un plazo general de entrega de 6 semanas laborables.",
+    "No obstante, dicho plazo puede variar en función de la llegada a fábrica del tejido seleccionado, ",
+    "el aumento de la demanda temporal o la rotura de stock de otros componentes. ",
+    "En ese caso Singular informará debidamente de los posibles contratiempos ",
+    "indicando la fecha estimada en la confirmación del pedido. Se cobrarán 12€ ",
+    "de portes en envíos de mercancía con importe inferior a 300€+ IVA (poufs, ",
+    "metrajes, etc.) A partir de 300€, los portes serán gratuitos. ",
+   /*  "*Los pedidos se realizarán a través del email pedidos@singular.com. Una vez enviada la confirmación del pedido, se considerará conforme si no se recibe una respuesta en el plazo de 2 días.  ",
+    "Transcurridos 5 días del envío de dicha confirmación, el pedido no se podrá cambiar ni cancelar. Se cobrarán 12€ de portes en envíos de mercancía con importe inferior a 300€+ IVA (poufs,   ", */
+    "metrajes, etc.) A partir de 300€, los portes serán gratuitos.   "
+  ];
+
+  aclaraciones.forEach((texto, index) => {
+    drawText(page, texto, 52, 65 - (index * 5), 5, helveticaFont, color838383);
+  });
 
   // Descargar el PDF
   const pdfBytes = await pdfDoc.save();
@@ -599,9 +572,10 @@ async function createPDF() {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
-// Función para generar ambos PDFs
+// Función para generar el PDF con validación
 document.addEventListener("DOMContentLoaded", () => {
   const botonPdf = document.getElementById("generateBtn");
 
@@ -640,7 +614,6 @@ document.addEventListener("DOMContentLoaded", () => {
         html: `<div class="textAlert">${mensajesError
           .map((msg) => `<p>${msg}</p>`)
           .join("")}</div>`,
-
         confirmButtonText: "Aceptar",
         customClass: {
           popup: "popupAlert",
@@ -651,11 +624,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       return;
     }
-    async function generatePDFs() {
-      await createPDF();
-    }
+
     // Si todo es válido
     botonPdf.classList.add("active");
-    generatePDFs();
+    createPDF();
   });
 });
