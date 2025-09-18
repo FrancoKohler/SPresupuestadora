@@ -197,6 +197,7 @@ async function createPDF() {
   const codigoPostal = document.getElementById("codigoPostal").value;
   const puertaPiso = document.getElementById("puertaPiso").value;
   const tela = document.getElementById("tela").value;
+  const observaciones = document.getElementById("observaciones").value;
   const telaNombre = document.getElementById("selectTelaContainer").value;
   const precioTotalElement = document.getElementById("precioTotal");
   const descuentoAplicadoElement = document.getElementById("descuentoAplicado");
@@ -219,7 +220,9 @@ async function createPDF() {
 
   const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const helveticaBoldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-
+  const pageWidth = page.getWidth();
+  const pageHeight = page.getHeight();
+  
   /*-------COLORES------*/
   const color838383 = rgb(0.4, 0.4, 0.4);
   const colorLine = rgb(0.7, 0.7, 0.7);
@@ -238,61 +241,154 @@ async function createPDF() {
     x: 48, y: 710, width: 450, height: 0.5,
     borderColor: colorLine, borderWidth: 0.2,
   });
+ 
+  // --- LOGO DEL FOOTER ---
+const footerLogoOk = await captureAndEmbedImage(
+  pdfDoc,
+  page,
+  "#logoBlackFooter", // 👈 solo el <img>
+  385,                 // x en el PDF
+  710,                 // y en el PDF (cerca del borde inferior)
+  120,                // ancho máximo permitido
+  40                  // alto máximo permitido
+);
+
+if (!footerLogoOk) {
+  page.drawText("Singular Sofás S.L.", {
+    x: 52, y: 20, size: 8, font: helveticaFont, color: color838383
+  });
+}
 
   /*-------------------INFO CLIENTE------------------- */
   drawText(page, "INFORMACIÓN CLIENTE", 74, 690, 10, helveticaBoldFont);
   drawText(page, `Nombre: ${nombreCliente}`, 74, 670, 8, helveticaFont);
-  drawText(page, `CIF Cliente: ${cifCliente}`, 74, 650, 8, helveticaFont);
-  drawText(page, `País: ${pais}`, 74, 630, 8, helveticaFont);
-  drawText(page, `Direccion: ${calle},${puertaPiso},${ciudad},${codigoPostal}`, 74, 610, 8, helveticaFont);
-  drawText(page, `Teléfono: ${telefonoCliente}`, 74, 590, 8, helveticaFont);
-  drawText(page, `Email: ${emailCliente}`, 74, 570, 8, helveticaFont);
+  drawText(page, `CIF Cliente: ${cifCliente}`, 74, 655, 8, helveticaFont);
+  drawText(page, `País: ${pais}`, 74, 640, 8, helveticaFont);
+  drawText(page, `Direccion: ${calle},${puertaPiso},${ciudad},${codigoPostal}`, 74, 625, 8, helveticaFont);
+  drawText(page, `Teléfono: ${telefonoCliente}`, 74, 610, 8, helveticaFont);
+  drawText(page, `Email: ${emailCliente}`, 74, 595, 8, helveticaFont);
 
   // -------------------INFO EMPRESA-------------------
-  drawText(page, "INFORMACIÓN EMPRESA", 364, 690, 10, helveticaBoldFont);
-  drawText(page, `Nombre Empresa: ${nombreEmpresa}`, 364, 670, 8, helveticaFont);
-  drawText(page, `Teléfono: ${telefonoEmpresa}`, 364, 650, 8, helveticaFont);
-  drawText(page, `CIF Empresa: ${cifEmpresa}`, 364, 630, 8, helveticaFont);
-  drawText(page, `Email Empresa: ${emailEmpresa}`, 364, 610, 8, helveticaFont);
-
+  drawText(page, "INFORMACIÓN EMPRESA",340, 690, 10, helveticaBoldFont);
+  drawText(page, `Nombre Empresa: ${nombreEmpresa}`, 340, 670, 8, helveticaFont);
+  drawText(page, `Teléfono: ${telefonoEmpresa}`, 340, 655, 8, helveticaFont);
+  drawText(page, `CIF Empresa: ${cifEmpresa}`, 340, 640, 8, helveticaFont);
+  drawText(page, `Email Empresa: ${emailEmpresa}`, 340, 625, 8, helveticaFont);
+  /*--------------------SECCIÓN PRESUPUESTO---------------*/
+  drawText(page, "PRESUPUESTO", 340, 605, 10, helveticaBoldFont);
+  drawText(page, `Fecha Emisión: ${formattedDate}`, 340, 585, 8, helveticaFont);
+  drawText(page, `N° Referencia: ${numeroReferencia}`, 340, 570, 8, helveticaBoldFont);
   /*---------MODELO Y CONFIGURACION-----------*/
-  drawText(page, `MODELO: ${modelo}`, 52, 530, 15, helveticaBoldFont);
+  drawText(page, `MODELO: ${modelo}`, 52, 565, 15, helveticaBoldFont);
   
   /*------------LINEA MODELO--------------*/
   page.drawRectangle({
-    x: 48, y: 520, width: 450, height: 0.5,
+    x: 48, y: 555, width: 450, height: 0.5,
     borderColor: colorLine, borderWidth: 0.2,
   });
   
-  drawText(page, "REFERENCIA", 74, 500, 10, helveticaBoldFont);
+  drawText(page, "REFERENCIA", 74, 535, 10, helveticaBoldFont);
+    /*----------------------TEJIDO-----------------------------------*/
+    drawText(page, "TEJIDO", 340, 535, 10, helveticaBoldFont);
+    drawText(page, `Articulo: ${tela}`, 340,520, 8, helveticaFont);
+    drawText(page, `Tela: ${telaNombre}`, 340, 505, 8, helveticaFont);
   
+    // CAPTURA DE IMAGEN DE TELA
+    console.log("Capturando imagen de tela...");
+    const telaSuccess = await captureAndEmbedImage(
+      pdfDoc, page, "#telaReferencia", 340, 435,100, 100
+    );
+    
+    if (!telaSuccess) {
+      console.warn("No se pudo capturar la imagen de tela");
+    }
   // CAPTURA DE IMAGEN DE REFERENCIA
   console.log("Capturando imagen de referencia...");
   const imgReferenciaSuccess = await captureAndEmbedImage(
-    pdfDoc, page, "#imgReferencia", 74, 320, 400, 250
+    pdfDoc, page, "#imgReferencia", 74, 370, 400, 250
   );
   
   if (!imgReferenciaSuccess) {
     console.warn("No se pudo capturar la imagen de referencia");
-    drawText(page, "Imagen de referencia no disponible", 74, 450, 8, helveticaFont, color838383);
+    drawText(page, "Imagen de referencia no disponible", 74, 485, 8, helveticaFont, color838383);
   }
   
-  drawText(page, "*imagen de referencia de otra configuración", 74, 390, 5, helveticaFont, color838383);
+  drawText(page, "*imagen de referencia de otra configuración", 74, 435, 5, helveticaFont, color838383);
 
-  /*--------------------SECCIÓN PRESUPUESTO---------------*/
-  drawText(page, "PRESUPUESTO", 364, 500, 10, helveticaBoldFont);
-  drawText(page, `Fecha Emisión: ${formattedDate}`, 364, 480, 8, helveticaFont);
-  drawText(page, `N° Referencia: ${numeroReferencia}`, 364, 460, 8, helveticaBoldFont);
+
   
-  /*Leyendas de presupuesto*/
-  drawText(page, "*La fecha de emisión definirá la validez del presupuesto,", 364, 445, 5, helveticaFont, color838383);
-  drawText(page, "más info en pie de página.", 364, 440, 5, helveticaFont, color838383);
-  drawText(page, "*El número de referencia servirá para localizar el", 364, 435, 5, helveticaFont, color838383);
-  drawText(page, "presupuesto ya realizado.", 364, 430, 5, helveticaFont, color838383);
 
   /*----CONFIGURACIÓN----*/
-  drawText(page, "CONFIGURACIÓN", 74, 400, 10, helveticaBoldFont);
+  drawText(page, "CONFIGURACIÓN", 74, 410, 10, helveticaBoldFont);
+  drawText(page, "OBSERVACIONES", 340, 410, 10, helveticaBoldFont);
   
+ 
+// --- Utilidad para pintar texto con wrap por ancho:
+function drawWrappedText({ page, text, x, y, maxWidth, lineHeight = 12, font, size = 8, color }) {
+  const drawLine = (ln, yy) => {
+    if (!ln) return yy;
+    page.drawText(ln, { x, y: yy, size, font, color });
+    return yy - lineHeight;
+  };
+
+  // Soporta saltos de línea manuales
+  const paragraphs = String(text || "").split(/\r?\n/);
+  let yy = y;
+
+  for (const para of paragraphs) {
+    let line = "";
+    const words = para.split(/\s+/);
+
+    for (let w of words) {
+      // Fallback por si una “palabra” supera el ancho (URLs, códigos)
+      const wordTooLong = font.widthOfTextAtSize(w, size) > maxWidth;
+      if (wordTooLong) {
+        // Rompe la palabra en trozos que quepan
+        let chunk = "";
+        for (const ch of w) {
+          const testChunk = chunk + ch;
+          if (font.widthOfTextAtSize(testChunk, size) > maxWidth) {
+            yy = drawLine(chunk, yy);
+            chunk = ch;
+          } else {
+            chunk = testChunk;
+          }
+        }
+        // Empuja el trozo final a la línea corriente
+        w = chunk;
+        if (!w) continue;
+      }
+
+      const testLine = line ? line + " " + w : w;
+      if (font.widthOfTextAtSize(testLine, size) <= maxWidth) {
+        line = testLine;
+      } else {
+        yy = drawLine(line, yy);
+        line = w;
+      }
+    }
+    yy = drawLine(line, yy); // Última línea del párrafo
+  }
+  return yy; // Devuelve la Y final por si la quieres usar
+}
+
+// --- Donde antes pintabas las observaciones:
+const xObs = 340;
+const yObsTop = 395;
+const rightGuard = 45; // 45 px antes del fin del ancho del PDF
+const maxTextWidth = pageWidth - rightGuard - xObs;
+
+drawWrappedText({
+  page,
+  text: observaciones,
+  x: xObs,
+  y: yObsTop,
+  maxWidth: Math.max(0, maxTextWidth),
+  lineHeight: 12,            // ajusta si quieres más/menos interlineado
+  font: helveticaFont,
+  size: 8,
+  color: color838383         // o helveticaFont/color que ya usas
+});
 // Asegura visibles las cotas durante la captura
 function temporarilyShowMeasures(rootEl) {
   const targets = rootEl.querySelectorAll(
@@ -403,7 +499,7 @@ if (pdfImageConfig) {
   const scale = Math.min(maxW / imgW, maxH / imgH, 1);
   page.drawImage(pdfImageConfig, {
     x: 74 + (maxW - imgW * scale) / 2,
-    y: 230 + (maxH - imgH * scale) / 2,
+    y: 255 + (maxH - imgH * scale) / 2,
     width: imgW * scale,
     height: imgH * scale,
   });
@@ -412,20 +508,7 @@ if (pdfImageConfig) {
 }
 
 
-  /*----------------------TEJIDO-----------------------------------*/
-  drawText(page, "TEJIDO", 364, 400, 10, helveticaBoldFont);
-  drawText(page, `Articulo: ${tela}`, 364, 380, 8, helveticaFont);
-  drawText(page, `Tela: ${telaNombre}`, 364, 365, 8, helveticaFont);
 
-  // CAPTURA DE IMAGEN DE TELA
-  console.log("Capturando imagen de tela...");
-  const telaSuccess = await captureAndEmbedImage(
-    pdfDoc, page, "#telaReferencia", 345, 280,100, 100
-  );
-  
-  if (!telaSuccess) {
-    console.warn("No se pudo capturar la imagen de tela");
-  }
 
   /*-------------------------TARIFA-------------------------------*/
   drawText(page, "TARIFA", 52, 220, 15, helveticaBoldFont);
@@ -555,7 +638,11 @@ if (cantidadCojines > 0 && precioCojines) {
     "metrajes, etc.) A partir de 300€, los portes serán gratuitos. ",
    /*  "*Los pedidos se realizarán a través del email pedidos@singular.com. Una vez enviada la confirmación del pedido, se considerará conforme si no se recibe una respuesta en el plazo de 2 días.  ",
     "Transcurridos 5 días del envío de dicha confirmación, el pedido no se podrá cambiar ni cancelar. Se cobrarán 12€ de portes en envíos de mercancía con importe inferior a 300€+ IVA (poufs,   ", */
-    "metrajes, etc.) A partir de 300€, los portes serán gratuitos.   "
+    "metrajes, etc.) A partir de 300€, los portes serán gratuitos.   ",
+    "*La fecha de emisión definirá la validez del presupuesto",
+    "más info en pie de página.",
+    "*El número de referencia servirá para localizar el",
+    "presupuesto ya realizado."
   ];
 
   aclaraciones.forEach((texto, index) => {
