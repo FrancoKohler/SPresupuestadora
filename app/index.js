@@ -195,8 +195,8 @@ function generarResumen() {
     <li class="precioResumen inter-resumen">Precio Total: <span id="precioTotal"> &nbsp ${precioTotal.toFixed(2)}€</span></li>
     ${
       descuento > 0
-        ? `<li>Descuento aplicado: <span id="descuentoAplicado">${(descuento * 100).toFixed(0)}%</span></li>
-           <li>Precio Total con descuento: <span id="precioTotalDesc"> ${precioConDescuento.toFixed(2)}€</span></li>`
+        ? `<li class="inter-resumen">Descuento aplicado: <span id="descuentoAplicado">${(descuento * 100).toFixed(0)}%</span></li>
+           <li class="inter-resumen">Precio Total con descuento: <span id="precioTotalDesc"> ${precioConDescuento.toFixed(2)}€</span></li>`
         : ""
     }
   `;
