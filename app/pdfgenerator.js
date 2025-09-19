@@ -505,7 +505,7 @@ if (pdfImageConfig) {
   const scale = Math.min(maxW / imgW, maxH / imgH, 1);
   page.drawImage(pdfImageConfig, {
     x: 10 + (maxW - imgW * scale) / 2,
-    y: 220 + (maxH - imgH * scale) / 2,
+    y: 210 + (maxH - imgH * scale) / 2,
     width: imgW * scale,
     height: imgH * scale,
   });
