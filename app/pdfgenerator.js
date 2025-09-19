@@ -191,6 +191,7 @@ async function createPDF() {
   const telefonoCliente = document.getElementById("telefonoCliente").value;
   const telefonoEmpresa = document.getElementById("telefonoEmpresa").value;
   const emailEmpresa = document.getElementById("emailEmpresa").value;
+  const comunidad = document.getElementById("comunidad").value;
   const pais = document.getElementById("pais").value;
   const calle = document.getElementById("calle").value;
   const ciudad = document.getElementById("ciudad").value;
@@ -263,7 +264,12 @@ if (!footerLogoOk) {
   drawText(page, "INFORMACIÓN CLIENTE", 74, 690, 10, helveticaBoldFont);
   drawText(page, `Nombre: ${nombreCliente}`, 74, 670, 8, helveticaFont);
   drawText(page, `CIF Cliente: ${cifCliente}`, 74, 655, 8, helveticaFont);
-  drawText(page, `País: ${pais}`, 74, 640, 8, helveticaFont);
+  if (pais === "España") {
+    drawText(page, `País: ${pais}, ${comunidad}`, 74, 640, 8, helveticaFont);
+  } else {
+    drawText(page, `País: ${pais}`, 74, 640, 8, helveticaFont);
+  }
+  
   drawText(page, `Direccion: ${calle},${puertaPiso},${ciudad},${codigoPostal}`, 74, 625, 8, helveticaFont);
   drawText(page, `Teléfono: ${telefonoCliente}`, 74, 610, 8, helveticaFont);
   drawText(page, `Email: ${emailCliente}`, 74, 595, 8, helveticaFont);
@@ -495,11 +501,11 @@ const imgDataConfig = await capturePNGExpanded(
 const pdfImageConfig = await embedPngSafe(pdfDoc, imgDataConfig);
 if (pdfImageConfig) {
   const { width: imgW, height: imgH } = pdfImageConfig;
-  const maxW = 250, maxH = 160; // tus límites actuales
+  const maxW = 300, maxH = 200; // tus límites actuales
   const scale = Math.min(maxW / imgW, maxH / imgH, 1);
   page.drawImage(pdfImageConfig, {
-    x: 74 + (maxW - imgW * scale) / 2,
-    y: 255 + (maxH - imgH * scale) / 2,
+    x: 10 + (maxW - imgW * scale) / 2,
+    y: 220 + (maxH - imgH * scale) / 2,
     width: imgW * scale,
     height: imgH * scale,
   });

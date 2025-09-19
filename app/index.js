@@ -158,22 +158,17 @@ function generarResumen() {
   // Total price
   const precioTotal = precioPiezas + precioCojines;
 
-  // Discount logic
   const codigoDescuento = document.getElementById("descuento").value;
   const descuento = obtenerDescuento(codigoDescuento);
   const precioConDescuento = precioTotal * (1 - descuento);
-
+  
   function obtenerDescuento(codigo) {
-    const match = codigo.match(/^GET(\d{1,2})$/);
-    if (match) {
-      const descuento = parseInt(match[1], 10);
-      if (descuento >= 1 && descuento <= 50) {
-        return descuento / 100;
-      }
+    const numero = parseInt(codigo, 10);
+    if (!isNaN(numero) && numero >= 1 && numero <= 50) {
+      return numero / 100;
     }
     return 0.0;
   }
-
   // Update resumen with model, selected pieces, cojines, prices, and discount
   const resumenElement = document.getElementById("resumen");
   resumenElement.innerHTML = `
