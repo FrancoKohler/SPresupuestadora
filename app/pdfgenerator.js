@@ -666,6 +666,37 @@ if (cantidadCojines > 0 && precioCojines) {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+
+  // 🎯 UMAMI EVENT TRACKING - Successful PDF Generation
+  try {
+    if (typeof umami !== 'undefined' && umami.track) {
+      // Get current price for tracking
+      const precioFinal = precioTotalDescElement ? 
+        (precioTotalDescElement.textContent || precioTotalDescElement.innerText).replace(/[^\d.,]/g, '') : 
+        '';
+      
+      // Track PDF generation event with useful metadata
+      umami.track('pdf-generated', {
+        modelo: modelo,
+        referencia: numeroReferencia,
+        precio_total: precioFinal,
+        pais: pais,
+        empresa: nombreEmpresa,
+        fecha: formattedDate,
+        tiene_descuento: descuentoAplicadoElement && descuentoAplicadoElement.textContent !== '0%',
+        num_piezas: selectIds.filter(id => {
+          const el = document.getElementById(id);
+          return el && el.value !== "None";
+        }).length
+      });
+      
+      console.log('✅ Umami event tracked: pdf-generated');
+    } else {
+      console.warn('⚠️ Umami tracking not available');
+    }
+  } catch (error) {
+    console.error('❌ Error tracking Umami event:', error);
+  }
 }
 
 // Función para generar el PDF con validación
@@ -673,6 +704,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonPdf = document.getElementById("generateBtn");
 
   botonPdf.addEventListener("click", () => {
+    // 🎯 UMAMI EVENT TRACKING - PDF Generation Attempt
+    try {
+      if (typeof umami !== 'undefined' && umami.track) {
+        umami.track('pdf-generation-attempt');
+        console.log('✅ Umami event tracked: pdf-generation-attempt');
+      }
+    } catch (error) {
+      console.error('❌ Error tracking Umami event:', error);
+    }
+
     const campos = [
       { id: "nombreCliente", label: "Nombre y Apellido" },
       { id: "emailCliente", label: "Email", tipo: "email" },
@@ -701,6 +742,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (!formularioValido) {
+      // 🎯 UMAMI EVENT TRACKING - Validation Error
+      try {
+        if (typeof umami !== 'undefined' && umami.track) {
+          umami.track('pdf-validation-error', {
+            error_count: mensajesError.length,
+            missing_fields: mensajesError.map(msg => msg.split(' es obligatorio')[0].replace('- ', '')).join(', ')
+          });
+          console.log('✅ Umami event tracked: pdf-validation-error');
+        }
+      } catch (error) {
+        console.error('❌ Error tracking Umami event:', error);
+      }
+
       Swal.fire({
         icon: "error",
         title: "Campos incompletos o inválidos",
@@ -723,3 +777,4 @@ document.addEventListener("DOMContentLoaded", () => {
     createPDF();
   });
 });
+    
