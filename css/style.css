@@ -358,7 +358,10 @@ section{
 }
 .precioResumen {
   color: #000000;
-  font-weight: 900;
+  font-weight: 700;
+}
+.descuento-resumen{
+  font-weight: 900 !important;
 }
 /* Estilos para la lista de resumen */
 .ul-config li {

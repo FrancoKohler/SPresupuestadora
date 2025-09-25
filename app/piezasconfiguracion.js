@@ -203,7 +203,12 @@
     "BIAM80DMMN","BIAM80DMMNE","BIAM80IMMN","BIAM80IMMNE","BIAM90DMMN","BIAM90DMMNE","BIAM90IMMN","BIAM90IMMNE","BIAM100DMMN","BIAM100DMMNE","BIAM100IMMN","BIAM100IMMNE","BIAM110DMMN","BIAM110DMMNE","BIAM110IMMN","BIAM110IMMNE","BIAP60SCN","BIAP60SCNE","BIAP60SMN","BIAP60SMNE",
 
 ];
-
+const modRepisa = [
+  /*----NORA modRepisa---*/
+  "NORM110IM","NORM100IM","NORM90IM","NORM80IM","NORM110DM","NORM100DM","NORM90DM","NORM80DM",
+  /*---BIANCA--*/
+  "BIAM110IM","BIAM100IM","BIAM90IM","BIAM80IM","BIAM110DM","BIAM100DM","BIAM90DM","BIAM80DM",
+];
     const promises = [];
 
   // 🔁 Tomamos las piezas exactamente en el orden de los selects (slot1..slot8)
@@ -280,8 +285,12 @@ if (esTriggerGiro && !rotateHasHappened) {
   yaSumoProfundidad = true;
 } else if (rotateAfterYutra) {
   imgElement.style.transform = "rotate(90deg)";
-  
-  if (brazoId.includes(piezaId)) {
+   if (modRepisa.includes(piezaId)) {
+    // Ajuste específico para repisas
+    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 23}px`;
+    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 122}px`;
+  }
+  else if (brazoId.includes(piezaId)) {
     // Apply 10px shift on the X-axis for brazo pieces
     imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 10}px`;
     imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 110}px`; 
@@ -309,7 +318,10 @@ if (esTriggerGiro && !rotateHasHappened) {
     // Apply 25px shift on the X-axis for terminal pieces
     imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 13}px`;
     imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 112}px`;
-  } else {
+  }
+
+  
+  else {
     // Default positioning for other pieces
     imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight}px`;
     imgElement.style.top  = `${specialPiece.y + specialPiece.width}px`;
