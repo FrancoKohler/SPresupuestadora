@@ -409,11 +409,11 @@ const piezasVera = [
   },
   {
     id: "VERP60S",
-    title: "VERP60S Pouf (60 cm)",
+    title: "VERP60S Pouff (60 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERP60S.png",
     price: preciosVera.pouf,
-    categoria: "POUF",
+    categoria: "POUFF",
     medidap: 60,
     medida: 112,
   },
