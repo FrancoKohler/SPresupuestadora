@@ -414,7 +414,7 @@ const piezasVera = [
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERP60S.png",
     price: preciosVera.pouf,
     categoria: "POUFF",
-    medidap: 60,
-    medida: 112,
+    medidap: 112,
+    medida: 60,
   },
 ];
