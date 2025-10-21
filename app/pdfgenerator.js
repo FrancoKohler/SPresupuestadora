@@ -736,7 +736,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { id: "calle", label: "Calle" },
       { id: "puertaPiso", label: "Puerta/Piso" }, */
       { id: "nombreEmpresa", label: "Nombre Empresa" },
-      { id: "emailEmpresa", label: "Email Empresa", tipo: "email" },
+      /* { id: "emailEmpresa", label: "Email Empresa", tipo: "email" }, */
     ];
 
     let formularioValido = true;
