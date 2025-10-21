@@ -99,27 +99,25 @@ function obtenerPrecioPorMaterial(idPieza, tela) {
 
   return 0;
 }
-const paisSelect = document.getElementById("pais");
+/* const paisSelect = document.getElementById("pais");
 const comunidadesWrapper = document.getElementById("comunidades-wrapper");
 
 function toggleComunidades() {
   if (paisSelect.value === "España") {
-    comunidadesWrapper.style.display = "flex"; // visible por defecto
+    comunidadesWrapper.style.display = "flex";
   } else {
-    comunidadesWrapper.style.display = "none"; // ocultar si no es España
+    comunidadesWrapper.style.display = "none"; 
   }
 }
 
-// inicializar al cargar la página (como España está seleccionada → visible)
+
 toggleComunidades();
 
-// escuchar cambios
 paisSelect.addEventListener("change", toggleComunidades);
-// inicializar al cargar la página
+
 toggleComunidades();
 
-// escuchar cambios en el select de países
-paisSelect.addEventListener("change", toggleComunidades);
+paisSelect.addEventListener("change", toggleComunidades); */
 document.addEventListener("DOMContentLoaded", function () {
   const selectElements = document.querySelectorAll("select");
 

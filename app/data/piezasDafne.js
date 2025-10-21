@@ -17,7 +17,7 @@ const preciosDafne = {
     // New pieces with arms added below
     {
       id: "DAFB",
-      title: "DAFB Butaca",
+      title: "Butaca",
       imageUrl:
         "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/DAFNE/DAFB-01.png",
       price: preciosDafne.comunDAFB,

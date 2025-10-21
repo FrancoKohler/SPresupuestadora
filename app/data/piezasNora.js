@@ -190,7 +190,7 @@ const piezasNora = [
   },
   {
     id: "NORM110D",
-    title: "NORM110D Mód. 110 con brazo der. (134 cm)",
+    title: "Mód. 110 con brazo der. (134 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110D.png",
     price: preciosNora.comunNORM110D,
@@ -200,7 +200,7 @@ const piezasNora = [
   },
   {
     id: "NORM110I",
-    title: "NORM110I Mód. 110 con brazo izq. (134 cm)",
+    title: "Mód. 110 con brazo izq. (134 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110I.png",
     price: preciosNora.comunNORM110D,
@@ -210,7 +210,7 @@ const piezasNora = [
   },
   {
     id: "NORM100D",
-    title: "NORM100D Mód. 100 con brazo der. (124 cm)",
+    title: "Mód. 100 con brazo der. (124 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100D.png",
     price: preciosNora.comunNORM100D,
@@ -220,7 +220,7 @@ const piezasNora = [
   },
   {
     id: "NORM100I",
-    title: "NORM100I Mód. 100 con brazo izq. (124 cm)",
+    title: "Mód. 100 con brazo izq. (124 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100I.png",
     price: preciosNora.comunNORM100D,
@@ -230,7 +230,7 @@ const piezasNora = [
   },
   {
     id: "NORM90D",
-    title: "NORM90D Mód. 90 con brazo der. (114 cm)",
+    title: "Mód. 90 con brazo der. (114 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90D.png",
     price: preciosNora.comunNORM90D,
@@ -240,7 +240,7 @@ const piezasNora = [
   },
   {
     id: "NORM90I",
-    title: "NORM90I Mód. 90 con brazo izq. (114 cm)",
+    title: "Mód. 90 con brazo izq. (114 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90I.png",
     price: preciosNora.comunNORM90D,
@@ -250,7 +250,7 @@ const piezasNora = [
   },
   {
     id: "NORM80D",
-    title: "NORM80D Mód. 80 con brazo der. (104 cm)",
+    title: "Mód. 80 con brazo der. (104 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80D.png",
     price: preciosNora.comunNORM80D,
@@ -260,7 +260,7 @@ const piezasNora = [
   },
   {
     id: "NORM80I",
-    title: "NORM80I Mód. 80 con brazo izq. (104 cm)",
+    title: "Mód. 80 con brazo izq. (104 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80I.png",
     price: preciosNora.comunNORM80D,
@@ -270,7 +270,7 @@ const piezasNora = [
   },
   {
     id: "NORM110S",
-    title: "NORM110S Mód. 110 sin brazo (110 cm)",
+    title: "Mód. 110 sin brazo (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110S.png",
     price: preciosNora.comunNORM110S,
@@ -280,7 +280,7 @@ const piezasNora = [
   },
   {
     id: "NORM100S",
-    title: "NORM100S Mód. 100 sin brazo (100 cm)",
+    title: "Mód. 100 sin brazo (100 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100S.png",
     price: preciosNora.comunNORM100S,
@@ -290,7 +290,7 @@ const piezasNora = [
   },
   {
     id: "NORM90S",
-    title: "NORM90S Mód. 90 sin brazo (90 cm)",
+    title: "Mód. 90 sin brazo (90 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90S.png",
     price: preciosNora.comunNORM90S,
@@ -300,7 +300,7 @@ const piezasNora = [
   },
   {
     id: "NORM80S",
-    title: "NORM80S Mód. 80 sin brazo (80 cm)",
+    title: "Mód. 80 sin brazo (80 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80S.png",
     price: preciosNora.comunNORM80S,
@@ -310,7 +310,7 @@ const piezasNora = [
   },
   {
     id: "NORM110DM",
-    title: "NORM110DM Mód. 110 con repisa der. (160 cm)",
+    title: "Mód. 110 con repisa der. (160 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110DM.png",
     price: preciosNora.comunNORM110DM,
@@ -320,7 +320,7 @@ const piezasNora = [
   },
   {
     id: "NORM110IM",
-    title: "NORM110IM Mód. 110 con repisa izq. (160 cm)",
+    title: "Mód. 110 con repisa izq. (160 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IM.png",
     price: preciosNora.comunNORM110DM,
@@ -330,7 +330,7 @@ const piezasNora = [
   },
   {
     id: "NORM100DM",
-    title: "NORM100DM Mód. 100 con repisa der. (150 cm)",
+    title: "Mód. 100 con repisa der. (150 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DM.png",
     price: preciosNora.comunNORM100DM,
@@ -340,7 +340,7 @@ const piezasNora = [
   },
   {
     id: "NORM100IM",
-    title: "NORM100IM Mód. 100 con repisa izq. (150 cm)",
+    title: "Mód. 100 con repisa izq. (150 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100IM.png",
     price: preciosNora.comunNORM100DM,
@@ -350,7 +350,7 @@ const piezasNora = [
   },
   {
     id: "NORM90DM",
-    title: "NORM90DM Mód. 90 con repisa der. (140 cm)",
+    title: "Mód. 90 con repisa der. (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90DM.png",
     price: preciosNora.comunNORM90DM,
@@ -360,7 +360,7 @@ const piezasNora = [
   },
   {
     id: "NORM90IM",
-    title: "NORM90IM Mód. 90 con repisa izq. (140 cm)",
+    title: "Mód. 90 con repisa izq. (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90IM.png",
     price: preciosNora.comunNORM90DM,
@@ -370,7 +370,7 @@ const piezasNora = [
   },
   {
     id: "NORM80DM",
-    title: "NORM80DM Mód. 80 con repisa der. (130 cm)",
+    title: "Mód. 80 con repisa der. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80DM.png",
     price: preciosNora.comunNORM80DM,
@@ -380,7 +380,7 @@ const piezasNora = [
   },
   {
     id: "NORM80IM",
-    title: "NORM80IM Mód. 80 con repisa izq. (130 cm)",
+    title: "Mód. 80 con repisa izq. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80IM.png",
     price: preciosNora.comunNORM80DM,
@@ -391,7 +391,7 @@ const piezasNora = [
  
   {
     id: "NORM80DMMN",
-    title: "NORM80DMMN Mód. 80 con repisa der. + tapa madera natural (130 cm)",
+    title: "Mód. 80 con repisa der. + tapa madera natural (130 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80DMMN.png",
     price: preciosNora.comunNORM80DMN,
     medida: 130,
@@ -400,7 +400,7 @@ const piezasNora = [
   },
   {
     id: "NORM80IMMN",
-    title: "NORM80IMMN Mód. 80 con repisa izq. + tapa madera natural (130 cm)",
+    title: "Mód. 80 con repisa izq. + tapa madera natural (130 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80IMMN.png",
     price: preciosNora.comunNORM80DMN,
     medida: 130,
@@ -409,7 +409,7 @@ const piezasNora = [
   },
   {
     id: "NORM80DMMNE",
-    title: "NORM80DMMNE MÓD. 80 CON REPISA DER. + TAPA MADERA NEGRA (130 CM)",
+    title: "MÓD. 80 CON REPISA DER. + TAPA MADERA NEGRA (130 CM)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80DMMNE.png",
     price: preciosNora.comunNORM80DMN,
     medida: 130,
@@ -418,7 +418,7 @@ const piezasNora = [
   },
   {
     id: "NORM80IMMNE",
-    title: "NORM80IMMNE MÓD. 80 CON REPISA IZQ. + TAPA MADERA NEGRA (130 CM)",
+    title: "MÓD. 80 CON REPISA IZQ. + TAPA MADERA NEGRA (130 CM)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM80IMMNE.png",
     price: preciosNora.comunNORM80DMN,
     medida: 130,
@@ -429,7 +429,7 @@ const piezasNora = [
   // --- 90 cm ---
   {
     id: "NORM90DMMN",
-    title: "NORM90DMMN Mód. 90 con repisa der. + tapa madera natural (140 cm)",
+    title: "Mód. 90 con repisa der. + tapa madera natural (140 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90DMMN.png",
     price: preciosNora.comunNORM90DMN,
     medida: 140,
@@ -438,7 +438,7 @@ const piezasNora = [
   },
   {
     id: "NORM90DMMNE",
-    title: "NORM90DMMNE MÓD. 90 CON REPISA DER. + TAPA MADERA NEGRA (140 CM)",
+    title: "MÓD. 90 CON REPISA DER. + TAPA MADERA NEGRA (140 CM)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90DMMNE.png",
     price: preciosNora.comunNORM90DMN,
     medida: 140,
@@ -447,7 +447,7 @@ const piezasNora = [
   },
   {
     id: "NORM90IMMN",
-    title: "NORM90IMMN Mód. 90 con repisa izq. + tapa madera natural (140 cm)",
+    title: "Mód. 90 con repisa izq. + tapa madera natural (140 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90IMMN.png",
     price: preciosNora.comunNORM90DMN,
     medida: 140,
@@ -456,7 +456,7 @@ const piezasNora = [
   },
   {
     id: "NORM90IMMNE",
-    title: "NORM90IMMNE MÓD. 90 CON REPISA IZQ. + TAPA MADERA NEGRA (140 CM)",
+    title: "MÓD. 90 CON REPISA IZQ. + TAPA MADERA NEGRA (140 CM)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM90IMMNE.png",
     price: preciosNora.comunNORM90DMN,
     medida: 140,
@@ -468,7 +468,7 @@ const piezasNora = [
  
   {
     id: "NORM100DMMN",
-    title: "NORM100DMMN Mód. 100 con repisa der. + tapa madera natural (150 cm)",
+    title: "Mód. 100 con repisa der. + tapa madera natural (150 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DMMN.png",
     price: preciosNora.comunNORM100DMN,
     medida: 150,
@@ -477,7 +477,7 @@ const piezasNora = [
   },
   {
     id: "NORM100DMMNE",
-    title: "NORM100DMMNE MÓD. 100 CON REPISA DER. + TAPA MADERA NEGRA (150 CM)",
+    title: "MÓD. 100 CON REPISA DER. + TAPA MADERA NEGRA (150 CM)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100DMMNE.png",
     price: preciosNora.comunNORM100DMN,
     medida: 150,
@@ -486,7 +486,7 @@ const piezasNora = [
   },
   {
     id: "NORM100IMMN",
-    title: "NORM100IMMN Mód. 100 con repisa izq. + tapa madera natural (150 cm)",
+    title: "Mód. 100 con repisa izq. + tapa madera natural (150 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100IMMN.png",
     price: preciosNora.comunNORM100DMN,
     medida: 150,
@@ -495,7 +495,7 @@ const piezasNora = [
   },
   {
     id: "NORM100IMMNE",
-    title: "NORM100IMMNE MÓD. 100 CON REPISA IZQ. + TAPA MADERA NEGRA (150 CM)",
+    title: "MÓD. 100 CON REPISA IZQ. + TAPA MADERA NEGRA (150 CM)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM100IMMNE.png",
     price: preciosNora.comunNORM100DMN,
     medida: 150,
@@ -507,7 +507,7 @@ const piezasNora = [
 
   {
     id: "NORM110DMMN",
-    title: "NORM110DMMN Mód. 110 con repisa der. + tapa madera natural (160 cm)",
+    title: "Mód. 110 con repisa der. + tapa madera natural (160 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110DMMN.png",
     price: preciosNora.comunNORM110DMN,
     medida: 160,
@@ -516,7 +516,7 @@ const piezasNora = [
   },
   {
     id: "NORM110DMMNE",
-    title: "NORM110DMMNE MÓD. 110 CON REPISA DER. + TAPA MADERA NEGRA (160 CM)",
+    title: "MÓD. 110 CON REPISA DER. + TAPA MADERA NEGRA (160 CM)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110DMMNE.png",
     price: preciosNora.comunNORM110DMN,
     medida: 160,
@@ -526,7 +526,7 @@ const piezasNora = [
 
   {
     id: "NORM110IMMN",
-    title: "NORM110IMMN Mód. 110 con repisa izq. + tapa madera natural (160 cm)",
+    title: "Mód. 110 con repisa izq. + tapa madera natural (160 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IMMN.png",
     price: preciosNora.comunNORM110DMN,
     medida: 160,
@@ -535,7 +535,7 @@ const piezasNora = [
   },
   {
     id: "NORM110IMMNE",
-    title: "NORM110IMMNE MÓD. 110 CON REPISA IZQ. + TAPA MADERA NEGRA (160 CM)",
+    title: "MÓD. 110 CON REPISA IZQ. + TAPA MADERA NEGRA (160 CM)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORM110IMMNE.png",
     price: preciosNora.comunNORM110DMN,
     medida: 160,
@@ -544,7 +544,7 @@ const piezasNora = [
   },
   {
     id: "NORT110D",
-    title: "NORT110D Terminal 110 derecho (160 cm)",
+    title: "Terminal 110 derecho (160 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORT110D.png",
     price: preciosNora.comunNORT110D,
@@ -554,7 +554,7 @@ const piezasNora = [
   },
   {
     id: "NORT110I",
-    title: "NORT110I Terminal 110 izquierdo (160 cm)",
+    title: "Terminal 110 izquierdo (160 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORT110I.png",
     price: preciosNora.comunNORT110D,
@@ -564,7 +564,7 @@ const piezasNora = [
   },
   {
     id: "NORT100D",
-    title: "NORT100D Terminal 100 derecho (150 cm)",
+    title: "Terminal 100 derecho (150 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORT100D.png",
     price: preciosNora.comunNORT100D,
@@ -574,7 +574,7 @@ const piezasNora = [
   },
   {
     id: "NORT100I",
-    title: "NORT100I Terminal 100 izquierdo (150 cm)",
+    title: "Terminal 100 izquierdo (150 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORT100I.png",
     price: preciosNora.comunNORT100D,
@@ -584,7 +584,7 @@ const piezasNora = [
   },
   {
     id: "NORT90D",
-    title: "NORT90D Terminal 90 derecho (140 cm)",
+    title: "Terminal 90 derecho (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORT90D.png",
     price: preciosNora.comunNORT90D,
@@ -594,7 +594,7 @@ const piezasNora = [
   },
   {
     id: "NORT90I",
-    title: "NORT90I Terminal 90 izquierdo (140 cm)",
+    title: "Terminal 90 izquierdo (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORT90I.png",
     price: preciosNora.comunNORT90D,
@@ -604,7 +604,7 @@ const piezasNora = [
   },
   {
     id: "NORT80D",
-    title: "NORT80D Terminal 80 derecho (130 cm)",
+    title: "Terminal 80 derecho (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORT80D.png",
     price: preciosNora.comunNORT80D,
@@ -614,7 +614,7 @@ const piezasNora = [
   },
   {
     id: "NORT80I",
-    title: "NORT80I Terminal 80 izquierdo (130 cm)",
+    title: "Terminal 80 izquierdo (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORT80I.png",
     price: preciosNora.comunNORT80D,
@@ -624,7 +624,7 @@ const piezasNora = [
   },
   {
     id: "NORC110D",
-    title: "NORC110D Chaise longue 110 der. (134 cm)",
+    title: "Chaise longue 110 der. (134 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORC110D.png",
     price: preciosNora.comunNORC110D,
@@ -634,7 +634,7 @@ const piezasNora = [
   },
   {
     id: "NORC110I",
-    title: "NORC110I Chaise longue 110 izq. (134 cm)",
+    title: "Chaise longue 110 izq. (134 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORC110I.png",
     price: preciosNora.comunNORC110D,
@@ -644,7 +644,7 @@ const piezasNora = [
   },
   {
     id: "NORC100D",
-    title: "NORC100D Chaise longue 100 der. (124 cm)",
+    title: "Chaise longue 100 der. (124 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORC100D.png",
     price: preciosNora.comunNORC100D,
@@ -654,7 +654,7 @@ const piezasNora = [
   },
   {
     id: "NORC100I",
-    title: "NORC100I Chaise longue 100 izq. (124 cm)",
+    title: "Chaise longue 100 izq. (124 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORC100I.png",
     price: preciosNora.comunNORC100D,
@@ -664,7 +664,7 @@ const piezasNora = [
   },
   {
     id: "NORC90D",
-    title: "NORC90D Chaise longue 90 der. (114 cm)",
+    title: "Chaise longue 90 der. (114 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORC90D.png",
     price: preciosNora.comunNORC90D,
@@ -674,7 +674,7 @@ const piezasNora = [
   },
   {
     id: "NORC90I",
-    title: "NORC90I Chaise longue 90 izq. (114 cm)",
+    title: "Chaise longue 90 izq. (114 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORC90I.png",
     price: preciosNora.comunNORC90D,
@@ -684,7 +684,7 @@ const piezasNora = [
   },
   {
     id: "NORC80D",
-    title: "NORC80D Chaise longue 80 der. (104 cm)",
+    title: "Chaise longue 80 der. (104 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORC80D.png",
     price: preciosNora.comunNORC80D,
@@ -694,7 +694,7 @@ const piezasNora = [
   },
   {
     id: "NORC80I",
-    title: "NORC80I Chaise longue 80 izq. (104 cm)",
+    title: "Chaise longue 80 izq. (104 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORC80I.png",
     price: preciosNora.comunNORC80D,
@@ -704,7 +704,7 @@ const piezasNora = [
   },
   {
     id: "NORR108S",
-    title: "NORR108S Rincón cerrado (108 cm) *incluye 3 cojínes 45x46",
+    title: "Rincón cerrado (108 cm) *incluye 3 cojínes 45x46",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORR108S.png",
     price: preciosNora.comunNORR108S,
@@ -714,7 +714,7 @@ const piezasNora = [
   },
   {
     id: "NORP60S",
-    title: "NORP60S Pouff (60 cm)",
+    title: "Pouff (60 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60S.png",
     price: preciosNora.comunNORP60S,
@@ -724,7 +724,7 @@ const piezasNora = [
   },
   {
     id: "NORP60SCN",
-    title: "NORP60SCN Pouff + cajón madera natural (60 cm)",
+    title: "Pouff + cajón madera natural (60 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60SCN.png",
     price: preciosNora.comunNORP60SC,
     medida: 60,
@@ -733,7 +733,7 @@ const piezasNora = [
   },
   {
     id: "NORP60SCNE",
-    title: "NORP60SCNE Pouff + cajón madera negro (60 cm)",
+    title: "Pouff + cajón madera negro (60 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60SCNE.png",
     price: preciosNora.comunNORP60SC,
     medida: 60,
@@ -744,7 +744,7 @@ const piezasNora = [
   // --- Pouff tapa ---
   {
     id: "NORP60SMN",
-    title: "NORP60SMN Pouff + tapa madera natural (60 cm)",
+    title: "Pouff + tapa madera natural (60 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60SMN.png",
     price: preciosNora.comunNORP60SM,
     medida: 60,
@@ -753,7 +753,7 @@ const piezasNora = [
   },
   {
     id: "NORP60SMNE",
-    title: "NORP60SMNE Pouff + tapa madera negro (60 cm)",
+    title: "Pouff + tapa madera negro (60 cm)",
     imageUrl: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/NORA/NORP60SMNE.png",
     price: preciosNora.comunNORP60SM,
     medida: 60,

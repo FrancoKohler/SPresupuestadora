@@ -185,24 +185,28 @@ async function createPDF() {
   const modelo = document.getElementById("modelo").value;
   const nombreEmpresa = document.getElementById("nombreEmpresa").value;
   const cifEmpresa = document.getElementById("cifEmpresa").value;
-  const nombreCliente = document.getElementById("nombreCliente").value;
-  const cifCliente = document.getElementById("cifCliente").value;
-  const emailCliente = document.getElementById("emailCliente").value;
-  const telefonoCliente = document.getElementById("telefonoCliente").value;
+  
   const telefonoEmpresa = document.getElementById("telefonoEmpresa").value;
   const emailEmpresa = document.getElementById("emailEmpresa").value;
-  const comunidad = document.getElementById("comunidad").value;
-  const pais = document.getElementById("pais").value;
-  const calle = document.getElementById("calle").value;
-  const ciudad = document.getElementById("ciudad").value;
-  const codigoPostal = document.getElementById("codigoPostal").value;
-  const puertaPiso = document.getElementById("puertaPiso").value;
+
   const tela = document.getElementById("tela").value;
   const observaciones = document.getElementById("observaciones").value;
   const telaNombre = document.getElementById("selectTelaContainer").value;
   const precioTotalElement = document.getElementById("precioTotal");
   const descuentoAplicadoElement = document.getElementById("descuentoAplicado");
   const precioTotalDescElement = document.getElementById("precioTotalDesc");
+
+/*   const comunidad = document.getElementById("comunidad").value;
+  const pais = document.getElementById("pais").value;
+  const calle = document.getElementById("calle").value;
+  const ciudad = document.getElementById("ciudad").value;
+  const codigoPostal = document.getElementById("codigoPostal").value;
+  const puertaPiso = document.getElementById("puertaPiso").value;
+  const nombreCliente = document.getElementById("nombreCliente").value;
+  const cifCliente = document.getElementById("cifCliente").value;
+  const emailCliente = document.getElementById("emailCliente").value;
+  const telefonoCliente = document.getElementById("telefonoCliente").value;
+ */
 
   const selectIds = [
     "pieza1", "pieza2", "pieza3", "pieza4",
@@ -261,7 +265,7 @@ if (!footerLogoOk) {
 }
 
   /*-------------------INFO CLIENTE------------------- */
-  drawText(page, "INFORMACIÓN CLIENTE", 74, 690, 10, helveticaBoldFont);
+ /*  drawText(page, "INFORMACIÓN CLIENTE", 74, 690, 10, helveticaBoldFont);
   drawText(page, `Nombre: ${nombreCliente}`, 74, 670, 8, helveticaFont);
   drawText(page, `CIF Cliente: ${cifCliente}`, 74, 655, 8, helveticaFont);
   if (pais === "España") {
@@ -272,18 +276,18 @@ if (!footerLogoOk) {
   
   drawText(page, `Direccion: ${calle},${puertaPiso},${ciudad},${codigoPostal}`, 74, 625, 8, helveticaFont);
   drawText(page, `Teléfono: ${telefonoCliente}`, 74, 610, 8, helveticaFont);
-  drawText(page, `Email: ${emailCliente}`, 74, 595, 8, helveticaFont);
+  drawText(page, `Email: ${emailCliente}`, 74, 595, 8, helveticaFont); */
 
   // -------------------INFO EMPRESA-------------------
-  drawText(page, "INFORMACIÓN EMPRESA",340, 690, 10, helveticaBoldFont);
-  drawText(page, `Nombre Empresa: ${nombreEmpresa}`, 340, 670, 8, helveticaFont);
-  drawText(page, `Teléfono: ${telefonoEmpresa}`, 340, 655, 8, helveticaFont);
-  drawText(page, `CIF Empresa: ${cifEmpresa}`, 340, 640, 8, helveticaFont);
-  drawText(page, `Email Empresa: ${emailEmpresa}`, 340, 625, 8, helveticaFont);
+  drawText(page, "INFORMACIÓN EMPRESA",74, 690, 10, helveticaBoldFont);
+  drawText(page, `Nombre Empresa: ${nombreEmpresa}`, 74, 670, 8, helveticaFont);
+  drawText(page, `Teléfono: ${telefonoEmpresa}`, 74, 655, 8, helveticaFont);
+  drawText(page, `CIF Empresa: ${cifEmpresa}`, 74, 640, 8, helveticaFont);
+  drawText(page, `Email Empresa: ${emailEmpresa}`, 74, 625, 8, helveticaFont);
   /*--------------------SECCIÓN PRESUPUESTO---------------*/
-  drawText(page, "PRESUPUESTO", 340, 605, 10, helveticaBoldFont);
-  drawText(page, `Fecha Emisión: ${formattedDate}`, 340, 585, 8, helveticaFont);
-  drawText(page, `N° Referencia: ${numeroReferencia}`, 340, 570, 8, helveticaBoldFont);
+  drawText(page, "PRESUPUESTO", 340, 690, 10, helveticaBoldFont);
+  drawText(page, `Fecha Emisión: ${formattedDate}`, 340, 670, 8, helveticaFont);
+  drawText(page, `N° Referencia: ${numeroReferencia}`, 340, 655, 8, helveticaBoldFont);
   /*---------MODELO Y CONFIGURACION-----------*/
   drawText(page, `MODELO: ${modelo}`, 52, 565, 15, helveticaBoldFont);
   
@@ -418,7 +422,7 @@ function temporarilyShowMeasures(rootEl) {
 function getExpandedViewportRectStrict(rootEl, opts = {}) {
   const {
     // cuánto permitir por arriba/abajo/laterales
-    padTop = 24, padRight = 16, padBottom = 0, padLeft = 16,
+    padTop = 5, padRight = 16, padBottom = 0, padLeft = 16,
     // tope inferior extra por debajo del canvas
     bottomExtraFromCanvas = 0
   } = opts;
@@ -461,6 +465,13 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
     : rootSelector;
   if (!rootEl) return null;
 
+  // 🔒 Ocultar el modal temporalmente
+  const modal = document.getElementById("modal");
+  const modalWasVisible = modal && modal.style.display !== "none";
+  if (modalWasVisible) {
+    modal.style.display = "none";
+  }
+
   const restoreMeasures = temporarilyShowMeasures(rootEl);
   await waitForImagesToLoad(rootEl);
   await wait(60);
@@ -468,7 +479,7 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
   try {
     // 👉 ajusta estos valores si necesitas más/menos margen
     const area = getExpandedViewportRectStrict(rootEl, {
-      padTop: 24, padRight: 14, padBottom: 0, padLeft: 14,
+      padTop:5, padRight: 14, padBottom: 0, padLeft: 14,
       bottomExtraFromCanvas: 0 // ↓ si aún captura algo de más, pon 6 o 0
     });
     if (!area) return null;
@@ -488,6 +499,11 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
     return canvas.toDataURL('image/png');
   } finally {
     restoreMeasures();
+    
+    // ✅ Restaurar el modal si estaba visible
+    if (modalWasVisible && modal) {
+      modal.style.display = "block";
+    }
   }
 }
 
@@ -680,7 +696,6 @@ if (cantidadCojines > 0 && precioCojines) {
         modelo: modelo,
         referencia: numeroReferencia,
         precio_total: precioFinal,
-        pais: pais,
         empresa: nombreEmpresa,
         fecha: formattedDate,
         tiene_descuento: descuentoAplicadoElement && descuentoAplicadoElement.textContent !== '0%',
@@ -715,11 +730,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const campos = [
-      { id: "nombreCliente", label: "Nombre y Apellido" },
+    /*   { id: "nombreCliente", label: "Nombre y Apellido" },
       { id: "emailCliente", label: "Email", tipo: "email" },
       { id: "codigoPostal", label: "Código Postal" },
       { id: "calle", label: "Calle" },
-      { id: "puertaPiso", label: "Puerta/Piso" },
+      { id: "puertaPiso", label: "Puerta/Piso" }, */
       { id: "nombreEmpresa", label: "Nombre Empresa" },
       { id: "emailEmpresa", label: "Email Empresa", tipo: "email" },
     ];

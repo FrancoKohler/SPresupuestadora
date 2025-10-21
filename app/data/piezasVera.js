@@ -118,7 +118,7 @@ const piezasVera = [
   // New pieces with arms added below
   {
     id: "VERM11OD",
-    title: "VERM11OD Mód. 110 con brazo der. (140 cm)",
+    title: "Mód. 110 con brazo der. (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM110D.png",
     price: preciosVera.comunVERM110D,
@@ -128,7 +128,7 @@ const piezasVera = [
   },
   {
     id: "VERM11OI",
-    title: "VERM11OI Mód. 110 con brazo izq. (140 cm)",
+    title: "Mód. 110 con brazo izq. (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM110I.png",
     price: preciosVera.comunVERM110D,
@@ -138,7 +138,7 @@ const piezasVera = [
   },
   {
     id: "VERM100D",
-    title: "VERM100D Mód. 100 con brazo der. (130 cm)",
+    title: "Mód. 100 con brazo der. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM100D.png",
     price: preciosVera.comunVERM100D,
@@ -148,7 +148,7 @@ const piezasVera = [
   },
   {
     id: "VERM100I",
-    title: "VERM100I Mód. 100 con brazo izq. (130 cm)",
+    title: "Mód. 100 con brazo izq. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM100I.png",
     price: preciosVera.comunVERM100D,
@@ -158,7 +158,7 @@ const piezasVera = [
   },
   {
     id: "VERM90D",
-    title: "VERM90D Mód. 90 con brazo der. (120 cm)",
+    title: "Mód. 90 con brazo der. (120 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM90D.png",
     price: preciosVera.comunVERM90D,
@@ -168,7 +168,7 @@ const piezasVera = [
   },
   {
     id: "VERM90I",
-    title: "VERM90I Mód. 90 con brazo izq. (120 cm)",
+    title: "Mód. 90 con brazo izq. (120 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM90I.png",
     price: preciosVera.comunVERM90D,
@@ -178,7 +178,7 @@ const piezasVera = [
   },
   {
     id: "VERM80D",
-    title: "VERM80D Mód. 80 con brazo der. (110 cm)",
+    title: "Mód. 80 con brazo der. (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM80D.png",
     price: preciosVera.comunVERM80D,
@@ -188,7 +188,7 @@ const piezasVera = [
   },
   {
     id: "VERM80I",
-    title: "VERM80I Mód. 80 con brazo izq. (110 cm)",
+    title: "Mód. 80 con brazo izq. (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM80I.png",
     price: preciosVera.comunVERM80D,
@@ -198,7 +198,7 @@ const piezasVera = [
   },
   {
     id: "VERM110S",
-    title: "VERM110S Mód. 110 sin brazo (110 cm)",
+    title: "Mód. 110 sin brazo (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM110S.png",
     price: preciosVera.sinBrazo110,
@@ -208,7 +208,7 @@ const piezasVera = [
   },
   {
     id: "VERM100S",
-    title: "VERM100S Mód. 100 sin brazo (100 cm)",
+    title: "Mód. 100 sin brazo (100 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM100S.png",
     price: preciosVera.sinBrazo100,
@@ -218,7 +218,7 @@ const piezasVera = [
   },
   {
     id: "VERM90S",
-    title: "VERM90S Mód. 90 sin brazo (90 cm)",
+    title: "Mód. 90 sin brazo (90 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM90S.png",
     price: preciosVera.sinBrazo90,
@@ -228,7 +228,7 @@ const piezasVera = [
   },
   {
     id: "VERM80S",
-    title: "VERM80S Mód. 80 sin brazo (80 cm)",
+    title: "Mód. 80 sin brazo (80 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERM80S.png",
     price: preciosVera.sinBrazo80,
@@ -239,7 +239,7 @@ const piezasVera = [
   
   {
     id: "VERT110D",
-    title: "VERT110D Terminal 110 der. (160 cm)",
+    title: "Terminal 110 der. (160 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT110D.png",
     price: preciosVera.terminal110,
@@ -249,7 +249,7 @@ const piezasVera = [
   },
   {
     id: "VERT110I",
-    title: "VERT110I Terminal 110 izq. (160 cm)",
+    title: "Terminal 110 izq. (160 cm)",
     imageUrl:
     "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT110I.png",
     price: preciosVera.terminal110,
@@ -259,7 +259,7 @@ const piezasVera = [
   },
   {
     id: "VERT100D",
-    title: "VERT100D Terminal 100 der. (150 cm)",
+    title: "Terminal 100 der. (150 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT100D.png",
     price: preciosVera.terminal100,
@@ -269,7 +269,7 @@ const piezasVera = [
   },
   {
     id: "VERT100I",
-    title: "VERT100I Terminal 100 izq. (150 cm)",
+    title: "Terminal 100 izq. (150 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT100I.png",
     price: preciosVera.terminal100,
@@ -279,7 +279,7 @@ const piezasVera = [
   },
   {
     id: "VERT90D",
-    title: "VERT90D Terminal 90 der. (140 cm)",
+    title: "Terminal 90 der. (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT90D.png",
     price: preciosVera.terminal90,
@@ -289,7 +289,7 @@ const piezasVera = [
   },
   {
     id: "VERT90I",
-    title: "VERT90I Terminal 90 izq. (140 cm)",
+    title: "Terminal 90 izq. (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT90I.png",
     price: preciosVera.terminal90,
@@ -299,7 +299,7 @@ const piezasVera = [
   },
   {
     id: "VERT80D",
-    title: "VERT80D Terminal 80 der. (130 cm)",
+    title: "Terminal 80 der. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT80D.png",
     price: preciosVera.terminal80,
@@ -309,7 +309,7 @@ const piezasVera = [
   },
   {
     id: "VERT80I",
-    title: "VERT80I Terminal 80 izq. (130 cm)",
+    title: "Terminal 80 izq. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERT80I.png",
     price: preciosVera.terminal80,
@@ -319,7 +319,7 @@ const piezasVera = [
   },
   {
     id: "VERC110D",
-    title: "VERC110D Chaise Longue 110 der. (140 cm)",
+    title: "Chaise Longue 110 der. (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERC110D.png",
     price: preciosVera.chaise110,
@@ -329,7 +329,7 @@ const piezasVera = [
   },
   {
     id: "VERC110I",
-    title: "VERC110I Chaise Longue 110 izq. (140 cm)",
+    title: "Chaise Longue 110 izq. (140 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERC110I.png",
     price: preciosVera.chaise110,
@@ -339,7 +339,7 @@ const piezasVera = [
   },
   {
     id: "VERC100D",
-    title: "VERC100D Chaise Longue 100 der. (130 cm)",
+    title: "Chaise Longue 100 der. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERC100D.png",
     price: preciosVera.chaise100,
@@ -349,7 +349,7 @@ const piezasVera = [
   },
   {
     id: "VERC100I",
-    title: "VERC100I Chaise Longue 100 izq. (130 cm)",
+    title: "Chaise Longue 100 izq. (130 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERC100I.png",
     price: preciosVera.chaise100,
@@ -359,7 +359,7 @@ const piezasVera = [
   },
   {
     id: "VERC90D",
-    title: "VERC90D Chaise Longue 90 der. (120 cm)",
+    title: "Chaise Longue 90 der. (120 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERC90D.png",
     price: preciosVera.chaise90,
@@ -369,7 +369,7 @@ const piezasVera = [
   },
   {
     id: "VERC90I",
-    title: "VERC90I Chaise Longue 90 izq. (120 cm)",
+    title: "Chaise Longue 90 izq. (120 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERC90I.png",
     price: preciosVera.chaise90,
@@ -379,7 +379,7 @@ const piezasVera = [
   },
   {
     id: "VERC80D",
-    title: "VERC80D Chaise Longue 80 der. (110 cm)",
+    title: "Chaise Longue 80 der. (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERC80D.png",
     price: preciosVera.chaise80,
@@ -389,7 +389,7 @@ const piezasVera = [
   },
   {
     id: "VERC80I",
-    title: "VERC80I Chaise Longue 80 izq. (110 cm)",
+    title: "Chaise Longue 80 izq. (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERC80I.png",
     price: preciosVera.chaise80,
@@ -399,7 +399,7 @@ const piezasVera = [
   },
   {
     id: "VERR108S",
-    title: "VERR108S Rincón cerrado (110 cm)",
+    title: "Rincón cerrado (110 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERR108S.png",
     price: preciosVera.rincon,
@@ -409,7 +409,7 @@ const piezasVera = [
   },
   {
     id: "VERP60S",
-    title: "VERP60S Pouff (60 cm)",
+    title: "Pouff (60 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERP60S.png",
     price: preciosVera.pouf,
