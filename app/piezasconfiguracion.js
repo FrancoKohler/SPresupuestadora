@@ -131,126 +131,108 @@
     etiquetaProfundidad.style.transform = "translate(0, -50%)";
     etiquetaProfundidad.style.margin = "0";
   }
+  function getScaleFactor() {
+    const containerWidth = document.getElementById("imagenPiezas")?.offsetWidth || 600;
+    const baseWidth = 600; // Ancho base de referencia
+    return Math.min(containerWidth / baseWidth, 1.2); // Máximo 120% de escala
+  }
   
-  
-  function mostrarImagenes() {
-    const imagenesDiv = document.getElementById("imagenPiezas");
-    // Limpia SOLO las imágenes anteriores, no borres cotas ni etiquetas
-    Array.from(imagenesDiv.querySelectorAll(".img-config")).forEach(el => el.remove());
-  
-    imagenesDiv.style.position = "relative";
-    imagenesDiv.style.transform = "none";
-    imagenesDiv.style.transformOrigin = "top-left";
-  
-    // Asegura que las cotas existen (no se borran entre renders)
-    ensureCotasElements(imagenesDiv);
-  
-    let currentX = 0;
-    let currentY = 0;
-    let rotateAfterYutra = false;
-    let rotateHasHappened = false;
-    let rotationAnchor = null;
-    let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
-    let totalMedida = 0;
-    let cotaProfundidad = 0;
-  
-    const specialPieces = ["BIAR108S", "VERR108S", "AURR108S", "NORR108S", "PROR105S"];
-  
-    const chaiseLongueIds = [
-      /*-----VERA CHAISE-----*/ "VERC110D","VERC110I","VERC100D","VERC100I","VERC90D","VERC90I","VERC80D","VERC80I",
-      /*-----NORA CHAISE-----*/ "NORC110D","NORC110I","NORC100D","NORC100I","NORC90D","NORC90I","NORC80D","NORC80I",
-      /*-----LUNA CHAISE-----*/ "PROC100D","PROC100I","PROC80D","PROC80I",
-      /*-----BIANCA CHAISE---*/ "BIAC110D","BIAC110I","BIAC100D","BIAC100I","BIAC90D","BIAC90I","BIAC80D","BIAC80I",
-      /*-----AURA CHAISE-----*/ "AURC110D","AURC110I","AURC100D","AURC100I","AURC90D","AURC90I","AURC80D","AURC80I",
-    ];
-  
-    const terminalId = [
-      /*-----VERA TERMINAL-----*/ "VERT110D","VERT110I","VERT100D","VERT100I","VERT90D","VERT90I","VERT80D","VERT80I",
-      /*-----NORA TERMINAL-----*/ "NORT110D","NORT110I","NORT100D","NORT100I","NORT90D","NORT90I","NORT80D","NORT80I",
-      /*-----LUNA TERMINAL-----*/ "PROT100D","PROT100I","PROT80D","PROT80I",
-      /*-----BIANCA TERMINAL---*/ "BIAT110D","BIAT110I","BIAT100D","BIAT100I","BIAT90D","BIAT90I","BIAT80D","BIAT80I",
-      /*-----AURA TERMINAL-----*/ "AURT110D","AURT110I","AURT100D","AURT100I","AURT90D","AURT90I","AURT80D","AURT80I",
-    ];
-  
-    const brazoId = [
-      /*-----VERA BRAZO-----*/ "VERM11OD","VERM11OI","VERM100D","VERM100I","VERM90D","VERM90I","VERM80D","VERM80I",
-      /*-----NORA BRAZO-----*/ "NORM110DM","NORM110IM","NORM100DM","NORM100IM","NORM110DM","NORM90DM","NORM90IM","NORM80DM","NORM80IM",
-      "NORM110D","NORM110I","NORM100D","NORM100I","NORM90D","NORM90I","NORM80D","NORM80I",
-      /*-----LUNA BRAZO-----*/ "PROM100D","PROM100I","PROM80D","PROM80I",
-      /*---BIANCA BRAZO-----*/ "BIAM110DM","BIAM110IM","BIAM100DM","BIAM100IM","BIAM90DM","BIAM90IM","BIAM80DM","BIAM80IM",
-      "BIAM110I","BIAM110D","BIAM110I","BIAM100D","BIAM100I","BIAM90D","BIAM90I","BIAM80D","BIAM80I",
-      /*-----AURA BRAZO-----*/ "AURM110D","AURM110I","AURM100D","AURM100I","AURM90D","AURM90I","AURM80D","AURM80I",
-    ];
-    const pouffId = [
-        /*----AURA POUFF---*/"AURP60S",
-         /*----NORA POUFF---*/"NORP60S",
-         /*---LUNA---*/"PROP60S",
-          /*---VERA--*/"VERP60S",
+function mostrarImagenes() {
+  const imagenesDiv = document.getElementById("imagenPiezas");
+  Array.from(imagenesDiv.querySelectorAll(".img-config")).forEach(el => el.remove());
 
-          /*---BIANCA--*/"BIAP60S",
-    ];
-    const pouffTPId = [
-       /*----NORA POUFF---*/"NORP60SMNE","NORP60SCNE","NORP60SCN","NORP60SMN",
-       "NORP60SMNE",
-        /*---BIANCA--*/"BIAP60SCN","BIAP60SCNE","BIAP60SMN","BIAP60SMNE",
+  imagenesDiv.style.position = "relative";
+  imagenesDiv.style.transform = "none";
+  imagenesDiv.style.transformOrigin = "top-left";
+
+  ensureCotasElements(imagenesDiv);
+
+  // Factor de escala responsive
+  const scaleFactor = getScaleFactor();
+  
+  let currentX = 0;
+  let currentY = 0;
+  let rotateAfterYutra = false;
+  let rotateHasHappened = false;
+  let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
+  let totalMedida = 0;
+  let cotaProfundidad = 0;
+
+  const specialPieces = ["BIAR108S", "VERR108S", "AURR108S", "NORR108S", "PROR105S"];
+  const chaiseLongueIds = [
+    "VERC110D","VERC110I","VERC100D","VERC100I","VERC90D","VERC90I","VERC80D","VERC80I",
+    "NORC110D","NORC110I","NORC100D","NORC100I","NORC90D","NORC90I","NORC80D","NORC80I",
+    "PROC100D","PROC100I","PROC80D","PROC80I",
+    "BIAC110D","BIAC110I","BIAC100D","BIAC100I","BIAC90D","BIAC90I","BIAC80D","BIAC80I",
+    "AURC110D","AURC110I","AURC100D","AURC100I","AURC90D","AURC90I","AURC80D","AURC80I",
   ];
-  
+  const terminalId = [
+    "VERT110D","VERT110I","VERT100D","VERT100I","VERT90D","VERT90I","VERT80D","VERT80I",
+    "NORT110D","NORT110I","NORT100D","NORT100I","NORT90D","NORT90I","NORT80D","NORT80I",
+    "PROT100D","PROT100I","PROT80D","PROT80I",
+    "BIAT110D","BIAT110I","BIAT100D","BIAT100I","BIAT90D","BIAT90I","BIAT80D","BIAT80I",
+    "AURT110D","AURT110I","AURT100D","AURT100I","AURT90D","AURT90I","AURT80D","AURT80I",
+  ];
+  const brazoId = [
+    "VERM11OD","VERM11OI","VERM100D","VERM100I","VERM90D","VERM90I","VERM80D","VERM80I",
+    "NORM110DM","NORM110IM","NORM100DM","NORM100IM","NORM110DM","NORM90DM","NORM90IM","NORM80DM","NORM80IM",
+    "NORM110D","NORM110I","NORM100D","NORM100I","NORM90D","NORM90I","NORM80D","NORM80I",
+    "PROM100D","PROM100I","PROM80D","PROM80I",
+    "BIAM110DM","BIAM110IM","BIAM100DM","BIAM100IM","BIAM90DM","BIAM90IM","BIAM80DM","BIAM80IM",
+    "BIAM110I","BIAM110D","BIAM110I","BIAM100D","BIAM100I","BIAM90D","BIAM90I","BIAM80D","BIAM80I",
+    "AURM110D","AURM110I","AURM100D","AURM100I","AURM90D","AURM90I","AURM80D","AURM80I",
+  ];
+  const pouffId = ["AURP60S","NORP60S","PROP60S","VERP60S","BIAP60S"];
+  const pouffTPId = ["NORP60SMNE","NORP60SCNE","NORP60SCN","NORP60SMN","NORP60SMNE","BIAP60SCN","BIAP60SCNE","BIAP60SMN","BIAP60SMNE"];
   const modTapa = [
-    /*----NORA POUFF---*/
-"NORM80DMMN","NORM80DMMNE","NORM80IMMN","NORM80IMMNE","NORM90DMMN","NORM90DMMNE","NORM90IMMN","NORM90IMMNE","NORM100DMMN","NORM100DMMNE","NORM100IMMN","NORM100IMMNE","NORM110DMMN","NORM110DMMNE","NORM110IMMN","NORM110IMMNE",
+    "NORM80DMMN","NORM80DMMNE","NORM80IMMN","NORM80IMMNE","NORM90DMMN","NORM90DMMNE","NORM90IMMN","NORM90IMMNE",
+    "NORM100DMMN","NORM100DMMNE","NORM100IMMN","NORM100IMMNE","NORM110DMMN","NORM110DMMNE","NORM110IMMN","NORM110IMMNE",
+    "BIAM80DMMN","BIAM80DMMNE","BIAM80IMMN","BIAM80IMMNE","BIAM90DMMN","BIAM90DMMNE","BIAM90IMMN","BIAM90IMMNE",
+    "BIAM100DMMN","BIAM100DMMNE","BIAM100IMMN","BIAM100IMMNE","BIAM110DMMN","BIAM110DMMNE","BIAM110IMMN","BIAM110IMMNE",
+    "BIAP60SCN","BIAP60SCNE","BIAP60SMN","BIAP60SMNE",
+  ];
+  const modRepisa = [
+    "NORM110IM","NORM100IM","NORM90IM","NORM80IM","NORM110DM","NORM100DM","NORM90DM","NORM80DM",
+    "BIAM110IM","BIAM100IM","BIAM90IM","BIAM80IM","BIAM110DM","BIAM100DM","BIAM90DM","BIAM80DM",
+  ];
 
-     /*---BIANCA--*/
-    "BIAM80DMMN","BIAM80DMMNE","BIAM80IMMN","BIAM80IMMNE","BIAM90DMMN","BIAM90DMMNE","BIAM90IMMN","BIAM90IMMNE","BIAM100DMMN","BIAM100DMMNE","BIAM100IMMN","BIAM100IMMNE","BIAM110DMMN","BIAM110DMMNE","BIAM110IMMN","BIAM110IMMNE","BIAP60SCN","BIAP60SCNE","BIAP60SMN","BIAP60SMNE",
-
-];
-const modRepisa = [
-  /*----NORA modRepisa---*/
-  "NORM110IM","NORM100IM","NORM90IM","NORM80IM","NORM110DM","NORM100DM","NORM90DM","NORM80DM",
-  /*---BIANCA--*/
-  "BIAM110IM","BIAM100IM","BIAM90IM","BIAM80IM","BIAM110DM","BIAM100DM","BIAM90DM","BIAM80DM",
-];
-    const promises = [];
-
-  // 🔁 Tomamos las piezas exactamente en el orden de los selects (slot1..slot8)
-  const piezasPorSlot = obtenerPiezasPorSlot(); // devuelve [slot1..slot8] con null donde no hay pieza
+  const promises = [];
+  const piezasPorSlot = obtenerPiezasPorSlot();
 
   piezasPorSlot.forEach((piezaSlot) => {
     if (!piezaSlot) return;
-  
+
     const selectedOption = piezaSlot.option;
     const imageUrl = selectedOption.dataset.imageUrl;
     const piezaId = piezaSlot.id;
-  
-    // tamaños base (los mismos que ya usas)
-    const width = 100;
-    const height = 100;
-    const heightChaise = 150;
-    const widthTerminal = 150;
-    const widthBrazo = 120;
-  
+
+    // Tamaños base escalados
+    const width = 100 * scaleFactor;
+    const height = 100 * scaleFactor;
+    const heightChaise = 150 * scaleFactor;
+    const widthTerminal = 150 * scaleFactor;
+    const widthBrazo = 120 * scaleFactor;
+
     let finalWidthToApply = width;
     const isChaiseLongue = chaiseLongueIds.includes(piezaId);
     const isTerminal = terminalId.includes(piezaId);
     const isBrazo = brazoId.includes(piezaId);
 
-    // Ajustamos ancho en función de tipo
     const finalHeight = isChaiseLongue ? heightChaise : height;
     if (isChaiseLongue || isBrazo) finalWidthToApply = widthBrazo;
     else if (isTerminal) finalWidthToApply = widthTerminal;
 
-    // 🔍 EXTRA: ajustar ancho según el título
     const piezaTitle = selectedOption.textContent.toUpperCase();
     if (piezaTitle.includes("REPISA")) {
-      finalWidthToApply += 25;
+      finalWidthToApply += 25 * scaleFactor;
     } else if (piezaTitle.includes("POUFF")) {
-      finalWidthToApply -= 40;
+      finalWidthToApply -= 40 * scaleFactor;
     }
 
-  
     const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
     const medida = piezaSeleccionada?.medida ?? 0;
     const medidap = piezaSeleccionada?.medidap ?? 0;
-  
+
     if (imageUrl && piezaId !== "None") {
       const imgElement = document.createElement("img");
       imgElement.src = imageUrl;
@@ -261,120 +243,103 @@ const modRepisa = [
       imgElement.style.height = `${finalHeight}px`;
       imgElement.style.maxWidth = "none";
       imgElement.style.boxSizing = "border-box";
-  
+      imgElement.style.transition = "all 0.3s ease"; // Transición suave
+
       let yaSumoProfundidad = false;
-    
-const esTriggerGiro = specialPieces.includes(piezaId);
-// Adjust rotation and add X translation for brazo pieces
-if (esTriggerGiro && !rotateHasHappened) {
-  rotateHasHappened = true;
-  rotateAfterYutra = true;
-  specialPiece.x = currentX;
-  specialPiece.y = currentY;
-  specialPiece.width  = finalWidthToApply;
-  specialPiece.height = finalHeight;
+      const esTriggerGiro = specialPieces.includes(piezaId);
 
-  imgElement.style.left = `${specialPiece.x}px`;
-  imgElement.style.top  = `${specialPiece.y}px`;
+      if (esTriggerGiro && !rotateHasHappened) {
+        rotateHasHappened = true;
+        rotateAfterYutra = true;
+        specialPiece.x = currentX;
+        specialPiece.y = currentY;
+        specialPiece.width = finalWidthToApply;
+        specialPiece.height = finalHeight;
 
-  currentX = specialPiece.x + finalWidthToApply;
-  currentY = specialPiece.y + finalHeight;
+        imgElement.style.left = `${specialPiece.x}px`;
+        imgElement.style.top = `${specialPiece.y}px`;
 
-  totalMedida += medida;
-  cotaProfundidad = Math.max(cotaProfundidad, medidap || 0);
-  yaSumoProfundidad = true;
-} else if (rotateAfterYutra) {
-  imgElement.style.transform = "rotate(90deg)";
-   if (modRepisa.includes(piezaId)) {
-    // Ajuste específico para repisas
-    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 23}px`;
-    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 122}px`;
-  }
-  else if (brazoId.includes(piezaId)) {
-    // Apply 10px shift on the X-axis for brazo pieces
-    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 10}px`;
-    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 110}px`; 
-  } else if (terminalId.includes(piezaId)) {
-    // Apply 25px shift on the X-axis for terminal pieces
-    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 25}px`;
-    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 125}px`;
-  }
-  else if (chaiseLongueIds.includes(piezaId)) {
-    // Apply 25px shift on the X-axis for terminal pieces
-    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + 15}px`;
-    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 135}px`;
-  } 
-  else if (pouffId.includes(piezaId)) {
-    // Apply 25px shift on the X-axis for terminal pieces
-    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + 20}px`;
-    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 80}px`;
-  } 
-  else if (pouffTPId.includes(piezaId)) {
-    // Apply 25px shift on the X-axis for terminal pieces
-    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + 20}px`;
-    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 80}px`;
-  }
-  else if (modTapa.includes(piezaId)) {
-    // Apply 25px shift on the X-axis for terminal pieces
-    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - 13}px`;
-    imgElement.style.top  = `${specialPiece.y + specialPiece.height - finalHeight + 112}px`;
-  }
+        currentX = specialPiece.x + finalWidthToApply;
+        currentY = specialPiece.y + finalHeight;
 
-  
-  else {
-    // Default positioning for other pieces
-    imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight}px`;
-    imgElement.style.top  = `${specialPiece.y + specialPiece.width}px`;
-  }
+        totalMedida += medida;
+        cotaProfundidad = Math.max(cotaProfundidad, medidap || 0);
+        yaSumoProfundidad = true;
+      } else if (rotateAfterYutra) {
+        imgElement.style.transform = "rotate(90deg)";
+        
+        // Ajustes escalados para diferentes tipos de piezas
+        if (modRepisa.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (23 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (122 * scaleFactor)}px`;
+        } else if (brazoId.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (10 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (110 * scaleFactor)}px`;
+        } else if (terminalId.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (25 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (125 * scaleFactor)}px`;
+        } else if (chaiseLongueIds.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + (15 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (135 * scaleFactor)}px`;
+        } else if (pouffId.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + (20 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (80 * scaleFactor)}px`;
+        } else if (pouffTPId.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + (20 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (80 * scaleFactor)}px`;
+        } else if (modTapa.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (13 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (112 * scaleFactor)}px`;
+        } else {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.width}px`;
+        }
 
-  // Update specialPiece.y for next iteration
-  specialPiece.y += finalWidthToApply;
+        specialPiece.y += finalWidthToApply;
+        cotaProfundidad += medida;
+        yaSumoProfundidad = true;
+      } else {
+        imgElement.style.left = `${currentX}px`;
+        imgElement.style.top = `${currentY}px`;
+        currentX += finalWidthToApply;
+        totalMedida += medida;
+      }
 
-  cotaProfundidad += medida;
-  yaSumoProfundidad = true;
-} else {
-  imgElement.style.left = `${currentX}px`;
-  imgElement.style.top  = `${currentY}px`;
+      if (!yaSumoProfundidad) {
+        if (!rotateAfterYutra) {
+          cotaProfundidad = Math.max(cotaProfundidad, medidap);
+        } else if (!esTriggerGiro) {
+          cotaProfundidad += medida;
+        }
+      }
 
-  currentX += finalWidthToApply;
-  totalMedida += medida;
-}
-
-
-// Ajuste de profundidad si aún no se trató arriba
-if (!yaSumoProfundidad) {
-    if (!rotateAfterYutra) {
-    cotaProfundidad = Math.max(cotaProfundidad, medidap);
-  } else if (!esTriggerGiro) {
-    cotaProfundidad += medida;
-   
-  }
-}
-
-  
       imagenesDiv.appendChild(imgElement);
-  
-      // onload solo para sincronizar el “fin”
       promises.push(new Promise((resolve) => { imgElement.onload = resolve; }));
     }
   });
-  
+
   Promise.all(promises).then(() => {
     window.__ULTIMO_TOTAL_MEDIDA_CM__ = totalMedida;
     window.__ULTIMA_PROFUNDIDAD_CM__ = cotaProfundidad;
     posicionarCotas(imagenesDiv, totalMedida, cotaProfundidad);
   });
-} 
+}
 
-(function attachResizeOnce(){
-if (window.__COTAS_RESIZE_ATTACHED__) return;
-window.__COTAS_RESIZE_ATTACHED__ = true;
-window.addEventListener("resize", () => {
-  const imagenesDiv = document.getElementById("imagenPiezas");
-  if (!imagenesDiv) return;
-  if (window.__ULTIMO_TOTAL_MEDIDA_CM__ != null && window.__ULTIMA_PROFUNDIDAD_CM__ != null) {
-    posicionarCotas(imagenesDiv, window.__ULTIMO_TOTAL_MEDIDA_CM__, window.__ULTIMA_PROFUNDIDAD_CM__);
-  }
-});
+// 3. Event listener mejorado para resize con debounce
+let resizeTimeout;
+(function attachResponsiveResize() {
+  if (window.__COTAS_RESIZE_ATTACHED__) return;
+  window.__COTAS_RESIZE_ATTACHED__ = true;
+  
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const imagenesDiv = document.getElementById("imagenPiezas");
+      if (!imagenesDiv) return;
+      
+      // Regenerar toda la configuración con el nuevo factor de escala
+      mostrarImagenes();
+    }, 250); // Espera 250ms después del último resize
+  });
 })();
   

@@ -130,6 +130,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
   generarResumen();
 });
+
+// Función para calcular el precio total por serie
+function calcularPrecioTotalPorSerie(serie) {
+  const piezasSeleccionadas = obtenerPiezasSeleccionadas();
+  const piezasFiltradas = piezasSeleccionadas.filter((pieza) => pieza.id !== "None");
+  
+  // Calcular precio de piezas
+  const precioPiezas = piezasFiltradas.reduce((total, pieza) => {
+    const precioPieza = obtenerPrecioPorMaterial(pieza.id, serie);
+    return total + precioPieza;
+  }, 0);
+  
+  // Calcular precio de cojines
+  const cantidadCojines = parseInt(document.getElementById("cojines").value) || 0;
+  let precioCojines = 0;
+  if (cantidadCojines > 0) {
+    const precioUnidad = cojines[0].pricesBySerie[serie] || 0;
+    precioCojines = precioUnidad * cantidadCojines;
+  }
+  
+  return precioPiezas + precioCojines;
+}
+
+// Función para actualizar los precios en el dropdown de series
+function actualizarPreciosEnDropdown() {
+  const telaSelect = document.getElementById("tela");
+  const opciones = telaSelect.options;
+  
+  for (let i = 0; i < opciones.length; i++) {
+    const serie = opciones[i].value;
+    if (serie && serie !== "") {
+      const precioTotal = calcularPrecioTotalPorSerie(serie);
+      const textoOriginal = serie; // Mantener solo el nombre de la serie
+      // Usar espacios para separar visualmente el precio
+      opciones[i].text = `${textoOriginal}    (${precioTotal.toFixed(2)}€)`;
+      opciones[i].classList.add('option-con-precio');
+    }
+  }
+}
+
+// Modificar la función generarResumen existente para incluir la actualización del dropdown
+const generarResumenOriginal = generarResumen;
+generarResumen = function() {
+  generarResumenOriginal();
+  actualizarPreciosEnDropdown();
+};
+
+// Event listeners para actualizar los precios cuando cambien las piezas o cojines
+document.addEventListener("DOMContentLoaded", function () {
+  // Actualizar cuando cambien las piezas
+  for (let i = 1; i <= 8; i++) {
+    const select = document.getElementById(`pieza${i}`);
+    if (select) {
+      select.addEventListener("change", actualizarPreciosEnDropdown);
+    }
+  }
+  
+  // Actualizar cuando cambien los cojines
+  const cojinesSelect = document.getElementById("cojines");
+  if (cojinesSelect) {
+    cojinesSelect.addEventListener("change", actualizarPreciosEnDropdown);
+  }
+  
+  // Inicializar precios al cargar
+  actualizarPreciosEnDropdown();
+});
 function generarResumen() {
   const modelo = document.getElementById("modelo").value;
   const piezasSeleccionadas = obtenerPiezasSeleccionadas();
