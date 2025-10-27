@@ -228,7 +228,7 @@ function generarResumen() {
   
   function obtenerDescuento(codigo) {
     const numero = parseInt(codigo, 10);
-    if (!isNaN(numero) && numero >= 1 && numero <= 50) {
+    if (!isNaN(numero) && numero >= 1 && numero <= 70) {
       return numero / 100;
     }
     return 0.0;
