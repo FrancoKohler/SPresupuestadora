@@ -486,9 +486,9 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
     if (!area) return null;
 
     // ✅ Escala segura en móvil para evitar “zoom” gigante
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const pixelRatio = Math.min(window.devicePixelRatio || 1);
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    const captureScale = isMobile ? 1 : pixelRatio;
+    const captureScale = isMobile ? 1 : pixelRatio; 
 
     const canvas = await html2canvas(document.body, {
       scale: captureScale,
@@ -512,12 +512,15 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
   }
 }
 
+sizeCanvasToContainer?.();
+
+// Asegura que el contenedor esté en viewport y sin transforms raros
 const imagenPiezas = document.getElementById("imagenPiezas");
 if (imagenPiezas) {
-  imagenPiezas.style.transform = "scale(1)";
+  imagenPiezas.style.transform = "none";
   imagenPiezas.style.transformOrigin = "top left";
   imagenPiezas.scrollIntoView({ block: "center" });
-  await wait(150);
+  await wait?.(120);
 }
 
 const imgDataConfig = await capturePNGExpanded(

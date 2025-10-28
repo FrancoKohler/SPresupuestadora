@@ -136,8 +136,46 @@
     const baseWidth = 600; // Ancho base de referencia
     return Math.min(containerWidth / baseWidth, 1.2); // Máximo 120% de escala
   }
-  
+  // === Responsive canvas helpers ===
+const BASE_CANVAS_WIDTH = 600;
+const BASE_CANVAS_HEIGHT = 400; // relación 3:2 aprox (ajusta si tu diseño usa otra)
+
+function sizeCanvasToContainer() {
+  const cont = document.getElementById("imagenPiezas");
+  if (!cont) return;
+  const cvs = cont.querySelector("canvas");
+  if (!cvs) return;
+
+  // ancho disponible real
+  const cw = Math.max(280, Math.floor(cont.clientWidth || 600));
+  const aspect = BASE_CANVAS_HEIGHT / BASE_CANVAS_WIDTH;
+  const chCSS = Math.round(cw * aspect);
+
+  // Escala para nitidez en pantallas retina
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  // Tamaño CSS (layout)
+  cvs.style.width = cw + "px";
+  cvs.style.height = chCSS + "px";
+
+  // Resolución interna del canvas (píxeles reales)
+  cvs.width = Math.floor(cw * dpr);
+  cvs.height = Math.floor(chCSS * dpr);
+
+  // devuelvo info útil por si quieres usarla
+  return { cssWidth: cw, cssHeight: chCSS, dpr };
+}
+
+function getScaleFactorResponsive() {
+  const cont = document.getElementById("imagenPiezas");
+  const w = cont?.clientWidth || BASE_CANVAS_WIDTH;
+  // factor relativo a tu base de diseño
+  // limitamos para evitar piezas gigantes o minúsculas
+  return Math.max(0.6, Math.min(w / BASE_CANVAS_WIDTH, 1.6));
+}
+
 function mostrarImagenes() {
+  
   const imagenesDiv = document.getElementById("imagenPiezas");
   Array.from(imagenesDiv.querySelectorAll(".img-config")).forEach(el => el.remove());
 
@@ -146,7 +184,7 @@ function mostrarImagenes() {
   imagenesDiv.style.transformOrigin = "top-left";
 
   ensureCotasElements(imagenesDiv);
-
+  sizeCanvasToContainer();
   // Factor de escala responsive
   const scaleFactor = getScaleFactor();
   
@@ -333,15 +371,19 @@ let resizeTimeout;
   if (window.__COTAS_RESIZE_ATTACHED__) return;
   window.__COTAS_RESIZE_ATTACHED__ = true;
   window.addEventListener("orientationchange", () => {
-    setTimeout(() => mostrarImagenes(), 300);
+    setTimeout(() => {
+      sizeCanvasToContainer();
+      mostrarImagenes();
+    }, 300);
   });
+  
   
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       const imagenesDiv = document.getElementById("imagenPiezas");
       if (!imagenesDiv) return;
-      
+      sizeCanvasToContainer();
       // Regenerar toda la configuración con el nuevo factor de escala
       mostrarImagenes();
     }, 250); // Espera 250ms después del último resize

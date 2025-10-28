@@ -139,17 +139,16 @@
   margin: 0 auto;
 }
 
-#imagenPiezas canvas {
-  width: 100% !important;
-  height: fit-content !important;
-  max-width: 100%;
-  display: block;
-}
+#imagenPiezas canvas { width: 100% !important; height: auto !important; }
+
 
 @media (max-width: 600px) {
-  #imagenPiezas {
+/*   #imagenPiezas {
  
-    aspect-ratio: 4 / 3;
     min-height: 180px;
+  } */
+  ul{
+    padding-inline-start: 0px;
+
   }
 }
