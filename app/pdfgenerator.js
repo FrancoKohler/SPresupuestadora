@@ -49,10 +49,10 @@ async function capturePNG(selectorOrEl, options = {}) {
     ? document.querySelector(selectorOrEl)
     : selectorOrEl;
   if (!el) return null;
-  const dpr = Math.min(2, window.devicePixelRatio || 1);
+
   // Configuraciones por defecto
   const defaultOptions = {
-    scale: dpr,
+    scale: 2, // Mayor resolución
     useCORS: true,
     allowTaint: true,
     backgroundColor: null,
@@ -480,13 +480,18 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
   try {
     // 👉 ajusta estos valores si necesitas más/menos margen
     const area = getExpandedViewportRectStrict(rootEl, {
-      padTop:5, padRight: 14, padBottom: 0, padLeft: 14,
-      bottomExtraFromCanvas: 0 // ↓ si aún captura algo de más, pon 6 o 0
+      padTop: 5, padRight: 14, padBottom: 0, padLeft: 14,
+      bottomExtraFromCanvas: 0
     });
     if (!area) return null;
 
+    // ✅ Escala segura en móvil para evitar “zoom” gigante
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const captureScale = isMobile ? 1 : pixelRatio;
+
     const canvas = await html2canvas(document.body, {
-      scale: 2,
+      scale: captureScale,
       useCORS: true,
       allowTaint: true,
       backgroundColor: null,
@@ -497,17 +502,23 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
       width: area.width,
       height: area.height,
     });
+
     return canvas.toDataURL('image/png');
   } finally {
     restoreMeasures();
-    
-    // ✅ Restaurar el modal si estaba visible
     if (modalWasVisible && modal) {
       modal.style.display = "block";
     }
   }
 }
 
+const imagenPiezas = document.getElementById("imagenPiezas");
+if (imagenPiezas) {
+  imagenPiezas.style.transform = "scale(1)";
+  imagenPiezas.style.transformOrigin = "top left";
+  imagenPiezas.scrollIntoView({ block: "center" });
+  await wait(150);
+}
 
 const imgDataConfig = await capturePNGExpanded(
   '#imagenPiezas',
