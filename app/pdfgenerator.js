@@ -252,11 +252,11 @@ async function createPDF() {
 const footerLogoOk = await captureAndEmbedImage(
   pdfDoc,
   page,
-  "#logoBlackFooter", 
-  385,                
-  710,                
-  120,               
-  40                 
+  "#logoBlackFooter", // 👈 solo el <img>
+  385,                 // x en el PDF
+  710,                 // y en el PDF (cerca del borde inferior)
+  120,                // ancho máximo permitido
+  40                  // alto máximo permitido
 );
 
 if (!footerLogoOk) {
