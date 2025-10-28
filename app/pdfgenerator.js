@@ -252,11 +252,11 @@ async function createPDF() {
 const footerLogoOk = await captureAndEmbedImage(
   pdfDoc,
   page,
-  "#logoBlackFooter", // 👈 solo el <img>
-  385,                 // x en el PDF
-  710,                 // y en el PDF (cerca del borde inferior)
-  120,                // ancho máximo permitido
-  40                  // alto máximo permitido
+  "#logoBlackFooter", 
+  385,                
+  710,                
+  120,               
+  40                 
 );
 
 if (!footerLogoOk) {
@@ -486,9 +486,9 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
     if (!area) return null;
 
     // ✅ Escala segura en móvil para evitar “zoom” gigante
-    const pixelRatio = Math.min(window.devicePixelRatio || 1);
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    const captureScale = isMobile ? 1 : pixelRatio; 
+    const captureScale = isMobile ? 1 : pixelRatio;
 
     const canvas = await html2canvas(document.body, {
       scale: captureScale,

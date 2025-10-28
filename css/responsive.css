@@ -139,14 +139,17 @@
   margin: 0 auto;
 }
 
-#imagenPiezas canvas { width: 100% !important; height: auto !important; }
+/* Deja que el canvas marque la altura; el contenedor no fuerza otra relación */
+#imagenPiezas { aspect-ratio: auto !important; min-height: 0 !important; }
+#imagenPiezas canvas { width: 100% !important; height: auto !important; display: block; }
 
 
 @media (max-width: 600px) {
-/*   #imagenPiezas {
+  #imagenPiezas {
  
+    aspect-ratio: 4 / 3;
     min-height: 180px;
-  } */
+  }
   ul{
     padding-inline-start: 0px;
 
