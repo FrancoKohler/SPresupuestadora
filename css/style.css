@@ -100,15 +100,6 @@ p {
   width: 40%;
   height: auto;
 }
-/* Mejor tratamiento de nitidez en móviles */
- #imagenPiezas, #imagenPiezas * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.img-config {
-  image-rendering: auto;              
-}
 .inner-telas{
   padding-top: 20px;
   height: 40px;
@@ -826,4 +817,8 @@ li {
   font-size: 10px;
   color: #666;
   line-height: 1.4;
+}
+ul{
+  padding-inline-start: 0px;
+
 }

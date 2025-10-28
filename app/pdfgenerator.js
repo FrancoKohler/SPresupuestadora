@@ -512,7 +512,6 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
   }
 }
 
-sizeCanvasToContainer?.();
 
 // Asegura que el contenedor esté en viewport y sin transforms raros
 const imagenPiezas = document.getElementById("imagenPiezas");
