@@ -485,11 +485,14 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
     });
     if (!area) return null;
 
-    // ✅ Escala segura en móvil para evitar “zoom” gigante
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    // ✅ Detectar móvil y ajustar posición Y
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
     const captureScale = isMobile ? 1 : pixelRatio;
-
+    
+    // 📍 Ajuste adicional de Y para móviles
+    const mobileYOffset = isMobile ? 0 : 0; // Ajusta este valor según necesites
+    
     const canvas = await html2canvas(document.body, {
       scale: captureScale,
       useCORS: true,
@@ -498,7 +501,7 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
       scrollX: -window.scrollX,
       scrollY: -window.scrollY,
       x: area.x,
-      y: area.y,
+      y: area.y + mobileYOffset,
       width: area.width,
       height: area.height,
     });
@@ -511,7 +514,6 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
     }
   }
 }
-
 
 // Asegura que el contenedor esté en viewport y sin transforms raros
 const imagenPiezas = document.getElementById("imagenPiezas");
