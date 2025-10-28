@@ -235,6 +235,8 @@ function mostrarImagenes() {
 
     if (imageUrl && piezaId !== "None") {
       const imgElement = document.createElement("img");
+      imgElement.crossOrigin = "anonymous";
+      imgElement.referrerPolicy = "no-referrer";
       imgElement.src = imageUrl;
       imgElement.alt = selectedOption.textContent;
       imgElement.classList.add("img-config");
@@ -330,6 +332,9 @@ let resizeTimeout;
 (function attachResponsiveResize() {
   if (window.__COTAS_RESIZE_ATTACHED__) return;
   window.__COTAS_RESIZE_ATTACHED__ = true;
+  window.addEventListener("orientationchange", () => {
+    setTimeout(() => mostrarImagenes(), 300);
+  });
   
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);

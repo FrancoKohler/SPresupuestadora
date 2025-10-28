@@ -49,10 +49,10 @@ async function capturePNG(selectorOrEl, options = {}) {
     ? document.querySelector(selectorOrEl)
     : selectorOrEl;
   if (!el) return null;
-
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
   // Configuraciones por defecto
   const defaultOptions = {
-    scale: 2, // Mayor resolución
+    scale: dpr,
     useCORS: true,
     allowTaint: true,
     backgroundColor: null,
@@ -95,6 +95,7 @@ async function capturePNG(selectorOrEl, options = {}) {
 
     // Configurar opciones de captura con dimensiones reales
     const captureOptions = {
+      
       ...defaultOptions,
       width: actualWidth > 0 ? actualWidth : undefined,
       height: actualHeight > 0 ? actualHeight : undefined,
