@@ -491,7 +491,7 @@ async function capturePNGExpanded(rootSelector, opts = {}) {
     const captureScale = isMobile ? 1 : pixelRatio;
     
     // 📍 Ajuste adicional de Y para móviles
-    const mobileYOffset = isMobile ? 1000 : 0; // Ajusta este valor según necesites
+    const mobileYOffset = isMobile ? 1100 : 0; // Ajusta este valor según necesites
     
     const canvas = await html2canvas(document.body, {
       scale: captureScale,
