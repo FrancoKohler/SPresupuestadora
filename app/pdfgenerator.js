@@ -25,6 +25,61 @@ async function wait(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
+function detectImageFormat(bytes, url = "") {
+  if (bytes && bytes.length >= 4) {
+    if (
+      bytes[0] === 0x89 && bytes[1] === 0x50 &&
+      bytes[2] === 0x4e && bytes[3] === 0x47
+    ) {
+      return "png";
+    }
+    if (bytes[0] === 0xff && bytes[1] === 0xd8) {
+      return "jpg";
+    }
+    if (
+      bytes[0] === 0x52 && bytes[1] === 0x49 &&
+      bytes[2] === 0x46 && bytes[3] === 0x46
+    ) {
+      return "webp";
+    }
+  }
+
+  const extension = (url.split(".").pop() || "").toLowerCase();
+  if (extension === "jpg" || extension === "jpeg") return "jpg";
+  return "png";
+}
+
+async function fetchImageBytes(url) {
+  try {
+    const response = await fetch(url, { mode: "cors" });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    const buffer = await response.arrayBuffer();
+    return new Uint8Array(buffer);
+  } catch (error) {
+    console.warn("No se pudo obtener la imagen remota:", url, error);
+    return null;
+  }
+}
+
+async function embedRemoteImage(pdfDoc, url) {
+  if (!url) return null;
+  const bytes = await fetchImageBytes(url);
+  if (!bytes) return null;
+
+  const format = detectImageFormat(bytes, url);
+  try {
+    const pdfImage = format === "jpg"
+      ? await pdfDoc.embedJpg(bytes)
+      : await pdfDoc.embedPng(bytes);
+    return pdfImage;
+  } catch (error) {
+    console.warn("No se pudo embeber la imagen en el PDF:", url, error);
+    return null;
+  }
+}
+
 // Función mejorada para esperar a que las imágenes se carguen completamente
 async function waitForImagesToLoad(container) {
   if (!container) return;
@@ -177,6 +232,185 @@ async function captureAndEmbedImage(pdfDoc, page, selector, x, y, maxWidth, maxH
     return true;
   }
   return false;
+}
+
+async function drawConfiguracionDesdeLayout(pdfDoc, page, area, options = {}) {
+  const layout = window.__CONFIGURACION_LAYOUT__;
+  if (!layout || !Array.isArray(layout.pieces) || !layout.pieces.length) {
+    return false;
+  }
+
+  const { pieces, bounds } = layout;
+  if (!bounds || bounds.width <= 0 || bounds.height <= 0) {
+    return false;
+  }
+
+  const maxWidth = area.width;
+  const maxHeight = area.height;
+  const scale = Math.min(maxWidth / bounds.width, maxHeight / bounds.height, 1);
+  const scaledWidth = bounds.width * scale;
+  const scaledHeight = bounds.height * scale;
+  const offsetX = area.x;
+  const offsetY = area.y + (maxHeight - scaledHeight);
+  const rotate = PDFLib?.degrees;
+  const rgb = PDFLib?.rgb;
+
+  const {
+    font = null,
+    textSize = 8,
+    textColor = rgb ? rgb(0.3, 0.3, 0.3) : undefined,
+    lineColor = rgb ? rgb(0.6, 0.6, 0.6) : undefined,
+    padding = 12,
+    lineThickness = 1,
+  } = options || {};
+
+  let drewAny = false;
+
+  for (const piece of pieces) {
+    console.log("Dibujando pieza en PDF:", piece.id, piece);
+    const pdfImage = await embedRemoteImage(pdfDoc, piece.src);
+    if (!pdfImage) continue;
+
+    const cssWidth = piece.css?.width ?? piece.rect.width;
+    const cssHeight = piece.css?.height ?? piece.rect.height;
+    const relativeLeft = (piece.rect.left - bounds.left) * scale;
+    const relativeTop = (piece.rect.top - bounds.top);
+    const relativeBottom = relativeTop + piece.rect.height;
+
+    const drawWidth = cssWidth * scale;
+    const drawHeight = cssHeight * scale;
+
+    const pdfXBounding = offsetX + relativeLeft;
+    const pdfYBounding = offsetY + (bounds.height - relativeBottom) * scale;
+
+    try {
+      const normalizedRotation = ((piece.rotation % 360) + 360) % 360;
+      if ((normalizedRotation === 90 || normalizedRotation === 270) && typeof rotate === "function") {
+        const isClockwise = normalizedRotation === 90;
+        const angle = isClockwise ? -90 : 90;
+        const x = isClockwise ? pdfXBounding : pdfXBounding + drawHeight;
+        const y = isClockwise ? pdfYBounding + drawWidth : pdfYBounding;
+
+        page.drawImage(pdfImage, {
+          x,
+          y,
+          width: drawWidth,
+          height: drawHeight,
+          rotate: rotate(angle),
+        });
+      } else if (normalizedRotation === 180 && typeof rotate === "function") {
+        page.drawImage(pdfImage, {
+          x: pdfXBounding + drawWidth,
+          y: pdfYBounding + drawHeight,
+          width: drawWidth,
+          height: drawHeight,
+          rotate: rotate(180),
+        });
+      } else {
+        // Sin rotación o fallback si PDFLib.degrees no está disponible.
+        // Ajusta swapping básico si no podemos rotar.
+        if ((normalizedRotation === 90 || normalizedRotation === 270) && typeof rotate !== "function") {
+          page.drawImage(pdfImage, {
+            x: pdfXBounding,
+            y: pdfYBounding,
+            width: drawHeight,
+            height: drawWidth,
+          });
+        } else {
+          page.drawImage(pdfImage, {
+            x: pdfXBounding,
+            y: pdfYBounding,
+            width: drawWidth,
+            height: drawHeight,
+          });
+        }
+      }
+      drewAny = true;
+    } catch (error) {
+      console.warn("No se pudo dibujar una pieza en la sección CONFIGURACIÓN:", piece.id, error);
+    }
+  }
+
+  // --- Dibujar medidas del sofa (linea ancho y linea profundidad) ---
+  if (drewAny && (layout.meta?.totalMedidaCm || layout.meta?.profundidadCm)) {
+    const pdfAreaLeft = offsetX;
+    const pdfAreaBottom = offsetY;
+    const pdfAreaTop = pdfAreaBottom + scaledHeight;
+    const pdfAreaRight = pdfAreaLeft + scaledWidth;
+
+    const hasDrawLine = typeof page.drawLine === "function";
+    const horizontalY = pdfAreaTop + padding;
+    const verticalX = pdfAreaRight + padding;
+
+    // Dibujar linea ancho y etiqueta
+    if (layout.meta?.totalMedidaCm && scaledWidth > 0) {
+      if (hasDrawLine) {
+        page.drawLine({
+          start: { x: pdfAreaLeft, y: horizontalY },
+          end: { x: pdfAreaRight, y: horizontalY },
+          thickness: lineThickness,
+          color: lineColor,
+        });
+      } else {
+        page.drawRectangle({
+          x: pdfAreaLeft,
+          y: horizontalY - lineThickness / 2,
+          width: scaledWidth,
+          height: lineThickness,
+          color: lineColor,
+        });
+      }
+
+      if (font) {
+        const etiqueta = `${layout.meta.totalMedidaCm} cm`;
+        const etiquetaWidth = font.widthOfTextAtSize(etiqueta, textSize);
+        const textX = pdfAreaLeft + (scaledWidth - etiquetaWidth) / 2;
+        const textY = horizontalY + textSize + 2;
+        page.drawText(etiqueta, {
+          x: textX,
+          y: textY,
+          size: textSize,
+          font,
+          color: textColor,
+        });
+      }
+    }
+
+    // Dibujar linea profundidad y etiqueta
+    if (layout.meta?.profundidadCm && scaledHeight > 0) {
+      if (hasDrawLine) {
+        page.drawLine({
+          start: { x: verticalX, y: pdfAreaBottom },
+          end: { x: verticalX, y: pdfAreaTop },
+          thickness: lineThickness,
+          color: lineColor,
+        });
+      } else {
+        page.drawRectangle({
+          x: verticalX - lineThickness / 2,
+          y: pdfAreaBottom,
+          width: lineThickness,
+          height: scaledHeight,
+          color: lineColor,
+        });
+      }
+
+      if (font) {
+        const etiqueta = `${layout.meta.profundidadCm} cm`;
+        const textX = verticalX + padding / 2;
+        const textY = pdfAreaBottom + (scaledHeight - textSize) / 2;
+        page.drawText(etiqueta, {
+          x: textX,
+          y: textY,
+          size: textSize,
+          font,
+          color: textColor,
+        });
+      }
+    }
+  }
+
+  return drewAny;
 }
 
 async function createPDF() {
@@ -400,148 +634,21 @@ drawWrappedText({
   size: 8,
   color: color838383         // o helveticaFont/color que ya usas
 });
-// Asegura visibles las cotas durante la captura
-function temporarilyShowMeasures(rootEl) {
-  const targets = rootEl.querySelectorAll(
-    '#lineaAncho, #lineaProfundidad, #ancho, #profundidad, .cota, [data-cota], [id*="cota"]'
-  );
-  const prev = [];
-  targets.forEach(el => {
-    prev.push([el, el.style.display, el.style.visibility, el.style.zIndex]);
-    el.style.display = 'block';
-    el.style.visibility = 'visible';
-    el.style.zIndex = '9999'; // por si están debajo
-  });
-  return () => prev.forEach(([el, d, v, z]) => {
-    el.style.display = d;
-    el.style.visibility = v;
-    el.style.zIndex = z;
-  });
-}
-
-// Rect expandido: unión de solo canvas + cotas
-function getExpandedViewportRectStrict(rootEl, opts = {}) {
-  const {
-    // cuánto permitir por arriba/abajo/laterales
-    padTop = 5, padRight = 16, padBottom = 0, padLeft = 16,
-    // tope inferior extra por debajo del canvas
-    bottomExtraFromCanvas = 0
-  } = opts;
-
-  const canvas = rootEl.querySelector('canvas');
-  if (!canvas) return null;
-
-  // Rects solo de elementos que nos interesan (cotas)
-  const measureNodes = rootEl.querySelectorAll(
-    '#lineaAncho, #lineaProfundidad, #ancho, #profundidad, .cota, [data-cota], [id*="cota"]'
-  );
-
-  const rects = [];
-  const canvasRect = canvas.getBoundingClientRect();
-  rects.push(canvasRect);
-
-  measureNodes.forEach(n => rects.push(n.getBoundingClientRect()));
-
-  // Unión
-  let minLeft   = Math.min(...rects.map(r => r.left))   - padLeft;
-  let minTop    = Math.min(...rects.map(r => r.top))    - padTop;
-  let maxRight  = Math.max(...rects.map(r => r.right))  + padRight;
-  let maxBottom = Math.max(...rects.map(r => r.bottom)) + padBottom;
-
-  // 🔒 Tope inferior duro: no bajar más que el fondo del canvas + margen pequeño
-  const hardBottom = canvasRect.bottom + bottomExtraFromCanvas;
-  if (maxBottom > hardBottom) maxBottom = hardBottom;
-
-  return {
-    x: Math.floor(minLeft),
-    y: Math.floor(minTop),
-    width: Math.ceil(maxRight - minLeft),
-    height: Math.ceil(maxBottom - minTop),
-  };
-}
-
-async function capturePNGExpanded(rootSelector, opts = {}) {
-  const rootEl = typeof rootSelector === 'string'
-    ? document.querySelector(rootSelector)
-    : rootSelector;
-  if (!rootEl) return null;
-
-  // 🔒 Ocultar el modal temporalmente
-  const modal = document.getElementById("modal");
-  const modalWasVisible = modal && modal.style.display !== "none";
-  if (modalWasVisible) {
-    modal.style.display = "none";
+const configDrawn = await drawConfiguracionDesdeLayout(
+  pdfDoc,
+  page,
+  { x: 40, y: 230, width: 250, height: 150 },
+  {
+    font: helveticaFont,
+    textSize: 8,
+    textColor: color838383,
+    lineColor: colorLine,
+    padding: 8,
+    lineThickness: 0.8,
   }
-
-  const restoreMeasures = temporarilyShowMeasures(rootEl);
-  await waitForImagesToLoad(rootEl);
-  await wait(60);
-
-  try {
-    // 👉 ajusta estos valores si necesitas más/menos margen
-    const area = getExpandedViewportRectStrict(rootEl, {
-      padTop: 5, padRight: 14, padBottom: 0, padLeft: 14,
-      bottomExtraFromCanvas: 0
-    });
-    if (!area) return null;
-
-    // ✅ Detectar móvil y ajustar posición Y
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-    const captureScale = isMobile ? 1 : pixelRatio;
-    
-    // 📍 Ajuste adicional de Y para móviles
-    const mobileYOffset = isMobile ? 1020 : 0; // Ajusta este valor según necesites
-    
-    const canvas = await html2canvas(document.body, {
-      scale: captureScale,
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: null,
-      scrollX: -window.scrollX,
-      scrollY: -window.scrollY,
-      x: area.x,
-      y: area.y + mobileYOffset,
-      width: area.width,
-      height: area.height,
-    });
-
-    return canvas.toDataURL('image/png');
-  } finally {
-    restoreMeasures();
-    if (modalWasVisible && modal) {
-      modal.style.display = "block";
-    }
-  }
-}
-
-// Asegura que el contenedor esté en viewport y sin transforms raros
-const imagenPiezas = document.getElementById("imagenPiezas");
-if (imagenPiezas) {
-  imagenPiezas.style.transform = "none";
-  imagenPiezas.style.transformOrigin = "top left";
-  imagenPiezas.scrollIntoView({ block: "center" });
-  await wait?.(120);
-}
-
-const imgDataConfig = await capturePNGExpanded(
-  '#imagenPiezas',
-  'canvas, #lineaAncho, #lineaProfundidad, #ancho, #profundidad',
-  { pad: { top: 24, right: 16, bottom: 0, left: 16 }, clampToRoot: true }
 );
 
-const pdfImageConfig = await embedPngSafe(pdfDoc, imgDataConfig);
-if (pdfImageConfig) {
-  const { width: imgW, height: imgH } = pdfImageConfig;
-  const maxW = 300, maxH = 200; // tus límites actuales
-  const scale = Math.min(maxW / imgW, maxH / imgH, 1);
-  page.drawImage(pdfImageConfig, {
-    x: 10 + (maxW - imgW * scale) / 2,
-    y: 210 + (maxH - imgH * scale) / 2,
-    width: imgW * scale,
-    height: imgH * scale,
-  });
-} else {
+if (!configDrawn) {
   drawText(page, "Imagen de configuración no disponible", 74, 350, 8, helveticaFont, color838383);
 }
 
@@ -579,9 +686,11 @@ if (pdfImageConfig) {
       const selectElement = document.getElementById(selectId);
       const selectedValue = selectElement.value;
       const piezaData = piezasSelect.find((pieza) => pieza.id === selectedValue);
+      const id = piezaData ? String(piezaData.id) : "";
       const title = piezaData ? String(piezaData.title) : "";
+      const fullText = `${id} ${title}`;
       const yPos = currentYPos - index * line;
-      drawText(page, title, 52, yPos, 8, helveticaFont, colorPrice);
+      drawText(page, fullText, 52, yPos, 8, helveticaFont, colorPrice);
     });
   
     // Avanza el cursor bajo las piezas
@@ -732,6 +841,7 @@ if (cantidadCojines > 0 && precioCojines) {
 
 // Función para generar el PDF con validación
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("Adding event listener")
   const botonPdf = document.getElementById("generateBtn");
 
   botonPdf.addEventListener("click", () => {

@@ -399,13 +399,13 @@ const piezasVera = [
   },
   {
     id: "VERR108S",
-    title: "Rincón cerrado (110 cm)",
+    title: "Rincón cerrado (112 cm)",
     imageUrl:
       "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/VERA/VERR108S.png",
     price: preciosVera.rincon,
     categoria: "RINCON",
-    medida: 110,
-    medidap: 108,
+    medida: 112,
+    medidap: 112,
   },
   {
     id: "VERP60S",
