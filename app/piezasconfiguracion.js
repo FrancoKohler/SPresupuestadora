@@ -179,6 +179,7 @@ function mostrarImagenes() {
   const imagenesDiv = document.getElementById("imagenPiezas");
   Array.from(imagenesDiv.querySelectorAll(".img-config")).forEach(el => el.remove());
 
+  window.__CONFIGURACION_LAYOUT__ = null;
   imagenesDiv.style.position = "relative";
   imagenesDiv.style.transform = "none";
   imagenesDiv.style.transformOrigin = "top-left";
@@ -275,6 +276,8 @@ function mostrarImagenes() {
       const imgElement = document.createElement("img");
       imgElement.crossOrigin = "anonymous";
       imgElement.referrerPolicy = "no-referrer";
+      imgElement.dataset.piezaId = piezaId;
+      imgElement.dataset.rotation = "0";
       imgElement.src = imageUrl;
       imgElement.alt = selectedOption.textContent;
       imgElement.classList.add("img-config");
@@ -307,6 +310,7 @@ function mostrarImagenes() {
         yaSumoProfundidad = true;
       } else if (rotateAfterYutra) {
         imgElement.style.transform = "rotate(90deg)";
+        imgElement.dataset.rotation = "90";
         
         // Ajustes escalados para diferentes tipos de piezas
         if (modRepisa.includes(piezaId)) {
@@ -362,6 +366,72 @@ function mostrarImagenes() {
     window.__ULTIMO_TOTAL_MEDIDA_CM__ = totalMedida;
     window.__ULTIMA_PROFUNDIDAD_CM__ = cotaProfundidad;
     posicionarCotas(imagenesDiv, totalMedida, cotaProfundidad);
+
+    // -- Guardamos la configuración del layout actual en una variable global para usarla en el PDF --
+    const piezasRenderizadas = Array.from(imagenesDiv.querySelectorAll(".img-config"));
+    if (!piezasRenderizadas.length) {
+      window.__CONFIGURACION_LAYOUT__ = null;
+      return;
+    }
+
+    const contRect = imagenesDiv.getBoundingClientRect();
+    const layoutPieces = piezasRenderizadas.map((img) => {
+      const rect = img.getBoundingClientRect();
+      const rectLeft = rect.left - contRect.left;
+      const rectTop = rect.top - contRect.top;
+      const cssWidth = parseFloat(img.style.width) || rect.width;
+      const cssHeight = parseFloat(img.style.height) || rect.height;
+      return {
+        id: img.dataset.piezaId || "",
+        title: img.alt || "",
+        src: img.currentSrc || img.src,
+        rotation: parseFloat(img.dataset.rotation || "0") || 0,
+        rect: {
+          left: rectLeft,
+          top: rectTop,
+          width: rect.width,
+          height: rect.height,
+        },
+        css: {
+          left: parseFloat(img.style.left) || rectLeft,
+          top: parseFloat(img.style.top) || rectTop,
+          width: cssWidth,
+          height: cssHeight,
+        },
+      };
+    });
+
+    let minLeft = Infinity;
+    let minTop = Infinity;
+    let maxRight = -Infinity;
+    let maxBottom = -Infinity;
+
+    layoutPieces.forEach(({ rect }) => {
+      if (rect.left < minLeft) minLeft = rect.left;
+      if (rect.top < minTop) minTop = rect.top;
+      const right = rect.left + rect.width;
+      const bottom = rect.top + rect.height;
+      if (right > maxRight) maxRight = right;
+      if (bottom > maxBottom) maxBottom = bottom;
+    });
+
+    window.__CONFIGURACION_LAYOUT__ = {
+      pieces: layoutPieces,
+      bounds: {
+        left: Number.isFinite(minLeft) ? minLeft : 0,
+        top: Number.isFinite(minTop) ? minTop : 0,
+        width: Number.isFinite(maxRight - minLeft) ? maxRight - minLeft : 0,
+        height: Number.isFinite(maxBottom - minTop) ? maxBottom - minTop : 0,
+      },
+      container: {
+        width: contRect.width,
+        height: contRect.height,
+      },
+      meta: {
+        totalMedidaCm: totalMedida,
+        profundidadCm: cotaProfundidad,
+      },
+    };
   });
 }
 
