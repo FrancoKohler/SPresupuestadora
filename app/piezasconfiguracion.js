@@ -176,8 +176,15 @@ return Math.max(0.6, Math.min(w / BASE_CANVAS_WIDTH, 1.6));
 
 function mostrarImagenes() {
 
+<<<<<<< HEAD
 const imagenesDiv = document.getElementById("imagenPiezas");
 Array.from(imagenesDiv.querySelectorAll(".img-config")).forEach(el => el.remove());
+=======
+  window.__CONFIGURACION_LAYOUT__ = null;
+  imagenesDiv.style.position = "relative";
+  imagenesDiv.style.transform = "none";
+  imagenesDiv.style.transformOrigin = "top-left";
+>>>>>>> 200f6fb8d3cfbce9e66cab6a29c5c80c07e3e99f
 
 window.__CONFIGURACION_LAYOUT__ = null;
 imagenesDiv.style.position = "relative";
@@ -261,12 +268,30 @@ piezasPorSlot.forEach((piezaSlot) => {
   if (isChaiseLongue || isBrazo) finalWidthToApply = widthBrazo;
   else if (isTerminal) finalWidthToApply = widthTerminal;
 
+<<<<<<< HEAD
   const piezaTitle = selectedOption.textContent.toUpperCase();
   if (piezaTitle.includes("REPISA")) {
     finalWidthToApply += 25 * scaleFactor;
   } else if (piezaTitle.includes("POUFF")) {
     finalWidthToApply -= 40 * scaleFactor;
   }
+=======
+    if (imageUrl && piezaId !== "None") {
+      const imgElement = document.createElement("img");
+      imgElement.crossOrigin = "anonymous";
+      imgElement.referrerPolicy = "no-referrer";
+      imgElement.dataset.piezaId = piezaId;
+      imgElement.dataset.rotation = "0";
+      imgElement.src = imageUrl;
+      imgElement.alt = selectedOption.textContent;
+      imgElement.classList.add("img-config");
+      imgElement.style.position = "absolute";
+      imgElement.style.width = `${finalWidthToApply}px`;
+      imgElement.style.height = `${finalHeight}px`;
+      imgElement.style.maxWidth = "none";
+      imgElement.style.boxSizing = "border-box";
+      imgElement.style.transition = "all 0.3s ease"; // Transición suave
+>>>>>>> 200f6fb8d3cfbce9e66cab6a29c5c80c07e3e99f
 
   const piezaSeleccionada = todasPiezas.find((p) => p.id === piezaId);
   const medida = piezaSeleccionada?.medida ?? 0;
@@ -299,8 +324,44 @@ piezasPorSlot.forEach((piezaSlot) => {
       specialPiece.width = finalWidthToApply;
       specialPiece.height = finalHeight;
 
+<<<<<<< HEAD
       imgElement.style.left = `${specialPiece.x}px`;
       imgElement.style.top = `${specialPiece.y}px`;
+=======
+        totalMedida += medida;
+        cotaProfundidad = Math.max(cotaProfundidad, medidap || 0);
+        yaSumoProfundidad = true;
+      } else if (rotateAfterYutra) {
+        imgElement.style.transform = "rotate(90deg)";
+        imgElement.dataset.rotation = "90";
+        
+        // Ajustes escalados para diferentes tipos de piezas
+        if (modRepisa.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (23 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (122 * scaleFactor)}px`;
+        } else if (brazoId.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (10 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (110 * scaleFactor)}px`;
+        } else if (terminalId.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (25 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (125 * scaleFactor)}px`;
+        } else if (chaiseLongueIds.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + (15 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (135 * scaleFactor)}px`;
+        } else if (pouffId.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + (20 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (80 * scaleFactor)}px`;
+        } else if (pouffTPId.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight + (20 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (80 * scaleFactor)}px`;
+        } else if (modTapa.includes(piezaId)) {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (13 * scaleFactor)}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (112 * scaleFactor)}px`;
+        } else {
+          imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight}px`;
+          imgElement.style.top = `${specialPiece.y + specialPiece.width}px`;
+        }
+>>>>>>> 200f6fb8d3cfbce9e66cab6a29c5c80c07e3e99f
 
       currentX = specialPiece.x + finalWidthToApply;
       currentY = specialPiece.y + finalHeight;
@@ -401,6 +462,7 @@ Promise.all(promises).then(() => {
     };
   });
 
+<<<<<<< HEAD
   let minLeft = Infinity;
   let minTop = Infinity;
   let maxRight = -Infinity;
@@ -413,6 +475,78 @@ Promise.all(promises).then(() => {
     const bottom = rect.top + rect.height;
     if (right > maxRight) maxRight = right;
     if (bottom > maxBottom) maxBottom = bottom;
+=======
+  Promise.all(promises).then(() => {
+    window.__ULTIMO_TOTAL_MEDIDA_CM__ = totalMedida;
+    window.__ULTIMA_PROFUNDIDAD_CM__ = cotaProfundidad;
+    posicionarCotas(imagenesDiv, totalMedida, cotaProfundidad);
+
+    // -- Guardamos la configuración del layout actual en una variable global para usarla en el PDF --
+    const piezasRenderizadas = Array.from(imagenesDiv.querySelectorAll(".img-config"));
+    if (!piezasRenderizadas.length) {
+      window.__CONFIGURACION_LAYOUT__ = null;
+      return;
+    }
+
+    const contRect = imagenesDiv.getBoundingClientRect();
+    const layoutPieces = piezasRenderizadas.map((img) => {
+      const rect = img.getBoundingClientRect();
+      const rectLeft = rect.left - contRect.left;
+      const rectTop = rect.top - contRect.top;
+      const cssWidth = parseFloat(img.style.width) || rect.width;
+      const cssHeight = parseFloat(img.style.height) || rect.height;
+      return {
+        id: img.dataset.piezaId || "",
+        title: img.alt || "",
+        src: img.currentSrc || img.src,
+        rotation: parseFloat(img.dataset.rotation || "0") || 0,
+        rect: {
+          left: rectLeft,
+          top: rectTop,
+          width: rect.width,
+          height: rect.height,
+        },
+        css: {
+          left: parseFloat(img.style.left) || rectLeft,
+          top: parseFloat(img.style.top) || rectTop,
+          width: cssWidth,
+          height: cssHeight,
+        },
+      };
+    });
+
+    let minLeft = Infinity;
+    let minTop = Infinity;
+    let maxRight = -Infinity;
+    let maxBottom = -Infinity;
+
+    layoutPieces.forEach(({ rect }) => {
+      if (rect.left < minLeft) minLeft = rect.left;
+      if (rect.top < minTop) minTop = rect.top;
+      const right = rect.left + rect.width;
+      const bottom = rect.top + rect.height;
+      if (right > maxRight) maxRight = right;
+      if (bottom > maxBottom) maxBottom = bottom;
+    });
+
+    window.__CONFIGURACION_LAYOUT__ = {
+      pieces: layoutPieces,
+      bounds: {
+        left: Number.isFinite(minLeft) ? minLeft : 0,
+        top: Number.isFinite(minTop) ? minTop : 0,
+        width: Number.isFinite(maxRight - minLeft) ? maxRight - minLeft : 0,
+        height: Number.isFinite(maxBottom - minTop) ? maxBottom - minTop : 0,
+      },
+      container: {
+        width: contRect.width,
+        height: contRect.height,
+      },
+      meta: {
+        totalMedidaCm: totalMedida,
+        profundidadCm: cotaProfundidad,
+      },
+    };
+>>>>>>> 200f6fb8d3cfbce9e66cab6a29c5c80c07e3e99f
   });
 
   window.__CONFIGURACION_LAYOUT__ = {
