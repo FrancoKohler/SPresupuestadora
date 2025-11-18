@@ -29,6 +29,11 @@ const modeloImg = {
       img: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/DAFNE/IMAGEN_DAFNE.png",
     },
   ],
+  Olivia: [
+    {
+      img: "https://francokohler.github.io/SPresupuestadoraImg/MODELOS/OLIVIA/IMAGEN_OLIVIA.png",
+    },
+  ],
 };
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -218,7 +218,7 @@ const piezasLuna = [
     price: preciosLuna.comunPROR105S,
     medida: 105,
     categoria: "RINCÓN",
-    medidap: 108,
+    medidap: 105,
   },
   {
     id: "PROP60S",

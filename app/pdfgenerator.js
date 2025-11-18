@@ -450,7 +450,7 @@ async function createPDF() {
   
   const piezasSelect = [
     ...piezasAura, ...piezasBianca, ...piezasLuna,
-    ...piezasNora, ...piezasVera
+    ...piezasNora, ...piezasVera,...piezasOlivia,...piezasDafne
   ];
 
   // Crear nuevo documento PDF

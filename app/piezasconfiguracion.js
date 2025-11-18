@@ -6,6 +6,7 @@ const todasPiezas = [
   ...piezasNora.filter((p) => p.id !== "None"),
   ...piezasVera.filter((p) => p.id !== "None"),
   ...piezasDafne.filter((p) => p.id !== "None"),
+  ...piezasOlivia.filter((p) => p.id !== "None"),
 ];
 
 function llenarSelects() {
@@ -197,20 +198,23 @@ let specialPiece = { x: 0, y: 0, width: 0, height: 0 };
 let totalMedida = 0;
 let cotaProfundidad = 0;
 
-const specialPieces = ["BIAR108S", "VERR108S", "AURR108S", "NORR108S", "PROR105S"];
+const specialPieces = ["BIAR108S", "VERR108S", "AURR108S", "NORR108S", "PROR105S","OLIR110S",];
 const chaiseLongueIds = [
   "VERC110D","VERC110I","VERC100D","VERC100I","VERC90D","VERC90I","VERC80D","VERC80I",
   "NORC110D","NORC110I","NORC100D","NORC100I","NORC90D","NORC90I","NORC80D","NORC80I",
   "PROC100D","PROC100I","PROC80D","PROC80I",
   "BIAC110D","BIAC110I","BIAC100D","BIAC100I","BIAC90D","BIAC90I","BIAC80D","BIAC80I",
   "AURC110D","AURC110I","AURC100D","AURC100I","AURC90D","AURC90I","AURC80D","AURC80I",
+  "OLIC111D","OLIC111I","OLIC92D","OLIC92I","OLIC76D","OLIC76I",
 ];
+const sofaDesIds = ["OLIS111", "OLISM111", "OLIS92", "OLISM92", "OLIS76","OLISM76",];
 const terminalId = [
   "VERT110D","VERT110I","VERT100D","VERT100I","VERT90D","VERT90I","VERT80D","VERT80I",
   "NORT110D","NORT110I","NORT100D","NORT100I","NORT90D","NORT90I","NORT80D","NORT80I",
   "PROT100D","PROT100I","PROT80D","PROT80I",
   "BIAT110D","BIAT110I","BIAT100D","BIAT100I","BIAT90D","BIAT90I","BIAT80D","BIAT80I",
   "AURT110D","AURT110I","AURT100D","AURT100I","AURT90D","AURT90I","AURT80D","AURT80I",
+  "OLIT111D","OLIT111I","OLIT92D","OLIT92I","OLIT76D","OLIT76I",
 ];
 const brazoId = [
   "VERM11OD","VERM11OI","VERM100D","VERM100I","VERM90D","VERM90I","VERM80D","VERM80I",
@@ -220,8 +224,9 @@ const brazoId = [
   "BIAM110DM","BIAM110IM","BIAM100DM","BIAM100IM","BIAM90DM","BIAM90IM","BIAM80DM","BIAM80IM",
   "BIAM110I","BIAM110D","BIAM110I","BIAM100D","BIAM100I","BIAM90D","BIAM90I","BIAM80D","BIAM80I",
   "AURM110D","AURM110I","AURM100D","AURM100I","AURM90D","AURM90I","AURM80D","AURM80I",
+  "OLIM111D","OLIM111I","OLIM92D","OLIM92I","OLIM76D","OLIM76I",
 ];
-const pouffId = ["AURP60S","NORP60S","PROP60S","VERP60S","BIAP60S"];
+const pouffId = ["AURP60S","NORP60S","PROP60S","VERP60S","BIAP60S","OLIP60S"];
 const pouffTPId = ["NORP60SMNE","NORP60SCNE","NORP60SCN","NORP60SMN","NORP60SMNE","BIAP60SCN","BIAP60SCNE","BIAP60SMN","BIAP60SMNE"];
 const modTapa = [
   "NORM80DMMN","NORM80DMMNE","NORM80IMMN","NORM80IMMNE","NORM90DMMN","NORM90DMMNE","NORM90IMMN","NORM90IMMNE",
@@ -244,7 +249,7 @@ piezasPorSlot.forEach((piezaSlot) => {
   const selectedOption = piezaSlot.option;
   const imageUrl = selectedOption.dataset.imageUrl;
   const piezaId = piezaSlot.id;
-
+  const isSofaDes = sofaDesIds.includes(piezaId);
   // Tamaños base escalados
   const width = 100 * scaleFactor;
   const height = 100 * scaleFactor;
@@ -264,7 +269,11 @@ piezasPorSlot.forEach((piezaSlot) => {
   const piezaTitle = selectedOption.textContent.toUpperCase();
   if (piezaTitle.includes("REPISA")) {
     finalWidthToApply += 25 * scaleFactor;
-  } else if (piezaTitle.includes("POUFF")) {
+  }  else if (isSofaDes) {
+    // Apply width reduction for sofa des pieces
+    finalWidthToApply += 80 * scaleFactor;
+  }
+  else if (piezaTitle.includes("POUFF")) {
     finalWidthToApply -= 40 * scaleFactor;
   }
 
@@ -316,10 +325,14 @@ piezasPorSlot.forEach((piezaSlot) => {
       if (modRepisa.includes(piezaId)) {
         imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (23 * scaleFactor)}px`;
         imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (122 * scaleFactor)}px`;
-      } else if (brazoId.includes(piezaId)) {
+      } else if (sofaDesIds.includes(piezaId)) {
+        imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (23 * scaleFactor)}px`;
+        imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (122 * scaleFactor)}px`;
+      }else if (brazoId.includes(piezaId)) {
         imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (10 * scaleFactor)}px`;
         imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (110 * scaleFactor)}px`;
-      } else if (terminalId.includes(piezaId)) {
+      }
+       else if (terminalId.includes(piezaId)) {
         imgElement.style.left = `${specialPiece.x + specialPiece.width - finalHeight - (25 * scaleFactor)}px`;
         imgElement.style.top = `${specialPiece.y + specialPiece.height - finalHeight + (125 * scaleFactor)}px`;
       } else if (chaiseLongueIds.includes(piezaId)) {
