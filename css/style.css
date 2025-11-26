@@ -54,7 +54,6 @@ body {
 header {
   background-color: var(--brand);
   width: 100%;
-  border-bottom: #a5a5a5 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,11 +61,9 @@ header {
   padding-top: 1rem;
 }
 header img {
-  width: 200px;
+  width: 150px;
 }
-.option-con-preci{
 
-}
 .titulo-solicitud {
   display: flex;
   flex-direction: column;
