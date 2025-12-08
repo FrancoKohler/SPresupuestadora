@@ -1,8 +1,8 @@
 .inter-titulos {
   text-transform: uppercase;
-  font-family: "Inter", sans-serif;
+  font-family: "BricolageGrotesque", sans-serif;
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .inter-mid-titulos {
   text-transform: uppercase;
@@ -11,25 +11,24 @@
   font-weight: 700;
 }
 .inter-resumen {
-  font-family: "Inter", sans-serif;
+  font-family: "BricolageGrotesque", sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
 .inter-subtitulos {
-  font-family: "Inter", sans-serif;
+  font-family: "BricolageGrotesque", sans-serif;
   font-size: 12.5px;
   font-weight: 500;
 }
-
 .inter-soporte {
-  font-family: "Inter", sans-serif;
+  font-family: "BricolageGrotesque", sans-serif;
   font-size: 12px;
   font-weight: 500;
 }
 .inter-chica {
-  font-family: "Inter", sans-serif;
+  font-family: "BricolageGrotesque", sans-serif;
   font-size: 7px;
-  font-weight: 400;
+  font-weight: 500;
 }
 :root{
   --brand:#abd1f5;
@@ -61,7 +60,7 @@ header {
   padding-top: 1rem;
 }
 header img {
-  width: 150px;
+  width: 165px;
 }
 
 .titulo-solicitud {
@@ -70,7 +69,12 @@ header img {
   justify-content: center;
   align-items: center;
   margin: auto;
-  padding-top: 2rem;
+  padding-top: 2.3rem;
+}
+.titulo-solicitud h1,
+.titulo-solicitud p {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 h1 {
   color: #343434;
@@ -90,14 +94,14 @@ p {
 
 /*DIV IMG REFERENCIAS*/
 .div-referencia {
-  padding-top: 1rem;
+  padding-top: 0rem;
 }
 .tela-div-h.hidden { display: none !important; }
 .tela-div-h.active { display: flex; }
 .referencia-img {
-  margin-top: 1rem;
-  border-radius: 1rem;
-  width: 40%;
+  margin-top: 0rem;
+  border-radius: 0rem;
+  width: 65%;
   height: auto;
 }
 .inner-telas{
@@ -458,7 +462,7 @@ button:hover,
 .btnAlert:hover {
   cursor: pointer;
   color: #ffffff;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(102,61,56);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 .btn-agregar {
@@ -766,7 +770,7 @@ li {
 .footer-logo {
   padding-top: 15px;
   padding-right: 10px;
-  width: 200px;
+  width: 165px;
   display: flex;
   margin: auto;
   justify-content: center;
